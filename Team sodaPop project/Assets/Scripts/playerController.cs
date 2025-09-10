@@ -32,6 +32,7 @@ public class playerController : MonoBehaviour
     {
         HPOrig = HP;
         speedOrig = speed;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -113,5 +114,21 @@ public class playerController : MonoBehaviour
                 dmg.takeDamage(shootDamage);
             }
         }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+        updatePlayerUI();
+
+        if(HP <= 0)
+        {
+            gamemanger.instance.youLose();
+        }
+    }
+
+    public void updatePlayerUI()
+    {
+        gamemanger.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 }
