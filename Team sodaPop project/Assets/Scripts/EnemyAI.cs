@@ -15,7 +15,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
-    [SerializeField] Transform player;
+    [SerializeField] Transform headPos;
+   
 
     [Header("Enemy Settings")]
     [SerializeField] EnemyType enemyType;
@@ -25,6 +26,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float patrolSpeed = 2.0f;
     [SerializeField] int HP = 100;
     [SerializeField] int faceTargetSpeed = 5;
+    [SerializeField] int FOV;
 
     [Header("Combat Settings")]
     [SerializeField] GameObject bullet;
@@ -34,10 +36,17 @@ public class EnemyAI : MonoBehaviour
     
 
     private int patrolIndex = 0;
+
     float shootTimer;
+
+    float angleToPlayer;
+
     bool playerInTrigger;
+
     Color colorOrig;
+
     Vector3 playerDir;
+
 
    
   
@@ -46,31 +55,17 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         colorOrig = model.material.color;
-        // Gamemaneger.instance.updateGameGoal(1);
-
-        if (enemyType == EnemyType.Patrol)
-        {
-           agent.speed = chaseSpeed;
-        }
+        gamemanger.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
     void Update()
     {
         shootTimer += Time.deltaTime;
-        playerDir = player.position - transform.position;
-
-        switch (enemyType)
+        
+        if (playerInTrigger && canSeePlayer())
         {
-            case EnemyType.Stationary:
-                handleStationary();
-                break;
-            case EnemyType.Patrol:
-                handlePatrol(); 
-                break;
-            case EnemyType.Homing:
-                handleHoming();
-            break;
+
         }
     }
 
@@ -78,7 +73,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!playerInTrigger) return;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, playerDir);
         if (distance <= detectionRadius && shootTimer >= shootRate)
         {
             FaceTarget();
@@ -92,11 +87,11 @@ public class EnemyAI : MonoBehaviour
             patrol();
         }
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, playerDir);
         if (distance <= detectionRadius)
         {
             agent.speed = chaseSpeed;
-            agent.SetDestination(player.position);
+            agent.SetDestination(playerDir);
 
             if (agent.remainingDistance <= agent.stoppingDistance)
                 FaceTarget();
@@ -121,11 +116,50 @@ public class EnemyAI : MonoBehaviour
             patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
         }
     }
+
+    bool canSeePlayer()
+    {
+        Transform player = gamemanger.instance.player.transform;
+        playerDir = gamemanger.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+        Debug.DrawRay(headPos.position, playerDir, Color.red);
+
+        RaycastHit raycastHit;
+        if (Physics.Raycast(headPos.position, playerDir, out raycastHit))
+        {
+            if (angleToPlayer <= FOV && raycastHit.collider.CompareTag("Player"))
+            {
+                float distance = Vector3.Distance(transform.position, player.position);
+                if (distance > detectionRadius) return false;
+
+                if (enemyType == EnemyType.Patrol || enemyType == EnemyType.Stationary)
+                {
+                    agent.speed = (enemyType == EnemyType.Patrol) ? chaseSpeed : 0f;
+                    agent.SetDestination(player.position);
+
+                    if (agent.remainingDistance <= agent.stoppingDistance)
+                        FaceTarget();
+
+                    if (shootTimer >= shootRate)
+                        shoot();
+                }
+                else if (enemyType == EnemyType.Homing && shootTimer >= shootRate)
+                {
+                    ShootHomingMissile();
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+            
     void handleHoming()
     {
         if (!playerInTrigger) return;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, playerDir);
         if (distance <= detectionRadius && shootTimer >= shootRate)
         {
             ShootHomingMissile();
@@ -133,13 +167,14 @@ public class EnemyAI : MonoBehaviour
     }
     void FaceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(playerDir);
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
     void shoot()
     {
-
+        shootTimer = 0;
+        Instantiate(bullet, shootPos.position, transform.rotation);
     }
 
     void ShootHomingMissile()
@@ -152,16 +187,9 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        GameObject missile = Instantiate(homingMissile, shootPos.position, transform.rotation);
-
-        // Attach homing logic directly here if needed
-        if (player != null)
-        {
-            StartCoroutine(HomingBehavior(missile.transform));
-        }
+       GameObject missile = Instantiate(homingMissile, shootPos.position, transform.rotation);
+       StartCoroutine(HomingBehavior(missile.transform));   
     }
-
-
 
     public void takeDamage(int amount)
     {
@@ -170,7 +198,7 @@ public class EnemyAI : MonoBehaviour
 
         if (HP <= 0)
         {
-            //Gamemanager.instance.updateGameGoal(-1);
+            gamemanger.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
@@ -189,9 +217,9 @@ public class EnemyAI : MonoBehaviour
         float speed = 10f;
         float rotateSpeed = 200f;
 
-        while (timer < lifetime && player != null)
+        while (timer < lifetime && playerDir != null)
         {
-            Vector3 direction = (player.position - missile.position).normalized;
+            Vector3 direction = (playerDir - missile.position).normalized;
             Quaternion rotateTo = Quaternion.LookRotation(direction);
             missile.rotation = Quaternion.RotateTowards(missile.rotation, rotateTo, rotateSpeed * Time.deltaTime);
             missile.position += missile.forward * speed * Time.deltaTime;
