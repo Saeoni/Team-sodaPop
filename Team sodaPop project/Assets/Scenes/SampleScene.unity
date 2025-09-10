@@ -45079,6 +45079,18 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5982983778650212653, guid: 51046b14374a33d4d907020878dab018, type: 3}
+      propertyPath: shootDist
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982983778650212653, guid: 51046b14374a33d4d907020878dab018, type: 3}
+      propertyPath: shootRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982983778650212653, guid: 51046b14374a33d4d907020878dab018, type: 3}
+      propertyPath: shootDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982983778650212653, guid: 51046b14374a33d4d907020878dab018, type: 3}
       propertyPath: sprintTimer
       value: 30
       objectReference: {fileID: 0}

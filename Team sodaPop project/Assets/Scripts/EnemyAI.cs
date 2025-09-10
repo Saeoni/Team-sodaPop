@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IDamage
 {
     public enum EnemyType
     {
@@ -198,7 +198,7 @@ public class EnemyAI : MonoBehaviour
 
         if (HP <= 0)
         {
-            gamemanger.instance.updateGameGoal(-1);
+            //gamemanger.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
