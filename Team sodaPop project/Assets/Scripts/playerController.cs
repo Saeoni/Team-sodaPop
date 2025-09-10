@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class playerController : MonoBehaviour
 {
@@ -120,7 +121,7 @@ public class playerController : MonoBehaviour
     {
         HP -= amount;
         updatePlayerUI();
-
+        StartCoroutine(flashDamage());
         if(HP <= 0)
         {
             gamemanger.instance.youLose();
@@ -130,5 +131,12 @@ public class playerController : MonoBehaviour
     public void updatePlayerUI()
     {
         gamemanger.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+    }
+
+    IEnumerator flashDamage()
+    {
+        gamemanger.instance.playerDamageFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gamemanger.instance.playerDamageFlash.SetActive(false);
     }
 }
