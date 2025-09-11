@@ -74,6 +74,14 @@ public class gamemanger : MonoBehaviour
         menuActive = null;
     }
 
+    public void WinGame()
+    {
+        statePause();
+        menuActive = menuWin;
+        menuActive.SetActive(true);
+        Debug.Log("Player exited the maze. You win!.");
+    }
+
     public void updateGameGoal(int amount)
     {
 
@@ -81,9 +89,7 @@ public class gamemanger : MonoBehaviour
 
         if (gameGoalCount <= 0)
         {
-            statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            Debug.Log("All enemies defeated!");
         }
 
     }
