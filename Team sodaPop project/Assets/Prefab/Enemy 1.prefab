@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9debdec779d4144b025801f064307e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  agent: {fileID: 0}
+  agent: {fileID: 5549981946651411787}
   model: {fileID: 8363052234662839984}
   shootPos: {fileID: 3017746528546225588}
   headPos: {fileID: 766600996753666491}

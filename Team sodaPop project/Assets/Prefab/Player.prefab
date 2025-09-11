@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 19426885452620211}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +57,9 @@ MonoBehaviour:
   jumpMod: 1.5
   jumpMax: 2
   gravity: 35
+  shootDamage: 0
+  shootRate: 0
+  shootDist: 0
 --- !u!33 &3828280733190500576
 MeshFilter:
   m_ObjectHideFlags: 0
