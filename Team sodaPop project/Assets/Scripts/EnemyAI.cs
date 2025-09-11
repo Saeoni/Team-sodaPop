@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Unity.Mathematics;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
@@ -65,7 +66,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         
         if (playerInTrigger && canSeePlayer())
         {
-            shoot();
+            if (shootTimer >= shootRate)
+            {
+                shoot();
+            }
         }
     }
 
