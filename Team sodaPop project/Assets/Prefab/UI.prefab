@@ -3182,7 +3182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pause Menu
+  m_text: 'Lose Menu
 
 '
   m_isRightToLeft: 0
