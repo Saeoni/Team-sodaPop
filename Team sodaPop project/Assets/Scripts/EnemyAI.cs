@@ -65,7 +65,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         
         if (playerInTrigger && canSeePlayer())
         {
-
+            shoot();
         }
     }
 
