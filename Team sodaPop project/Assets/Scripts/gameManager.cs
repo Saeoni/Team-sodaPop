@@ -22,7 +22,6 @@ public class gamemanger : MonoBehaviour
 
     float timeScaleOrig;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
 
@@ -34,7 +33,6 @@ public class gamemanger : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -76,21 +74,15 @@ public class gamemanger : MonoBehaviour
 
     public void WinGame()
     {
-        statePause();
-        menuActive = menuWin;
-        menuActive.SetActive(true);
-        Debug.Log("Player exited the maze. You win!.");
+       statePause();
+       menuActive = menuWin;
+       menuActive.SetActive(true);
+       Debug.Log("Player exited the maze. You win!");      
     }
+
 
     public void updateGameGoal(int amount)
     {
-
-        gameGoalCount += amount;
-
-        if (gameGoalCount <= 0)
-        {
-            Debug.Log("All enemies defeated!");
-        }
 
     }
 
