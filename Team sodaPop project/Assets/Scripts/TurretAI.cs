@@ -1,44 +1,35 @@
 using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.AI;
 
-
-public class EnemyAI : MonoBehaviour, IDamage
+public class TurretAI : MonoBehaviour, IDamage
 {
     [Header("Core Components")]
-    [SerializeField] NavMeshAgent agent;
-    [SerializeField] Renderer model;
+    [SerializeField] Transform turretHead;
     [SerializeField] Transform shootPos;
-    [SerializeField] Transform headPos;
-   
-   
+    [SerializeField] Transform headPosition;
+    [SerializeField] Renderer model;
+    
 
-    [Header("Enemy Settings")]
- 
-    [SerializeField] float detectionRadius = 15.0f;
-    [SerializeField] float chaseSpeed = 3.5f;
-    [SerializeField] int HP = 100;
-    [SerializeField] int faceTargetSpeed = 5;
+    [Header("Turret Setting")]
+    [SerializeField] float detectionRadius;
     [SerializeField] int FOV;
+    [SerializeField] float faceTargetSpeed;
+    [SerializeField] float shootRate;
+    [SerializeField] int HP = 100;
 
     [Header("Combat Settings")]
-    [SerializeField] GameObject bullet;
     [SerializeField] GameObject homingMissile;
-    [SerializeField] float shootRate = 1.0f;
-    [SerializeField] int damage = 10;
-    
-    float shootTimer;
+    [SerializeField] int damage;
 
+    Transform player;
+    Vector3 playerDir;
     float angleToPlayer;
-
     bool playerInTrigger;
-
+    float shootTimer;
     Color colorOrig;
 
-    Vector3 playerDir;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
     void Start()
     {
         colorOrig = model.material.color;
@@ -49,35 +40,33 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         shootTimer += Time.deltaTime;
-        
+
         if (playerInTrigger && canSeePlayer())
         {
-           
+
         }
     }
 
     bool canSeePlayer()
     {
-        Transform player = gamemanger.instance.player.transform;
-        playerDir = gamemanger.instance.player.transform.position - headPos.position;
+       
+        playerDir = gamemanger.instance.player.transform.position - headPosition.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        Debug.DrawRay(headPos.position, playerDir, Color.red);
+        Debug.DrawRay(headPosition.position, playerDir, Color.red);
 
-        RaycastHit raycastHit;
-        if (Physics.Raycast(headPos.position, playerDir, out raycastHit))
+        RaycastHit hit;
+        if (Physics.Raycast(headPosition.position, playerDir, out hit))
         {
-            if (angleToPlayer <= FOV && raycastHit.collider.CompareTag("Player"))
+            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
             {
-                agent.SetDestination(player.position);
-
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                float distance = Vector3.Distance(transform.position, player.position);
+                if (distance <= detectionRadius)
                 {
                     FaceTarget();
                 }
-
                 if (shootTimer >= shootRate)
                 {
-                    shoot();
+                    FireHomingMissile();
                 }
 
                 return true;
@@ -86,18 +75,23 @@ public class EnemyAI : MonoBehaviour, IDamage
         return false;
     }
 
-
-
     void FaceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
+        transform.rotation = Quaternion.Lerp(turretHead.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
-    void shoot()
+    void FireHomingMissile()
     {
         shootTimer = 0;
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        if (homingMissile == null)
+        {
+            Debug.LogWarning("Homing missile prefab not assigned");
+            return;
+        }
+
+        Instantiate(homingMissile, shootPos.position, transform.rotation);
+
     }
 
 
@@ -108,29 +102,33 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            //gamemanger.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
+
     IEnumerator flashRed()
     {
+        
         model.material.color = Color.red;
+
         yield return new WaitForSeconds(0.1f);
+
         model.material.color = colorOrig;
     }
-
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerInTrigger = true;
+        }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerInTrigger = false;
+        }
     }
-
 }
-
