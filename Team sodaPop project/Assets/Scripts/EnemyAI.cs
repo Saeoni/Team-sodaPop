@@ -10,22 +10,19 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
-   
-   
+    [SerializeField] GameObject bulletPrefab;
 
     [Header("Enemy Settings")]
- 
-    [SerializeField] float detectionRadius = 15.0f;
-    [SerializeField] float chaseSpeed = 3.5f;
-    [SerializeField] int HP = 100;
-    [SerializeField] int faceTargetSpeed = 5;
-    [SerializeField] int FOV;
 
-    [Header("Combat Settings")]
-    [SerializeField] GameObject bullet;
-    [SerializeField] GameObject homingMissile;
-    [SerializeField] float shootRate = 1.0f;
-    [SerializeField] int damage = 10;
+    [SerializeField] float detectionRadius;
+    [SerializeField] float chaseSpeed;
+    [SerializeField] float shootRate;
+    [SerializeField] float faceTargetSpeed;
+    [SerializeField] float FOV;
+    [SerializeField] LayerMask lineOfSightMask;
+    [SerializeField] int HP;
+    [SerializeField] int damage;
+
     
     float shootTimer;
 
@@ -42,7 +39,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Start()
     {
         colorOrig = model.material.color;
-        gamemanger.instance.updateGameGoal(1);
+        gamemanager.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
@@ -58,21 +55,20 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        Transform player = gamemanger.instance.player.transform;
-        playerDir = gamemanger.instance.player.transform.position - headPos.position;
+        playerDir = gamemanager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
         Debug.DrawRay(headPos.position, playerDir, Color.red);
 
-        RaycastHit raycastHit;
-        if (Physics.Raycast(headPos.position, playerDir, out raycastHit))
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
-            if (angleToPlayer <= FOV && raycastHit.collider.CompareTag("Player"))
+            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
             {
-                agent.SetDestination(player.position);
+                agent.SetDestination(gamemanager.instance.player.transform.position);
 
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
-                    FaceTarget();
+                    faceTarget();
                 }
 
                 if (shootTimer >= shootRate)
@@ -83,23 +79,23 @@ public class EnemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
+
         return false;
     }
 
 
 
-    void FaceTarget()
+    void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+      transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
     void shoot()
     {
         shootTimer = 0;
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Instantiate(bulletPrefab, shootPos.position, transform.rotation);
     }
-
 
     public void takeDamage(int amount)
     {

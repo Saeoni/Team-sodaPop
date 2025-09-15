@@ -126,6 +126,6 @@ NavMeshProjectSettings:
     debug:
       m_Flags: 0
   m_SettingNames:
-  - Sationary
+  - Humanoid
   - New Agent
   - New Agent 1

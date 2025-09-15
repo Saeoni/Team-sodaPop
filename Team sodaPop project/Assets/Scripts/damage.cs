@@ -12,6 +12,7 @@ public class damage : MonoBehaviour
     [SerializeField] float damageRate;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
+    [SerializeField] GameObject explosionPrefab;
 
     bool isDamaging;
 
@@ -37,7 +38,7 @@ public class damage : MonoBehaviour
         if (type == damageType.homing)
         {
             //checks player position and follows it
-            rb.linearVelocity = (gamemanger.instance.player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+            rb.linearVelocity = (gamemanager.instance.player.transform.position - transform.position).normalized * speed * Time.deltaTime;
         }
         
     }
@@ -56,6 +57,10 @@ public class damage : MonoBehaviour
 
         if(type == damageType.homing || type == damageType.moving)
         {
+            if (explosionPrefab != null)
+            {
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

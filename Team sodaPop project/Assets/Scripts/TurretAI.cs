@@ -1,99 +1,106 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.AI;
+using System.Collections;
+
 
 public class TurretAI : MonoBehaviour, IDamage
 {
+
     [Header("Core Components")]
-    [SerializeField] Transform turretHead;
-    [SerializeField] Transform shootPos;
-    [SerializeField] Transform headPosition;
     [SerializeField] Renderer model;
-    
+    [SerializeField] Transform turretHead;
+    [SerializeField] Transform shootPoint;
+    [SerializeField] Transform[] missileLaunchPoints;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject homingMissilePrefab;
 
-    [Header("Turret Setting")]
+    [Header("Detection & Combat")]
+    [SerializeField] bool useMissiles = false;
     [SerializeField] float detectionRadius;
-    [SerializeField] int FOV;
-    [SerializeField] float faceTargetSpeed;
     [SerializeField] float shootRate;
-    [SerializeField] int HP = 100;
+    [SerializeField] float FOV;
+    [SerializeField] int rotationSpeed;
+    [SerializeField] int HP;
+    [SerializeField] LayerMask lineOfSightMask;
 
-    [Header("Combat Settings")]
-    [SerializeField] GameObject homingMissile;
-    [SerializeField] int damage;
-
-    Transform player;
-    Vector3 playerDir;
+    float shootTimer;
     float angleToPlayer;
     bool playerInTrigger;
-    float shootTimer;
+    Vector3 dirOfPlayer;
     Color colorOrig;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorOrig = model.material.color;
-        gamemanger.instance.updateGameGoal(1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
-
-        if (playerInTrigger && canSeePlayer())
-        {
-
-        }
+        
     }
 
-    bool canSeePlayer()
+    bool lineOfSightToPlayer()
     {
-       
-        playerDir = gamemanger.instance.player.transform.position - headPosition.position;
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        Debug.DrawRay(headPosition.position, playerDir, Color.red);
+        dirOfPlayer = gamemanager.instance.player.transform.position - turretHead.position;
+        angleToPlayer = Vector3.Angle(dirOfPlayer, turretHead.forward);
+        Debug.DrawRay(turretHead.position, dirOfPlayer);
+
+        if (angleToPlayer > FOV) return false;
 
         RaycastHit hit;
-        if (Physics.Raycast(headPosition.position, playerDir, out hit))
+        if (Physics.Raycast(turretHead.position, dirOfPlayer.normalized, out hit, detectionRadius, lineOfSightMask ))
         {
-            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player"))
             {
-                float distance = Vector3.Distance(transform.position, player.position);
-                if (distance <= detectionRadius)
-                {
-                    FaceTarget();
-                }
-                if (shootTimer >= shootRate)
-                {
-                    FireHomingMissile();
-                }
-
                 return true;
             }
         }
         return false;
     }
 
-    void FaceTarget()
+    void RotateToPlayer()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
-        transform.rotation = Quaternion.Lerp(turretHead.rotation, rot, Time.deltaTime * faceTargetSpeed);
+        dirOfPlayer = gamemanager.instance.player.transform.position - turretHead.position;
+        Quaternion rot = Quaternion.LookRotation(dirOfPlayer);
+        turretHead.rotation = Quaternion.Lerp(turretHead.rotation, rot, Time.deltaTime * rotationSpeed);
     }
 
-    void FireHomingMissile()
+    void firBullet()
     {
-        shootTimer = 0;
-        if (homingMissile == null)
+        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+    }
+
+    void FireHomingMissiles()
+    {
+        if (missileLaunchPoints != null && homingMissilePrefab != null)
         {
-            Debug.LogWarning("Homing missile prefab not assigned");
-            return;
+            foreach (Transform launchPoint in missileLaunchPoints)
+            {
+                Instantiate(homingMissilePrefab, launchPoint.position, launchPoint.rotation);
+            }
         }
-
-        Instantiate(homingMissile, shootPos.position, transform.rotation);
-
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playerInTrigger = true;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playerInTrigger = false;
+    }
+
+    IEnumerator flashRed()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = colorOrig;
+    }
 
     public void takeDamage(int amount)
     {
@@ -102,33 +109,8 @@ public class TurretAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            //gamemanger.instance.updateGameGoal(-1);
             Destroy(gameObject);
-        }
-    }
-
-    IEnumerator flashRed()
-    {
-        
-        model.material.color = Color.red;
-
-        yield return new WaitForSeconds(0.1f);
-
-        model.material.color = colorOrig;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = false;
         }
     }
 }

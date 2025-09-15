@@ -124,19 +124,19 @@ public class playerController : MonoBehaviour, IDamage
         StartCoroutine(flashDamage());
         if(HP <= 0)
         {
-            gamemanger.instance.youLose();
+            gamemanager.instance.youLose();
         }
     }
 
     public void updatePlayerUI()
     {
-        gamemanger.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
     IEnumerator flashDamage()
     {
-        gamemanger.instance.playerDamageFlash.SetActive(true);
+        gamemanager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        gamemanger.instance.playerDamageFlash.SetActive(false);
+        gamemanager.instance.playerDamageFlash.SetActive(false);
     }
 }
