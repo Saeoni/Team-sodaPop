@@ -676,17 +676,16 @@ MonoBehaviour:
   model: {fileID: 8363052234662839984}
   shootPos: {fileID: 3017746528546225588}
   headPos: {fileID: 766600996753666491}
-  enemyType: 0
-  patrolPoints: []
+  bulletPrefab: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
   detectionRadius: 15
   chaseSpeed: 0
-  patrolSpeed: 0
-  HP: 5
+  shootRate: 0.5
   faceTargetSpeed: 5
   FOV: 90
-  bullet: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
-  homingMissile: {fileID: 0}
-  shootRate: 0.5
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 0
+  HP: 5
   damage: 10
 --- !u!195 &5549981946651411787
 NavMeshAgent:

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class gamemanager : MonoBehaviour
 {
 
@@ -9,6 +10,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] TMP_Text gameTimerText;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash;
@@ -19,6 +21,8 @@ public class gamemanager : MonoBehaviour
     public bool isPaused;
 
     int gameGoalCount;
+    int gameTimerMinute;
+    float gameTimerSecond;
 
     float timeScaleOrig;
 
@@ -52,6 +56,8 @@ public class gamemanager : MonoBehaviour
             }
         }
 
+        updateGameTimer();
+
     }
 
     public void statePause()
@@ -80,6 +86,21 @@ public class gamemanager : MonoBehaviour
        Debug.Log("Player exited the maze. You win!");      
     }
 
+    public void updateGameTimer()
+    {
+        if (menuActive == null){
+            gameTimerSecond += Time.deltaTime;
+
+            int displaySecond = Mathf.FloorToInt(gameTimerSecond);
+            if (displaySecond >= 60)
+            {
+                gameTimerMinute++;
+                gameTimerSecond = 0;
+                displaySecond = 0;
+            }
+            gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
+        }
+    }
 
     public void updateGameGoal(int amount)
     {

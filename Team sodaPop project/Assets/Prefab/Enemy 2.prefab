@@ -277,17 +277,16 @@ MonoBehaviour:
   model: {fileID: 6120373680381766346}
   shootPos: {fileID: 6130887836005626397}
   headPos: {fileID: 8041553712237588915}
-  enemyType: 1
-  patrolPoints: []
+  bulletPrefab: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
   detectionRadius: 15
   chaseSpeed: 3.5
-  patrolSpeed: 2
-  HP: 100
+  shootRate: 1
   faceTargetSpeed: 5
   FOV: 90
-  bullet: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
-  homingMissile: {fileID: 0}
-  shootRate: 1
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 0
+  HP: 100
   damage: 10
 --- !u!95 &3095313414917140039
 Animator:

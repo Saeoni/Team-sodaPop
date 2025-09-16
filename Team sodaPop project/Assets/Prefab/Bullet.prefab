@@ -52,7 +52,8 @@ MonoBehaviour:
   damageAmount: 1
   damageRate: 0
   speed: 25
-  destroyTime: 3
+  destroyTime: 1
+  explosionPrefab: {fileID: 0}
 --- !u!135 &3358190689776139775
 SphereCollider:
   m_ObjectHideFlags: 0
