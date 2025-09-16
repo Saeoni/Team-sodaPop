@@ -9,6 +9,7 @@ public class TurretAI : MonoBehaviour, IDamage
     [Header("Core Components")]
     [SerializeField] Renderer model;
     [SerializeField] Transform turretHead;
+    [SerializeField] Transform headPos;
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform[] missileLaunchPoints;
     [SerializeField] GameObject bulletPrefab;
@@ -16,11 +17,11 @@ public class TurretAI : MonoBehaviour, IDamage
 
     [Header("Detection & Combat")]
     [SerializeField] bool useMissiles = false;
-    [SerializeField] float detectionRadius;
-    [SerializeField] float shootRate;
-    [SerializeField] float FOV;
-    [SerializeField] int rotationSpeed;
-    [SerializeField] int HP;
+    [SerializeField] float detectionRadius = 20f;
+    [SerializeField] float shootRate = 1f;
+    [SerializeField] float FOV = 90f;
+    [SerializeField] int rotationSpeed = 5;
+    [SerializeField] int HP = 100;
     [SerializeField] LayerMask lineOfSightMask;
 
     float shootTimer;
@@ -32,48 +33,69 @@ public class TurretAI : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        colorOrig = model.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        shootTimer += Time.deltaTime;
+
+        if (playerInTrigger && lineOfSightToPlayer())
+        {
+            RotateToPlayer();
+
+            if (shootTimer >= shootRate)
+            {
+                shootTimer = 0f;
+                if (useMissiles)
+                {
+                    FireHomingMissiles();
+                }
+                else
+                    fireBullet();
+            }
+        }
     }
 
     bool lineOfSightToPlayer()
     {
-        dirOfPlayer = gamemanager.instance.player.transform.position - turretHead.position;
+        Transform player = gamemanager.instance.player.transform;
+        dirOfPlayer = player.position - headPos.position;
         angleToPlayer = Vector3.Angle(dirOfPlayer, turretHead.forward);
-        Debug.DrawRay(turretHead.position, dirOfPlayer);
+
+        Debug.DrawRay(headPos.position, dirOfPlayer.normalized * detectionRadius, Color.red);
 
         if (angleToPlayer > FOV) return false;
 
         RaycastHit hit;
-        if (Physics.Raycast(turretHead.position, dirOfPlayer.normalized, out hit, detectionRadius, lineOfSightMask ))
+        if (Physics.Raycast(headPos.position, dirOfPlayer.normalized, out hit, detectionRadius, lineOfSightMask ))
         {
-            if (hit.collider.CompareTag("Player"))
-            {
-                return true;
-            }
+            return hit.collider.CompareTag("Player");
         }
         return false;
     }
 
     void RotateToPlayer()
     {
-        dirOfPlayer = gamemanager.instance.player.transform.position - turretHead.position;
-        Quaternion rot = Quaternion.LookRotation(dirOfPlayer);
-        turretHead.rotation = Quaternion.Lerp(turretHead.rotation, rot, Time.deltaTime * rotationSpeed);
+        Vector3 direction = gamemanager.instance.player.transform.position - turretHead.position;
+        direction.y = 0f;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        turretHead.rotation = Quaternion.Lerp(turretHead.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
-    void firBullet()
+    void fireBullet()
     {
-        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        Transform player = gamemanager.instance.player.transform;
+        Vector3 targetPos = player.position;
+        Vector3 directionToPlayer = (targetPos - shootPoint.position);
+
+        Instantiate(bulletPrefab, shootPoint.position, Quaternion.LookRotation(directionToPlayer));    
     }
 
     void FireHomingMissiles()
     {
+       
         if (missileLaunchPoints != null && homingMissilePrefab != null)
         {
             foreach (Transform launchPoint in missileLaunchPoints)

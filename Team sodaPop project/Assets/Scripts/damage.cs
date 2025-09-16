@@ -29,7 +29,6 @@ public class damage : MonoBehaviour
                 rb.linearVelocity = transform.forward * speed;
             }
         }
-        
     }
 
     // Update is called once per frame
@@ -38,7 +37,8 @@ public class damage : MonoBehaviour
         if (type == damageType.homing)
         {
             //checks player position and follows it
-            rb.linearVelocity = (gamemanager.instance.player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+           Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
+            rb.linearVelocity = targetDir * speed;
         }
         
     }
@@ -55,14 +55,13 @@ public class damage : MonoBehaviour
             dmg.takeDamage(damageAmount);
         }
 
-        if(type == damageType.homing || type == damageType.moving)
+        if ((type == damageType.homing || type == damageType.moving) && explosionPrefab != null)
         {
-            if (explosionPrefab != null)
-            {
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            }
-            Destroy(gameObject);
+            Debug.Log("Projectile hit: " + other.name);
+          GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);  
+            Destroy(explosion, 2f );
         }
+       
     }
 
     private void OnTriggerStay(Collider other)
@@ -72,7 +71,7 @@ public class damage : MonoBehaviour
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if(dmg != null & type == damageType.DOT)
+        if(dmg != null && type == damageType.DOT)
         {
             if(!isDamaging)
             {

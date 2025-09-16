@@ -8,14 +8,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - Player
   - Water
   - UI
-  - Player
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Enemy Bullet
+  - Enemy Turret Cannon Blaster
+  - Turret Cannon Barrel
+  - Bullet Projectile
   - 
   - 
   - 
