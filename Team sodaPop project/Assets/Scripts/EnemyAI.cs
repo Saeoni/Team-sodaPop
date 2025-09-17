@@ -55,28 +55,31 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        playerDir = gamemanager.instance.player.transform.position - headPos.position;
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        Debug.DrawRay(headPos.position, playerDir, Color.red);
-
-        RaycastHit hit;
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        if (!gamemanager.instance.isStealthed)
         {
-            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
+            playerDir = gamemanager.instance.player.transform.position - headPos.position;
+            angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+            Debug.DrawRay(headPos.position, playerDir, Color.red);
+
+            RaycastHit hit;
+            if (Physics.Raycast(headPos.position, playerDir, out hit))
             {
-                agent.SetDestination(gamemanager.instance.player.transform.position);
-
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
                 {
-                    faceTarget();
-                }
+                    agent.SetDestination(gamemanager.instance.player.transform.position);
 
-                if (shootTimer >= shootRate)
-                {
-                    shoot();
-                }
+                    if (agent.remainingDistance <= agent.stoppingDistance)
+                    {
+                        faceTarget();
+                    }
 
-                return true;
+                    if (shootTimer >= shootRate)
+                    {
+                        shoot();
+                    }
+
+                    return true;
+                }
             }
         }
 
