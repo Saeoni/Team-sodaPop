@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 public class gamemanager : MonoBehaviour
 {
 
@@ -11,14 +12,19 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text gameTimerText;
+    [SerializeField] TMP_Text KeyText;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash;
+    public GameObject playerHealFlash;
 
     public GameObject player;
     public playerController playerScript;
 
+    public int keyCount;
+
     public bool isPaused;
+    public bool isStealthed;
 
     int gameGoalCount;
     int gameTimerMinute;
@@ -34,6 +40,8 @@ public class gamemanager : MonoBehaviour
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+
+        keyCount = 0;
 
     }
 
@@ -59,6 +67,24 @@ public class gamemanager : MonoBehaviour
         updateGameTimer();
 
     }
+
+    // Still need to get the timer to count down.
+    //
+    //public void stealthTimer(float length)
+    //{
+    //    float countDown = length;
+
+
+    //    while (countDown > 0)
+    //    {
+    //        countDown -= Time.deltaTime;
+
+    //        if (countDown == 0)
+    //        {
+    //            isStealthed = false;
+    //        }
+    //    }
+    //}
 
     public void statePause()
     {
@@ -105,6 +131,11 @@ public class gamemanager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
 
+    }
+
+    public void updateKeyCount()
+    {
+        KeyText.text = keyCount.ToString();
     }
 
     public void youLose()

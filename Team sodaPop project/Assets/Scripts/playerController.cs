@@ -128,6 +128,16 @@ public class playerController : MonoBehaviour, IDamage
         }
     }
 
+    public void heal(int amount)
+    {
+        if(HP < HPOrig)
+        {
+            HP += amount;
+            updatePlayerUI();
+            StartCoroutine(flashHeal());
+        }
+    }
+
     public void updatePlayerUI()
     {
         gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
@@ -138,5 +148,11 @@ public class playerController : MonoBehaviour, IDamage
         gamemanager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gamemanager.instance.playerDamageFlash.SetActive(false);
+    }
+    IEnumerator flashHeal()
+    {
+        gamemanager.instance.playerHealFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gamemanager.instance.playerHealFlash.SetActive(false);
     }
 }
