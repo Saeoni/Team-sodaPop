@@ -28169,6 +28169,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2104871820}
     - target: {fileID: 8338870003233312976, guid: 456c7541e1cfc9846a351cfb49ffee15, type: 3}
+      propertyPath: keyPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: e1561fc62d8f8bb45b35426ab913d57a, type: 3}
+    - target: {fileID: 8338870003233312976, guid: 456c7541e1cfc9846a351cfb49ffee15, type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
@@ -30441,6 +30445,10 @@ PrefabInstance:
       propertyPath: enemyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
+      propertyPath: keyPrefab
+      value: 
+      objectReference: {fileID: 1930125013191846, guid: b2a695e06c2e5b2479e979dd3b2197e8, type: 3}
     - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
       propertyPath: bulletPrefab
       value: 

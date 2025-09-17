@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject keyPrefab;
 
     [Header("Enemy Settings")]
 
@@ -99,6 +100,13 @@ public class EnemyAI : MonoBehaviour, IDamage
         shootTimer = 0;
         Instantiate(bulletPrefab, shootPos.position, transform.rotation);
     }
+
+    /* Ummm I have to go work but will fix later - Amanda
+     * 
+     * void OnEnemyDeath()
+    {
+        Instantiate(keyPrefab, transform.position, Quaternion.identity);
+    }*/
 
     public void takeDamage(int amount)
     {
