@@ -12,9 +12,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject keyPrefab;
+    [SerializeField] Animator animator;
+    
 
     [Header("Enemy Settings")]
-
     [SerializeField] float detectionRadius;
     [SerializeField] float chaseSpeed;
     [SerializeField] float shootRate;
@@ -25,15 +26,14 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int damage;
 
     
+
     float shootTimer;
-
     float angleToPlayer;
-
     bool playerInTrigger;
-
     Color colorOrig;
-
     Vector3 playerDir;
+
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -41,18 +41,25 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         colorOrig = model.material.color;
         gamemanager.instance.updateGameGoal(1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         shootTimer += Time.deltaTime;
-        
+   
+
         if (playerInTrigger && canSeePlayer())
         {
            
         }
+       
     }
+
+
+   
+
 
     bool canSeePlayer()
     {
@@ -101,12 +108,12 @@ public class EnemyAI : MonoBehaviour, IDamage
         Instantiate(bulletPrefab, shootPos.position, transform.rotation);
     }
 
-    /* Ummm I have to go work but will fix later - Amanda
-     * 
-     * void OnEnemyDeath()
+   
+     
+    void OnEnemyDeath()
     {
         Instantiate(keyPrefab, transform.position, Quaternion.identity);
-    }*/
+    }
 
     public void takeDamage(int amount)
     {
@@ -119,6 +126,9 @@ public class EnemyAI : MonoBehaviour, IDamage
             Destroy(gameObject);
         }
     }
+
+    
+
     IEnumerator flashRed()
     {
         model.material.color = Color.red;

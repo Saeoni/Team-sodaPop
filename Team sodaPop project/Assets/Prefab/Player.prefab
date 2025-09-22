@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6881681725442103405}
   - component: {fileID: 4403940167681284812}
   - component: {fileID: 19426885452620211}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -57,9 +57,9 @@ MonoBehaviour:
   jumpMod: 1.5
   jumpMax: 2
   gravity: 35
-  shootDamage: 0
-  shootRate: 0
-  shootDist: 0
+  shootDamage: 1
+  shootRate: 0.5
+  shootDist: 10
 --- !u!33 &3828280733190500576
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,12 +126,12 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1152
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -157,7 +157,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 2.5
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3

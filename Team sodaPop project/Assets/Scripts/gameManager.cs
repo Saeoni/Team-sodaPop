@@ -25,6 +25,7 @@ public class gamemanager : MonoBehaviour
 
     public bool isPaused;
     public bool isStealthed;
+    public float timeElapsed; 
 
     int gameGoalCount;
     int gameTimerMinute;
@@ -116,6 +117,7 @@ public class gamemanager : MonoBehaviour
     {
         if (menuActive == null){
             gameTimerSecond += Time.deltaTime;
+            timeElapsed += Time.deltaTime;
 
             int displaySecond = Mathf.FloorToInt(gameTimerSecond);
             if (displaySecond >= 60)
