@@ -1,13 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
     [SerializeField] int HP;
+
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
+
     [SerializeField] float jumpSpeed;
     [SerializeField] float jumpMod;
     [SerializeField] int jumpMax;
@@ -25,6 +27,7 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 playerVel;
 
     float shootTimer;
+    
     bool isSprinting;
     bool isTired = false;
 
@@ -128,7 +131,7 @@ public class playerController : MonoBehaviour, IDamage
         }
     }
 
-    public void heal(int amount)
+    public void pickupHealth(int amount)
     {
         if(HP < HPOrig)
         {
@@ -141,6 +144,18 @@ public class playerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+
+    }
+
+    public void pickupKey()
+    {
+        gamemanager.instance.keyCount++;
+        gamemanager.instance.updateKeyCount();
+    }
+
+    public void pickupStealth(float duration)
+    {
+
     }
 
     IEnumerator flashDamage()

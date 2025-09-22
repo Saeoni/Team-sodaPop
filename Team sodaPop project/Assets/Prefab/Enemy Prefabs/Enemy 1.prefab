@@ -677,6 +677,7 @@ MonoBehaviour:
   shootPos: {fileID: 3017746528546225588}
   headPos: {fileID: 766600996753666491}
   bulletPrefab: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
+  keyPrefab: {fileID: 5535934326256916494, guid: cf0a4ff25ad8baa41bb92b6e32eb7cae, type: 3}
   detectionRadius: 15
   chaseSpeed: 0
   shootRate: 0.5

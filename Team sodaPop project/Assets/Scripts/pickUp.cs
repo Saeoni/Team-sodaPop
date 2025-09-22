@@ -7,7 +7,7 @@ public class pickUp : MonoBehaviour
 
     [SerializeField] pickupType type;
 
-    [SerializeField] int healAmount;
+    [SerializeField] healthPickup healthKit;
 
 
     //    // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,16 +24,17 @@ public class pickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (type == pickupType.health)
+        IPickup pickingUp = other.GetComponent<IPickup>();
+
+        if (pickingUp != null && type == pickupType.health)
         {
-            other.GetComponent<playerController>().heal(healAmount);
+            pickingUp.pickupHealth(healthKit.healAmount);
             Destroy(gameObject);
         }
 
-        if (type == pickupType.key)
+        if (pickingUp != null && type == pickupType.key)
         {
-            gamemanager.instance.keyCount++;
-            gamemanager.instance.updateKeyCount();
+            pickingUp.pickupKey();
 
             Destroy(gameObject);
         }
