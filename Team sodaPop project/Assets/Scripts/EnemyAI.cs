@@ -163,12 +163,16 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void OnEnemyDeath()
     {
+<<<<<<< HEAD
         gamemanager.instance.updateGameGoal(-1);
 
         if (keyPrefab != null) 
         Instantiate(keyPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
+=======
+            Instantiate(keyPrefab, transform.position, Quaternion.identity);
+>>>>>>> d0d32988c654398595ba8b2469cfd0e13c8d4e26
     }
 
     public void takeDamage(int amount)
