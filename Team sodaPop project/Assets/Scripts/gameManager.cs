@@ -146,4 +146,21 @@ public class gamemanager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
+
+    public void OnPlayerKilledByReaper()
+    {
+        Debug.Log("Player Killed by Reaper!");
+
+       if (playerDamageFlash != null)
+       {
+          playerDamageFlash.SetActive(true);
+       }
+
+       if (player != null)
+       {
+            Destroy(player);
+       }
+
+       youLose();
+    }
 }

@@ -70,19 +70,20 @@ public class ReaperAI : MonoBehaviour, IDamage
     float meleTimer;
     float pullTimer;
     float whisperTimer;
-    bool isActive;
+    bool reaperIsActive;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
          startingPos = transform.position;
+        player = gamemanager.instance.player.transform;
         StartCoroutine(InitializeReaper());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isActive) return;
+        if (reaperIsActive) return;
 
         UpdateTimers();
         stalkingTimer += Time.deltaTime;
@@ -91,24 +92,13 @@ public class ReaperAI : MonoBehaviour, IDamage
     // Reaper Initialization
     IEnumerator InitializeReaper()
     {
-        player = gamemanager.instance.player.transform;
-        originalColor = model.material.color;
-        agent.speed = baseSpeed;
-        whisperTimer = whisperIntervalMax;
-        isActive = true;
+        reaperIsActive = true;
 
-        // Spawn animation sequence
-        animator.Play(comeOut1Clip.name);
-        yield return new WaitForSeconds(comeOut1Clip.name.Length);
+        yield return PlayClip(comeOut1Clip, 2, 0.1f);
+        yield return PlayClip(comeOut2Clip, 2, 0.1f);
+        yield return PlayClip(spasmClip, 2, 0.2f);
 
-        animator.Play(comeOut2Clip.name);
-        yield return new WaitForSeconds(comeOut2Clip.name.Length);
-
-        animator.Play(spasmClip.name);
-        yield return new WaitForSeconds(spasmClip.name.Length);
-
-        ChooseKillMethod();
-        isActive = false;
+        reaperIsActive = false;
     }
 
     void ChooseKillMethod()
@@ -146,35 +136,146 @@ public class ReaperAI : MonoBehaviour, IDamage
 
     void UpdateLocomotion()
     {
+        if (reaperIsActive) return;
+
         float velocity = agent.velocity.magnitude;
         float normalizedSpeed = Mathf.Clamp01(velocity / maxSpeed);
         animator.SetFloat("Speed", normalizedSpeed);
     }
 
-    
+    void TeleportToPlayerOffset(float delaySeconds = 3f, float forwardOffeset = 1.5f)
+    {
+        StartCoroutine(SpawnTeleport(delaySeconds, forwardOffeset));
+    }
+
+    IEnumerator SpawnTeleport(float delaySeconds, float forwardOffeset)
+    {
+        reaperIsActive = true;
+        model.enabled = false;
+        agent.isStopped = true;
+
+        yield return new WaitForSeconds(delaySeconds);
+
+        Vector3 offsetPos = player.position + transform.forward * forwardOffeset;
+        agent.Warp(offsetPos);
+
+        model.enabled = true;
+        agent.isStopped = false;
+
+        yield return PlayClip(comeOut1Clip, 2, 0.1f);
+        yield return PlayClip(comeOut2Clip, 2, 0.1f);
+
+        reaperIsActive = false; 
+    }
+
+    void TryTriggerKill()
+    {
+        if (Vector3.Distance(transform.position, player.position) <= killRange)
+        {
+            performKill?.Invoke();
+        }
+    }
 
     void TeleportPullKill()
     {
+        if (pullTimer < pullCooldown) return;
+        StartCoroutine(DoTeleportPullKill());
+    }
 
+    IEnumerator DoTeleportPullKill()
+    {
+        reaperIsActive = true;
+        pullTimer = 0;
+
+        TeleportToPlayerOffset(3f, pullOffset);
+
+        yield return PlayClip(telepathicClip, 0, 0.1f);
+        animator.Play(telepathicLoopClip.name, 0);
+
+        float t = 0f;
+        Vector3 start = player.position;
+        Vector3 end = transform.position + transform.forward * 1.2f;
+        while (t < pullDuration)
+        {
+            player.position = Vector3.Lerp(start, end, t / pullDuration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return PlayClip(throwCatchClip, 0, 0.2f);
+        gamemanager.instance.OnPlayerKilledByReaper();
+        yield return new WaitForSeconds(0.5f);
+        reaperIsActive= false;
     }
 
     void ScytheSlamKill()
     {
+        if (meleTimer < meleCooldown) return;
+        StartCoroutine(DoScytheSlamKill());
+    }
 
+    IEnumerator DoScytheSlamKill()
+    {
+        reaperIsActive = true;
+        meleTimer = 0f;
+
+        yield return PlayClip(punch3Clip, 0, 0.2f);
+        gamemanager.instance.OnPlayerKilledByReaper();
+        yield return new WaitForSeconds(0.5f);
+        reaperIsActive = false;
     }
 
     void SpasmKill()
     {
+        StartCoroutine(DoSpasmKill());
+    }
 
+    IEnumerator DoSpasmKill()
+    {
+        reaperIsActive = true;
+        yield return PlayClip(spasmClip, 2, 0.2f);
+        gamemanager.instance.OnPlayerKilledByReaper();
+        yield return new WaitForSeconds(0.5f);
+        reaperIsActive = false;
     }
 
     void TeleportGrabKill()
     {
-
+        StartCoroutine(DoTeleportGrabKill());
     }
 
+    IEnumerator DoTeleportGrabKill()
+    {
+        reaperIsActive = true;
+
+        TeleportToPlayerOffset(3f, 0f);
+        yield return new WaitForSeconds(3f);
+
+        yield return PlayClip(comeOut1Clip, 2, 0.1f);
+        yield return PlayClip(comeOut2Clip, 2, 0.1f);
+        yield return PlayClip(telepathicClip, 0, 0.1f);
+        yield return new WaitForSeconds(grabHoldTime);
+        yield return PlayClip(comeOut1Clip);
+        yield return PlayClip(comeOut2Clip);
+
+        gamemanager.instance.OnPlayerKilledByReaper();
+        yield return new WaitForSeconds(0.5f);
+        reaperIsActive = false;
+    }
     public void takeDamage(int amount)
     {
 
+    }
+
+    IEnumerator PlayClip(AnimationClip clip, int layer = 0, float buffer = 0f)
+    {
+        if (clip == null)
+        {
+            Debug.LogWarning("Null clip passed to PlayClip.");
+            yield break;
+        }
+
+        animator.Play(clip.name, layer);
+        yield return new WaitForSeconds(clip.length + buffer);
     }
 }
