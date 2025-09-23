@@ -133,7 +133,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void OnEnemyDeath()
     {
-        Instantiate(keyPrefab, transform.position, Quaternion.identity);
+            Instantiate(keyPrefab, transform.position, Quaternion.identity);
     }
 
     public void takeDamage(int amount)
