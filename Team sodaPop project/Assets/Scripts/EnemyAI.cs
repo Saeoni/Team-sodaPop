@@ -27,8 +27,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int damage;
 
     [Header("Roaming Settings")]
-    [SerializeField] float roamRadius;
-    [SerializeField] float distToRoam;
+    [SerializeField] float roamDist;
     [SerializeField] float roamPauseTimer;
     [SerializeField] float animTransSpeed;
 
@@ -40,11 +39,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     Color _colorOrig;
     Vector3 _playerDir;
     Vector3 _spawnPos;
+    private Vector3 startingPos;
 
     void Start()
     {
         _colorOrig = model.material.color;
-        gamemanager.instance.updateGameGoal(1);
+        // gamemanager.instance.updateGameGoal(1);
         _spawnPos = transform.position;
         _originalStopDist = agent.stoppingDistance;
 
@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         _shootTimer += Time.deltaTime;
-        UpdateAnimLocomotionAnim();
+        UpdateLocomotionAnim();
 
         if (_playerInTrigger && !canSeePlayer())
         {
@@ -68,14 +68,15 @@ public class EnemyAI : MonoBehaviour, IDamage
        
     }
 
-    void UpdateAnimLocomotionAnim()
+    void UpdateLocomotionAnim()
     {
-        float currSpeed = agent.velocity.magnitude;
-        float normalizedSpeed = currSpeed / agent.speed;
-        float animFloat = animator.GetFloat("Speed");
+        float currentSpeed = agent.velocity.magnitude;
+        float normalizedSpeed = Mathf.Clamp01(currentSpeed / agent.speed);
+        float currentAnimSpeed = animator.GetFloat("Speed");
 
-        animator.SetFloat("Speed", Mathf.Lerp(animFloat, normalizedSpeed, Time.deltaTime * animTransSpeed));
+        animator.SetFloat("Speed", Mathf.Lerp(currentAnimSpeed, normalizedSpeed, Time.deltaTime * animTransSpeed));
     }
+
 
     bool canSeePlayer()
     {
@@ -112,30 +113,20 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void BeginRoam()
     {
-        _roamTimer = 0f;
-        agent.stoppingDistance = 0f;
+        _roamTimer = 0;
+        agent.stoppingDistance = 0;
 
-        Vector3 randDirection = Random.insideUnitSphere * distToRoam;
-        Vector3 roamOrigin = transform.position; // roam from current position
-        Vector3 targetPos = roamOrigin + randDirection;
+        Vector3 randomPos = Random.insideUnitSphere * roamDist;
+        randomPos += startingPos;
 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(targetPos, out hit, distToRoam, NavMesh.AllAreas))
-        {
-            agent.SetDestination(hit.position);
-        }
-        else
-        {
-            agent.SetDestination(transform.position);
-        }
+        NavMeshHit meshHit;
+        NavMesh.SamplePosition(randomPos, out meshHit, roamDist, 1);
+        agent.SetDestination(meshHit.position);
     }
 
     void CheckRoam()
     {
-        bool isIdle = agent.remainingDistance < 0.01f;
-        _roamTimer += Time.deltaTime;   
-
-        if (_roamTimer >= roamPauseTimer && isIdle)
+       if (_roamTimer >= roamPauseTimer && agent.remainingDistance <= 0.01f)
         {
             BeginRoam();
         }
@@ -163,16 +154,16 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void OnEnemyDeath()
     {
-<<<<<<< HEAD
+
         gamemanager.instance.updateGameGoal(-1);
 
         if (keyPrefab != null) 
         Instantiate(keyPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
-=======
+
             Instantiate(keyPrefab, transform.position, Quaternion.identity);
->>>>>>> d0d32988c654398595ba8b2469cfd0e13c8d4e26
+
     }
 
     public void takeDamage(int amount)
