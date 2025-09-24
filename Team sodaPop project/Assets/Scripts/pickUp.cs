@@ -4,7 +4,7 @@ using System.Collections;
 public class pickUp : MonoBehaviour
 {
 
-    enum pickupType { health, key, stealth}
+    enum pickupType { health, key, stealth, gun}
 
     [SerializeField] pickupType type;
 
@@ -40,9 +40,9 @@ public class pickUp : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if (pickupable != null)
+        else if (type == pickupType.gun)
         {
-            gun.ammocur = gun.ammoMax;
+            gun.ammoCur = gun.ammoMax;
             pickupable.getGunStats(gun);
 
             Destroy(gameObject);

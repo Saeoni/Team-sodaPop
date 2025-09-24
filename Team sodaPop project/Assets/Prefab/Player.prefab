@@ -57,6 +57,8 @@ MonoBehaviour:
   jumpMod: 1.5
   jumpMax: 2
   gravity: 35
+  gunList: []
+  gunModel: {fileID: 0}
   shootDamage: 1
   shootRate: 0.5
   shootDist: 10
@@ -286,8 +288,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3888083021941934615}
   - {fileID: 1460052819577966911}
+  - {fileID: 3888083021941934615}
   m_Father: {fileID: 6370694229479389789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9194031530416763867
