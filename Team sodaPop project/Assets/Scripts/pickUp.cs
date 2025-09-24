@@ -3,11 +3,13 @@ using System.Collections;
 
 public class pickUp : MonoBehaviour
 {
+
     enum pickupType { health, key, stealth}
 
     [SerializeField] pickupType type;
 
     [SerializeField] int healAmount;
+    [SerializeField] gunstats gun;
 
 
     //    // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,16 +26,24 @@ public class pickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        IPickup pickupable = other.GetComponent<IPickup>();
         if (type == pickupType.health)
         {
             other.GetComponent<playerController>().heal(healAmount);
             Destroy(gameObject);
         }
 
-        if (type == pickupType.key)
+        else if (type == pickupType.key)
         {
             gamemanager.instance.keyCount++;
             gamemanager.instance.updateKeyCount();
+
+            Destroy(gameObject);
+        }
+        else if (pickupable != null)
+        {
+            gun.ammocur = gun.ammoMax;
+            pickupable.getGunStats(gun);
 
             Destroy(gameObject);
         }
