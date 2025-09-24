@@ -1,16 +1,10 @@
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 
-public class IPickup : MonoBehaviour
+public interface IPickup
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void getGunStats(gunstats gun)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
