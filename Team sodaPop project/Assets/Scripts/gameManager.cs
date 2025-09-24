@@ -17,7 +17,9 @@ public class gamemanager : MonoBehaviour
     public Image playerHPBar;
     public GameObject playerDamageFlash;
     public GameObject playerHealFlash;
+    public GameObject checkpointPopup;
 
+    public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
 
@@ -163,4 +165,6 @@ public class gamemanager : MonoBehaviour
 
        youLose();
     }
+
+
 }
