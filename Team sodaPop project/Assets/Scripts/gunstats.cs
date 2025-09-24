@@ -6,7 +6,7 @@ public class gunstats : ScriptableObject
     [Range(1, 10)] public int shootDamage;
     [Range(0.1f, 3)] public float shootRate;
     [Range(5, 500)] public int shootDist;
-    public int ammocur;
+    public int ammoCur;
     [Range(5, 50)] public int ammoMax;
 
     public ParticleSystem hitEffect;

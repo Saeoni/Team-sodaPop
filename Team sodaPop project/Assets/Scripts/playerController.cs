@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
@@ -13,6 +15,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
 
+
+    [SerializeField] List<gunstats> gunList = new List<gunstats>();
+    [SerializeField] GameObject gunModel;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
@@ -20,6 +25,7 @@ public class playerController : MonoBehaviour, IDamage
     int HPOrig;
     int speedOrig;
     int jumpCount;
+    int gunListPos;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -163,5 +169,39 @@ public class playerController : MonoBehaviour, IDamage
         HP = HPOrig;
         updatePlayerUI();
 
+    }
+
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        {
+            gunListPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        {
+            gunListPos--;
+            changeGun();
+        }
+
+    }
+
+    public void getGunStats(gunstats gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
+        changeGun();
+    }
+
+    void changeGun()
+    {
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDist = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        updatePlayerUI();
     }
 }
