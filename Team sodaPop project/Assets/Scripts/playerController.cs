@@ -155,4 +155,13 @@ public class playerController : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         gamemanager.instance.playerHealFlash.SetActive(false);
     }
+
+    public void spawnPlayer()
+    {
+        controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
+
+        HP = HPOrig;
+        updatePlayerUI();
+
+    }
 }
