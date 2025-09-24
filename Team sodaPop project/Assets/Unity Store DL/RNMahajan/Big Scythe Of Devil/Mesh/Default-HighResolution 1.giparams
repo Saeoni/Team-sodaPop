@@ -6,9 +6,9 @@ LightmapParameters:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Default-HighResolution
+  m_Name: Default-HighResolution 1
   serializedVersion: 4
-  resolution: 10
+  resolution: 2
   clusterResolution: 0.6
   irradianceBudget: 128
   irradianceQuality: 16384
