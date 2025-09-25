@@ -47,7 +47,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-        movement();
+        if (!gamemanager.instance.isPaused)
+        {
+            movement();
+        }
         sprint();
     }
 
@@ -74,8 +77,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         controller.Move(playerVel * Time.deltaTime);
 
         // shooting mechanics
-        if (Input.GetButton("Fire1") && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0  && shootTimer >= shootRate)
             shoot();
+
+        selectGun();
+        reload();
 
     }
 
@@ -108,6 +114,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void shoot()
     {
         shootTimer = 0;
+        gunList[gunListPos].ammoCur--;
+        updatePlayerUI();
 
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist)) 
@@ -121,6 +129,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 dmg.takeDamage(shootDamage);
             }
         }
+    }
+
+    void reload()
+    {
+        if (Input.GetButton("Reload"))
+            gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
     }
 
     public void takeDamage(int amount)
@@ -147,6 +161,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void updatePlayerUI()
     {
         gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+
+        if(gunList.Count > 0)
+        {
+            gamemanager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
+            gamemanager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
+
+        }
     }
 
     IEnumerator flashDamage()

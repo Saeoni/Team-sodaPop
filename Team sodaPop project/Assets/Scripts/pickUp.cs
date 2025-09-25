@@ -40,11 +40,10 @@ public class pickUp : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if (type == pickupType.gun)
+        else if (pickupable != null)
         {
             gun.ammoCur = gun.ammoMax;
             pickupable.getGunStats(gun);
-
             Destroy(gameObject);
         }
 

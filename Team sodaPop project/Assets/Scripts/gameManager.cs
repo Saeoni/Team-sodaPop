@@ -18,6 +18,7 @@ public class gamemanager : MonoBehaviour
     public GameObject playerDamageFlash;
     public GameObject playerHealFlash;
     public GameObject checkpointPopup;
+    public TMP_Text ammoCur, ammoMax;
 
     public GameObject playerSpawnPos;
     public GameObject player;
