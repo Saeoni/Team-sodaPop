@@ -13,6 +13,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text gameTimerText;
     [SerializeField] TMP_Text KeyText;
+    [SerializeField] TMP_Text stealthTimerText;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash;
@@ -33,6 +34,7 @@ public class gamemanager : MonoBehaviour
     int gameGoalCount;
     int gameTimerMinute;
     float gameTimerSecond;
+    float stealthTimeLeft;
 
     float timeScaleOrig;
 
@@ -73,23 +75,32 @@ public class gamemanager : MonoBehaviour
 
     }
 
-    // Still need to get the timer to count down.
-    //
-    //public void stealthTimer(float length)
-    //{
-    //    float countDown = length;
+   
+    public void stealthTimer(float length)
+    {
+        StartCoroutine(StealthCountdown(length));
+
+    }
+
+    private IEnumerator StealthCountdown(float length)
+    {
+        isStealthed = true;
+
+        float countDown = length;
+        stealthTimerText.gameObject.SetActive(true);
+        while (countDown > 0)
+        {
+            stealthTimerText.text = "Invisible: " + Mathf.CeilToInt(countDown) + "s";
+
+            countDown -= Time.deltaTime;
+            yield return null;
+        }
+        isStealthed = false;
+        stealthTimerText.gameObject.SetActive(false);
+
+    }
 
 
-    //    while (countDown > 0)
-    //    {
-    //        countDown -= Time.deltaTime;
-
-    //        if (countDown == 0)
-    //        {
-    //            isStealthed = false;
-    //        }
-    //    }
-    //}
 
     public void statePause()
     {

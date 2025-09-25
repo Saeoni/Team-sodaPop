@@ -40,6 +40,13 @@ public class pickUp : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        else if (type == pickupType.stealth)
+        {
+            gamemanager.instance.stealthTimer(10.0f);
+            Destroy(gameObject);
+        }
+
         else if (pickupable != null)
         {
             gun.ammoCur = gun.ammoMax;
@@ -47,14 +54,5 @@ public class pickUp : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Stealth Pick Up in the works - Timer giving me grief (I know it's something simple I just can't find it)
-        //
-        //if(type == pickupType.stealth)
-        //{
-        //    gamemanager.instance.isStealthed = true;
-        //    gamemanager.instance.stealthTimer(3.0f);
-        //    Destroy(gameObject);
-            
-        //}
     }
 }

@@ -317,7 +317,7 @@ MonoBehaviour:
   shootRate: 0.5
   FOV: 90
   rotationSpeed: 10
-  HP: 50
+  HP: 10
   lineOfSightMask:
     serializedVersion: 2
     m_Bits: 64

@@ -50,11 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 0
   rb: {fileID: 8524560283427907526}
-  damageAmount: 20
+  damageAmount: 2
   damageRate: 0
   speed: 25
   destroyTime: 4
   explosionPrefab: {fileID: 1242311191680575757, guid: 7e24879e78fed164db851c6840cdab24, type: 3}
+  impactEffect: {fileID: 0}
 --- !u!135 &4932428990200418262
 SphereCollider:
   m_ObjectHideFlags: 0

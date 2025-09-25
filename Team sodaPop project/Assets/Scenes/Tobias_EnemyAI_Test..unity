@@ -509,11 +509,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 374646446}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!95 &2024114168 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3671924431874584783, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-  m_PrefabInstance: {fileID: 8758144213593092337}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2116024919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -847,42 +842,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 2024114168}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: chaseSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: distToRoam
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: roamRadius
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: useMissiles
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: animTransSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: roamPauseTimer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855680756458444710, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: lineOfSightMask.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5416753495562322294, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.73381
@@ -923,21 +882,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5549981946651411787, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: m_AutoBraking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549981946651411787, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6241673070242298136, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
       propertyPath: m_Name
       value: Enemy 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6241673070242298136, guid: c59577f3dac49f04184241ccdd2abede, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
