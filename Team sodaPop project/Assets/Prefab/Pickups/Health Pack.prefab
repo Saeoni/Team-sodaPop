@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pickUp
   type: 0
-  healAmount: 1
+  healAmount: 3
+  gun: {fileID: 0}
 --- !u!33 &4901903858750020622
 MeshFilter:
   m_ObjectHideFlags: 0

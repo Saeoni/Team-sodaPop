@@ -275,19 +275,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   agent: {fileID: 4217196151089952232}
   model: {fileID: 6120373680381766346}
+  animator: {fileID: 0}
   shootPos: {fileID: 6130887836005626397}
   headPos: {fileID: 8041553712237588915}
   bulletPrefab: {fileID: 7540353573877892440, guid: cc04b22c06388af46ab31ffa4e92ed4d, type: 3}
+  keyPrefab: {fileID: 0}
   detectionRadius: 15
   chaseSpeed: 3.5
-  shootRate: 1
   faceTargetSpeed: 5
   FOV: 90
   lineOfSightMask:
     serializedVersion: 2
     m_Bits: 0
-  HP: 100
+  shootRate: 1
+  HP: 5
   damage: 10
+  roamDist: 0
+  roamPauseTimer: 0
+  animTransSpeed: 0
 --- !u!95 &3095313414917140039
 Animator:
   serializedVersion: 7

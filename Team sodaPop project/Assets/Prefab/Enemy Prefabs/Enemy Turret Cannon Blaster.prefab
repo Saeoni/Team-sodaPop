@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 181323155280806472}
   - component: {fileID: 2529454683385828125}
   - component: {fileID: 2706016976357896289}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Enemy Turret Cannon Blaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}

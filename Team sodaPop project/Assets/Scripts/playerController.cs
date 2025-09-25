@@ -148,6 +148,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
     }
 
+    public void KillPlayer()
+    {
+        takeDamage(HP);
+    }
+
     public void heal(int amount)
     {
         if(HP < HPOrig)

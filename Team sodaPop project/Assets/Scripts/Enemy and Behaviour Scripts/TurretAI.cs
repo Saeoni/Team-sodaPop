@@ -64,7 +64,7 @@ public class TurretAI : MonoBehaviour, IDamage
         dirOfPlayer = player.position - headPos.position;
         angleToPlayer = Vector3.Angle(dirOfPlayer, turretHead.forward);
 
-        Debug.DrawRay(headPos.position, dirOfPlayer.normalized * detectionRadius, Color.red);
+        //Debug.DrawRay(headPos.position, dirOfPlayer.normalized * detectionRadius, Color.red);
 
         if (angleToPlayer > FOV) return false;
 

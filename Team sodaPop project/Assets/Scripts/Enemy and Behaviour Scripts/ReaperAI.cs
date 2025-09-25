@@ -115,6 +115,19 @@ public class ReaperAI : MonoBehaviour
 
         reaperIsActive = false;
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            var pc = other.GetComponent<playerController>();
+            if (pc != null)
+            {
+                pc.KillPlayer();
+                Debug.Log("The Reaper has taken your soul!");
+            }
+        }
+    }
+
 
     void ChooseKillMethod()
     {
