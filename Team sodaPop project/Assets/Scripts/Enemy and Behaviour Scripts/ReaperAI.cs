@@ -19,6 +19,7 @@ public class ReaperAI : MonoBehaviour
     [SerializeField] GameObject reaperScythe;
     [SerializeField] GameObject flyingScythePrefab;
     [SerializeField] Transform leftHandSocket;
+    [SerializeField] GameObject player_;
 
     [HideInInspector] public Scythe_Projectile activeProjectile;
 
@@ -88,6 +89,7 @@ public class ReaperAI : MonoBehaviour
          startingPos = transform.position;
         player = gamemanager.instance.player.transform;
         StartCoroutine(InitializeReaper());
+        player_ = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -180,6 +182,8 @@ public class ReaperAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) <= killRange)
         {
             performKill?.Invoke();
+            
+            
         }
     }
 

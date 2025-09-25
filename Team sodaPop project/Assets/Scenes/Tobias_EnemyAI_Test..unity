@@ -766,6 +766,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8176515143791217003, guid: 215e94d643289ba478e3dc50cb40f191, type: 3}
+      propertyPath: killRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176515143791217003, guid: 215e94d643289ba478e3dc50cb40f191, type: 3}
       propertyPath: flyingScythePrefab
       value: 
       objectReference: {fileID: 313995592}
