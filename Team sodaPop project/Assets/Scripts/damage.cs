@@ -4,7 +4,7 @@ using System.Collections;
 public class damage : MonoBehaviour
 {
 
-    enum damageType { moving, stationary, DOT, homing}
+    enum damageType { moving, stationary, DOT, homing, cinematicPull}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
@@ -13,14 +13,17 @@ public class damage : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
     [SerializeField] GameObject explosionPrefab;
+    [SerializeField] private GameObject impactEffect;
+   
 
     bool isDamaging;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //moving projectiles will disappear after a certain time
-        if(type == damageType.moving || type == damageType.homing)
+        if(type == damageType.moving || type == damageType.homing || type == damageType.cinematicPull)
         {
             Destroy(gameObject, destroyTime);
 
@@ -40,7 +43,8 @@ public class damage : MonoBehaviour
            Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
             rb.linearVelocity = targetDir * speed;
         }
-        
+
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +53,8 @@ public class damage : MonoBehaviour
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
+
+        
 
         if(dmg != null && (type == damageType.moving || type == damageType.homing))
         {
@@ -87,4 +93,6 @@ public class damage : MonoBehaviour
         yield return new WaitForSeconds(damageRate);
         isDamaging = false;
     }
+
+   
 }
