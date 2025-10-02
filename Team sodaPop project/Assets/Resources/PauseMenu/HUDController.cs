@@ -145,23 +145,7 @@ public class HUDController : MonoBehaviour
         keyCountText.text = keyCount.ToString() + "/4";
     }   
     
-    IEnumerator flashText(Label textElement, Color flashColor, float duration)
-    {
-        Color originalColor = textElement.style.color.value;
-        textElement.style.color = flashColor;
-        yield return new WaitForSeconds(duration);
-        textElement.style.color = originalColor;
-    }
-
-    IEnumerator SayRandomFromList(Label textElement, string[] phrases, float duration, Color color)
-    {
-        int randomIndex = Random.Range(0, phrases.Length);
-        string selectedPhrase = phrases[randomIndex];
-        textElement.text = selectedPhrase;
-        flashText(textElement, color, duration);
-        yield return new WaitForSeconds(duration);
-
-    }
+    
     public void StealthTimer(float length)
     {
         StartCoroutine(StealthCountdown(length));
@@ -182,9 +166,27 @@ public class HUDController : MonoBehaviour
             yield return null;
         }
         isStealthed = false;
+        stealthTimerText.text = "";
         // stealthTimerText.gameObject.SetActive(false);
 
     }
 
-    
+    IEnumerator flashText(Label textElement, Color flashColor, float duration)
+    {
+        Color originalColor = textElement.style.color.value;
+        textElement.style.color = flashColor;
+        yield return new WaitForSeconds(duration);
+        textElement.style.color = originalColor;
+    }
+
+    IEnumerator SayRandomFromList(Label textElement, string[] phrases, float duration, Color color)
+    {
+        int randomIndex = Random.Range(0, phrases.Length);
+        string selectedPhrase = phrases[randomIndex];
+        textElement.text = selectedPhrase;
+        flashText(textElement, color, duration);
+        yield return new WaitForSeconds(duration);
+
+    }
+
 }
