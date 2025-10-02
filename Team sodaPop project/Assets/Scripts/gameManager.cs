@@ -2,15 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using static UIController;
+
 public class gamemanager : MonoBehaviour
 {
 
     public static gamemanager instance;
+    
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+
+
     [SerializeField] TMP_Text gameTimerText;
     [SerializeField] TMP_Text KeyText;
     [SerializeField] TMP_Text stealthTimerText;
@@ -24,7 +29,7 @@ public class gamemanager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
-
+   
     public int keyCount;
 
     public bool isPaused;
@@ -48,6 +53,7 @@ public class gamemanager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
+
         keyCount = 0;
 
     }
@@ -61,13 +67,18 @@ public class gamemanager : MonoBehaviour
             {
 
                 statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(true);
+                
+
 
             }
             else if (menuActive == menuPause)
             {
+             
                 stateUnpause();
+                
+                
+
+
             }
         }
 
@@ -108,6 +119,11 @@ public class gamemanager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        menuActive = menuPause;
+
+        menuActive.SetActive(true);
+        UIController.instance.OpenMenu();
+
     }
 
     public void stateUnpause()
@@ -116,8 +132,12 @@ public class gamemanager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        UIController.instance.CloseMenu();
         menuActive.SetActive(false);
         menuActive = null;
+
+
+
     }
 
     public void WinGame()

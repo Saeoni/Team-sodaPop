@@ -1,4 +1,6 @@
 :root {
+    visibility: visible;
+    display: flex;
 }
 
 .Menus {
@@ -52,4 +54,20 @@
     -unity-background-image-tint-color: rgba(204, 188, 188, 0.98);
     color: rgb(253, 0, 0);
     scale: 1.1 1;
+}
+
+.scrim-and-all {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    border-left-width: 0;
+    display: flex;
+    opacity: 0;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out-bounce;
+    transition-property: opacity;
+}
+
+.scrim--fadein {
+    opacity: 1;
+    transition-property: opacity;
 }
