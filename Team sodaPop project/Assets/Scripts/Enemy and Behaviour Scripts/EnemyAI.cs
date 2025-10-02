@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        if (!gamemanager.instance.isStealthed)
+        if (!HUDController.instance.isStealthed)
         {
             _playerDir = gamemanager.instance.player.transform.position - headPos.position;
             _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);

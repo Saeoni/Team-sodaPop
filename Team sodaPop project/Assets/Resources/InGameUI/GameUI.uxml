@@ -1,18 +1,35 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Resources/gameUI.uss?fileID=7433441132597879392&amp;guid=aedc4690d2a0c934c9e3bb485765a1de&amp;type=3" />
-    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 100%; align-self: stretch; align-items: flex-start; justify-content: space-between; background-image: none; -unity-font-definition: url(&quot;project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&amp;guid=990e3c335eec5fe47a091848ad1ddeaa&amp;type=3#kishore-sharp&quot;);">
-        <ui:VisualElement name="RightSide" style="flex-grow: 1; align-self: flex-end; width: 505px; height: 100%; flex-direction: column; margin-right: 36px; margin-top: 36px; justify-content: flex-start; align-items: stretch;">
-            <ui:VisualElement enabled="true" style="flex-grow: initial; background-image: url(&quot;project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&amp;guid=906fed77d26fb6949a29657f2515367e&amp;type=3#1-Smoke&quot;); height: 300px; width: 505px; flex-direction: row; background-size: 100% 100%; align-content: auto; margin-bottom: 0; -unity-background-image-tint-color: rgba(165, 164, 164, 0.6); overflow: visible; visibility: visible; display: flex; flex-wrap: nowrap; align-items: center; align-self: auto; flex-shrink: initial; justify-content: flex-start;">
+    <Style src="project://database/Assets/Resources/InGameUI/gameUI.uss?fileID=7433441132597879392&amp;guid=aedc4690d2a0c934c9e3bb485765a1de&amp;type=3" />
+    <ui:VisualElement name="Player_UI" style="flex-grow: 1; width: 100%; height: 100%; align-self: stretch; align-items: flex-start; justify-content: space-between; background-image: none; -unity-font-definition: url(&quot;project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&amp;guid=990e3c335eec5fe47a091848ad1ddeaa&amp;type=3#kishore-sharp&quot;); flex-direction: column-reverse; flex-wrap: wrap-reverse; white-space: normal; background-position-x: center; -unity-background-scale-mode: stretch-to-fill;">
+        <ui:VisualElement name="LeftSide" style="flex-grow: 1; align-self: flex-end; width: 505px; height: 100%; flex-direction: column; margin-right: 36px; margin-top: 36px; justify-content: flex-start; align-items: stretch;">
+            <ui:VisualElement name="Timers" enabled="true" class="objectives" style="align-items: flex-end; margin-top: 10px; background-size: 100% 100%; flex-grow: initial; flex-shrink: initial; justify-content: flex-start; align-self: flex-start; font-size: 36px;">
+                <ui:VisualElement name="GameTimer" class="game-goal">
+                    <ui:Label text="TIME:" name="Game_Timer_Title" enable-rich-text="true" emoji-fallback-support="true" double-click-selects-word="true" language-direction="Inherit" usage-hints="-1" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&amp;guid=990e3c335eec5fe47a091848ad1ddeaa&amp;type=3#kishore-sharp&quot;); -unity-font-style: normal;" />
+                    <ui:Label text="00" name="Game_Timer" style="color: rgb(255, 0, 0); -unity-text-align: upper-right;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="StealthTimer" class="key" style="-unity-background-image-tint-color: rgba(143, 127, 127, 0.74);">
+                    <ui:Label text="STEALTH:" name="Stealth_Timer_Title" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="00" name="Stealth_Timer" style="color: rgb(255, 0, 0);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightSide" style="flex-grow: 1; align-self: flex-start; width: 505px; height: 100%; flex-direction: column; margin-right: 36px; margin-top: 36px; justify-content: flex-start; align-items: stretch; position: absolute;">
+            <ui:VisualElement enabled="true" name="Minimap_Container" style="flex-grow: initial; background-image: url(&quot;project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&amp;guid=906fed77d26fb6949a29657f2515367e&amp;type=3#1-Smoke&quot;); height: 300px; width: 505px; flex-direction: row; background-size: 100% 100%; align-content: auto; margin-bottom: 0; -unity-background-image-tint-color: rgba(165, 164, 164, 0.6); overflow: visible; visibility: visible; display: flex; flex-wrap: nowrap; align-items: center; align-self: auto; flex-shrink: initial; justify-content: flex-start;">
                 <ui:VisualElement name="Minimap" style="flex-grow: initial; flex-wrap: wrap; width: 505px; height: 300px; background-image: url(&quot;project://database/Assets/Textures/Minicam%20Mask.renderTexture?fileID=8400000&amp;guid=d6125b4f19ea4154ab654566e8848c6d&amp;type=2#Minicam Mask&quot;); border-top-width: 5px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transform-origin: center; margin-top: 20px; margin-right: 0; padding-right: 0; border-bottom-width: 5px; border-right-width: 5px; border-left-width: 5px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.82); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+                <ui:Label text="Collected Modules:" name="Collected_Modules_Title" style="position: absolute; width: 198px; top: 304px; left: 20px; height: 68px; font-size: 32px; color: rgb(192, 171, 171); -unity-text-align: upper-left; flex-direction: row; justify-content: flex-start; align-content: auto; white-space: pre; align-self: auto;">
+                    <ui:Label text="00" name="Collected_Modules_Count" style="margin-top: 30px; font-size: 24px; position: absolute; top: -23px; left: 258px; color: rgb(16, 237, 33);" />
+                    <ui:Label text="Module Name:" name="Collected_Modules_Name" style="margin-top: 30px;" />
+                </ui:Label>
+                <ui:EnumField label="Environment" value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" style="position: absolute; top: 381px; left: 26px; visibility: hidden;" />
             </ui:VisualElement>
             <ui:VisualElement name="Objectives" enabled="true" class="objectives" style="align-items: flex-end; margin-top: 10px; background-size: 100% 100%; flex-grow: initial; flex-shrink: initial; justify-content: flex-start;">
-                <ui:VisualElement name="GameGoal" class="game-goal">
-                    <ui:Label text="ENEMIES:" name="EnemiesLabel" enable-rich-text="true" emoji-fallback-support="true" double-click-selects-word="true" language-direction="Inherit" usage-hints="-1" style="color: rgb(255, 255, 255); font-size: 24px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&amp;guid=990e3c335eec5fe47a091848ad1ddeaa&amp;type=3#kishore-sharp&quot;); -unity-font-style: normal;" />
-                    <ui:Label text="00" name="enemy-count-text" style="font-size: 24px; color: rgb(255, 0, 0); -unity-text-align: upper-right;" />
+                <ui:VisualElement name="Game_Goal" class="game-goal">
+                    <ui:Label text="ENEMIES:" name="Enemies_Title" enable-rich-text="true" emoji-fallback-support="true" double-click-selects-word="true" language-direction="Inherit" usage-hints="-1" style="color: rgb(255, 255, 255); font-size: 24px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&amp;guid=990e3c335eec5fe47a091848ad1ddeaa&amp;type=3#kishore-sharp&quot;); -unity-font-style: normal;" />
+                    <ui:Label text="00" name="Enemy_Count" style="font-size: 24px; color: rgb(255, 0, 0); -unity-text-align: upper-right;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Keys" class="key" style="-unity-background-image-tint-color: rgba(143, 127, 127, 0.74);">
-                    <ui:Label text="KEYS:" name="KeysLabel" style="color: rgb(255, 255, 255); font-size: 24px;" />
-                    <ui:Label text="00" name="key_count_text" style="font-size: 24px; color: rgb(255, 0, 0);" />
+                    <ui:Label text="KEYS:" name="Keys_Title" style="color: rgb(255, 255, 255); font-size: 24px;" />
+                    <ui:Label text="00" name="Keys_Count" style="font-size: 24px; color: rgb(255, 0, 0);" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

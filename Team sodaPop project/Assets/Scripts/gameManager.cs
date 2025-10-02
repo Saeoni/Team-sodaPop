@@ -12,34 +12,26 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuUI;
-    //[SerializeField] GameObject menuWin;
-    //[SerializeField] GameObject menuLose;
+    [SerializeField] GameObject hudUI;
 
 
-    [SerializeField] TMP_Text gameTimerText;
-    [SerializeField] TMP_Text KeyText;
-    [SerializeField] TMP_Text stealthTimerText;
-
-    public Image playerHPBar;
     public GameObject playerDamageFlash;
     public GameObject playerHealFlash;
-    public GameObject checkpointPopup;
-    public TMP_Text ammoCur, ammoMax;
+    //public GameObject playerRespawnFlash;
+    //public GameObject playerLowHealthFlash;
 
+
+    public GameObject checkpointPopup;
+
+    public int ammoCur;
+    public int ammoMax;
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
    
-    public int keyCount;
 
     public bool isPaused;
-    public bool isStealthed;
-    public float timeElapsed; 
-
-    int gameGoalCount;
-    int gameTimerMinute;
-    float gameTimerSecond;
-    float stealthTimeLeft;
+  
 
     float timeScaleOrig;
 
@@ -53,8 +45,6 @@ public class gamemanager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
-
-        keyCount = 0;
 
     }
 
@@ -85,34 +75,12 @@ public class gamemanager : MonoBehaviour
             }
         }
 
-        updateGameTimer();
+        
 
     }
 
    
-    public void stealthTimer(float length)
-    {
-        StartCoroutine(StealthCountdown(length));
-
-    }
-
-    private IEnumerator StealthCountdown(float length)
-    {
-        isStealthed = true;
-
-        float countDown = length;
-        stealthTimerText.gameObject.SetActive(true);
-        while (countDown > 0)
-        {
-            stealthTimerText.text = "Invisible: " + Mathf.CeilToInt(countDown) + "s";
-
-            countDown -= Time.deltaTime;
-            yield return null;
-        }
-        isStealthed = false;
-        stealthTimerText.gameObject.SetActive(false);
-
-    }
+   
 
 
 
@@ -149,33 +117,13 @@ public class gamemanager : MonoBehaviour
         Debug.Log("Player exited the maze. You win!");      
     }
 
-    public void updateGameTimer()
-    {
-        if (menuActive == null){
-            gameTimerSecond += Time.deltaTime;
-            timeElapsed += Time.deltaTime;
-
-            int displaySecond = Mathf.FloorToInt(gameTimerSecond);
-            if (displaySecond >= 60)
-            {
-                gameTimerMinute++;
-                gameTimerSecond = 0;
-                displaySecond = 0;
-            }
-            gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
-        }
-    }
+   
 
     public void updateGameGoal(int amount)
     {
 
     }
 
-    public void updateKeyCount()
-    {
-        KeyText.text = keyCount.ToString();
-
-    }
 
     public void youLose()
     {
@@ -203,6 +151,6 @@ public class gamemanager : MonoBehaviour
 
        youLose();
     }
-
+   
 
 }

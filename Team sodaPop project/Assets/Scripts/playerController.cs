@@ -165,12 +165,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void updatePlayerUI()
     {
-        gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        //HUDController.instance.playerHPBarFill.fillAmount = (float)HP / HPOrig;
 
         if(gunList.Count > 0)
         {
-            gamemanager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
-            gamemanager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
+            gamemanager.instance.ammoCur = gunList[gunListPos].ammoCur;
+            gamemanager.instance.ammoMax = gunList[gunListPos].ammoMax;
+            HUDController.instance.UpdatePlayerUI();
 
         }
     }

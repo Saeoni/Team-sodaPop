@@ -2,7 +2,7 @@
 - Project name: Team sodaPop project
 - Unity version: Unity 6000.2.2f1
 - Active game object:
-  - Name: Menus
+  - Name: Demon
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Enemy
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
