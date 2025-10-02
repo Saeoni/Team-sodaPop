@@ -590,9 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gamemanger
   menuActive: {fileID: 0}
-  menuPause: {fileID: 3204471532910546040}
-  menuWin: {fileID: 6189116669207576171}
-  menuLose: {fileID: 1606096109785194397}
+  menuUI: {fileID: 3204471532910546040}
   gameTimerText: {fileID: 8683045970098778033}
   KeyText: {fileID: 4845669520471171774}
   stealthTimerText: {fileID: 2122180154007819677}
@@ -1449,7 +1447,7 @@ GameObject:
   - component: {fileID: 5636725789808780878}
   - component: {fileID: 8415601040486893402}
   m_Layer: 0
-  m_Name: PauseMenu
+  m_Name: Menus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1505,6 +1503,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe532ddcce464a24c918485a89911574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
+  youLosePhrases:
+  - '"You never stood a chance.."'
+  - how many lives...
+  - '"a soul leaves a soul returns..."'
+  youWinPhrases:
+  - You win!
+  - You win!
 --- !u!1 &3966757719974555710
 GameObject:
   m_ObjectHideFlags: 0

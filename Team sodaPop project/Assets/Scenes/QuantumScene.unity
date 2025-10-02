@@ -20413,6 +20413,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 771821525557035932, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1820879076082725810, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: player
       value: 
@@ -20421,6 +20425,22 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 911093334}
+    - target: {fileID: 2085473377054986517, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988595637744981518, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240005859093721646, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133198329416122339, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6692134597531457594, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -20505,8 +20525,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: youWinPhrases.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: 'youWinPhrases.Array.data[1]'
+      value: Victorious!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: 'youWinPhrases.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: 'youLosePhrases.Array.data[0]'
+      value: ...where can rest be found.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: 'youLosePhrases.Array.data[1]'
+      value: how many lives...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: 'youLosePhrases.Array.data[2]'
+      value: A soul leaves...again..
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8445789426270803420, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+    - {fileID: 1606096109785194397, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+    - {fileID: 6189116669207576171, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}

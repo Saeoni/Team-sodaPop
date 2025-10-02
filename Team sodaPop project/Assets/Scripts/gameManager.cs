@@ -11,9 +11,9 @@ public class gamemanager : MonoBehaviour
     
 
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuPause;
-    [SerializeField] GameObject menuWin;
-    [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuUI;
+    //[SerializeField] GameObject menuWin;
+    //[SerializeField] GameObject menuLose;
 
 
     [SerializeField] TMP_Text gameTimerText;
@@ -67,11 +67,14 @@ public class gamemanager : MonoBehaviour
             {
 
                 statePause();
-                
 
+                menuActive = menuUI;
+
+                menuActive.SetActive(true);
+                UIController.instance.OpenPauseMenu();
 
             }
-            else if (menuActive == menuPause)
+            else if (menuActive == menuUI)
             {
              
                 stateUnpause();
@@ -119,10 +122,7 @@ public class gamemanager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        menuActive = menuPause;
-
-        menuActive.SetActive(true);
-        UIController.instance.OpenMenu();
+        
 
     }
 
@@ -143,9 +143,10 @@ public class gamemanager : MonoBehaviour
     public void WinGame()
     {
        statePause();
-       menuActive = menuWin;
+       menuActive = menuUI;
        menuActive.SetActive(true);
-       Debug.Log("Player exited the maze. You win!");      
+       UIController.instance.OpenWinMenu();
+        Debug.Log("Player exited the maze. You win!");      
     }
 
     public void updateGameTimer()
@@ -173,13 +174,17 @@ public class gamemanager : MonoBehaviour
     public void updateKeyCount()
     {
         KeyText.text = keyCount.ToString();
+
     }
 
     public void youLose()
     {
         statePause();
-        menuActive = menuLose;
+        menuActive = menuUI;
         menuActive.SetActive(true);
+        UIController.instance.OpenLoseMenu();
+        
+        
     }
 
     public void OnPlayerKilledByReaper()
