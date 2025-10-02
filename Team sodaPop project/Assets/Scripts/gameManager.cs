@@ -14,6 +14,9 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuUI;
     [SerializeField] GameObject hudUI;
 
+    public GameObject playerHPBar;
+    public Image playerHPBarFill;
+
 
     public GameObject playerDamageFlash;
     public GameObject playerHealFlash;

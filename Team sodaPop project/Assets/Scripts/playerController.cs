@@ -165,7 +165,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void updatePlayerUI()
     {
-        //HUDController.instance.playerHPBarFill.fillAmount = (float)HP / HPOrig;
+        gamemanager.instance.playerHPBarFill.fillAmount = (float)HP / HPOrig;
 
         if(gunList.Count > 0)
         {

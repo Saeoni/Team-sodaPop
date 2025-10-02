@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3004495242569348258}
   - component: {fileID: 1820879076082725810}
-  - component: {fileID: 9201402605148338377}
   m_Layer: 5
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,45 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gamemanger
   menuActive: {fileID: 0}
   menuUI: {fileID: 3204471532910546040}
-  gameTimerText: {fileID: 0}
-  KeyText: {fileID: 0}
-  stealthTimerText: {fileID: 2122180154007819677}
-  playerHPBar: {fileID: 5778324496169937595}
+  hudUI: {fileID: 0}
   playerDamageFlash: {fileID: 6712025218105861796}
   playerHealFlash: {fileID: 2032077206844361211}
   checkpointPopup: {fileID: 7418906436369462817}
-  ammoCur: {fileID: 4018378807453378829}
-  ammoMax: {fileID: 3350406128761470381}
+  ammoCur: 0
+  ammoMax: 0
   playerSpawnPos: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
-  keyCount: 0
   isPaused: 0
-  isStealthed: 0
-  timeElapsed: 0
---- !u!114 &9201402605148338377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437939751194944800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 11400000, guid: d4c0962ac4b7a0c429f3d9136359935a, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 287aa6fd91ef153498c52696dcc3e110, type: 3}
-  m_SortingOrder: 0
-  m_Position: 0
-  m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
-  m_PivotReferenceSize: 0
-  m_Pivot: 0
-  m_WorldSpaceCollider: {fileID: 0}
 --- !u!1 &2032077206844361211
 GameObject:
   m_ObjectHideFlags: 0

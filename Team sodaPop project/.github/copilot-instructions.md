@@ -2,7 +2,7 @@
 - Project name: Team sodaPop project
 - Unity version: Unity 6000.2.2f1
 - Active game object:
-  - Name: Demon
-  - Tag: Untagged
-  - Layer: Enemy
+  - Name: Player
+  - Tag: Player
+  - Layer: Projectile
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
