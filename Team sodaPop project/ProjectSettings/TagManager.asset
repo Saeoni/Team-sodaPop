@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Player Spawn Pos
+  - MinimapCamera
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Projectile
   - scythe
   - Gun
-  - 
-  - 
+  - Minimap
+  - ReaperMinimap
   - 
   - 
   - 
