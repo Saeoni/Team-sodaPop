@@ -1104,8 +1104,9 @@ MonoBehaviour:
   keyPrefab: {fileID: 0}
   scytheCollider: {fileID: 3626173241077325233}
   reaperScythe: {fileID: 6644570034125362262}
-  flyingScythePrefab: {fileID: 8490975697920417307, guid: b233f509da527674a8b50c1ed3941fd7, type: 3}
+  flyingScythePrefab: {fileID: 0}
   leftHandSocket: {fileID: 3711062746565906896}
+  player_: {fileID: 0}
   activeProjectile: {fileID: 0}
   baseSpeed: 2.5
   maxSpeed: 6.5
@@ -1125,7 +1126,7 @@ MonoBehaviour:
   - {fileID: 6782595489454084048, guid: c3d73ba06daaeef40b556c623d33fc02, type: 3}
   - {fileID: 5019393840240905299, guid: c3d73ba06daaeef40b556c623d33fc02, type: 3}
   - {fileID: 2892866768856934444, guid: c3d73ba06daaeef40b556c623d33fc02, type: 3}
-  killRange: 2.5
+  killRange: 5
   meleCooldown: 1.2
   pullCooldown: 10
   pullOffset: 8

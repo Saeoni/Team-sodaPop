@@ -6,6 +6,7 @@ public class gamemanager : MonoBehaviour
 {
 
     public static gamemanager instance;
+    public playerController _player;
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
@@ -29,7 +30,12 @@ public class gamemanager : MonoBehaviour
 
     public bool isPaused;
     public bool isStealthed;
-    public float timeElapsed; 
+    public float timeElapsed;
+
+    // Noise logic 
+    public float noiseLevel = 0f;
+    public float noiseDecayRate = 1f;
+    public float noiseThreshold = 10f;
 
     int gameGoalCount;
     int gameTimerMinute;
@@ -73,6 +79,13 @@ public class gamemanager : MonoBehaviour
 
         updateGameTimer();
 
+        // Noise decay logic
+        noiseLevel = Mathf.Max(0f, noiseLevel - noiseDecayRate * Time.deltaTime);
+    }
+
+    public void AddNoise(float amount)
+    {
+        noiseLevel += amount;
     }
 
    
@@ -166,14 +179,11 @@ public class gamemanager : MonoBehaviour
     {
         Debug.Log("Player Killed by Reaper!");
 
-       if (playerDamageFlash != null)
+       if (playerDamageFlash != null && player != null)
        {
           playerDamageFlash.SetActive(true);
-       }
-
-       if (player != null)
-       {
-            Destroy(player);
+          _player.KillPlayer();
+            
        }
 
        youLose();
