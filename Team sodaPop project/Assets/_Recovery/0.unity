@@ -20414,10 +20414,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1820879076082725810, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: hudUI
-      value: 
-      objectReference: {fileID: 790268656}
-    - target: {fileID: 1820879076082725810, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 911093329}
@@ -20425,10 +20421,6 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 911093334}
-    - target: {fileID: 1820879076082725810, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: uiController
-      value: 
-      objectReference: {fileID: 1595546883}
     - target: {fileID: 6692134597531457594, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -20518,17 +20510,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
---- !u!114 &790268656 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3246572645508800766, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-  m_PrefabInstance: {fileID: 790268655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f4eda40be1d95f4f89252a47c66f623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HUDController
 --- !u!1001 &791444012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39114,17 +39095,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8908499371252062614, guid: 00ce26ae9768eb042a34ecfecec3f57c, type: 3}
   m_PrefabInstance: {fileID: 1590857992}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1595546883 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-  m_PrefabInstance: {fileID: 790268655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe532ddcce464a24c918485a89911574, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIController
 --- !u!1001 &1595712414
 PrefabInstance:
   m_ObjectHideFlags: 0

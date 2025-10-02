@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/StartMenu/StartMenu.uss?fileID=7433441132597879392&amp;guid=46231d5bd6369054eb2f1908cf49ea9f&amp;type=3#StartMenu" />
+    <ui:VisualElement name="ContentContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.89); flex-wrap: nowrap; justify-content: flex-end; align-items: center; flex-direction: column-reverse;">
+        <ui:VisualElement name="Scrim" class="scrim-1--movement scrim-1 scrim-2" style="flex-grow: 1; position: absolute; background-image: url(&quot;project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&amp;guid=906fed77d26fb6949a29657f2515367e&amp;type=3#1-Smoke&quot;); -unity-background-image-tint-color: rgb(71, 71, 71); width: 1226px; height: 700px; border-right-width: 0; transform-origin: 33% top; background-size: 100% 50%; background-position-x: center; -unity-text-align: upper-center; white-space: normal; justify-content: flex-end; align-self: flex-start; top: 202px; left: 238px; translate: 0 -188px;" />
+        <ui:VisualElement name="Scrim" class="scrim-1 scrim-1--movement" style="width: 1240px; left: 355px; height: 708px; top: 595px; translate: 0 -403px;" />
+        <ui:Label text="Horror Title Here&#10;" name="Title" class="title" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&amp;guid=f007fef26dd2df744959f70d7c90d6b1&amp;type=3#Savage&quot;); -unity-text-align: middle-center; white-space: pre; opacity: 0.42; position: absolute; height: 244px; width: 47px; left: 955px; top: 204px;">
+            <ui:Label text="Press Start to Enter" name="Subtitle" class="subtitle" style="position: absolute; top: 251px; left: -293px; align-self: center; justify-content: center; align-items: center; white-space: normal;" />
+        </ui:Label>
+        <ui:Button text="Start" name="StartButton" class="button" style="top: 594px; left: 831px; border-right-width: 1px; padding-left: 48px; padding-right: 48px;" />
+        <ui:Button text="Quit" name="QuitButton" class="button" style="top: 691px; left: 832px; border-right-width: 1px; padding-left: 48px; padding-right: 48px;" />
+    </ui:VisualElement>
+</ui:UXML>

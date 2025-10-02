@@ -28,7 +28,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6751528192884312727}
+  - {fileID: 3133817823681529122}
+  - {fileID: 7759252250046158481}
   m_Father: {fileID: 6692134597531457594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -51,6 +54,8 @@ MonoBehaviour:
   menuActive: {fileID: 0}
   menuUI: {fileID: 3204471532910546040}
   hudUI: {fileID: 0}
+  playerHPBar: {fileID: 5018272638175987087}
+  playerHPBarFill: {fileID: 1432403974090863492}
   playerDamageFlash: {fileID: 6712025218105861796}
   playerHealFlash: {fileID: 2032077206844361211}
   checkpointPopup: {fileID: 7418906436369462817}
@@ -60,6 +65,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0
+  isStealthed: 0
 --- !u!1 &2032077206844361211
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6692134597531457594}
+  m_Father: {fileID: 3004495242569348258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5636725789808780878
 MonoBehaviour:
@@ -883,6 +889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6751528192884312727}
   - component: {fileID: 5845789473289989978}
+  - component: {fileID: 3246572645508800766}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -903,7 +910,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6692134597531457594}
+  m_Father: {fileID: 3004495242569348258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5845789473289989978
 MonoBehaviour:
@@ -928,6 +935,24 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &3246572645508800766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169506592798842636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4eda40be1d95f4f89252a47c66f623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HUDController
+  errorPhrases: []
+  warningMessages: []
+  reticle: {fileID: 0}
+  totalKeys: 0
+  keyCount: 0
+  timeElapsed: 0
 --- !u!1 &7259026164555933260
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,10 +984,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6751528192884312727}
   - {fileID: 3004495242569348258}
-  - {fileID: 3133817823681529122}
-  - {fileID: 7759252250046158481}
   - {fileID: 8107574303237443887}
   - {fileID: 862371777540980406}
   - {fileID: 1960290918261435288}
@@ -1343,6 +1365,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3133817823681529122}
+  - component: {fileID: 2046546988829622410}
+  - component: {fileID: 3625367836628216804}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -1357,18 +1381,53 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8591858569235339648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6692134597531457594}
+  m_Father: {fileID: 3004495242569348258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2046546988829622410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591858569235339648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: b11fbbe2d0d6dd740a56a4182b889a31, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 5d54395ffa296ac40accaee8c68d7b67, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &3625367836628216804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591858569235339648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afe5073619ae6543844ac47da47041c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartMenuController
 --- !u!1 &8962934415357788909
 GameObject:
   m_ObjectHideFlags: 0

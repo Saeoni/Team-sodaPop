@@ -2,7 +2,7 @@
 - Project name: Team sodaPop project
 - Unity version: Unity 6000.2.2f1
 - Active game object:
-  - Name: Enemy 1
+  - Name: GameManager
   - Tag: Untagged
-  - Layer: Enemy
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

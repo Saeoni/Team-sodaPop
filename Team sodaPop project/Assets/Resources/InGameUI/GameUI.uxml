@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Resources/InGameUI/gameUI.uss?fileID=7433441132597879392&amp;guid=aedc4690d2a0c934c9e3bb485765a1de&amp;type=3" />
+    <Style src="project://database/Assets/Resources/InGameUI/gameUI.uss?fileID=7433441132597879392&amp;guid=aedc4690d2a0c934c9e3bb485765a1de&amp;type=3#gameUI" />
     <ui:VisualElement name="Player_UI" style="flex-grow: 1; width: 100%; height: 100%; align-self: stretch; align-items: flex-start; justify-content: space-between; background-image: none; -unity-font-definition: url(&quot;project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&amp;guid=990e3c335eec5fe47a091848ad1ddeaa&amp;type=3#kishore-sharp&quot;); flex-direction: column-reverse; flex-wrap: wrap-reverse; white-space: normal; background-position-x: center; -unity-background-scale-mode: stretch-to-fill;">
         <ui:VisualElement name="LeftSide" style="flex-grow: 1; align-self: flex-end; width: 505px; height: 100%; flex-direction: column; margin-right: 36px; margin-top: 36px; justify-content: flex-start; align-items: stretch;">
             <ui:VisualElement name="Timers" enabled="true" class="objectives" style="align-items: flex-end; margin-top: 10px; background-size: 100% 100%; flex-grow: initial; flex-shrink: initial; justify-content: flex-start; align-self: flex-start; font-size: 36px;">
@@ -28,9 +28,15 @@
                     <ui:Label text="00" name="Enemy_Count" style="font-size: 24px; color: rgb(255, 0, 0); -unity-text-align: upper-right;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Keys" class="key" style="-unity-background-image-tint-color: rgba(143, 127, 127, 0.74);">
-                    <ui:Label text="KEYS:" name="Keys_Title" style="color: rgb(255, 255, 255); font-size: 24px;" />
-                    <ui:Label text="00" name="Keys_Count" style="font-size: 24px; color: rgb(255, 0, 0);" />
+                    <ui:Label text="KEYS:" name="Key_Title" style="color: rgb(255, 255, 255); font-size: 24px;" />
+                    <ui:Label text="00" name="Key_Count" style="font-size: 24px; color: rgb(255, 0, 0);" />
                 </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Ammo" class="key" style="-unity-background-image-tint-color: rgba(143, 127, 127, 0.74); width: 193px; position: absolute; top: 961px; left: 170px; font-size: 36px;">
+                <ui:Label text="Gun Name&#10;" name="Gun_Name" />
+                <ui:Label text="00" name="Ammo_Current" style="color: rgb(255, 0, 0);" />
+                <ui:Label text="/" name="slash" style="color: rgb(0, 0, 0);" />
+                <ui:Label text="00" name="Ammo_Max" style="color: rgb(255, 255, 255);" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -46,7 +46,7 @@ public class HUDController : MonoBehaviour
     float gameTimerSecond;
     float stealthTimeLeft;
 
-    public bool isStealthed;
+    
     public float timeElapsed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -74,7 +74,7 @@ public class HUDController : MonoBehaviour
         gameTimerText = root.Q<Label>("Game_Timer");
         gameTimerText.text = "00:00";
         ammoCur = root.Q<Label>("Ammo_Current");
-        ammoMax = root.Q<Label>("Ammo_Maximum");
+        ammoMax = root.Q<Label>("Ammo_Max");
         //bossHPBar = root.Q<VisualElement>("Boss_HP_Bar");
         //bossHPFill = root.Q<Image>("Boss_HP_Fill");
         //bossHPBar.style.display = DisplayStyle.None; // Hide boss HP bar initially
@@ -106,6 +106,7 @@ public class HUDController : MonoBehaviour
     {
         // Check if collected modules is empty and hide minimap if so
         UpdateGameTimer();
+       
 
     }
     public void UpdatePlayerUI()
@@ -116,7 +117,7 @@ public class HUDController : MonoBehaviour
         //collectedModulesCount.text = gamemanager.instance.collectedModules.ToString() + "/5";
 
     }
-    public void UpdateGameGoal(int amount)
+    public void UpdateEnemyCount(int amount)
     {
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
@@ -154,7 +155,7 @@ public class HUDController : MonoBehaviour
 
     private IEnumerator StealthCountdown(float length)
     {
-        isStealthed = true;
+        gamemanager.instance.isStealthed = true;
 
         float countDown = length;
         stealthTimerText.text = countDown.ToString("F0");
@@ -165,7 +166,7 @@ public class HUDController : MonoBehaviour
             countDown -= Time.deltaTime;
             yield return null;
         }
-        isStealthed = false;
+        gamemanager.instance.isStealthed = false;
         stealthTimerText.text = "";
         // stealthTimerText.gameObject.SetActive(false);
 

@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
-using static UIController;
+
+
+
+
 
 public class gamemanager : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuUI;
-    [SerializeField] GameObject hudUI;
+
+    [SerializeField] HUDController hudUI;
+    [SerializeField] UIController uiController;
 
     public GameObject playerHPBar;
     public Image playerHPBarFill;
@@ -31,10 +34,10 @@ public class gamemanager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
-   
-
+    
+    
     public bool isPaused;
-  
+    public bool isStealthed;
 
     float timeScaleOrig;
 
@@ -47,8 +50,9 @@ public class gamemanager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+        
 
-
+        
     }
 
     void Update()
@@ -61,10 +65,11 @@ public class gamemanager : MonoBehaviour
 
                 statePause();
 
+
                 menuActive = menuUI;
 
                 menuActive.SetActive(true);
-                UIController.instance.OpenPauseMenu();
+                uiController.OpenPauseMenu();
 
             }
             else if (menuActive == menuUI)
@@ -103,8 +108,9 @@ public class gamemanager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        UIController.instance.CloseMenu();
-        menuActive.SetActive(false);
+        uiController.CloseMenu();
+        if (menuActive != null)
+            menuActive.SetActive(false);
         menuActive = null;
 
 
@@ -116,7 +122,8 @@ public class gamemanager : MonoBehaviour
        statePause();
        menuActive = menuUI;
        menuActive.SetActive(true);
-       UIController.instance.OpenWinMenu();
+        uiController.OpenWinMenu();
+         
         Debug.Log("Player exited the maze. You win!");      
     }
 
@@ -124,6 +131,7 @@ public class gamemanager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
+        HUDController.instance.UpdateEnemyCount(amount);
 
     }
 
@@ -133,7 +141,7 @@ public class gamemanager : MonoBehaviour
         statePause();
         menuActive = menuUI;
         menuActive.SetActive(true);
-        UIController.instance.OpenLoseMenu();
+        uiController.OpenLoseMenu();
         
         
     }

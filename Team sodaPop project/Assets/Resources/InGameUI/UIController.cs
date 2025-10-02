@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
@@ -115,11 +116,12 @@ public class UIController : MonoBehaviour
     }
     private void OnRestartButtonClicked(ClickEvent evt)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        
+
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gamemanager.instance.stateUnpause();
-       
-        
+
+
     }
     private void OnQuitButtonClicked(ClickEvent evt)
     {

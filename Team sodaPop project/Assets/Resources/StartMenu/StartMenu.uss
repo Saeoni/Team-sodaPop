@@ -1,0 +1,67 @@
+:root {
+}
+
+.title {
+    -unity-font-definition: url("project://database/Assets/Fonts/gorgo/Gorgo.ttf?fileID=12800000&guid=80fe95474b7c3f543b18e28f77eb6cc4&type=3#Gorgo");
+    color: rgb(255, 255, 255);
+    font-size: 150px;
+}
+
+.subtitle {
+    -unity-font-definition: url("project://database/Assets/Fonts/about_dead/About%20Dead.ttf?fileID=12800000&guid=0cde9b60d0cbeff49b3945bcdfbe51ee&type=3#About Dead");
+    font-size: 64px;
+    -unity-text-align: middle-center;
+}
+
+.button {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    -unity-background-image-tint-color: rgb(74, 72, 72);
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    color: rgb(0, 0, 0);
+    -unity-text-align: middle-center;
+    -unity-font-style: normal;
+    background-size: 100% 100px;
+    transition-duration: 0.01s;
+    transition-timing-function: ease-in-out;
+    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
+    font-size: 64px;
+    width: 300px;
+    align-self: auto;
+    align-content: auto;
+    height: 75px;
+    align-items: auto;
+}
+
+.button:hover {
+    color: rgb(255, 0, 0);
+    scale: 1.1 1.1;
+}
+
+.scrim-1 {
+    transform-origin: center;
+    transition-property: transform-origin;
+    transition-timing-function: ease-in-out-back;
+    transition-duration: 30s;
+    translate: 0 0;
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+}
+
+.scrim-2 {
+    transition-duration: 30s;
+    transition-timing-function: ease-in-out;
+}
+
+.scrim-1--movement {
+    flex-grow: 1;
+    position: absolute;
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    -unity-background-image-tint-color: rgb(114, 83, 83);
+    width: 100%;
+    height: 100%;
+    translate: 0 -141px;
+    scale: 1.5 1.5;
+}

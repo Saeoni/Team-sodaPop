@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 
 
+
 public class EnemyAI : MonoBehaviour, IDamage
 {
     [Header("Core Components")]
@@ -40,15 +41,17 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 _playerDir;
     Vector3 _spawnPos;
     private Vector3 startingPos;
+    
 
     void Start()
     {
         _colorOrig = model.material.color;
-        // gamemanager.instance.updateGameGoal(1);
+        gamemanager.instance.updateGameGoal(1);
         _spawnPos = transform.position;
         _originalStopDist = agent.stoppingDistance;
+        
 
-   
+
     }
 
     // Update is called once per frame
@@ -80,7 +83,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        if (!HUDController.instance.isStealthed)
+        if (gamemanager.instance.isStealthed)
         {
             _playerDir = gamemanager.instance.player.transform.position - headPos.position;
             _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);
