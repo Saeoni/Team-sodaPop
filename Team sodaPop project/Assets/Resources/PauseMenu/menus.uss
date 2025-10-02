@@ -1,0 +1,10 @@
+:root {
+}
+
+.Menus {
+    margin-top: 70px;
+    font-size: 100px;
+    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
+    color: rgb(231, 231, 231);
+    border-top-width: 149px;
+}
