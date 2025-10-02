@@ -3,19 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Player Spawn Pos
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - Player
   - Water
   - UI
-  - Player
-  - scythe
-  - Gun
-  - Projectile
+  - Enemy
+  - 
+  - 
+  - 
   - 
   - 
   - 

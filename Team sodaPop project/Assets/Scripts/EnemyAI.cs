@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] Animator animator;
     [SerializeField] Transform headPos;
-    [SerializeField] GameObject teleportVFX;
+    [SerializeField] GameObject spawnVFX;
     [SerializeField] bool _isPatrolling = false;
 
     [Header("Reaper Logic")]
@@ -42,6 +42,12 @@ public class EnemyAI : MonoBehaviour, IDamage
         _spawnPos = transform.position;
         _originalStopDist = agent.stoppingDistance;
         _currentHP = enemyData.maxHP;
+
+        if (spawnVFX != null )
+        {
+            spawnVFX.SetActive(true);
+            Destroy(spawnVFX, 5f);
+        }
 
         if (enemyData.canPatrol && enemyData.patrolPoints.Length > 0)
         {
