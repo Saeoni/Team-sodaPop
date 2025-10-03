@@ -14,6 +14,8 @@ public class StartMenuController : MonoBehaviour
     public static StartMenuController instance;
 
     private VisualElement contentContainer;
+    private VisualElement scrim1;
+    private VisualElement scrim2;
     private VisualElement title;
     private VisualElement subtitle;
 
@@ -26,10 +28,45 @@ public class StartMenuController : MonoBehaviour
    
     private Coroutine coroutine = null;
 
+    private string transName;
+    private VisualElement currentElement;
+
+    public bool isShowing;
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        
+        instance = this;
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        InitializeUI();
+        contentContainer.style.display = DisplayStyle.Flex;
+        isShowing = true;
+
+
+
+    }
+   
+
+    void Start()
+    {
+        gamemanager.instance.statePause();
+
+        // bring focus to first button
+        startButton.Focus();
+
+
+
+
+    }
     private void InitializeUI()
     {
+
         var root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("ContentContainer");
+        scrim1 = root.Q<VisualElement>("Scrim1");
+        scrim2 = root.Q<VisualElement>("Scrim2");
+
         startButton = root.Q<Button>("StartButton");
         quitButton = root.Q<Button>("QuitButton");
         title = root.Q<VisualElement>("Title");
@@ -44,37 +81,17 @@ public class StartMenuController : MonoBehaviour
         //backButton.clicked += OnBackButtonClicked;
         //creditsScreen.style.display = DisplayStyle.None;
         //mainMenuScreen.style.display = DisplayStyle.Flex;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        
-        instance = this;
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         
 
-
-
-    }
-    void OnEnable()
-    {
-        InitializeUI();
     }
 
-    void Start()
-    {
-        gamemanager.instance.statePause();
-        
-        coroutine = StartCoroutine(flashSubtitle());
-        contentContainer.style.display = DisplayStyle.Flex;
-    }
     void OnStartButtonClicked(ClickEvent evt)
     {
 
-        StopCoroutine(coroutine);
-        coroutine = null;
-        contentContainer.style.display = DisplayStyle.None;
+
         gamemanager.instance.stateUnpause();
+        contentContainer.style.display = DisplayStyle.None;
+        
         
 
     }
@@ -89,15 +106,23 @@ public class StartMenuController : MonoBehaviour
 
     }
 
-    IEnumerator flashSubtitle()
+    void toggleTransitions(VisualElement element, string transitionName)
     {
-        while (true)
+        
+        if (gamemanager.instance.isPaused == false)
         {
-            subtitle.style.display = DisplayStyle.Flex;
-            yield return new WaitForSeconds(0.5f);
-            subtitle.style.display = DisplayStyle.None;
-            yield return new WaitForSeconds(0.5f);
+            return;
+        }
+        else
+            {transName = transitionName;
+
+        element.ToggleInClassList(transName);
+            element.RegisterCallback<TransitionEndEvent>(ToggleBackTransition);
         }
     }
 
+    void ToggleBackTransition(TransitionEndEvent evt)
+    {
+        currentElement.ToggleInClassList(transName);
+    }
 }
