@@ -2,9 +2,11 @@
 }
 
 .title {
-    -unity-font-definition: url("project://database/Assets/Fonts/gorgo/Gorgo.ttf?fileID=12800000&guid=80fe95474b7c3f543b18e28f77eb6cc4&type=3#Gorgo");
+    -unity-font-definition: url("project://database/Assets/Fonts/Witchwoode-Regular.ttf?fileID=12800000&guid=0a10106fc090396478d1ca0a2abe3ee0&type=3#Witchwoode-Regular");
     color: rgb(255, 255, 255);
     font-size: 150px;
+    -unity-text-align: upper-center;
+    margin-top: 218px;
 }
 
 .subtitle {
@@ -21,7 +23,7 @@
     position: absolute;
     -unity-background-image-tint-color: rgb(74, 72, 72);
     background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
-    color: rgb(0, 0, 0);
+    color: rgb(127, 42, 42);
     -unity-text-align: middle-center;
     -unity-font-style: normal;
     background-size: 100% 100px;
@@ -34,6 +36,7 @@
     align-content: auto;
     height: 75px;
     align-items: auto;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .button:hover {
@@ -64,4 +67,12 @@
     height: 100%;
     translate: 0 -141px;
     scale: 1.5 1.5;
+}
+
+.startbutton {
+    color: rgb(221, 127, 130);
+}
+
+.startbutton:hover {
+    color: rgb(10, 255, 45);
 }

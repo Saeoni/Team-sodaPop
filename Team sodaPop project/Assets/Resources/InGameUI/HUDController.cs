@@ -54,15 +54,31 @@ public class HUDController : MonoBehaviour
     {
         instance = this;
         InitializeUI();
+        HideUI();
+        enemyCount = 0;
+        
         //bossHPBar.SetActive(false);
 
     }
+    
+    private void FixedUpdate()
+    {
+        if (gamemanager.instance.isPaused)
+        {
+            HideUI();
+        }
+        else
+        {
+            InitializeUI();
+        }
+    }
+
 
     private void InitializeUI()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("Player_UI");
-        contentContainer.style.display = DisplayStyle.Flex;
+        
         enemyCountText = root.Q<Label>("Enemy_Count");
         enemiesTitle = root.Q<Label>("Enemies_Title");
         keyTitle = root.Q<Label>("Key_Title");
@@ -95,12 +111,20 @@ public class HUDController : MonoBehaviour
         //collectedModulesCount.text = "0/0";
         enemyCountText.text = "0";
         keyCountText.text = "";
-
+        keyCount = 0;
         enemiesTitle.text = "Enemies Remaining:";
         keyTitle.text = "Keys Collected:";
         collectedModulesTitle.text = "Modules Collected:";
+        playerHPBar = root.Q<VisualElement>("Player_HP_Bar");
+
+
+        contentContainer.style.display = DisplayStyle.Flex;
     }
 
+    public void HideUI()
+        {
+        contentContainer.style.display = DisplayStyle.None;
+    }
     // Update is called once per frame
     void Update()
     {

@@ -51,11 +51,16 @@ public class StartMenuController : MonoBehaviour
         
         instance = this;
         //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        InitializeUI();
+        
 
 
 
     }
+    void OnEnable()
+    {
+        InitializeUI();
+    }
+
     void Start()
     {
         gamemanager.instance.statePause();

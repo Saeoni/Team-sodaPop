@@ -25,12 +25,17 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        InitializeUI();
+        
 
 
     }
-    
-   
+    private void Start()
+    {
+        InitializeUI();
+        CloseMenu();
+    }
+
+
     private void InitializeUI()
     {
     var root = GetComponent<UIDocument>().rootVisualElement;
