@@ -14,6 +14,8 @@ public class StartMenuController : MonoBehaviour
     public static StartMenuController instance;
 
     private VisualElement contentContainer;
+    private VisualElement scrim1;
+    private VisualElement scrim2;
     private VisualElement title;
     private VisualElement subtitle;
 
@@ -29,10 +31,42 @@ public class StartMenuController : MonoBehaviour
     private string transName;
     private VisualElement currentElement;
 
+    public bool isShowing;
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        
+        instance = this;
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        InitializeUI();
+        contentContainer.style.display = DisplayStyle.Flex;
+        isShowing = true;
+
+
+
+    }
+   
+
+    void Start()
+    {
+        gamemanager.instance.statePause();
+
+        // bring focus to first button
+        startButton.Focus();
+
+
+
+
+    }
     private void InitializeUI()
     {
+
         var root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("ContentContainer");
+        scrim1 = root.Q<VisualElement>("Scrim1");
+        scrim2 = root.Q<VisualElement>("Scrim2");
+
         startButton = root.Q<Button>("StartButton");
         quitButton = root.Q<Button>("QuitButton");
         title = root.Q<VisualElement>("Title");
@@ -47,61 +81,17 @@ public class StartMenuController : MonoBehaviour
         //backButton.clicked += OnBackButtonClicked;
         //creditsScreen.style.display = DisplayStyle.None;
         //mainMenuScreen.style.display = DisplayStyle.Flex;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        
-        instance = this;
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        
-
-
-
-    }
-    void OnEnable()
-    {
-        InitializeUI();
         
 
     }
-    private void Update()
-    {
-        if (!gamemanager.instance.isPaused)
-        {
-            if (coroutine != null)
-            {
-                StopCoroutine(coroutine);
-                coroutine = null;
-            }
-            contentContainer.style.display = DisplayStyle.None;
-            title.style.opacity = 1f;
-            subtitle.style.opacity = 1f;
-            this.enabled = false;
-        }
-        toggleTransitions(title, "fade-out");
-        toggleTransitions(subtitle, "fade-out");
 
-    }
-
-    void Start()
-    {
-        gamemanager.instance.statePause();
-        contentContainer.style.display = DisplayStyle.Flex;
-        if (coroutine == null)
-        {
-            //coroutine = StartCoroutine(flashElementCoroutine(subtitle, 1.5f));
-        }
-
-
-    }
     void OnStartButtonClicked(ClickEvent evt)
     {
 
-        
-        
-        contentContainer.style.display = DisplayStyle.None;
+
         gamemanager.instance.stateUnpause();
+        contentContainer.style.display = DisplayStyle.None;
+        
         
 
     }
@@ -116,20 +106,22 @@ public class StartMenuController : MonoBehaviour
 
     }
 
-    private void toggleTransitions(VisualElement element, string transitionName)
+    void toggleTransitions(VisualElement element, string transitionName)
     {
-        if (element == null) { 
-            Debug.LogWarning("Element " +element+ " is null, cannot toggle transition "+ transitionName);
-            return; }
         
-        
-        transName = transitionName;
+        if (gamemanager.instance.isPaused == false)
+        {
+            return;
+        }
+        else
+            {transName = transitionName;
 
         element.ToggleInClassList(transName);
-        element.RegisterCallback<TransitionEndEvent>(ToggleBackTransition);
+            element.RegisterCallback<TransitionEndEvent>(ToggleBackTransition);
+        }
     }
 
-    private void ToggleBackTransition(TransitionEndEvent evt)
+    void ToggleBackTransition(TransitionEndEvent evt)
     {
         currentElement.ToggleInClassList(transName);
     }

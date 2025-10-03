@@ -16,6 +16,7 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] HUDController hudUI;
     [SerializeField] UIController uiController;
+    [SerializeField] StartMenuController startMenuController;
 
     public GameObject playerHPBar;
     public Image playerHPBarFill;
@@ -58,7 +59,7 @@ public class gamemanager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && StartMenuController.instance.isShowing)
         {
             if (menuActive == null)
             {
@@ -99,6 +100,7 @@ public class gamemanager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         
+
 
     }
 

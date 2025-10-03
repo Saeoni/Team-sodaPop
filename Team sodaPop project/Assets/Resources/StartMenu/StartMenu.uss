@@ -1,4 +1,9 @@
 :root {
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: stretch;
 }
 
 .title {
@@ -6,13 +11,27 @@
     color: rgb(255, 255, 255);
     font-size: 150px;
     -unity-text-align: upper-center;
-    margin-top: 218px;
+    margin-top: 331px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: auto;
+    padding-bottom: 0;
+    top: 0;
+    position: relative;
+    align-items: center;
+    align-self: center;
+    align-content: flex-start;
+    justify-content: flex-start;
 }
 
 .subtitle {
     -unity-font-definition: url("project://database/Assets/Fonts/about_dead/About%20Dead.ttf?fileID=12800000&guid=0cde9b60d0cbeff49b3945bcdfbe51ee&type=3#About Dead");
     font-size: 64px;
     -unity-text-align: middle-center;
+    margin-top: 194px;
 }
 
 .button {
@@ -20,7 +39,7 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    position: absolute;
+    position: relative;
     -unity-background-image-tint-color: rgb(74, 72, 72);
     background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
     color: rgb(127, 42, 42);
@@ -32,46 +51,26 @@
     -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
     font-size: 50px;
     width: 300px;
-    align-self: auto;
-    align-content: auto;
+    align-self: center;
+    align-content: stretch;
     height: 75px;
-    align-items: auto;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0);
-    white-space: nowrap;
+    white-space: normal;
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
+    top: auto;
+    bottom: 0;
+    text-overflow: clip;
 }
 
 .button:hover {
     color: rgb(255, 0, 0);
     scale: 1.1 1.1;
-}
-
-.scrim-1 {
-    transform-origin: center;
-    transition-property: transform-origin;
-    transition-timing-function: ease-in-out-back;
-    transition-duration: 30s;
-    translate: 0 0;
-    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
-}
-
-.scrim-2 {
-    transition-duration: 30s;
-    transition-timing-function: ease-in-out;
-}
-
-.scrim-1--movement {
-    flex-grow: 1;
-    position: absolute;
-    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
-    -unity-background-image-tint-color: rgb(114, 83, 83);
-    width: 100%;
-    height: 100%;
-    translate: 0 -141px;
-    scale: 1.5 1.5;
+    bottom: auto;
+    position: relative;
 }
 
 .startbutton {
@@ -80,4 +79,40 @@
 
 .startbutton:hover {
     color: rgb(10, 255, 45);
+}
+
+.scrim2 {
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    width: 100%;
+    height: 100%;
+    background-size: 50% 85%;
+    -unity-background-image-tint-color: rgb(91, 74, 74);
+    transition-duration: 15s;
+    transition-timing-function: ease-in-sine;
+}
+
+.scrim2--smokey {
+    transition-duration: 15s;
+    background-size: 150% 150%;
+    translate: 0 -184px;
+    -unity-background-image-tint-color: rgb(138, 44, 44);
+    transition-timing-function: ease-in-sine;
+}
+
+.scrim1 {
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    background-size: 200% 200%;
+    transition-duration: 15s;
+    top: 0;
+}
+
+.scrim1--smokey {
+    background-size: 100% 100%;
+    -unity-background-image-tint-color: rgb(83, 71, 71);
+    transition-duration: 15s;
+    transition-timing-function: ease;
 }
