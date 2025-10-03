@@ -1,13 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/StartMenu/StartMenu.uss?fileID=7433441132597879392&amp;guid=46231d5bd6369054eb2f1908cf49ea9f&amp;type=3#StartMenu" />
-    <ui:VisualElement name="ContentContainer" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.89); flex-wrap: wrap; justify-content: center; align-items: center; flex-direction: column; background-position-y: center; -unity-text-align: upper-center; white-space: normal; overflow: visible; text-overflow: clip; -unity-background-scale-mode: stretch-to-fill; flex-shrink: initial; width: 100%; height: 100%; align-content: flex-start;">
-        <ui:VisualElement name="Scrim2" enabled="false" class="scrim2 scrim2--smokey" style="align-items: center; justify-content: space-between; position: absolute; top: auto; left: auto; bottom: 0; align-self: auto; align-content: auto; translate: 0 0; flex-shrink: initial;" />
-        <ui:VisualElement name="Scrim1" enabled="false" class="scrim1 scrim1--smokey" />
-        <ui:Label text="Horror Title Here&#10;" name="Title" enabled="false" class="title">
+    <ui:VisualElement name="ContentContainer" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.89); flex-wrap: nowrap; justify-content: center; align-items: center; flex-direction: column; background-position-y: center; -unity-text-align: upper-center; white-space: normal; overflow: visible; text-overflow: clip; -unity-background-scale-mode: stretch-to-fill; flex-shrink: initial; width: 1920px; height: 1080px; align-content: auto; align-self: center; flex-basis: auto; position: relative; background-position-x: center; max-width: none; max-height: none; rotate: 0 0 0 0;">
+        <ui:VisualElement name="Scrim2" enabled="true" />
+        <ui:VisualElement name="Scrim1" enabled="true" class="scrim1" />
+        <ui:Label text="Horror Title Here&#10;" name="Title" enabled="false" tabindex="-1" double-click-selects-word="false" class="title">
             <ui:Label text="Press Start to Enter" name="Subtitle" class="subtitle" />
         </ui:Label>
-        <ui:Button text="Start" name="StartButton" double-click-selects-word="false" focusable="true" usage-hints="DynamicColor" selectable="true" enabled="false" class="button startbutton" />
-        <ui:Button text="Quit" name="QuitButton" enabled="false" class="button" />
-        <ui:Button text="Settings" name="SettingsButton" enabled="false" class="button" />
+        <ui:Button text="Start" name="StartButton" double-click-selects-word="false" focusable="true" usage-hints="DynamicColor" selectable="true" enabled="true" triple-click-selects-line="false" class="button startbutton" />
+        <ui:Button text="Quit" name="QuitButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" class="button" />
+        <ui:Button text="Settings" name="SettingsButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" class="button" />
     </ui:VisualElement>
 </ui:UXML>

@@ -15,7 +15,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuUI;
 
     [SerializeField] HUDController hudUI;
-    [SerializeField] UIController uiController;
+    [SerializeField] MenuController uiController;
     [SerializeField] StartMenuController startMenuController;
 
     public GameObject playerHPBar;
