@@ -55,6 +55,7 @@ public class gamemanager : MonoBehaviour
         hudController = hudUI.GetComponent<HUDController>();
         startMenuController = startMenuUI.GetComponent<StartMenuController>();
         playerIsDead = false;
+        //hudUI.SetActive(true);
         statePause();
         startMenuUI.SetActive(true);
 

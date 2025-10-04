@@ -61,15 +61,16 @@ public class StartMenuController : MonoBehaviour
 
 
         //gamemanager.instance.statePause();
-
+        isShowing = true;
         Time.timeScale = timeSpeed;
 
 
-        isShowing = true;
 
-
+        scrim1.AddToClassList("scrim1--smokey");
+        scrim2.AddToClassList("scrim2--smokey");
 
         startButton.Focus();
+        Debug.Log("Start Button Is Focused");
     }
 
 
@@ -98,13 +99,14 @@ public class StartMenuController : MonoBehaviour
         //creditsButton.clicked += () => OnCreditsButtonClicked();
         titleText.text = title;
         subtitleText.text = subtitle;
-        scrim1.AddToClassList("scrim1--smokey");
-        scrim2.AddToClassList("scrim2--smokey");
+
+
         //mainMenuButton.clicked += () => OnMainMenuButtonClicked();
         //settingsButton.clicked += () => OnSettingsButtonClicked();
         //startButton.RegisterCallback<PointerEnterEvent>(ev => startButton.Hover());
         //quitButton.RegisterCallback<PointerEnterEvent>(ev => quitButton.Focus());
         contentContainer.style.display = DisplayStyle.Flex;
+
 
         Debug.Log("Start Menu UI Initialized");
 

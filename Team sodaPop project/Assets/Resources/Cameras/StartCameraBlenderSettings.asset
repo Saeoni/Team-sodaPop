@@ -14,13 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBlenderSettings
   CustomBlends:
   - From: CreeperCamera
-    To: MainCamera
+    To: '**ANY CAMERA**'
     Blend:
-      Style: 1
+      Style: 7
       Time: 1
       CustomCurve:
         serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+        m_Curve:
+        - serializedVersion: 3
+          time: -0.070831805
+          value: -0.06665155
+          inSlope: 0.1098704
+          outSlope: 0.1098704
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.77777743
+        - serializedVersion: 3
+          time: 0.90674603
+          value: 0.7550459
+          inSlope: 3.4746358
+          outSlope: 3.4746358
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.3452668
+        - serializedVersion: 3
+          time: 0.9958191
+          value: 1.0999985
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4

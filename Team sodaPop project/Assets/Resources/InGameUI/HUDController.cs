@@ -63,6 +63,7 @@ public class HUDController : MonoBehaviour
 
 
 
+
     private void InitializeUI()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
