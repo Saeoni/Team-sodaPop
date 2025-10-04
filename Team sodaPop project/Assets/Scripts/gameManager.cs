@@ -68,17 +68,18 @@ public class gamemanager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Cancel") && !playerIsDead)
+        if (Input.GetButtonDown("Cancel"))
         {
+            if (playerIsDead) return;
 
             if (menuActive == null)
             {
 
                 statePause();
                 menuActive = menuUI;
-                menuController.OpenPauseMenu();
-                menuActive.SetActive(true);
 
+                menuActive.SetActive(true);
+                menuController.OpenPauseMenu();
 
 
             }

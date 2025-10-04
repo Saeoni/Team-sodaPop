@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -34,7 +35,7 @@ public class MenuController : MonoBehaviour
 
     void InitializeUI()
     {
-        if (uiInitialized) return;
+
         var root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("Content_Container");
         contentContainer.style.display = DisplayStyle.None;
@@ -48,13 +49,15 @@ public class MenuController : MonoBehaviour
         quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClicked);
         respawnButton.RegisterCallback<ClickEvent>(OnRespawnButtonClicked);
 
-        uiInitialized = true;
+
 
 
     }
 
     private void SetupMenu(string title, Color titleColor, bool showRespawn, string[] phrases = null)
     {
+        InitializeUI();
+
         menuTitle = contentContainer.Q<Label>("Menu_Title");
         menuTitle.text = title;
         menuTitle.style.color = new StyleColor(titleColor);
@@ -76,12 +79,14 @@ public class MenuController : MonoBehaviour
     public void OpenPauseMenu()
     {
         SetupMenu("Paused", Color.white, false);
+        StartCoroutine(FlashButtonText(resumeButton, "Resume", "▶ Resume", 0.5f, Color.yellow));
 
     }
 
     public void OpenLoseMenu()
     {
         SetupMenu("", Color.red, true, youLosePhrases);
+        StartCoroutine(FlashButtonText(respawnButton, "Respawn", "Respawn!", 0.5f, Color.yellow));
 
     }
 
@@ -89,6 +94,7 @@ public class MenuController : MonoBehaviour
     public void OpenWinMenu()
     {
         SetupMenu("", new Color(1f, 0.84f, 0f), false, youWinPhrases);
+        StartCoroutine(FlashButtonText(restartButton, "Restart", "⟳ Restart", 0.5f, Color.yellow));
     }
 
     public void CloseMenu()
@@ -138,6 +144,17 @@ public class MenuController : MonoBehaviour
 
     }
 
-
+    IEnumerator FlashButtonText(Button button, string originalText, string flashText, float interval, Color flashColor)
+    {
+        while (contentContainer.style.display == DisplayStyle.Flex)
+        {
+            button.text = flashText;
+            button.style.color = new StyleColor(flashColor);
+            yield return new WaitForSeconds(interval);
+            button.text = originalText;
+            button.style.color = new StyleColor(Color.white);
+            yield return new WaitForSeconds(interval);
+        }
+    }
 
 }
