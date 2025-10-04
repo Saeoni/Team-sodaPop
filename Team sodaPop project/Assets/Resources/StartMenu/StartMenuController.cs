@@ -51,6 +51,7 @@ public class StartMenuController : MonoBehaviour
     void Awake()
     {
         instance = this;
+
         InitializeUI();
 
     }
@@ -58,19 +59,19 @@ public class StartMenuController : MonoBehaviour
     void Start()
     {
 
-
-
-        //gamemanager.instance.statePause();
-        isShowing = true;
+        Debug.Log("Start Button Is Focused");
         Time.timeScale = timeSpeed;
+        // gamemanager.instance.statePause();
+        isShowing = true;
 
 
+        contentContainer.style.display = DisplayStyle.Flex;
 
         scrim1.AddToClassList("scrim1--smokey");
         scrim2.AddToClassList("scrim2--smokey");
 
         startButton.Focus();
-        Debug.Log("Start Button Is Focused");
+
     }
 
 
@@ -105,7 +106,7 @@ public class StartMenuController : MonoBehaviour
         //settingsButton.clicked += () => OnSettingsButtonClicked();
         //startButton.RegisterCallback<PointerEnterEvent>(ev => startButton.Hover());
         //quitButton.RegisterCallback<PointerEnterEvent>(ev => quitButton.Focus());
-        contentContainer.style.display = DisplayStyle.Flex;
+
 
 
         Debug.Log("Start Menu UI Initialized");

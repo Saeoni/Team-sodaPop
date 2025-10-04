@@ -100,6 +100,7 @@ public class HUDController : MonoBehaviour
 
         //collectedModulesCount.text = "0/0";
         enemyCountText.text = "0";
+        enemyCount = 0;
         keyCountText.text = "";
         keyCount = 0;
         enemiesTitle.text = "Enemies Remaining:";

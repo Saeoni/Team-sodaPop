@@ -7,7 +7,7 @@
             <ui:Label text="Press Start to Enter" name="Subtitle" class="subtitle" />
         </ui:Label>
         <ui:Button text="Start" name="StartButton" double-click-selects-word="false" focusable="true" usage-hints="-1" selectable="true" enabled="true" triple-click-selects-line="false" class="button startbutton" />
-        <ui:Button text="Quit" name="QuitButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" class="button" />
-        <ui:Button text="Menu" name="MenuButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" class="button" />
+        <ui:Button text="Quit" name="QuitButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" tabindex="1" class="button" />
+        <ui:Button text="Menu" name="MenuButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" tabindex="3" class="button" />
     </ui:VisualElement>
 </ui:UXML>

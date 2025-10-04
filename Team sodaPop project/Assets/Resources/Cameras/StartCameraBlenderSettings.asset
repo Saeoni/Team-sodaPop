@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBlenderSettings
   CustomBlends:
   - From: CreeperCamera
-    To: '**ANY CAMERA**'
+    To: PlayerCamera
     Blend:
       Style: 7
       Time: 1

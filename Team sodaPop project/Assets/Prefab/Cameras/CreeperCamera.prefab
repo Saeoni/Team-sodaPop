@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2750133359911747008}
   - component: {fileID: 2117506141502156859}
   - component: {fileID: 2941786868536010997}
-  - component: {fileID: 2140090099324631934}
   - component: {fileID: 4159742213420227637}
+  - component: {fileID: 4245869380769234780}
   m_Layer: 0
   m_Name: CreeperCamera
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.026691599, y: 0, z: 0, w: 0.99964374}
   m_LocalPosition: {x: -2.01, y: 3.8, z: 8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 2
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -92,40 +92,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
     BindingMode: 3
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 1.51, y: 1.54, z: 1.67}
     AngularDampingMode: 0
     RotationDamping: {x: 1.19, y: 1.12, z: 1.06}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 3.8, z: -1.31}
---- !u!114 &2140090099324631934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795038240904279054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
-  Composition:
-    ScreenPosition: {x: -0.000000014901161, y: 0.000000029802322}
-    DeadZone:
-      Enabled: 1
-      Size: {x: 0.84374994, y: 0.94629693}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.84374994, y: 0.94629693}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 3.73, z: 0}
-  Damping: {x: 1, y: 1}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
 --- !u!114 &4159742213420227637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +114,16 @@ MonoBehaviour:
   AmplitudeGain: 0.4
   FrequencyGain: 2
   m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &4245869380769234780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795038240904279054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4afa82ae3200b82408d605c3dbdd1e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotateWithFollowTarget
+  Damping: 1

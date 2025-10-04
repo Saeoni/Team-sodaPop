@@ -13,9 +13,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject hudUI;
     [SerializeField] GameObject startMenuUI;
 
-    public HUDController hudController;
-    public MenuController menuController;
-    public StartMenuController startMenuController;
+
 
     public GameObject playerHPBar;
     public Image playerHPBarFill;
@@ -40,12 +38,18 @@ public class gamemanager : MonoBehaviour
     public bool isStealthed;
     public bool playerIsDead;
 
+    private HUDController hudController;
+    private MenuController menuController;
+    private StartMenuController startMenuController;
+
+    private int gameGoalTotal;
     float timeScaleOrig;
 
     void Awake()
     {
 
         instance = this;
+
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
@@ -54,12 +58,25 @@ public class gamemanager : MonoBehaviour
         menuController = menuUI.GetComponent<MenuController>();
         hudController = hudUI.GetComponent<HUDController>();
         startMenuController = startMenuUI.GetComponent<StartMenuController>();
+
+
         playerIsDead = false;
-        //hudUI.SetActive(true);
         statePause();
+        hudUI.SetActive(true);
+
+
         startMenuUI.SetActive(true);
 
     }
+    private void Start()
+    {
+
+        //hudController.UpdateAmmoCount(ammoCur, ammoMax);
+        //hudController.UpdateEnemyCount(0);
+        //hudController.UpdateKeyCount(0);
+        //hudController.UpdateModuleCount(0);
+    }
+
 
     void Update()
     {
