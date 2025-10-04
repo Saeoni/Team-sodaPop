@@ -2,7 +2,7 @@
 - Project name: Team sodaPop project
 - Unity version: Unity 6000.2.6f2
 - Active game object:
-  - Name: MenuUI
+  - Name: StartMenu
   - Tag: Untagged
-  - Layer: Default
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

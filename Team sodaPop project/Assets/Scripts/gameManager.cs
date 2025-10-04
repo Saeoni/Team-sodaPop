@@ -70,11 +70,9 @@ public class gamemanager : MonoBehaviour
             {
 
                 statePause();
-
-
                 menuActive = menuUI;
                 menuActive.SetActive(true);
-                menuController.OnEnable();
+                
 
             }
             else if (menuActive == menuUI)

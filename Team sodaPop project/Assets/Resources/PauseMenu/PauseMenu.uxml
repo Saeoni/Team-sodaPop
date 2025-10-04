@@ -6,7 +6,7 @@
                 <ui:Label text="PAUSE MENU" name="Menu_Title" selectable="true" focusable="true" class="Menus" style="-unity-text-align: lower-left;" />
             </ui:VisualElement>
             <ui:VisualElement name="ButtonContainer" class="button-container">
-                <ui:Button text="Resume" name="Button_Resume" selectable="false" focusable="false" class="buttons" />
+                <ui:Button text="Resume" name="Button_Resume" selectable="true" focusable="true" class="buttons" />
                 <ui:Button text="Restart" name="Button_Restart" selectable="true" focusable="true" class="buttons" />
                 <ui:Button text="Quit" name="Button_Quit" selectable="true" class="buttons" />
                 <ui:Button text="Respawn" name="Button_Respawn" selectable="true" focusable="true" class="buttons" />
