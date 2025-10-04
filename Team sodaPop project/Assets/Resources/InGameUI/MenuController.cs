@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -8,6 +9,7 @@ public class MenuController : MonoBehaviour
 {
     public static MenuController instance;
 
+
     [SerializeField] string[] youLosePhrases;
     [SerializeField] string[] youWinPhrases;
 
@@ -16,6 +18,12 @@ public class MenuController : MonoBehaviour
 
 
     private Label menuTitle;
+
+    public UnityEvent onResumeButtonClicked;
+    public UnityEvent onRestartButtonClicked;
+    public UnityEvent onQuitButtonClicked;
+    public UnityEvent onRespawnButtonClicked;
+
 
     private Button resumeButton;
     private Button restartButton;
@@ -30,6 +38,8 @@ public class MenuController : MonoBehaviour
     {
         instance = this;
         InitializeUI();
+
+
     }
 
 
@@ -44,12 +54,10 @@ public class MenuController : MonoBehaviour
         quitButton = root.Q<Button>("Button_Quit");
         respawnButton = root.Q<Button>("Button_Respawn");
 
-        resumeButton.RegisterCallback<ClickEvent>(OnResumeButtonClicked);
-        restartButton.RegisterCallback<ClickEvent>(OnRestartButtonClicked);
-        quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClicked);
-        respawnButton.RegisterCallback<ClickEvent>(OnRespawnButtonClicked);
-
-
+        resumeButton.clicked += () => OnResumeButtonClicked();
+        restartButton.clicked += () => OnRestartButtonClicked();
+        quitButton.clicked += () => OnQuitButtonClicked();
+        respawnButton.clicked += () => OnRespawnButtonClicked();
 
 
     }
@@ -112,26 +120,45 @@ public class MenuController : MonoBehaviour
 
     }
 
-    private void OnResumeButtonClicked(ClickEvent evt)
+    private void OnResumeButtonClicked()
     {
-        gamemanager.instance.stateUnpause();
+        Debug.Log("Resume Button Clicked");
 
+        gamemanager.instance.stateUnpause();
+        onResumeButtonClicked?.Invoke();
     }
-    private void OnRestartButtonClicked(ClickEvent evt)
+    private void OnRestartButtonClicked()
     {
+        Debug.Log("Restart Button Clicked");
+
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         gamemanager.instance.stateUnpause();
         //restartCount += 1;
+        onRestartButtonClicked?.Invoke();
+
     }
-    private void OnQuitButtonClicked(ClickEvent evt)
+    private void OnQuitButtonClicked()
     {
+        Debug.Log("Quit Button Clicked");
+
+        // If we are running in a standalone build of the game
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+
+        onQuitButtonClicked?.Invoke();
     }
-    private void OnRespawnButtonClicked(ClickEvent evt)
+    private void OnRespawnButtonClicked()
+    {
+        Debug.Log("Respawn Button Clicked");
+
+        RespawnPlayer();
+        onRespawnButtonClicked?.Invoke();
+    }
+
+    private void RespawnPlayer()
     {
         gamemanager.instance.playerScript.spawnPlayer();
         gamemanager.instance.playerScript.heal(gamemanager.instance.playerScript.HPOrig);

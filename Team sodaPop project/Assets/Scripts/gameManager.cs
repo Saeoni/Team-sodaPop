@@ -70,7 +70,7 @@ public class gamemanager : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
-            if (playerIsDead) return;
+            if (startMenuController.isShowing || playerIsDead) return;
 
             if (menuActive == null)
             {
