@@ -63,7 +63,7 @@ public class gamemanager : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetButtonDown("Cancel") && !startMenuController.isShowing)
+        if (Input.GetButtonDown("Cancel"))
         {
             
             if (menuActive == null)
@@ -73,8 +73,8 @@ public class gamemanager : MonoBehaviour
 
 
                 menuActive = menuUI;
-
                 menuActive.SetActive(true);
+                menuController.OnEnable();
 
             }
             else if (menuActive == menuUI)
@@ -114,9 +114,12 @@ public class gamemanager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuController.CloseMenu();
+        
         if (menuActive != null)
-            menuActive.SetActive(false);
-        menuActive = null;
+            {menuActive.SetActive(false);
+
+            menuActive = null;
+        }
 
 
 

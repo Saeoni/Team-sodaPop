@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using UnityEditor.SearchService;
+
 //using Unity.Engine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,26 +36,27 @@ public class StartMenuController : MonoBehaviour
 
     public bool isShowing;
     
+    public int restartCount = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
-    {
-        
+    { 
         instance = this;
-       
 
     }
    
-
     void Start()
     {
         
 
         // bring focus to first button
-        gamemanager.instance.statePause();
-        InitializeUI();
+        if (restartCount == 0)
+        {
+            gamemanager.instance.statePause();
+            InitializeUI();
         contentContainer.style.display = DisplayStyle.Flex;
         isShowing = true;
-        startButton.Focus();
+            startButton.Focus();
+        }
 
     }
 

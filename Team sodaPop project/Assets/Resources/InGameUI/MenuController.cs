@@ -37,7 +37,7 @@ public class MenuController : MonoBehaviour
         CloseMenu();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         OpenPauseMenu();
     }
@@ -67,9 +67,11 @@ public class MenuController : MonoBehaviour
        
         menuTitle = contentContainer.Q<Label>("Menu_Title");
         menuTitle.text = "Paused";
-        contentContainer.style.display = DisplayStyle.Flex;
         HideRespawnButton();
+        contentContainer.style.display = DisplayStyle.Flex;
+        
         contentContainer.AddToClassList("scrim--fadein");
+        
 
 
     }
@@ -131,6 +133,7 @@ public class MenuController : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gamemanager.instance.stateUnpause();
+        StartMenuController.instance.restartCount += 1;
 
 
     }
