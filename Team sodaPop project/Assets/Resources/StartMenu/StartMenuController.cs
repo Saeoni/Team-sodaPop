@@ -1,10 +1,6 @@
-
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
-
-
-
 
 
 public class StartMenuController : MonoBehaviour
@@ -14,33 +10,37 @@ public class StartMenuController : MonoBehaviour
 
 
 
-    public GameObject lookAtObject;
+    //public CinemachineCamera lookAtCamera;
+    //public GameObject[] lookAtObjects;
     [Range(.01f, 2f), SerializeField] float timeSpeed = 1;
+    [SerializeField] private string title;
+    [SerializeField] private string subtitle;
     private VisualElement contentContainer;
     private VisualElement scrim1;
     private VisualElement scrim2;
-    private VisualElement title;
-    private VisualElement subtitle;
+
+    private Label titleText;
+    private Label subtitleText;
 
 
     public UnityEvent onStartButtonClicked;
     public UnityEvent onQuitButtonClicked;
     public UnityEvent onMainMenuButtonClicked;
-    public UnityEvent onSettingsButtonClicked;
+    //public UnityEvent onSettingsButtonClicked;
+
     public Button startButton;
     public Button quitButton;
     public Button mainMenuButton;
-    public Button settingsButton;
+    // public Button settingsButton;
 
 
 
 
     //private Button creditsButton;
     //private Button backButton;
-    private VisualElement creditsScreen;
-    private VisualElement mainMenuScreen;
+    //private VisualElement creditsScreen;
+    //private VisualElement mainMenuScreen;
 
-    private Coroutine coroutine = null;
 
     private string transName;
     private VisualElement currentElement;
@@ -51,28 +51,32 @@ public class StartMenuController : MonoBehaviour
     void Awake()
     {
         instance = this;
-
+        InitializeUI();
 
     }
 
-
-
     void Start()
     {
-        gamemanager.instance.statePause();
-        PlayInBackground(lookAtObject);
 
-        InitializeUI();
-        contentContainer.style.display = DisplayStyle.Flex;
+
+
+        //gamemanager.instance.statePause();
+
+        Time.timeScale = timeSpeed;
+
+
         isShowing = true;
-        startButton.Focus();
 
+
+
+        startButton.Focus();
     }
 
 
 
     private void InitializeUI()
     {
+
 
         var root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("ContentContainer");
@@ -81,8 +85,9 @@ public class StartMenuController : MonoBehaviour
 
         startButton = root.Q<Button>("StartButton");
         quitButton = root.Q<Button>("QuitButton");
-        title = root.Q<VisualElement>("Title");
-        subtitle = root.Q<VisualElement>("Subtitle");
+        mainMenuButton = root.Q<Button>("MenuButton");
+        titleText = root.Q<Label>("Title");
+        subtitleText = root.Q<Label>("Subtitle");
         //creditsButton = root.Q<Button>("CreditsButton");
 
         //creditsScreen = root.Q<VisualElement>("CreditsScreen");
@@ -90,15 +95,21 @@ public class StartMenuController : MonoBehaviour
         startButton.clicked += () => OnStartButtonClicked();
         quitButton.clicked += () => OnQuitButtonClicked();
         mainMenuButton.clicked += () => OnMainMenuButtonClicked();
-        settingsButton.clicked += () => OnSettingsButtonClicked();
+        //creditsButton.clicked += () => OnCreditsButtonClicked();
+        titleText.text = title;
+        subtitleText.text = subtitle;
+        scrim1.AddToClassList("scrim1--smokey");
+        scrim2.AddToClassList("scrim2--smokey");
+        //mainMenuButton.clicked += () => OnMainMenuButtonClicked();
+        //settingsButton.clicked += () => OnSettingsButtonClicked();
+        //startButton.RegisterCallback<PointerEnterEvent>(ev => startButton.Hover());
+        //quitButton.RegisterCallback<PointerEnterEvent>(ev => quitButton.Focus());
+        contentContainer.style.display = DisplayStyle.Flex;
 
+        Debug.Log("Start Menu UI Initialized");
 
     }
-    void PlayInBackground(GameObject lookAt)
-    {
-        Time.timeScale = timeSpeed;
-        // This function can be used to play background music if needed
-    }
+
 
     void OnStartButtonClicked()
     {
@@ -108,10 +119,11 @@ public class StartMenuController : MonoBehaviour
         gamemanager.instance.stateUnpause();
 
         // Deactivate the start menu UI
-        gameObject.SetActive(false);
+        //  gameObject.SetActive(false);
 
         onStartButtonClicked?.Invoke();
     }
+
 
     void OnQuitButtonClicked()
     {
@@ -126,10 +138,11 @@ public class StartMenuController : MonoBehaviour
     {
         onMainMenuButtonClicked?.Invoke();
     }
-    void OnSettingsButtonClicked()
-    {
-        onSettingsButtonClicked?.Invoke();
-    }
+    //void OnSettingsButtonClicked()
+    //{
+    //    onSettingsButtonClicked?.Invoke();
+    //}
+
 
 
 
@@ -153,4 +166,6 @@ public class StartMenuController : MonoBehaviour
     {
         currentElement.ToggleInClassList(transName);
     }
+
+
 }

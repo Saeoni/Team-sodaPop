@@ -55,15 +55,8 @@ public class gamemanager : MonoBehaviour
         hudController = hudUI.GetComponent<HUDController>();
         startMenuController = startMenuUI.GetComponent<StartMenuController>();
         playerIsDead = false;
-
-    }
-    void Start()
-    {
-
+        statePause();
         startMenuUI.SetActive(true);
-
-
-
 
     }
 
@@ -85,7 +78,7 @@ public class gamemanager : MonoBehaviour
 
 
             }
-            else if (menuActive == menuUI)
+            else if (menuActive != null)
             {
 
                 stateUnpause();
@@ -123,12 +116,12 @@ public class gamemanager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
 
-        if (menuActive == null) return;
-
-        menuActive.SetActive(false);
-
-        menuActive = null;
+            menuActive = null;
+        }
 
 
 

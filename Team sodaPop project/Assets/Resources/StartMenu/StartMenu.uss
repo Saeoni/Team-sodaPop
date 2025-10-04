@@ -105,7 +105,7 @@
     background-size: 100% 100%;
     -unity-background-image-tint-color: rgb(91, 74, 74);
     transition-duration: 15s;
-    transition-timing-function: ease-in-sine;
+    transition-timing-function: ease;
     justify-content: center;
     align-content: auto;
     -unity-background-scale-mode: stretch-to-fill;
@@ -116,11 +116,11 @@
 }
 
 .scrim2--smokey {
-    transition-duration: 0s;
+    transition-duration: 15s;
     background-size: 100% 100%;
     translate: 0 -184px;
     -unity-background-image-tint-color: rgb(138, 44, 44);
-    transition-timing-function: ease-in-sine;
+    transition-timing-function: ease;
     width: auto;
     height: auto;
     align-items: stretch;

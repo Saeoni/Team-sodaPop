@@ -23,7 +23,7 @@ public class HUDController : MonoBehaviour
 
     private Label keyTitle;
     private Label keyCountText;
-    [SerializeField] private int totalKeys;
+    //[SerializeField] private int totalKeys;
     public int keyCount;
     private Label collectedModulesTitle;
     private Label collectedModulesCount;
@@ -52,6 +52,7 @@ public class HUDController : MonoBehaviour
     void Awake()
     {
         instance = this;
+
         InitializeUI();
         HideUI();
         enemyCount = 0;
@@ -59,6 +60,8 @@ public class HUDController : MonoBehaviour
         //bossHPBar.SetActive(false);
 
     }
+
+
 
     private void InitializeUI()
     {
@@ -70,7 +73,7 @@ public class HUDController : MonoBehaviour
         keyTitle = root.Q<Label>("Key_Title");
         keyCountText = root.Q<Label>("Key_Count");
         keyCount = 0;
-        totalKeys = 4;
+        //totalKeys = 4;
         stealthTimerText = root.Q<Label>("Stealth_Timer");
         stealthTimerText.text = "";
         gameTimerText = root.Q<Label>("Game_Timer");
