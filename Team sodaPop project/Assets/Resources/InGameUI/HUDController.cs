@@ -1,7 +1,6 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 
@@ -9,10 +8,10 @@ public class HUDController : MonoBehaviour
 {
     public static HUDController instance;
 
-    
+
     [SerializeField] string[] errorPhrases;
     [SerializeField] string[] warningMessages;
-    
+
     [SerializeField] private GameObject reticle;
 
     private VisualElement contentContainer;
@@ -46,7 +45,7 @@ public class HUDController : MonoBehaviour
     float gameTimerSecond;
     float stealthTimeLeft;
 
-    
+
     public float timeElapsed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,29 +55,16 @@ public class HUDController : MonoBehaviour
         InitializeUI();
         HideUI();
         enemyCount = 0;
-        
+
         //bossHPBar.SetActive(false);
 
     }
-    
-    private void FixedUpdate()
-    {
-        if (gamemanager.instance.isPaused)
-        {
-            HideUI();
-        }
-        else
-        {
-            InitializeUI();
-        }
-    }
-
 
     private void InitializeUI()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("Player_UI");
-        
+
         enemyCountText = root.Q<Label>("Enemy_Count");
         enemiesTitle = root.Q<Label>("Enemies_Title");
         keyTitle = root.Q<Label>("Key_Title");
@@ -122,7 +108,7 @@ public class HUDController : MonoBehaviour
     }
 
     public void HideUI()
-        {
+    {
         contentContainer.style.display = DisplayStyle.None;
     }
     // Update is called once per frame
@@ -130,7 +116,7 @@ public class HUDController : MonoBehaviour
     {
         // Check if collected modules is empty and hide minimap if so
         UpdateGameTimer();
-       
+
 
     }
     public void UpdatePlayerUI()
@@ -150,27 +136,27 @@ public class HUDController : MonoBehaviour
 
     public void UpdateGameTimer()
     {
-          gameTimerSecond += Time.deltaTime;
-            timeElapsed += Time.deltaTime;
+        gameTimerSecond += Time.deltaTime;
+        timeElapsed += Time.deltaTime;
 
 
-            int displaySecond = Mathf.FloorToInt(gameTimerSecond);
-            if (displaySecond >= 60)
-            {
-                gameTimerMinute++;
-                gameTimerSecond = 0;
-                displaySecond = 0;
-            }
-            gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
-        
+        int displaySecond = Mathf.FloorToInt(gameTimerSecond);
+        if (displaySecond >= 60)
+        {
+            gameTimerMinute++;
+            gameTimerSecond = 0;
+            displaySecond = 0;
+        }
+        gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
+
     }
     public void UpdateKeyCount()
     {
         keyCount++;
         keyCountText.text = keyCount.ToString() + "/4";
-    }   
-    
-    
+    }
+
+
     public void StealthTimer(float length)
     {
         StartCoroutine(StealthCountdown(length));

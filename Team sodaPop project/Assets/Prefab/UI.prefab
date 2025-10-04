@@ -53,9 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gamemanger
   menuActive: {fileID: 0}
   menuUI: {fileID: 3204471532910546040}
-  hudUI: {fileID: 3246572645508800766}
+  hudUI: {fileID: 7169506592798842636}
+  startMenuUI: {fileID: 8591858569235339648}
+  hudController: {fileID: 3246572645508800766}
   menuController: {fileID: 8415601040486893402}
-  startMenuController: {fileID: 0}
+  startMenuController: {fileID: 3625367836628216804}
   playerHPBar: {fileID: 5018272638175987087}
   playerHPBarFill: {fileID: 1432403974090863492}
   playerDamageFlash: {fileID: 6712025218105861796}
@@ -68,6 +70,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   isPaused: 0
   isStealthed: 0
+  playerIsDead: 0
 --- !u!1 &2032077206844361211
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +221,19 @@ MonoBehaviour:
   youWinPhrases:
   - You win!
   - Victorious!
+  onResumeButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  onRestartButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuitButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  onRespawnButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  restartCount: 0
 --- !u!1 &3966757719974555710
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6751528192884312727
 Transform:
   m_ObjectHideFlags: 0
@@ -1097,7 +1113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3133817823681529122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1132,7 +1148,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: b11fbbe2d0d6dd740a56a4182b889a31, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 5d54395ffa296ac40accaee8c68d7b67, type: 3}
-  m_SortingOrder: -2
+  m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -1152,6 +1168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afe5073619ae6543844ac47da47041c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartMenuController
+  lookAtObject: {fileID: 0}
+  timeSpeed: 1
   isShowing: 0
 --- !u!1 &8962934415357788909
 GameObject:

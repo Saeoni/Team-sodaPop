@@ -10,8 +10,10 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuUI;
+    [SerializeField] GameObject hudUI;
+    [SerializeField] GameObject startMenuUI;
 
-    public HUDController hudUI;
+    public HUDController hudController;
     public MenuController menuController;
     public StartMenuController startMenuController;
 
@@ -49,17 +51,17 @@ public class gamemanager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-
+        menuController = menuUI.GetComponent<MenuController>();
+        hudController = hudUI.GetComponent<HUDController>();
+        startMenuController = startMenuUI.GetComponent<StartMenuController>();
         playerIsDead = false;
 
     }
     void Start()
     {
 
+        startMenuUI.SetActive(true);
 
-        menuController = MenuController.instance;
-        hudUI = HUDController.instance;
-        startMenuController = StartMenuController.instance;
 
 
 
@@ -146,7 +148,7 @@ public class gamemanager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
-        HUDController.instance.UpdateEnemyCount(amount);
+        hudController.UpdateEnemyCount(amount);
 
     }
 
