@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -11,130 +10,97 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] string[] youLosePhrases;
     [SerializeField] string[] youWinPhrases;
-    
+
     private VisualElement contentContainer;
-    
-    
-    
+
+
+
     private Label menuTitle;
- 
+
     private Button resumeButton;
     private Button restartButton;
     private Button quitButton;
     private Button respawnButton;
     public int restartCount = 0;
+    private bool uiInitialized = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
-        
+        InitializeUI();
     }
 
-    void OnEnable()
+
+    void InitializeUI()
     {
-            InitializeUI();
-           
-    }
+        if (uiInitialized) return;
+        var root = GetComponent<UIDocument>().rootVisualElement;
+        contentContainer = root.Q<VisualElement>("Content_Container");
+        contentContainer.style.display = DisplayStyle.None;
+        resumeButton = root.Q<Button>("Button_Resume");
+        restartButton = root.Q<Button>("Button_Restart");
+        quitButton = root.Q<Button>("Button_Quit");
+        respawnButton = root.Q<Button>("Button_Respawn");
 
-    //void Update()
-    //{
-    //     if (!gamemanager.instance.isPaused && contentContainer.style.display == DisplayStyle.Flex)
-    //        CloseMenu();
-        
-    //}
-
-
-    private void InitializeUI()
-    {
-    var root = GetComponent<UIDocument>().rootVisualElement;
-    contentContainer = root.Q<VisualElement>("Content_Container");
-    contentContainer.style.display = DisplayStyle.None;
-    resumeButton = root.Q<Button>("Button_Resume");
-    restartButton = root.Q<Button>("Button_Restart");
-    quitButton = root.Q<Button>("Button_Quit");
-    respawnButton = root.Q<Button>("Button_Respawn");
-        
         resumeButton.RegisterCallback<ClickEvent>(OnResumeButtonClicked);
-    restartButton.RegisterCallback<ClickEvent>(OnRestartButtonClicked);
-    quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClicked);
-    respawnButton.RegisterCallback<ClickEvent>(OnRespawnButtonClicked);
-        
+        restartButton.RegisterCallback<ClickEvent>(OnRestartButtonClicked);
+        quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClicked);
+        respawnButton.RegisterCallback<ClickEvent>(OnRespawnButtonClicked);
+
+        uiInitialized = true;
 
 
+    }
+
+    private void SetupMenu(string title, Color titleColor, bool showRespawn, string[] phrases = null)
+    {
+        menuTitle = contentContainer.Q<Label>("Menu_Title");
+        menuTitle.text = title;
+        menuTitle.style.color = new StyleColor(titleColor);
+
+        resumeButton.style.display = title == "Paused" ? DisplayStyle.Flex : DisplayStyle.None;
+        respawnButton.style.display = showRespawn ? DisplayStyle.Flex : DisplayStyle.None;
+
+        contentContainer.style.display = DisplayStyle.Flex;
+        contentContainer.AddToClassList("scrim--fadein");
+
+        if (phrases != null && phrases.Length > 0)
+        {
+            SayRandomFromList(menuTitle, phrases, 5f, titleColor);
+        }
+
+        restartButton.Focus();
     }
 
     public void OpenPauseMenu()
     {
-        InitializeUI();
-       
-        menuTitle = contentContainer.Q<Label>("Menu_Title");
-        menuTitle.text = "Paused";
-        HideRespawnButton();
-        contentContainer.style.display = DisplayStyle.Flex;
-        
-        contentContainer.AddToClassList("scrim--fadein");
-        //resumeButton.Focus();
-
-
+        SetupMenu("Paused", Color.white, false);
 
     }
+
+    public void OpenLoseMenu()
+    {
+        SetupMenu("", Color.red, true, youLosePhrases);
+
+    }
+
+
+    public void OpenWinMenu()
+    {
+        SetupMenu("", new Color(1f, 0.84f, 0f), false, youWinPhrases);
+    }
+
     public void CloseMenu()
     {
         if (contentContainer == null) return;
 
         if (contentContainer.ClassListContains("scrim--fadein"))
-        contentContainer.RemoveFromClassList("scrim--fadein");
+            contentContainer.RemoveFromClassList("scrim--fadein");
         contentContainer.style.display = DisplayStyle.None;
 
     }
 
-    public void ShowRespawnButton()
-        {
-        if (respawnButton == null) return;
-        respawnButton.style.display = DisplayStyle.Flex;
-    }
-    public void HideRespawnButton()
-        {
-        if (respawnButton == null) return;
-        respawnButton.style.display = DisplayStyle.None;
-    }
-
-    public void OpenLoseMenu()
-        {
-        contentContainer.AddToClassList("scrim--fadein");
-        menuTitle = contentContainer.Q<Label>("Menu_Title");
-        Color color = new Color(1f, 0f, 0f); // Red color
-        menuTitle.text = "";
-        SayRandomFromList(menuTitle, youLosePhrases, 5f, color);
-
-        resumeButton.style.display = DisplayStyle.None;
-        respawnButton.style.display = DisplayStyle.Flex;
-        //settingsButton
-        contentContainer.style.display = DisplayStyle.Flex;
-
-        StartCoroutine(FlashButtonText(respawnButton, color, 5f));
-        
-        // restartButton.Focus();
-
-    }
-
-    public void OpenWinMenu()
-        {
-        
-        menuTitle = contentContainer.Q<Label>("Menu_Title");
-        Color color = new Color(1f, 0.84f, 0f); // Gold color
-        
-        contentContainer.style.display = DisplayStyle.Flex;
-        contentContainer.AddToClassList("scrim--fadein");
-        resumeButton.style.display = DisplayStyle.None;
-        respawnButton.style.display = DisplayStyle.None;
-        SayRandomFromList(menuTitle, youWinPhrases, 5f, color);
-        
-
-
-        //mainMenuButtonFocus();
-    }
     private void OnResumeButtonClicked(ClickEvent evt)
     {
         gamemanager.instance.stateUnpause();
@@ -142,61 +108,34 @@ public class MenuController : MonoBehaviour
     }
     private void OnRestartButtonClicked(ClickEvent evt)
     {
-
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gamemanager.instance.stateUnpause();
-        restartCount += 1;
-
-
+        //restartCount += 1;
     }
     private void OnQuitButtonClicked(ClickEvent evt)
     {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
         Application.Quit();
-    #endif
+#endif
     }
     private void OnRespawnButtonClicked(ClickEvent evt)
     {
         gamemanager.instance.playerScript.spawnPlayer();
+        gamemanager.instance.playerScript.heal(gamemanager.instance.playerScript.HPOrig);
+        gamemanager.instance.playerIsDead = false;
         gamemanager.instance.stateUnpause();
-        
+
     }
 
-    IEnumerator FlashText(Label textElement, Color flashColor, float duration)
-    {
-        Color originalColor = textElement.style.color.value;
-        textElement.style.color = flashColor;
-
-        while (true)
-        {
-            yield return new WaitForSeconds(duration);
-            textElement.style.color = originalColor;
-        }
-    }
-
-    IEnumerator FlashButtonText(Button button, Color flashColor, float duration)
-    {
-        Color originalColor = button.style.color.value;
-        button.style.color = flashColor;
-
-        while (true)
-        {
-            
-            yield return new WaitForSeconds(duration);
-            button.style.color = originalColor;
-        }
-    }
 
     void SayRandomFromList(Label textElement, string[] phrases, float duration, Color color)
     {
-        int randomIndex = Random.Range(0, phrases.Length);
-        string selectedPhrase = phrases[randomIndex];
-        textElement.text = selectedPhrase;
-        StartCoroutine(FlashText(textElement, color, duration));
-        
+        if (phrases == null || phrases.Length == 0) return;
+        textElement.text = phrases[Random.Range(0, phrases.Length)];
+        textElement.style.color = new StyleColor(color);
+
     }
 
 

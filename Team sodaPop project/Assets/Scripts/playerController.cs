@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
-    [SerializeField] int HP;
+    [SerializeField]  int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] float jumpSpeed;
@@ -22,7 +22,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
 
-    int HPOrig;
+    public int HPOrig;
     int speedOrig;
     int jumpCount;
     int gunListPos;
@@ -161,6 +161,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             HP += amount;
             updatePlayerUI();
             StartCoroutine(flashHeal());
+        }
+
+        else if(HP > HPOrig)
+        {
+            HP = HPOrig;
+            updatePlayerUI();
         }
     }
 
