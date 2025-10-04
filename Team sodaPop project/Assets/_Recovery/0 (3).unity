@@ -20429,6 +20429,10 @@ PrefabInstance:
       propertyPath: uiController
       value: 
       objectReference: {fileID: 1595546883}
+    - target: {fileID: 1820879076082725810, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: startMenuController
+      value: 
+      objectReference: {fileID: 1515747392}
     - target: {fileID: 2046546988829622410, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: m_SortingOrder
       value: -2
@@ -20520,6 +20524,10 @@ PrefabInstance:
     - target: {fileID: 7259026164555933260, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591858569235339648, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -37252,6 +37260,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6972195494458449130, guid: a6ab5fd03a762c246a7fd5f660c35567, type: 3}
   m_PrefabInstance: {fileID: 1261408556}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1515747392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3625367836628216804, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+  m_PrefabInstance: {fileID: 790268655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afe5073619ae6543844ac47da47041c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartMenuController
 --- !u!1001 &1519640125
 PrefabInstance:
   m_ObjectHideFlags: 0

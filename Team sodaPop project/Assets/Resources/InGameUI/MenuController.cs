@@ -5,11 +5,13 @@ using UnityEngine.UIElements;
 
 
 
-public class UIController : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
+    public static MenuController instance;
+
     [SerializeField] string[] youLosePhrases;
     [SerializeField] string[] youWinPhrases;
-    public static UIController instance;
+    
     private VisualElement contentContainer;
     
     
