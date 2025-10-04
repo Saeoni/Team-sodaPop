@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -23,9 +22,10 @@ public class MenuController : MonoBehaviour
     private Button quitButton;
     private Button respawnButton;
     public int restartCount = 0;
-    private bool uiInitialized = false;
+    //private bool uiInitialized = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake()
     {
         instance = this;
@@ -79,14 +79,15 @@ public class MenuController : MonoBehaviour
     public void OpenPauseMenu()
     {
         SetupMenu("Paused", Color.white, false);
-        StartCoroutine(FlashButtonText(resumeButton, "Resume", "▶ Resume", 0.5f, Color.yellow));
+        resumeButton.AddToClassList("flash");
+
 
     }
 
     public void OpenLoseMenu()
     {
         SetupMenu("", Color.red, true, youLosePhrases);
-        StartCoroutine(FlashButtonText(respawnButton, "Respawn", "Respawn!", 0.5f, Color.yellow));
+        respawnButton.AddToClassList("flash");
 
     }
 
@@ -94,15 +95,19 @@ public class MenuController : MonoBehaviour
     public void OpenWinMenu()
     {
         SetupMenu("", new Color(1f, 0.84f, 0f), false, youWinPhrases);
-        StartCoroutine(FlashButtonText(restartButton, "Restart", "⟳ Restart", 0.5f, Color.yellow));
+        restartButton.AddToClassList("flash");
+
     }
 
     public void CloseMenu()
     {
         if (contentContainer == null) return;
 
-        if (contentContainer.ClassListContains("scrim--fadein"))
-            contentContainer.RemoveFromClassList("scrim--fadein");
+        RemoveEffect(resumeButton, "flash");
+        RemoveEffect(restartButton, "flash");
+        RemoveEffect(respawnButton, "flash");
+        RemoveEffect(contentContainer, "scrim--fadein");
+
         contentContainer.style.display = DisplayStyle.None;
 
     }
@@ -114,7 +119,7 @@ public class MenuController : MonoBehaviour
     }
     private void OnRestartButtonClicked(ClickEvent evt)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         gamemanager.instance.stateUnpause();
         //restartCount += 1;
     }
@@ -144,17 +149,11 @@ public class MenuController : MonoBehaviour
 
     }
 
-    IEnumerator FlashButtonText(Button button, string originalText, string flashText, float interval, Color flashColor)
+    private void RemoveEffect(VisualElement element, string className)
     {
-        while (contentContainer.style.display == DisplayStyle.Flex)
-        {
-            button.text = flashText;
-            button.style.color = new StyleColor(flashColor);
-            yield return new WaitForSeconds(interval);
-            button.text = originalText;
-            button.style.color = new StyleColor(Color.white);
-            yield return new WaitForSeconds(interval);
-        }
+
+        if (element.ClassListContains(className))
+            element.RemoveFromClassList(className);
     }
 
 }

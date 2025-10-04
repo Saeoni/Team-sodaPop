@@ -116,17 +116,18 @@ public class gamemanager : MonoBehaviour
     public void stateUnpause()
     {
         isPaused = !isPaused;
+        menuController.CloseMenu();
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        menuController.CloseMenu();
 
-        if (menuActive != null)
-        {
-            menuActive.SetActive(false);
 
-            menuActive = null;
-        }
+        if (menuActive == null) return;
+
+        menuActive.SetActive(false);
+
+        menuActive = null;
+
 
 
     }
