@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static StartMenuController;
 using static MenuController;
 using static HUDController;
+using static StartMenuController;
+
+
+
 
 
 
@@ -42,6 +45,7 @@ public class gamemanager : MonoBehaviour
     
     public bool isPaused;
     public bool isStealthed;
+    public bool playerIsDead;
 
     float timeScaleOrig;
 
@@ -55,7 +59,17 @@ public class gamemanager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
         
+        
 
+    }
+    void Start()
+    {
+        playerIsDead = false;
+
+        menuController = MenuController.instance;
+        hudUI = HUDController.instance;
+        startMenuController = StartMenuController.instance;
+        
 
 
     }
@@ -63,16 +77,17 @@ public class gamemanager : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !playerIsDead)
         {
             
-            if (menuActive == null)
+            if (menuActive == null && !startMenuController.isShowing)
             {
 
                 statePause();
                 menuActive = menuUI;
                 menuActive.SetActive(true);
-                
+                menuController.OpenPauseMenu();
+
 
             }
             else if (menuActive == menuUI)
@@ -144,30 +159,15 @@ public class gamemanager : MonoBehaviour
 
     public void youLose()
     {
+        playerIsDead = true;
         statePause();
         menuActive = menuUI;
+        
         menuActive.SetActive(true);
         menuController.OpenLoseMenu();
-        
-        
+
+
     }
 
-    public void OnPlayerKilledByReaper()
-    {
-        Debug.Log("Player Killed by Reaper!");
-
-       if (playerDamageFlash != null)
-       {
-          playerDamageFlash.SetActive(true);
-       }
-
-       if (player != null)
-       {
-            Destroy(player);
-       }
-
-       youLose();
-    }
-   
 
 }

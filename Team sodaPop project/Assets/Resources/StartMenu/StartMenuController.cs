@@ -40,21 +40,19 @@ public class StartMenuController : MonoBehaviour
 
     }
    
+    
+  
     void Start()
     {
-        
-
-        // bring focus to first button
-        if (MenuController.instance.restartCount == 0)
-        {
-            gamemanager.instance.statePause();
-            InitializeUI();
+        gamemanager.instance.statePause();
+        InitializeUI();
         contentContainer.style.display = DisplayStyle.Flex;
         isShowing = true;
-            startButton.Focus();
-        }
+        startButton.Focus();
 
     }
+
+   
 
     private void InitializeUI()
     {
@@ -84,11 +82,12 @@ public class StartMenuController : MonoBehaviour
 
     void OnStartButtonClicked(ClickEvent evt)
     {
-        
-        
-        contentContainer.style.display = DisplayStyle.None;
+
         isShowing = false;
+        contentContainer.style.display = DisplayStyle.None;
         gamemanager.instance.stateUnpause();
+
+        enabled = false;
 
 
     }

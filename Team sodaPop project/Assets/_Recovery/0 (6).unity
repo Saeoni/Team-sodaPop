@@ -20425,10 +20425,6 @@ PrefabInstance:
       propertyPath: startMenuController
       value: 
       objectReference: {fileID: 1830209052}
-    - target: {fileID: 2046546988829622410, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3204471532910546040, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: m_IsActive
       value: 1

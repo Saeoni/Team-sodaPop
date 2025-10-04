@@ -58,6 +58,7 @@
     -unity-background-image-tint-color: rgba(204, 188, 188, 0.98);
     color: rgb(253, 0, 0);
     scale: 1.1 1;
+    transition-duration: 0.1s;
 }
 
 .scrim-and-all {
@@ -74,4 +75,25 @@
 .scrim--fadein {
     opacity: 1;
     transition-property: opacity;
+}
+
+.button_resume {
+}
+
+.button_resume:hover {
+    color: rgb(96, 212, 67);
+}
+
+.buttons_respawn {
+}
+
+.buttons_respawn:hover {
+    color: rgb(85, 202, 58);
+}
+
+.buttons_restart {
+}
+
+.buttons_restart:hover {
+    color: rgb(241, 132, 0);
 }

@@ -33,6 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     float shootTimer;
     bool isSprinting;
     bool isTired = false;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

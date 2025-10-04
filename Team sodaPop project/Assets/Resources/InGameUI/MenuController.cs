@@ -29,31 +29,20 @@ public class MenuController : MonoBehaviour
     {
         instance = this;
         
-
-
-    }
-     void Start()
-    {
-        InitializeUI();
-        CloseMenu();
     }
 
-    private void Update()
+    void OnEnable()
     {
-        if (gamemanager.instance.isPaused && !StartMenuController.instance.isShowing)
-        {
-            OpenPauseMenu();
-        }
-        else if (!gamemanager.instance.isPaused && contentContainer.style.display == DisplayStyle.Flex)
-        {
-            CloseMenu();
-        }
-    
-}
-    public void OnEnable()
-    {
-        OpenPauseMenu();
+            InitializeUI();
+           
     }
+
+    //void Update()
+    //{
+    //     if (!gamemanager.instance.isPaused && contentContainer.style.display == DisplayStyle.Flex)
+    //        CloseMenu();
+        
+    //}
 
 
     private void InitializeUI()
@@ -85,7 +74,7 @@ public class MenuController : MonoBehaviour
         contentContainer.style.display = DisplayStyle.Flex;
         
         contentContainer.AddToClassList("scrim--fadein");
-        resumeButton.Focus();
+        //resumeButton.Focus();
 
 
 
@@ -113,25 +102,26 @@ public class MenuController : MonoBehaviour
 
     public void OpenLoseMenu()
         {
-        InitializeUI();
+        contentContainer.AddToClassList("scrim--fadein");
         menuTitle = contentContainer.Q<Label>("Menu_Title");
         Color color = new Color(1f, 0f, 0f); // Red color
         menuTitle.text = "";
-        
-        
+        SayRandomFromList(menuTitle, youLosePhrases, 5f, color);
 
-        contentContainer.style.display = DisplayStyle.Flex;
-        contentContainer.AddToClassList("scrim--fadein");
         resumeButton.style.display = DisplayStyle.None;
         respawnButton.style.display = DisplayStyle.Flex;
-        respawnButton.Focus();
-        StartCoroutine(SayRandomFromList(menuTitle, youLosePhrases, 5f, color));
+        //settingsButton
+        contentContainer.style.display = DisplayStyle.Flex;
+
         StartCoroutine(FlashButtonText(respawnButton, color, 5f));
+        
+        // restartButton.Focus();
+
     }
 
     public void OpenWinMenu()
         {
-        InitializeUI();
+        
         menuTitle = contentContainer.Q<Label>("Menu_Title");
         Color color = new Color(1f, 0.84f, 0f); // Gold color
         
@@ -139,13 +129,10 @@ public class MenuController : MonoBehaviour
         contentContainer.AddToClassList("scrim--fadein");
         resumeButton.style.display = DisplayStyle.None;
         respawnButton.style.display = DisplayStyle.None;
-        restartButton.Focus();
-        StartCoroutine(SayRandomFromList(menuTitle, youWinPhrases, 5f, color));
-        StartCoroutine(FlashButtonText(respawnButton, color, 5f));
+        SayRandomFromList(menuTitle, youWinPhrases, 5f, color);
+        
 
 
-
-        StartCoroutine(FlashButtonText(resumeButton, color, 5f));
         //mainMenuButtonFocus();
     }
     private void OnResumeButtonClicked(ClickEvent evt)
@@ -182,8 +169,12 @@ public class MenuController : MonoBehaviour
     {
         Color originalColor = textElement.style.color.value;
         textElement.style.color = flashColor;
-        yield return new WaitForSeconds(duration);
-        textElement.style.color = originalColor;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(duration);
+            textElement.style.color = originalColor;
+        }
     }
 
     IEnumerator FlashButtonText(Button button, Color flashColor, float duration)
@@ -191,21 +182,20 @@ public class MenuController : MonoBehaviour
         Color originalColor = button.style.color.value;
         button.style.color = flashColor;
 
-        // Change the color of the button text
-       
-       
-        
-        yield return new WaitForSeconds(duration);
-        button.style.color = originalColor;
+        while (true)
+        {
+            
+            yield return new WaitForSeconds(duration);
+            button.style.color = originalColor;
+        }
     }
 
-    IEnumerator SayRandomFromList(Label textElement, string[] phrases, float duration, Color color)
+    void SayRandomFromList(Label textElement, string[] phrases, float duration, Color color)
     {
         int randomIndex = Random.Range(0, phrases.Length);
         string selectedPhrase = phrases[randomIndex];
         textElement.text = selectedPhrase;
-        FlashText(textElement, color, duration);
-        yield return new WaitForSeconds(duration);
+        StartCoroutine(FlashText(textElement, color, duration));
         
     }
 

@@ -351,7 +351,7 @@ public class ReaperAI : MonoBehaviour
 
     public void FinalizeKill()
     {
-        gamemanager.instance.OnPlayerKilledByReaper();
+        Debug.Log("Player Killed by Reaper!");
 
         reaperIsActive = false;
     }
