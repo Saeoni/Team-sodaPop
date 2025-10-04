@@ -19,8 +19,9 @@ public class StartMenuController : MonoBehaviour
     private VisualElement title;
     private VisualElement subtitle;
 
-    private Button startButton;
-    private Button quitButton;
+    public Button startButton;
+    public Button quitButton;
+    public Button setting;
     //private Button creditsButton;
     //private Button backButton;
     private VisualElement creditsScreen;
@@ -38,27 +39,24 @@ public class StartMenuController : MonoBehaviour
     {
         
         instance = this;
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        InitializeUI();
-        contentContainer.style.display = DisplayStyle.Flex;
-        isShowing = true;
-
-
+       
 
     }
    
 
     void Start()
     {
-        gamemanager.instance.statePause();
+        
 
         // bring focus to first button
+        
+        InitializeUI();
+        contentContainer.style.display = DisplayStyle.Flex;
+        isShowing = true;
         startButton.Focus();
 
-
-
-
     }
+
     private void InitializeUI()
     {
 
@@ -89,10 +87,13 @@ public class StartMenuController : MonoBehaviour
     {
 
 
-        gamemanager.instance.stateUnpause();
+        
         contentContainer.style.display = DisplayStyle.None;
+        isShowing = false;
+        gamemanager.instance.startMenuController.gameObject.SetActive(false);
         
-        
+
+
 
     }
    

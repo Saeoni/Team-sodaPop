@@ -14,9 +14,9 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuUI;
 
-    [SerializeField] HUDController hudUI;
-    [SerializeField] MenuController uiController;
-    [SerializeField] StartMenuController startMenuController;
+    public HUDController hudUI;
+    public MenuController menuController;
+    public StartMenuController startMenuController;
 
     public GameObject playerHPBar;
     public Image playerHPBarFill;
@@ -51,16 +51,33 @@ public class gamemanager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-        
+        startMenuController = this.GetComponent<StartMenuController>();
+        hudUI = this.GetComponent<HUDController>();
+        menuController = this.GetComponent<MenuController>();
 
-        
+
+
     }
 
+    void Start()
+    {
+        // Turn on the start menu
+        statePause();
+
+
+        startMenuController.enabled = true;
+        startMenuController.startButton.Focus();    
+
+        //startMenuController.GetComponent<Parent>.SetActive(true);
+    }
     void Update()
     {
-
-        if (Input.GetButtonDown("Cancel") && StartMenuController.instance.isShowing)
+        
+        if (Input.GetButtonDown("Cancel"))
         {
+            if (startMenuController.isShowing)
+                return;
+
             if (menuActive == null)
             {
 
@@ -70,14 +87,13 @@ public class gamemanager : MonoBehaviour
                 menuActive = menuUI;
 
                 menuActive.SetActive(true);
-                uiController.OpenPauseMenu();
+                menuController.OpenPauseMenu();
 
             }
             else if (menuActive == menuUI)
             {
              
                 stateUnpause();
-                
                 
 
 
@@ -110,7 +126,7 @@ public class gamemanager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        uiController.CloseMenu();
+        menuController.CloseMenu();
         if (menuActive != null)
             menuActive.SetActive(false);
         menuActive = null;
@@ -124,7 +140,7 @@ public class gamemanager : MonoBehaviour
        statePause();
        menuActive = menuUI;
        menuActive.SetActive(true);
-        uiController.OpenWinMenu();
+        menuController.OpenWinMenu();
          
         Debug.Log("Player exited the maze. You win!");      
     }
@@ -143,7 +159,7 @@ public class gamemanager : MonoBehaviour
         statePause();
         menuActive = menuUI;
         menuActive.SetActive(true);
-        uiController.OpenLoseMenu();
+        menuController.OpenLoseMenu();
         
         
     }

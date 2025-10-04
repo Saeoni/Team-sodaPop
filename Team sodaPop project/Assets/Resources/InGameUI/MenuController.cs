@@ -7,9 +7,11 @@ using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
+    public static MenuController instance;
+
     [SerializeField] string[] youLosePhrases;
     [SerializeField] string[] youWinPhrases;
-    public static MenuController instance;
+    
     private VisualElement contentContainer;
     
     
