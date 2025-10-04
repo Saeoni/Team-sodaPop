@@ -49,7 +49,7 @@ public class StartMenuController : MonoBehaviour
         
 
         // bring focus to first button
-        
+        gamemanager.instance.statePause();
         InitializeUI();
         contentContainer.style.display = DisplayStyle.Flex;
         isShowing = true;
@@ -85,14 +85,11 @@ public class StartMenuController : MonoBehaviour
 
     void OnStartButtonClicked(ClickEvent evt)
     {
-
-
+        
         
         contentContainer.style.display = DisplayStyle.None;
         isShowing = false;
-        gamemanager.instance.startMenuController.gameObject.SetActive(false);
-        
-
+        gamemanager.instance.stateUnpause();
 
 
     }

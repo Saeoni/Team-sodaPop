@@ -24,19 +24,23 @@ public class MenuController : MonoBehaviour
     private Button respawnButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Awake()
+    void Awake()
     {
         instance = this;
         
 
 
     }
-    private void Start()
+     void Start()
     {
         InitializeUI();
         CloseMenu();
     }
 
+    private void OnEnable()
+    {
+        OpenPauseMenu();
+    }
 
     private void InitializeUI()
     {

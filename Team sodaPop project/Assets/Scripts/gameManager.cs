@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static StartMenuController;
+using static MenuController;
+using static HUDController;
 
 
 
@@ -51,33 +54,18 @@ public class gamemanager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-        startMenuController = this.GetComponent<StartMenuController>();
-        hudUI = this.GetComponent<HUDController>();
-        menuController = this.GetComponent<MenuController>();
+        
 
 
 
     }
 
-    void Start()
-    {
-        // Turn on the start menu
-        statePause();
-
-
-        startMenuController.enabled = true;
-        startMenuController.startButton.Focus();    
-
-        //startMenuController.GetComponent<Parent>.SetActive(true);
-    }
     void Update()
     {
         
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !startMenuController.isShowing)
         {
-            if (startMenuController.isShowing)
-                return;
-
+            
             if (menuActive == null)
             {
 
@@ -87,7 +75,6 @@ public class gamemanager : MonoBehaviour
                 menuActive = menuUI;
 
                 menuActive.SetActive(true);
-                menuController.OpenPauseMenu();
 
             }
             else if (menuActive == menuUI)
