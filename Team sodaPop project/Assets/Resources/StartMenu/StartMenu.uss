@@ -88,6 +88,13 @@
     scale: 1.1 1.1;
     bottom: auto;
     position: relative;
+    letter-spacing: 13px;
+    border-left-color: rgb(143, 99, 99);
+    border-right-color: rgb(143, 99, 99);
+    border-top-color: rgb(143, 99, 99);
+    border-bottom-color: rgb(143, 99, 99);
+    translate: 0 0;
+    background-position-x: left -25px;
 }
 
 .startbutton {

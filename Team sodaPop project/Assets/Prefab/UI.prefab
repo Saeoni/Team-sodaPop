@@ -68,9 +68,9 @@ MonoBehaviour:
   isPaused: 0
   isStealthed: 0
   playerIsDead: 0
-  hudController: {fileID: 0}
-  menuController: {fileID: 0}
-  startMenuController: {fileID: 0}
+  hudController: {fileID: 3246572645508800766}
+  menuController: {fileID: 8415601040486893402}
+  startMenuController: {fileID: 3625367836628216804}
 --- !u!1 &2032077206844361211
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +842,7 @@ MonoBehaviour:
   warningMessages: []
   reticle: {fileID: 0}
   keyCount: 0
+  keyMaxCount: 4
   timeElapsed: 0
 --- !u!1 &7259026164555933260
 GameObject:
@@ -1124,7 +1125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3133817823681529122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1208,6 +1209,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   onQuitButtonClicked:
     m_PersistentCalls:
