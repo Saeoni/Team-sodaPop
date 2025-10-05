@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.AI;
 using System;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class ReaperAI : MonoBehaviour
 {
@@ -43,7 +43,7 @@ public class ReaperAI : MonoBehaviour
     [SerializeField] AnimationClip turnRight;
     [SerializeField] AnimationClip turnLeft;
     [SerializeField] AnimationClip[] idle;
- 
+
     [Header("Attack Settings")]
     [SerializeField] float killRange;
     [SerializeField] float meleCooldown;
@@ -86,7 +86,7 @@ public class ReaperAI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-         startingPos = transform.position;
+        startingPos = transform.position;
         player = gamemanager.instance.player.transform;
         StartCoroutine(InitializeReaper());
         player_ = GameObject.FindWithTag("Player");
@@ -137,7 +137,7 @@ public class ReaperAI : MonoBehaviour
         switch (selectedKill)
         {
             case KillType.TeleportPull: performKill = TeleportPullKill; break;
-            case KillType.ScytheSlam:   performKill = ScytheSlamKill;   break;
+            case KillType.ScytheSlam: performKill = ScytheSlamKill; break;
             case KillType.TeleportGrab: performKill = TeleportGrabKill; break;
         }
     }
@@ -187,7 +187,7 @@ public class ReaperAI : MonoBehaviour
         yield return PlayClip(comeOut1Clip, 2, 0.1f);
         yield return PlayClip(comeOut2Clip, 2, 0.1f);
 
-        reaperIsActive = false; 
+        reaperIsActive = false;
     }
 
     void TryTriggerKill()
@@ -195,8 +195,8 @@ public class ReaperAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) <= killRange)
         {
             performKill?.Invoke();
-            
-            
+
+
         }
     }
 
@@ -215,10 +215,10 @@ public class ReaperAI : MonoBehaviour
         yield return SpawnTeleport(3f, pullOffset);
 
         yield return PlayClip(throwClip, 0, 0.1f);
-        
+
         animator.Play(throwCatchClip.name, 0);
         yield return new WaitForSeconds(0.5f);
-        yield return new WaitUntil(() => activeProjectile != null && activeProjectile.pullComplete);   
+        yield return new WaitUntil(() => activeProjectile != null && activeProjectile.pullComplete);
     }
 
     void ScytheSlamKill()
@@ -237,11 +237,11 @@ public class ReaperAI : MonoBehaviour
         {
             yield return null;
         }
-        
+
         agent.isStopped = true;
         transform.LookAt(player);
         animator.Play(punch3Clip.name, 0);
-        yield return new WaitForSeconds(0.5f);   
+        yield return new WaitForSeconds(0.5f);
     }
 
     void TeleportGrabKill()
@@ -259,9 +259,9 @@ public class ReaperAI : MonoBehaviour
         yield return PlayClip(telepathicLoopClip, 0, 0.1f);
         yield return new WaitForSeconds(grabHoldTime);
         StartCoroutine(ExitTeleportWithPlayer());
-         
+
     }
- 
+
     IEnumerator PlayClip(AnimationClip clip, int layer = 0, float buffer = 0f)
     {
         if (clip == null)
@@ -320,7 +320,7 @@ public class ReaperAI : MonoBehaviour
     public void GrabPlayerToHand()
     {
         if (leftHandSocket == null || player == null) return;
-        
+
         var pc = player.GetComponent<playerController>();
         if (pc != null) pc.enabled = false;
 

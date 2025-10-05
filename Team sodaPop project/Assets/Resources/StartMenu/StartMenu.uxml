@@ -1,13 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/StartMenu/StartMenu.uss?fileID=7433441132597879392&amp;guid=46231d5bd6369054eb2f1908cf49ea9f&amp;type=3#StartMenu" />
     <ui:VisualElement name="ContentContainer" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.89); flex-wrap: nowrap; justify-content: center; align-items: center; flex-direction: column; background-position-y: center; -unity-text-align: upper-center; white-space: normal; overflow: visible; text-overflow: clip; -unity-background-scale-mode: stretch-to-fill; flex-shrink: initial; width: 1920px; height: 1080px; align-content: auto; align-self: center; flex-basis: auto; position: relative; background-position-x: center; max-width: none; max-height: none; rotate: 0 0 0 0;">
-        <ui:VisualElement name="Scrim2" enabled="true" class="scrim2" style="transition-property: all, ignored; transition-duration: 15s, 0s; transition-timing-function: ease, ease; transition-delay: 0s, 0s;" />
+        <ui:VisualElement name="Scrim2" enabled="true" class="scrim2" />
         <ui:VisualElement name="Scrim1" enabled="true" class="scrim1" />
         <ui:Label text="Horror Title Here&#10;" name="Title" enabled="false" tabindex="-1" double-click-selects-word="false" class="title">
             <ui:Label text="Press Start to Enter" name="Subtitle" class="subtitle" />
         </ui:Label>
         <ui:Button text="Start" name="StartButton" double-click-selects-word="false" focusable="true" usage-hints="-1" selectable="true" enabled="true" triple-click-selects-line="false" class="button startbutton" />
-        <ui:Button text="Quit" name="QuitButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" tabindex="1" class="button" />
         <ui:Button text="Menu" name="MenuButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" tabindex="3" class="button" />
+        <ui:Button text="Quit" name="QuitButton" enabled="true" triple-click-selects-line="false" double-click-selects-word="false" selectable="true" tabindex="1" class="button" />
     </ui:VisualElement>
 </ui:UXML>

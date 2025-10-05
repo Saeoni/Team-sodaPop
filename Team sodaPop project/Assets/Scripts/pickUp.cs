@@ -1,10 +1,9 @@
 using UnityEngine;
-using System.Collections;
 
-public class pickUp : MonoBehaviour
+public class PickUp : MonoBehaviour
 {
 
-    enum pickupType { health, key, stealth, gun}
+    enum pickupType { health, key, stealth, gun }
 
     [SerializeField] pickupType type;
 
@@ -35,15 +34,15 @@ public class pickUp : MonoBehaviour
 
         else if (type == pickupType.key)
         {
-            HUDController.instance.keyCount++;
-            HUDController.instance.UpdateKeyCount();
+
+            gamemanager.instance.hudController.UpdateKeyCount();
 
             Destroy(gameObject);
         }
 
         else if (type == pickupType.stealth)
         {
-            HUDController.instance.StealthTimer(10.0f);
+            gamemanager.instance.hudController.StealthTimer(10.0f);
             Destroy(gameObject);
         }
 

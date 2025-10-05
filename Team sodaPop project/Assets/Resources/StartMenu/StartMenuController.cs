@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class StartMenuController : MonoBehaviour
 {
 
-    public static StartMenuController instance;
+    //public static StartMenuController instance;
 
 
 
@@ -48,9 +48,9 @@ public class StartMenuController : MonoBehaviour
     public bool isShowing;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    void OnEnable()
     {
-        instance = this;
+        //instance = this;
 
         InitializeUI();
 

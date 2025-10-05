@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class gamemanager : MonoBehaviour
 {
 
@@ -38,9 +37,9 @@ public class gamemanager : MonoBehaviour
     public bool isStealthed;
     public bool playerIsDead;
 
-    private HUDController hudController;
-    private MenuController menuController;
-    private StartMenuController startMenuController;
+    public HUDController hudController;
+    public MenuController menuController;
+    public StartMenuController startMenuController;
 
     private int gameGoalTotal;
     float timeScaleOrig;
@@ -68,14 +67,7 @@ public class gamemanager : MonoBehaviour
         startMenuUI.SetActive(true);
 
     }
-    private void Start()
-    {
 
-        //hudController.UpdateAmmoCount(ammoCur, ammoMax);
-        //hudController.UpdateEnemyCount(0);
-        //hudController.UpdateKeyCount(0);
-        //hudController.UpdateModuleCount(0);
-    }
 
 
     void Update()

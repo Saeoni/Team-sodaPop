@@ -1,11 +1,9 @@
-using UnityEngine;
-using System.Collections;
-using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class doorFunctions : MonoBehaviour
 {
-    enum doorType { locked, enemy, shoot}
+    enum doorType { locked, enemy, shoot }
 
     [SerializeField] doorType type;
     [SerializeField] List<GameObject> enemies;
@@ -42,16 +40,15 @@ public class doorFunctions : MonoBehaviour
             if (canOpen)
             {
                 Destroy(gameObject);
-            }    
+            }
         }
     }
 
     void unlockDoor()
     {
-        if (HUDController.instance.keyCount > 0)
+        if (gamemanager.instance.hudController.keyCount > 0)
         {
-            HUDController.instance.keyCount--;
-            HUDController.instance.UpdateKeyCount();
+            gamemanager.instance.hudController.keyCount--;
 
             Destroy(gameObject);
         }
@@ -67,7 +64,7 @@ public class doorFunctions : MonoBehaviour
             }
         }
 
-        if(enemyCount==0)
+        if (enemyCount == 0)
         {
             canOpen = true;
         }

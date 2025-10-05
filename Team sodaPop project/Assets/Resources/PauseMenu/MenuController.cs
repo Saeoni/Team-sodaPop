@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
-    public static MenuController instance;
+
 
 
     [SerializeField] string[] youLosePhrases;
@@ -34,9 +34,9 @@ public class MenuController : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void Awake()
+    void OnEnable()
     {
-        instance = this;
+
         InitializeUI();
 
 

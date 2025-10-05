@@ -29,9 +29,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3133817823681529122}
   - {fileID: 6751528192884312727}
   - {fileID: 7759252250046158481}
+  - {fileID: 3133817823681529122}
   m_Father: {fileID: 6692134597531457594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -68,6 +68,9 @@ MonoBehaviour:
   isPaused: 0
   isStealthed: 0
   playerIsDead: 0
+  hudController: {fileID: 0}
+  menuController: {fileID: 0}
+  startMenuController: {fileID: 0}
 --- !u!1 &2032077206844361211
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player Spawn Pos
   - MinimapCamera
+  - CreaperCamera
   layers:
   - Default
   - TransparentFX

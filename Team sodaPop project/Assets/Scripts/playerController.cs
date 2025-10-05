@@ -1,13 +1,12 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
+using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
-    [SerializeField]  int HP;
+    [SerializeField] int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] float jumpSpeed;
@@ -33,7 +32,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     float shootTimer;
     bool isSprinting;
     bool isTired = false;
-   
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,6 +40,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HPOrig = HP;
         speedOrig = speed;
         updatePlayerUI();
+        gamemanager.instance.playerScript = this;
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer += Time.deltaTime;
 
-        if(controller.isGrounded)
+        if (controller.isGrounded)
         {
             jumpCount = 0;
             playerVel = Vector3.zero;
@@ -78,7 +78,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         controller.Move(playerVel * Time.deltaTime);
 
         // shooting mechanics
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0  && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate)
             shoot();
 
         selectGun();
@@ -88,7 +88,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void jump()
     {
-        if(Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
@@ -119,13 +119,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         updatePlayerUI();
 
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist)) 
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist))
         {
             Debug.Log(hit.collider.name);
 
             IDamage dmg = hit.collider.GetComponent<IDamage>();
 
-            if(dmg != null)
+            if (dmg != null)
             {
                 dmg.takeDamage(shootDamage);
             }
@@ -143,7 +143,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HP -= amount;
         updatePlayerUI();
         StartCoroutine(flashDamage());
-        if(HP <= 0)
+        if (HP <= 0)
         {
             gamemanager.instance.youLose();
         }
@@ -156,14 +156,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void heal(int amount)
     {
-        if(HP < HPOrig)
+        if (HP < HPOrig)
         {
             HP += amount;
             updatePlayerUI();
             StartCoroutine(flashHeal());
         }
 
-        else if(HP > HPOrig)
+        else if (HP > HPOrig)
         {
             HP = HPOrig;
             updatePlayerUI();
@@ -172,13 +172,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void updatePlayerUI()
     {
-        gamemanager.instance.playerHPBarFill.fillAmount = (float)HP / HPOrig;
 
-        if(gunList.Count > 0)
+
+        if (gunList.Count > 0)
         {
             gamemanager.instance.ammoCur = gunList[gunListPos].ammoCur;
             gamemanager.instance.ammoMax = gunList[gunListPos].ammoMax;
-            HUDController.instance.UpdatePlayerUI();
+
+
 
         }
     }
@@ -205,9 +206,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     }
 
+    public float getHPPercent()
+    {
+
+        return (float)HP / HPOrig;
+
+
+
+    }
     void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
         {
             gunListPos++;
             changeGun();
