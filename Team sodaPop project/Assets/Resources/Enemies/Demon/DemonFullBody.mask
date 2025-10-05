@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DemonFullBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Ball-mesh
+    m_Weight: 1
+  - m_Path: Demon
+    m_Weight: 1
+  - m_Path: Demon/ElbowIK.L
+    m_Weight: 1
+  - m_Path: Demon/ElbowIK.R
+    m_Weight: 1
+  - m_Path: Demon/Foot.L
+    m_Weight: 1
+  - m_Path: Demon/Foot.L/FootFingerA.L
+    m_Weight: 1
+  - m_Path: Demon/Foot.L/FootFingerB1.L
+    m_Weight: 1
+  - m_Path: Demon/Foot.L/FootFingerB1.L/FootFingerB2.L
+    m_Weight: 1
+  - m_Path: Demon/Foot.L/FootFingerC1.L
+    m_Weight: 1
+  - m_Path: Demon/Foot.L/FootFingerC1.L/FootFingerC2.L
+    m_Weight: 1
+  - m_Path: Demon/Foot.R
+    m_Weight: 1
+  - m_Path: Demon/Foot.R/FootFingerA.R
+    m_Weight: 1
+  - m_Path: Demon/Foot.R/FootFingerB1.R
+    m_Weight: 1
+  - m_Path: Demon/Foot.R/FootFingerB1.R/FootFingerB2.R
+    m_Weight: 1
+  - m_Path: Demon/Foot.R/FootFingerC1.R
+    m_Weight: 1
+  - m_Path: Demon/Foot.R/FootFingerC1.R/FootFingerC2.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.L/FingerA1.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.L/FingerA1.L/FingerA2.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.L/FingerB1.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.L/FingerB1.L/FingerB2.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.L/FingerC1.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.L/FingerC1.L/FingerC2.L
+    m_Weight: 1
+  - m_Path: Demon/Hand.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/Ball-root
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/FingerA1.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/FingerA1.R/FingerA2.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/FingerB1.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/FingerB1.R/FingerB2.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/FingerC1.R
+    m_Weight: 1
+  - m_Path: Demon/Hand.R/FingerC1.R/FingerC2.R
+    m_Weight: 1
+  - m_Path: Demon/KneeIK.L
+    m_Weight: 1
+  - m_Path: Demon/KneeIK.R
+    m_Weight: 1
+  - m_Path: Demon/Pelvis
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Leg1.L
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Leg1.L/Leg2.L
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Leg1.L/Leg2.L/Leg3.L
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Leg1.R
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Leg1.R/Leg2.R
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Leg1.R/Leg2.R/Leg3.R
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Neck
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Neck/Head
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Shoulder.L
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Shoulder.L/Arm1.L
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Shoulder.L/Arm1.L/Arm2.L
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Shoulder.R
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Shoulder.R/Arm1.R
+    m_Weight: 1
+  - m_Path: Demon/Pelvis/Spine1/Spine2/Shoulder.R/Arm1.R/Arm2.R
+    m_Weight: 1
+  - m_Path: Demon-mesh
+    m_Weight: 1

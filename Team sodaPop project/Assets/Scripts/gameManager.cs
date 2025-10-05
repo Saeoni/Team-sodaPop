@@ -30,7 +30,7 @@ public class gamemanager : MonoBehaviour
     public int ammoMax;
     public GameObject playerSpawnPos;
     public GameObject player;
-    public playerController playerScript;
+    //public playerController playerScript;
 
 
     public bool isPaused;
@@ -52,7 +52,7 @@ public class gamemanager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+        //playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
         menuController = menuUI.GetComponent<MenuController>();
         hudController = hudUI.GetComponent<HUDController>();

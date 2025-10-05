@@ -40,7 +40,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HPOrig = HP;
         speedOrig = speed;
         updatePlayerUI();
-        gamemanager.instance.playerScript = this;
+        //gamemanager.instance.playerScript = this;
     }
 
     // Update is called once per frame

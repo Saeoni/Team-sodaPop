@@ -11,25 +11,25 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - Player
   - Water
   - UI
-  - Projectile
-  - scythe
+  - Scythe
+  - Enemy
   - Gun
-  - Minimap
-  - ReaperMinimap
-  - PauseMenu
-  - Player
+  - Projectile
+  - 
+  - 
+  - 
+  - Menu
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - MM_Environment
+  - MM_Reaper
   - 
   - 
   - 

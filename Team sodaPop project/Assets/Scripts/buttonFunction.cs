@@ -17,16 +17,16 @@ public class ButtonFunctions : MonoBehaviour
 
     public void quit()
     {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
         Application.Quit();
-    #endif
+#endif
     }
 
     public void respawn()
     {
-        gamemanager.instance.playerScript.spawnPlayer();
+        //gamemanager.instance.playerScript.spawnPlayer();
         gamemanager.instance.stateUnpause();
     }
 }
