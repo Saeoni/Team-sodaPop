@@ -61,9 +61,10 @@ public class HUDController : MonoBehaviour
 
         enemyCountText = root.Q<Label>("Enemy_Count");
         enemiesTitle = root.Q<Label>("Enemies_Title");
+
         keyTitle = root.Q<Label>("Key_Title");
         keyCountText = root.Q<Label>("Key_Count");
-        keyCount = 0;
+
         //keyMaxCount = 4;
         stealthTimerText = root.Q<Label>("Stealth_Timer");
         stealthTimerText.text = "";
@@ -89,29 +90,28 @@ public class HUDController : MonoBehaviour
         //minimapIcon = root.Q<VisualElement>("Minimap_Icon");
         //minimapIcon.style.display = DisplayStyle.None; // Hide minimap icon initially
 
-        //collectedModulesCount.text = "0/0";
 
 
+        enemyCount = 0;
+        enemyCountText.text = enemyCount.ToString("F0");
+        keyCount = 0;
+        keyCountText.text = keyCount.ToString("F0") + "/" + keyMaxCount.ToString("F0");
+        enemiesTitle.text = "Enemies Remaining:";
+        keyTitle.text = "Keys Collected:";
+        collectedModulesTitle.text = "Modules Collected:";
+        collectedModulesCount.text = "0/0";
+
+
+        gameTimerMinute = 0;
+        gameTimerSecond = 0;
+        timeElapsed = 0;
     }
 
     void Awake()
     {
-        enemyCountText.text = "0";
-        enemyCount = 0;
-        keyCountText.text = "";
-        keyCount = 0;
-        enemiesTitle.text = "Enemies Remaining:";
-        keyTitle.text = "Keys Collected:";
-        collectedModulesTitle.text = "Modules Collected:";
-
 
 
         contentContainer.style.display = DisplayStyle.Flex;
-        enemyCount = 0;
-        gameTimerMinute = 0;
-        gameTimerSecond = 0;
-        timeElapsed = 0;
-
         minimap.style.display = DisplayStyle.None; // Hide minimap initially
         HideUI();
 

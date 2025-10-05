@@ -47,18 +47,11 @@ public class StartMenuController : MonoBehaviour
 
     public bool isShowing;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void OnEnable()
-    {
-        //instance = this;
 
-        InitializeUI();
-
-    }
 
     void Start()
     {
-
+        InitializeUI();
         Debug.Log("Start Button Is Focused");
         Time.timeScale = timeSpeed;
         // gamemanager.instance.statePause();
