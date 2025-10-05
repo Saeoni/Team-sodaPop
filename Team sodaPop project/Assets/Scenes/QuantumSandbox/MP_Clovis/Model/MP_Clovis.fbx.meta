@@ -15,27 +15,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_clovisHair
-    second: {fileID: 2100000, guid: 888e0356f5b02af48bbd4db8d63bfc6b, type: 2}
+    second: {fileID: 2100000, guid: 52e879e9fb984fb44acc79cebb9a2e85, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_Clovis
-    second: {fileID: 2100000, guid: 164506ffe2f283640921141ec70a60a8, type: 2}
+    second: {fileID: 2100000, guid: bf2f8b87c4cc69d4e951341da2dbfbf0, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Clovis_Exploded_LowRes_EyesOut_SP_Clovis_Low_phong_AlbedoTransparency
-    second: {fileID: 2800000, guid: 47c96e3019e420247aefd8425e10d2a2, type: 3}
+    second: {fileID: 2800000, guid: 321429a37bbd48248bda8ab6843be8cf, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Clovis_Exploded_LowRes_EyesOut_SP_Clovis_Low_phong_Normal
-    second: {fileID: 2800000, guid: e6e36610b7c9e1e4cbcad758317f75aa, type: 3}
+    second: {fileID: 2800000, guid: f0f4d52c4c8c054469141e863e604a9c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Clovis_HairCards_phong1_AlbedoTransparency
-    second: {fileID: 2800000, guid: 95804d9e16cde3f498bce742f45cdfee, type: 3}
+    second: {fileID: 2800000, guid: 8532d4d6915a90b4db54c11d8505acfd, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -59,7 +59,86 @@ ModelImporter:
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - Clovis
+    - Clovis/Clovis_body_low
+    - Clovis/Clovis_Boot_Left_low
+    - Clovis/Clovis_Boot_Right_low
+    - Clovis/Clovis_Bracers_low
+    - Clovis/Clovis_cowl_low
+    - Clovis/Clovis_CowlAttachmentBack_low
+    - Clovis/Clovis_CowlAttachmentFront_low
+    - Clovis/Clovis_CowlAttachmentSide_low
+    - Clovis/Clovis_CowlBill_low
+    - Clovis/Clovis_duster_low
+    - Clovis/Clovis_Eye_Left_Low
+    - Clovis/Clovis_Eye_Right_Low
+    - Clovis/Clovis_Pants_low
+    - Clovis/Clovis_Pauldron_low
+    - Clovis/Clovis_StrapLoop_low
+    - Clovis/Clovis_Vest_low
+    - Clovis/Clovis_Zipper_Low
+    - Clovis/Clovis_Hair
+    - Clovis2_Reference
+    - Clovis2_Reference/Clovis2_Hips
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_LeftUpLeg
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_LeftUpLeg/Clovis2_LeftLeg
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_LeftUpLeg/Clovis2_LeftLeg/Clovis2_LeftFoot
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_LeftUpLeg/Clovis2_LeftLeg/Clovis2_LeftFoot/Clovis2_LeftToeBase
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_RightUpLeg
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_RightUpLeg/Clovis2_RightLeg
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_RightUpLeg/Clovis2_RightLeg/Clovis2_RightFoot
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_RightUpLeg/Clovis2_RightLeg/Clovis2_RightFoot/Clovis2_RightToeBase
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftThumb
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftThumb/Clovis2_LeftThumb1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftThumb/Clovis2_LeftThumb1/Clovis2_LeftThumb2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftIndex
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftIndex/Clovis2_LeftIndex1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftIndex/Clovis2_LeftIndex1/Clovis2_LeftIndex2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftIndex/Clovis2_LeftIndex1/Clovis2_LeftIndex2/Clovis2_LeftIndex3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftMiddle
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftMiddle/Clovis2_LeftMiddle1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftMiddle/Clovis2_LeftMiddle1/Clovis2_LeftMiddle2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftMiddle/Clovis2_LeftMiddle1/Clovis2_LeftMiddle2/Clovis2_LeftMiddle3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftRing
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftRing/Clovis2_LeftRing1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftRing/Clovis2_LeftRing1/Clovis2_LeftRing2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftRing/Clovis2_LeftRing1/Clovis2_LeftRing2/Clovis2_LeftRing3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftPinky
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftPinky/Clovis2_LeftPinky1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftPinky/Clovis2_LeftPinky1/Clovis2_LeftPinky2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_LeftShoulder/Clovis2_LeftArm/Clovis2_LeftForeArm/Clovis2_LeftHand/Clovis2_LeftPinky/Clovis2_LeftPinky1/Clovis2_LeftPinky2/Clovis2_LeftPinky3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightThumb
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightThumb/Clovis2_RightThumb1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightThumb/Clovis2_RightThumb1/Clovis2_RightThumb2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightIndex
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightIndex/Clovis2_RightIndex1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightIndex/Clovis2_RightIndex1/Clovis2_RightIndex2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightIndex/Clovis2_RightIndex1/Clovis2_RightIndex2/Clovis2_RightIndex3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightMiddle
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightMiddle/Clovis2_RightMiddle1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightMiddle/Clovis2_RightMiddle1/Clovis2_RightMiddle2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightMiddle/Clovis2_RightMiddle1/Clovis2_RightMiddle2/Clovis2_RightMiddle3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightRing
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightRing/Clovis2_RightRing1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightRing/Clovis2_RightRing1/Clovis2_RightRing2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightRing/Clovis2_RightRing1/Clovis2_RightRing2/Clovis2_RightRing3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightPinky
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightPinky/Clovis2_RightPinky1
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightPinky/Clovis2_RightPinky1/Clovis2_RightPinky2
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_RightShoulder/Clovis2_RightArm/Clovis2_RightForeArm/Clovis2_RightHand/Clovis2_RightPinky/Clovis2_RightPinky1/Clovis2_RightPinky2/Clovis2_RightPinky3
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_Neck
+    - Clovis2_Reference/Clovis2_Hips/Clovis2_Spine/Clovis2_Spine1/Clovis2_Neck/Clovis2_Head
     extraUserProperties: []
     clipAnimations: []
     isReadable: 0
@@ -84,7 +163,7 @@ ModelImporter:
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
-    skinWeightsMode: 0
+    skinWeightsMode: 1
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
