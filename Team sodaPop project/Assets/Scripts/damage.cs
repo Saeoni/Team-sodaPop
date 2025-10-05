@@ -8,6 +8,10 @@ public class damage : MonoBehaviour
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
+    [Header("Scythe Collider Control")]
+    [SerializeField] Collider scytheCollider;
+    [SerializeField] float activationDelay = 2f;
+
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
     [SerializeField] int speed;
@@ -22,6 +26,12 @@ public class damage : MonoBehaviour
 
     void Start()
     {
+
+        if (scytheCollider != null) 
+            scytheCollider.enabled = false;
+
+        StartCoroutine(EnableColliderAfterDelay());
+
         if (type == damageType.moving || type == damageType.homing)
         {
             Destroy(gameObject, destroyTime);
@@ -40,10 +50,21 @@ public class damage : MonoBehaviour
         }
     }
 
+    IEnumerator EnableColliderAfterDelay()
+    {
+        yield return new WaitForSeconds(activationDelay);
+
+        if (scytheCollider != null)
+            scytheCollider.enabled = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.isTrigger)
             return;
+
+       
 
         IDamage dmg = other.GetComponent<IDamage>();
 
@@ -55,8 +76,19 @@ public class damage : MonoBehaviour
         if (impactParticles != null)
             impactParticles.Play();
 
-        if (impactEffect != null)
-            Instantiate(impactEffect, transform.position, Quaternion.identity);
+        Vector3 hitPoint = other.ClosestPoint(transform.position);
+        Vector3 direction = (hitPoint - transform.position);
+
+        if (direction.sqrMagnitude > 0.0001f) // Only rotate if there's a direction
+        {
+            Quaternion rotation = Quaternion.LookRotation(direction.normalized);
+            Instantiate(impactEffect, hitPoint, rotation);
+        }
+        else
+        {
+            //  Fallback: spawn with default rotation
+            Instantiate(impactEffect, hitPoint, Quaternion.identity);
+        }
 
         if ((type == damageType.moving || type == damageType.homing) && explosionPrefab != null)
         {

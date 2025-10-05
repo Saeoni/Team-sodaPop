@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.AI;
 
 
 public class EnemyAI : MonoBehaviour, IDamage
@@ -21,6 +21,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] float _stalkTimer = 0f;
     bool _killTriggered = false;
 
+    [Header("Spasm Behavior")]
+    [SerializeField] AudioSource spasmAudio;
+    //[SerializeField] CameraShake cameraShake;
+    [SerializeField] float spasmDistance = 10f;
+    [SerializeField] float spasmCooldown = 5f;
+
+
     float _roamTimer;
     float _originalStopDist;
     float _angleToPlayer;
@@ -30,11 +37,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 _spawnPos;
     int _currentHP;
 
-    
-
-    // Patrol Specific
     int _patrolIndex = 0;
     float _patrolPauseTimer = 0f;
+    bool _hasSpasmed = false;
+    float _spasmTimer = 0f;
 
     void Start()
     {
@@ -42,6 +48,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         _spawnPos = transform.position;
         _originalStopDist = agent.stoppingDistance;
         _currentHP = enemyData.maxHP;
+
+        
 
         if (spawnVFX != null )
         {
@@ -93,28 +101,54 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void HandleReaperMovement()
     {
-         if (_killTriggered) return;
+        if (_killTriggered) return;
 
-         _stalkTimer += Time.deltaTime;
+        _stalkTimer += Time.deltaTime;
 
-         // Gradually increase speed over time
-          float t = Mathf.Clamp01(_stalkTimer / enemyData.maxStalkTime);
-          float currentSpeed = Mathf.Lerp(enemyData.minSpeed, enemyData.maxSpeed, t);
-          agent.speed = currentSpeed;
+        float t = Mathf.Clamp01(_stalkTimer / enemyData.maxStalkTime);
+        float currentSpeed = Mathf.Lerp(enemyData.minSpeed, enemyData.maxSpeed, t);
+        agent.speed = currentSpeed;
 
-         // Always track player
-          Transform player = gamemanager.instance.player.transform;
-          agent.SetDestination(player.position);
-          transform.LookAt(player);
+        Transform player = gamemanager.instance.player.transform;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-         // Optional: draw debug ray for visual tracking
-          Debug.DrawRay(headPos.position, player.position - headPos.position, Color.red);
+        if (_hasSpasmed)
+            _spasmTimer += Time.deltaTime;
 
-         // Kill if time runs out
-          if (_stalkTimer >= enemyData.maxStalkTime)
-          {
-             TriggerReaperKill();
-          }
+        if (distanceToPlayer > spasmDistance)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(player.position);
+            animator.SetBool("IsSpasming", false);
+
+            if (_hasSpasmed && _spasmTimer >= spasmCooldown)
+            {
+                _hasSpasmed = false;
+                _spasmTimer = 0f;
+            }
+        }
+        else if (!_hasSpasmed)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+            animator.SetBool("IsSpasming", true);
+            _hasSpasmed = true;
+            _spasmTimer = 0f;
+
+            if (spasmAudio != null && !spasmAudio.isPlaying)
+                spasmAudio.Play();
+
+           // if (cameraShake != null)
+              //  cameraShake.Shake(0.5f, 0.3f);
+        }
+
+        transform.LookAt(player);
+        Debug.DrawRay(headPos.position, player.position - headPos.position);
+
+        if (_stalkTimer >= enemyData.maxStalkTime)
+        {
+            TriggerReaperKill();
+        }
 
         if (gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)
         {
@@ -157,6 +191,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         agent.enabled = true;
         _isActive = true;
         _stalkTimer = 0f;
+
+        animator.SetBool("hasSpawned", true);
     }
 
     void HandleDefaultMovement()
@@ -180,7 +216,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         Vector3 playerPos = gamemanager.instance.player.transform.position;
         _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);
 
-        Debug.DrawRay(headPos.position, _playerDir, Color.red);
+        Debug.DrawRay(headPos.position, _playerDir);
 
         RaycastHit rayHit;
         if (Physics.Raycast(headPos.position, _playerDir, out rayHit, enemyData.detectionRadius, enemyData.lineOfSightMask))
