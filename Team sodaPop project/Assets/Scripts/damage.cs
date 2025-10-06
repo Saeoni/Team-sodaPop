@@ -3,10 +3,14 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
+    enum damageType { moving, stationary, DOT, homing }
 
-    enum damageType { moving, stationary, DOT, homing, scythePull, laser}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
+
+    [Header("Scythe Collider Control")]
+    [SerializeField] Collider scytheCollider;
+    [SerializeField] float activationDelay = 2f;
 
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
@@ -18,106 +22,53 @@ public class damage : MonoBehaviour
     [SerializeField] GameObject impactEffect;
     [SerializeField] ParticleSystem impactParticles;
 
-    [Header("Laser Settings")]
-    [SerializeField] LineRenderer laserRenderer;
-    [SerializeField] float laserDuration;
-    [SerializeField] float laserRange;
-    [SerializeField] LayerMask hitMask;
-
     bool isDamaging;
-   
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        if (type == damageType.laser)
-        {
-            SetUpLaserVisuals();
-            LaserFire();
-            Destroy(gameObject, laserDuration);
-        }
-        //moving projectiles will disappear after a certain time
-        else if(type == damageType.moving || type == damageType.homing || type == damageType.scythePull)
+
+        if (scytheCollider != null) 
+            scytheCollider.enabled = false;
+
+        StartCoroutine(EnableColliderAfterDelay());
+
+        if (type == damageType.moving || type == damageType.homing)
         {
             Destroy(gameObject, destroyTime);
 
-            if(type == damageType.moving || type == damageType.laser)
-            {
+            if (rb != null)
                 rb.linearVelocity = transform.forward * speed;
-            }
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (type == damageType.homing)
         {
-            //checks player position and follows it
-           Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
+            Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
             rb.linearVelocity = targetDir * speed;
         }
-
-       
     }
 
-    void SetUpLaserVisuals()
+    IEnumerator EnableColliderAfterDelay()
     {
-        if (laserRenderer != null)
-        {
-            laserRenderer.enabled = false;
-            laserRenderer.startColor = Color.red;
-            laserRenderer.endColor = Color.red;
+        yield return new WaitForSeconds(activationDelay);
 
-            Material glowMat = new Material(Shader.Find("Unlit/Color"));
-            glowMat.color = Color.red;
-            laserRenderer.material = glowMat;
-        }
-    }
-
-    void LaserFire()
-    {
-        Vector3 origin = transform.position;
-        Vector3 direction = transform.forward;
-
-        laserRenderer.SetPosition(0, origin);
-
-        RaycastHit laserHit;
-        if (Physics.Raycast(origin, direction, out laserHit, laserRange, hitMask))
-        {
-            laserRenderer.SetPosition(1, laserHit.point);
-
-            IDamage dmg = laserHit.collider.GetComponent<IDamage>();
-            if (dmg != null)
-                dmg.takeDamage(damageAmount);
-
-            if (impactEffect != null)
-                Instantiate(impactEffect, laserHit.point, Quaternion.LookRotation(laserHit.normal));
-        }
-        else
-        {
-            laserRenderer.SetPosition(1, origin + direction * laserRange);
-        }
-
-        StartCoroutine(FlashLaser());
-    }
-
-    IEnumerator FlashLaser()
-    {
-        laserRenderer.enabled = true;
-        yield return new WaitForSeconds(laserDuration);
-        laserRenderer.enabled = false;
+        if (scytheCollider != null)
+            scytheCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.isTrigger)
             return;
 
+       
+
         IDamage dmg = other.GetComponent<IDamage>();
 
-        
-
-        if(dmg != null && (type == damageType.moving || type == damageType.homing))
+        if (dmg != null && (type == damageType.stationary || type == damageType.moving || type == damageType.homing))
         {
             dmg.takeDamage(damageAmount);
         }
@@ -125,28 +76,42 @@ public class damage : MonoBehaviour
         if (impactParticles != null)
             impactParticles.Play();
 
-        if (impactEffect != null)
-            Instantiate(impactEffect, transform.position, Quaternion.identity);
+        Vector3 hitPoint = other.ClosestPoint(transform.position);
+        Vector3 direction = (hitPoint - transform.position);
 
-        if ((type == damageType.homing || type == damageType.moving) && explosionPrefab != null)
+        if (direction.sqrMagnitude > 0.0001f) // Only rotate if there's a direction
         {
-            Debug.Log("Projectile hit: " + other.name);
-          GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);  
-            Destroy(explosion, 2f );
+            Quaternion rotation = Quaternion.LookRotation(direction.normalized);
+            Instantiate(impactEffect, hitPoint, rotation);
         }
-       Destroy(gameObject);
+        else
+        {
+            //  Fallback: spawn with default rotation
+            Instantiate(impactEffect, hitPoint, Quaternion.identity);
+        }
+
+        if ((type == damageType.moving || type == damageType.homing) && explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(explosion, 2f);
+        }
+
+        if (type == damageType.moving || type == damageType.homing)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.isTrigger) 
+        if (other.isTrigger)
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if(dmg != null && type == damageType.DOT)
+        if (dmg != null && type == damageType.DOT)
         {
-            if(!isDamaging)
+            if (!isDamaging)
             {
                 StartCoroutine(damageother(dmg));
             }
@@ -160,6 +125,4 @@ public class damage : MonoBehaviour
         yield return new WaitForSeconds(damageRate);
         isDamaging = false;
     }
-
-   
 }
