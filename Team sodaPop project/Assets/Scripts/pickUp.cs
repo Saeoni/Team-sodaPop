@@ -35,15 +35,15 @@ public class pickUp : MonoBehaviour
 
         else if (type == pickupType.key)
         {
-            gamemanager.instance.keyCount++;
-            gamemanager.instance.updateKeyCount();
+            HUDController.instance.keyCount++;
+            HUDController.instance.UpdateKeyCount();
 
             Destroy(gameObject);
         }
 
         else if (type == pickupType.stealth)
         {
-            gamemanager.instance.stealthTimer(10.0f);
+            HUDController.instance.StealthTimer(10.0f);
             Destroy(gameObject);
         }
 
