@@ -26,21 +26,22 @@ public class StartMenuController : MonoBehaviour
     public UnityEvent onStartButtonClicked;
     public UnityEvent onQuitButtonClicked;
     public UnityEvent onMainMenuButtonClicked;
-    //public UnityEvent onSettingsButtonClicked;
+    public UnityEvent onSettingsButtonClicked;
 
     public Button startButton;
     public Button quitButton;
     public Button mainMenuButton;
-    // public Button settingsButton;
+    public Button settingsButton;
 
 
 
 
     //private Button creditsButton;
-    //private Button backButton;
+
     //private VisualElement creditsScreen;
     //private VisualElement mainMenuScreen;
-
+    private Button backButton;
+    private Button exitButton;
 
     private string transName;
     private VisualElement currentElement;

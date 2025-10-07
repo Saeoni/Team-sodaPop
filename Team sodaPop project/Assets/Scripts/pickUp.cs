@@ -10,6 +10,9 @@ public class PickUp : MonoBehaviour
     [SerializeField] int healAmount;
     [SerializeField] gunstats gun;
 
+    public bool pickUpable;
+    public bool isPickedUp = false;
+
 
     //    // Start is called once before the first execution of Update after the MonoBehaviour is created
     //    void Start()

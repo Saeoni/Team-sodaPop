@@ -1,0 +1,146 @@
+:root {
+    visibility: visible;
+    display: flex;
+}
+
+.Menus {
+    font-size: 100px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Witchwoode-Regular.ttf?fileID=12800000&guid=0a10106fc090396478d1ca0a2abe3ee0&type=3#Witchwoode-Regular");
+    color: rgb(221, 129, 129);
+    border-top-width: 0;
+    visibility: visible;
+    display: flex;
+    flex-grow: 1;
+    -unity-text-align: upper-center;
+    border-bottom-color: rgb(255, 248, 248);
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    background-size: 180% 100%;
+    -unity-background-scale-mode: stretch-to-fill;
+    overflow: visible;
+    -unity-background-image-tint-color: rgb(162, 68, 68);
+}
+
+.buttons {
+    width: 200px;
+    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
+    font-size: 41px;
+    color: rgb(170, 165, 165);
+    align-self: center;
+    opacity: 1;
+    -unity-background-image-tint-color: rgba(104, 91, 91, 0.72);
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    -unity-text-align: upper-right;
+    -unity-text-auto-size: best-fit 10px 100px;
+}
+
+.buttons:hover {
+    width: 200px;
+    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
+    font-size: 45px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: rgb(253, 0, 0);
+    scale: 1.1 1;
+    transition-duration: 0.1s;
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    background-position-x: left 0;
+}
+
+.button_menus {
+    border-left-color: rgba(143, 107, 107, 0);
+    border-right-color: rgba(143, 107, 107, 0);
+    border-top-color: rgba(143, 107, 107, 0);
+    border-bottom-color: rgba(144, 102, 102, 0);
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    background-color: rgba(188, 188, 188, 0);
+    -unity-font-definition: url("project://database/Assets/Fonts/about_dead/About%20Dead.ttf?fileID=12800000&guid=0cde9b60d0cbeff49b3945bcdfbe51ee&type=3#About Dead");
+    font-size: 26px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-right;
+    align-content: auto;
+    align-items: auto;
+}
+
+.button_menus:hover {
+    border-left-color: rgba(143, 107, 107, 0);
+    border-right-color: rgba(143, 107, 107, 0);
+    border-top-color: rgba(143, 107, 107, 0);
+    border-bottom-color: rgb(144, 102, 102);
+    background-image: none;
+    background-color: rgba(188, 188, 188, 0);
+    -unity-font-definition: url("project://database/Assets/Fonts/about_dead/About%20Dead.ttf?fileID=12800000&guid=0cde9b60d0cbeff49b3945bcdfbe51ee&type=3#About Dead");
+}
+
+.scrim-and-all {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    border-left-width: 0;
+    display: flex;
+    opacity: 0;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out-bounce;
+    transition-property: opacity;
+}
+
+.scrim--fadein {
+    opacity: 1;
+    transition-property: opacity;
+}
+
+.button_resume {
+}
+
+.button_resume:hover {
+    color: rgb(96, 212, 67);
+}
+
+.buttons_respawn {
+}
+
+.buttons_respawn:hover {
+    color: rgb(85, 202, 58);
+}
+
+.buttons_restart {
+}
+
+.buttons_restart:hover {
+    color: rgb(241, 132, 0);
+}
+
+.flash {
+    animation-name: flashElement;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    color: rgb(255, 0, 0);
+}
+
+.button_footer {
+    border-left-color: rgba(143, 107, 107, 0);
+    border-right-color: rgba(143, 107, 107, 0);
+    border-top-color: rgba(143, 107, 107, 0);
+    border-bottom-color: rgba(144, 102, 102, 0);
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    background-color: rgba(188, 188, 188, 0);
+    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
+}
+
+.button_footer:hover {
+    border-left-color: rgba(143, 107, 107, 0);
+    border-right-color: rgba(143, 107, 107, 0);
+    border-top-color: rgba(143, 107, 107, 0);
+    border-bottom-color: rgba(144, 102, 102, 0);
+    background-image: none;
+    background-color: rgba(188, 188, 188, 0);
+}
+
+.main-menu {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: rgba(0, 0, 0, 0.75);
+    background-size: 100% 100%;
+    -unity-text-align: upper-center;
+    opacity: 1;
+}

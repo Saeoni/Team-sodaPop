@@ -105,17 +105,12 @@ public class HUDController : MonoBehaviour
         gameTimerMinute = 0;
         gameTimerSecond = 0;
         timeElapsed = 0;
-    }
-
-    void Awake()
-    {
-
-
         contentContainer.style.display = DisplayStyle.Flex;
         minimap.style.display = DisplayStyle.None; // Hide minimap initially
         HideUI();
-
     }
+
+
 
     void Start()
     {
