@@ -52,7 +52,8 @@ public class gamemanager : MonoBehaviour
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+        GameObject playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+        this.playerSpawnPos = playerSpawnPos;
 
         keyCount = 0;
 

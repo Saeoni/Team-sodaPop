@@ -327,10 +327,7 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: hasSpawned
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 2067263457511146482}
   m_DstState: {fileID: 0}
   m_Solo: 0

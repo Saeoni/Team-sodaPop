@@ -30,7 +30,9 @@ public class EnemyData : ScriptableObject
     public bool loopPatrol = true;
 
     [Header("Reaper Settings")]
-    public float maxStalkTime;
+    public float maxStalkTime = 30f;
+    public float killDistance = 2f;
+    public AnimationCurve speedRampCurve = AnimationCurve.Linear(0, 0, 1, 1);
     public float minSpeed;
     public float maxSpeed;
 
