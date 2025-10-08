@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
-    [SerializeField]  int HP;
+    [SerializeField] int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] float jumpSpeed;
@@ -22,7 +22,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
 
-    public int HPOrig;
+    int HPOrig;
     int speedOrig;
     int jumpCount;
     int gunListPos;
@@ -33,7 +33,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     float shootTimer;
     bool isSprinting;
     bool isTired = false;
-   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -162,23 +161,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             updatePlayerUI();
             StartCoroutine(flashHeal());
         }
-
-        else if(HP > HPOrig)
-        {
-            HP = HPOrig;
-            updatePlayerUI();
-        }
     }
 
     public void updatePlayerUI()
     {
-        gamemanager.instance.playerHPBarFill.fillAmount = (float)HP / HPOrig;
+        gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
 
         if(gunList.Count > 0)
         {
-            gamemanager.instance.ammoCur = gunList[gunListPos].ammoCur;
-            gamemanager.instance.ammoMax = gunList[gunListPos].ammoMax;
-            HUDController.instance.UpdatePlayerUI();
+            gamemanager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
+            gamemanager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
 
         }
     }

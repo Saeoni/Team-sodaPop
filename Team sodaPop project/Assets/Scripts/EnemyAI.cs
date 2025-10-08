@@ -183,7 +183,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         _killTriggered = true;
         animator.SetTrigger(enemyData.killTrigger);
-        gamemanager.instance.playerIsDead = true;
+        gamemanager.instance.OnPlayerKilledByReaper();
     }
 
     public void OnSpawnFinish()

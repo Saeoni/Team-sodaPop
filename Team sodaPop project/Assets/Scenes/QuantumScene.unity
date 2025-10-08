@@ -20421,25 +20421,6 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 911093334}
-<<<<<<< HEAD
-=======
-    - target: {fileID: 1820879076082725810, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: startMenuController
-      value: 
-      objectReference: {fileID: 1830209052}
-    - target: {fileID: 2046546988829622410, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204471532910546040, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5636725789808780878, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
->>>>>>> 0750ec146e0097b3f6bf821e2246c8c0213fe602
     - target: {fileID: 6692134597531457594, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -20524,13 +20505,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
-    - target: {fileID: 8415601040486893402, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
->>>>>>> 0750ec146e0097b3f6bf821e2246c8c0213fe602
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24636,13 +24610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Turret Cannon Blaster (1)
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 4448795589642513456, guid: af08258b727428744b32416d2b387eb3, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-=======
->>>>>>> 0750ec146e0097b3f6bf821e2246c8c0213fe602
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45217,20 +45188,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8908499371252062614, guid: 00ce26ae9768eb042a34ecfecec3f57c, type: 3}
   m_PrefabInstance: {fileID: 1827183585}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!114 &1830209052 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3625367836628216804, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
-  m_PrefabInstance: {fileID: 790268655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2afe5073619ae6543844ac47da47041c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StartMenuController
->>>>>>> 0750ec146e0097b3f6bf821e2246c8c0213fe602
 --- !u!1001 &1831014235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52407,7 +52364,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 5649107328150984651, guid: 51046b14374a33d4d907020878dab018, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -52432,8 +52388,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-=======
->>>>>>> 0750ec146e0097b3f6bf821e2246c8c0213fe602
     - target: {fileID: 6370694229479389789, guid: 51046b14374a33d4d907020878dab018, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
