@@ -1,21 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 
-    public static gamemanager instance;
+    public static GameManager instance;
 
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuUI;
-    [SerializeField] GameObject hudUI;
+    [SerializeField] GameObject playerUIObject;
     [SerializeField] GameObject startMenuUI;
 
-
-
-    public GameObject playerHPBar;
-    public Image playerHPBarFill;
 
 
     public GameObject playerDamageFlash;
@@ -26,20 +21,18 @@ public class gamemanager : MonoBehaviour
 
     public GameObject checkpointPopup;
 
-    public int ammoCur;
-    public int ammoMax;
     public GameObject playerSpawnPos;
     public GameObject player;
-    //public playerController playerScript;
+    public PlayerController playerScript;
 
 
     public bool isPaused;
     public bool isStealthed;
     public bool playerIsDead;
 
-    public HUDController hudController;
-    public MenuController menuController;
-    public StartMenuController startMenuController;
+    public PlayerUIController PlayerUICtrl;
+    public MenuController MenuUICtrl;
+    public StartMenuController StartMenuCtrl;
 
     private int gameGoalTotal;
     float timeScaleOrig;
@@ -52,16 +45,16 @@ public class gamemanager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        //playerScript = player.GetComponent<playerController>();
+        playerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-        menuController = menuUI.GetComponent<MenuController>();
-        hudController = hudUI.GetComponent<HUDController>();
-        startMenuController = startMenuUI.GetComponent<StartMenuController>();
+        MenuUICtrl = menuUI.GetComponent<MenuController>();
+        PlayerUICtrl = playerUIObject.GetComponent<PlayerUIController>();
+        StartMenuCtrl = startMenuUI.GetComponent<StartMenuController>();
 
 
         playerIsDead = false;
         statePause();
-        hudUI.SetActive(true);
+        playerUIObject.SetActive(true);
 
 
         startMenuUI.SetActive(true);
@@ -75,7 +68,7 @@ public class gamemanager : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
-            if (startMenuController.isShowing || playerIsDead) return;
+            if (StartMenuCtrl.isShowing || playerIsDead) return;
 
             if (menuActive == null)
             {
@@ -84,7 +77,7 @@ public class gamemanager : MonoBehaviour
                 menuActive = menuUI;
 
                 menuActive.SetActive(true);
-                menuController.OpenPauseMenu();
+                MenuUICtrl.OpenPauseMenu();
 
 
             }
@@ -121,7 +114,7 @@ public class gamemanager : MonoBehaviour
     public void stateUnpause()
     {
         isPaused = !isPaused;
-        menuController.CloseMenu();
+        MenuUICtrl.CloseMenu();
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -142,7 +135,7 @@ public class gamemanager : MonoBehaviour
         statePause();
         menuActive = menuUI;
         menuActive.SetActive(true);
-        menuController.OpenWinMenu();
+        MenuUICtrl.OpenWinMenu();
 
         Debug.Log("Player exited the maze. You win!");
     }
@@ -151,7 +144,8 @@ public class gamemanager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
-        hudController.UpdateEnemyCount(amount);
+        PlayerUICtrl.UpdateEnemyCount(amount);
+        playerScript.AddEnemy(amount);
 
     }
 
@@ -163,10 +157,20 @@ public class gamemanager : MonoBehaviour
         menuActive = menuUI;
 
         menuActive.SetActive(true);
-        menuController.OpenLoseMenu();
+        MenuUICtrl.OpenLoseMenu();
 
 
     }
 
+    public void RespawnPlayer()
+    {
+        playerIsDead = false;
+        playerScript.spawnPlayer();
+        stateUnpause();
+    }
+    public void UpdateKeyCount()
+    {
+        PlayerUICtrl.UpdateKeyCount();
+    }
 
 }

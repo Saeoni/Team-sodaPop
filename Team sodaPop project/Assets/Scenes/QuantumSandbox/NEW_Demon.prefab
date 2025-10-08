@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2235119471251769266}
   - component: {fileID: 6536809680489730317}
-  m_Layer: 10
+  m_Layer: 21
   m_Name: Minimap-icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,9 +409,9 @@ Transform:
   m_GameObject: {fileID: 2165343873176916965}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.0070000007, y: 0.0075000008, z: 0.0075000008}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -0.63, z: 0}
+  m_LocalScale: {x: 0.23999998, y: 0.23999998, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1033290749620584743}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -855,7 +855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005164693242636161}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1

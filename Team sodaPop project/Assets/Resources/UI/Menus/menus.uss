@@ -144,3 +144,26 @@
     -unity-text-align: upper-center;
     opacity: 1;
 }
+
+.tab {
+    padding-top: 24px;
+    padding-left: 43px;
+    border-bottom-width: 4px;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
+    -unity-font-definition: url("project://database/Assets/Fonts/biometric_joe/Biometric%20Joe.otf?fileID=12800000&guid=e0d5ab2fd5896f14a99c29056d3a61d1&type=3#Biometric Joe");
+    font-size: 37px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.35);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgba(196, 188, 188, 0.18);
+    border-right-color: rgba(255, 255, 255, 0.05);
+    border-right-width: 1px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    white-space: pre-wrap;
+    border-left-color: rgba(255, 255, 255, 0.05);
+    border-top-color: rgba(255, 255, 255, 0.05);
+}

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05858de4588d244438dc8c48c00de5b6, type: 3}
+  m_Name: ClovisData
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  playerName: Player
+  playerHPPercent: 100%
+  player: {fileID: 9117988882859570446, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
+  playerIcon: {fileID: 0}
+  playerAvatar: {fileID: 0}
+  playerHPBar: {fileID: 21300000, guid: 16bf14ca5ffe97142a491d4c2b03ea6a, type: 3}
+  playerStealthBar: {fileID: 21300000, guid: 7650216ee19cf2c478e1dd5732ba727e, type: 3}
+  playerHPBarFill: {fileID: 21300000, guid: 96d800448ee0e2544ae7af5da3f1cd1e, type: 3}
+  playerStealthBarFill: {fileID: 21300000, guid: 2148c20423f0e1248ad8ffb587a7cd76, type: 3}
+  maxHealth: 100
+  currentHealth: 100
+  speed: 5
+  scopeZoomSpeed: 0.5
+  scopeZoomScale: 125
+  stealth: 5
+  ammoCount: 30
+  maxAmmo: 30
+  score: 0
+  roomsClear: 0
+  keysCollected: 0
+  notesCollected: 0
+  gravity: 30
+  jumpMax: 2
+  sprintStamina: 5
+  staminaRegen: 1
+  mouseSensitivity: 1
+  sprintMod: 2
+  jumpSpeed: 5
+  jumpMod: 2
+  shootDamage: 5
+  shootRate: 0.5
+  shootDist: 15
+  gunStats: []

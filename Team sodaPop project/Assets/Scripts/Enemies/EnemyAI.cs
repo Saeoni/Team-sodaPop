@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Start()
     {
         _colorOrig = model.material.color;
-        gamemanager.instance.updateGameGoal(1);
+        GameManager.instance.updateGameGoal(1);
         _spawnPos = transform.position;
         _originalStopDist = agent.stoppingDistance;
         
@@ -83,9 +83,9 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        if (gamemanager.instance.isStealthed)
+        if (GameManager.instance.isStealthed)
         {
-            _playerDir = gamemanager.instance.player.transform.position - headPos.position;
+            _playerDir = GameManager.instance.player.transform.position - headPos.position;
             _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);
             Debug.DrawRay(headPos.position, _playerDir, Color.red);
 
@@ -94,7 +94,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             {
                 if (_angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
                 {
-                    agent.SetDestination(gamemanager.instance.player.transform.position);
+                    agent.SetDestination(GameManager.instance.player.transform.position);
 
                     if (agent.remainingDistance <= agent.stoppingDistance)
                     {
@@ -158,7 +158,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void OnEnemyDeath()
     {
 
-        gamemanager.instance.updateGameGoal(-1);
+        GameManager.instance.updateGameGoal(-1);
 
         if (keyPrefab != null) 
         Destroy(gameObject);
@@ -174,7 +174,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         HP -= amount;
         StartCoroutine(flashRed());
-        agent.SetDestination(gamemanager.instance.player.transform.position);
+        agent.SetDestination(GameManager.instance.player.transform.position);
 
         if (HP <= 0)
             OnEnemyDeath();

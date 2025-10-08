@@ -21,7 +21,7 @@ public class Scythe_Projectile : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = gamemanager.instance?.player?.transform;
+        player = GameManager.instance?.player?.transform;
         if (player == null)
         {
             Debug.LogError("Player not found by Scythe_Projectile.");
@@ -56,7 +56,7 @@ public class Scythe_Projectile : MonoBehaviour
         hasImpaled = true;
 
         // Freeze player and attach to scythe
-        playerController pc = other.GetComponent<playerController>();
+        PlayerController pc = other.GetComponent<PlayerController>();
         if (pc != null) pc.enabled = false;
 
         other.transform.SetParent(transform);

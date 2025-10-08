@@ -87,7 +87,7 @@ public class ReaperAI : MonoBehaviour
     void Start()
     {
         startingPos = transform.position;
-        player = gamemanager.instance.player.transform;
+        player = GameManager.instance.player.transform;
         StartCoroutine(InitializeReaper());
         player_ = GameObject.FindWithTag("Player");
     }
@@ -119,7 +119,7 @@ public class ReaperAI : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var pc = other.GetComponent<playerController>();
+            var pc = other.GetComponent<PlayerController>();
             if (pc != null)
             {
                 pc.KillPlayer();
@@ -278,7 +278,7 @@ public class ReaperAI : MonoBehaviour
         reaperIsActive = true;
 
         // Disable player control
-        var pc = player.GetComponent<playerController>();
+        var pc = player.GetComponent<PlayerController>();
         if (pc != null) pc.enabled = false;
 
         // Optional delay before disappearing
@@ -321,7 +321,7 @@ public class ReaperAI : MonoBehaviour
     {
         if (leftHandSocket == null || player == null) return;
 
-        var pc = player.GetComponent<playerController>();
+        var pc = player.GetComponent<PlayerController>();
         if (pc != null) pc.enabled = false;
 
         player.SetParent(null); // unparent to avoid snapping

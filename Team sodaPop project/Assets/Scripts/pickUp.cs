@@ -31,21 +31,21 @@ public class PickUp : MonoBehaviour
         IPickup pickupable = other.GetComponent<IPickup>();
         if (type == pickupType.health)
         {
-            other.GetComponent<playerController>().heal(healAmount);
+            other.GetComponent<PlayerController>().heal(healAmount);
             Destroy(gameObject);
         }
 
         else if (type == pickupType.key)
         {
 
-            gamemanager.instance.hudController.UpdateKeyCount();
+            GameManager.instance.UpdateKeyCount();
 
             Destroy(gameObject);
         }
 
         else if (type == pickupType.stealth)
         {
-            gamemanager.instance.hudController.StealthTimer(10.0f);
+            GameManager.instance.PlayerUICtrl.StealthTimer(10.0f);
             Destroy(gameObject);
         }
 

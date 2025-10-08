@@ -60,7 +60,7 @@ public class TurretAI : MonoBehaviour, IDamage
 
     bool lineOfSightToPlayer()
     {
-        Transform player = gamemanager.instance.player.transform;
+        Transform player = GameManager.instance.player.transform;
         dirOfPlayer = player.position - headPos.position;
         angleToPlayer = Vector3.Angle(dirOfPlayer, turretHead.forward);
 
@@ -78,7 +78,7 @@ public class TurretAI : MonoBehaviour, IDamage
 
     void RotateToPlayer()
     {
-        Vector3 direction = gamemanager.instance.player.transform.position - turretHead.position;
+        Vector3 direction = GameManager.instance.player.transform.position - turretHead.position;
         direction.y = 0f;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         turretHead.rotation = Quaternion.Lerp(turretHead.rotation, lookRotation, Time.deltaTime * rotationSpeed);
@@ -86,7 +86,7 @@ public class TurretAI : MonoBehaviour, IDamage
 
     void fireBullet()
     {
-        Transform player = gamemanager.instance.player.transform;
+        Transform player = GameManager.instance.player.transform;
         Vector3 targetPos = player.position;
         Vector3 directionToPlayer = (targetPos - shootPoint.position);
 

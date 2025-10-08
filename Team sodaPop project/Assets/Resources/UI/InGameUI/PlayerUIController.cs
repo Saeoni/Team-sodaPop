@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class HUDController : MonoBehaviour
+public class PlayerUIController : MonoBehaviour
 {
     //public static HUDController instance;
 
@@ -21,20 +21,21 @@ public class HUDController : MonoBehaviour
     private Label enemyCountText;
     private int enemyCount;
 
-    private Label keyTitle;
-    private Label keyCountText;
-    //[SerializeField] private int totalKeys;
-    public int keyCount;
-    public int keyMaxCount = 4;
+    public PlayerData player;
+    public PlayerController playerController;
     private Label collectedModulesTitle;
     private Label collectedModulesCount;
+    private Label gunLabel;
+
     private VisualElement minimapBorder;
     private VisualElement minimapIcon;
+    private VisualElement healthContanter;
+    private VisualElement healthFill;
 
+    private Label stealthTimer;
     private Label stealthTimerText;
     private Label gameTimerText;
-    private VisualElement playerHPBar;
-    public VisualElement playerHPBarFill;
+
     //private VisualElement bossHPBar;
     //private Image bossHPFill;
 
@@ -48,6 +49,7 @@ public class HUDController : MonoBehaviour
 
 
     public float timeElapsed;
+    public bool healthChanged;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -56,23 +58,25 @@ public class HUDController : MonoBehaviour
 
     void OnEnable()
     {
+
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         contentContainer = root.Q<VisualElement>("Player_UI");
 
+        healthContanter = root.Q<VisualElement>("HealthBar_Container");
+        healthFill = root.Q<VisualElement>("HealthBar_Fill");
         enemyCountText = root.Q<Label>("Enemy_Count");
         enemiesTitle = root.Q<Label>("Enemies_Title");
 
-        keyTitle = root.Q<Label>("Key_Title");
-        keyCountText = root.Q<Label>("Key_Count");
 
-        //keyMaxCount = 4;
-        stealthTimerText = root.Q<Label>("Stealth_Timer");
+        stealthTimer = root.Q<Label>("StealthTimer_Label");
+        stealthTimerText = root.Q<Label>("StealthTimer_Text");
         stealthTimerText.text = "";
         gameTimerText = root.Q<Label>("Game_Timer");
         gameTimerText.text = "00:00";
-        ammoCur = root.Q<Label>("Ammo_Current");
-        ammoMax = root.Q<Label>("Ammo_Max");
-        //bossHPBar = root.Q<VisualElement>("Boss_HP_Bar");
+        ammoCur = root.Q<Label>("AmmoCurr_Text");
+        ammoMax = root.Q<Label>("AmmoMax_Text");
+
+
         //bossHPFill = root.Q<Image>("Boss_HP_Fill");
         //bossHPBar.style.display = DisplayStyle.None; // Hide boss HP bar initially
 
@@ -82,24 +86,16 @@ public class HUDController : MonoBehaviour
 
         collectedModulesTitle = root.Q<Label>("Collected_Modules_Title");
         collectedModulesCount = root.Q<Label>("Collected_Modules_Count");
+        collectedModulesCount.text = "0";
+        gunLabel = root.Q<Label>("Gun_Label");
+        //gunLabel.text = player.CurrentGun.gunModel.name;
         minimap = root.Q<VisualElement>("Minimap_Container");
-        playerHPBar = root.Q<VisualElement>("Player_HP_Bar");
+
 
         //minimapBorder = root.Q<VisualElement>("Minimap_Border");
         //minimapBorder.style.display = DisplayStyle.None; // Hide minimap border initially
         //minimapIcon = root.Q<VisualElement>("Minimap_Icon");
         //minimapIcon.style.display = DisplayStyle.None; // Hide minimap icon initially
-
-
-
-        enemyCount = 0;
-        enemyCountText.text = enemyCount.ToString("F0");
-        keyCount = 0;
-        keyCountText.text = keyCount.ToString("F0") + "/" + keyMaxCount.ToString("F0");
-        enemiesTitle.text = "Enemies Remaining:";
-        keyTitle.text = "Keys Collected:";
-        collectedModulesTitle.text = "Modules Collected:";
-        collectedModulesCount.text = "0/0";
 
 
         gameTimerMinute = 0;
@@ -108,6 +104,7 @@ public class HUDController : MonoBehaviour
         contentContainer.style.display = DisplayStyle.Flex;
         minimap.style.display = DisplayStyle.None; // Hide minimap initially
         HideUI();
+
     }
 
 
@@ -116,12 +113,16 @@ public class HUDController : MonoBehaviour
     {
         // Example of starting a stealth timer for 5 seconds
         //StealthTimer(5f);
+        player = GameManager.instance.player.GetComponent<PlayerData>();
+        playerController = GameManager.instance.player.GetComponent<PlayerController>();
         ShowUI();
-        UpdatePlayerUI();
+
     }
+
     public void ShowUI()
     {
         contentContainer.style.display = DisplayStyle.Flex;
+        UpdateHealthBar();
     }
 
     public void HideUI()
@@ -132,43 +133,85 @@ public class HUDController : MonoBehaviour
     void Update()
     {
         // Check if collected modules is empty and hide minimap if so
-        UpdateGameTimer();
+
         UpdatePlayerUI();
+
+
 
 
 
     }
     public void UpdatePlayerUI()
     {
-        ammoCur.text = gamemanager.instance.ammoCur.ToString();
-        ammoMax.text = gamemanager.instance.ammoMax.ToString();
-        //playerHPBar.style.width = new StyleLength(gamemanager.instance.playerScript.getHPPercent());
-        keyCountText.text = keyCount.ToString() + "/4";
-        // Show minimap if player has at least one key
-        if (keyCount > 0)
+        UpdateGameTimer();
+        UpdateHealthBar();
+        if (reticle != null)
         {
-            minimap.style.display = DisplayStyle.Flex;
-            //minimapBorder.style.display = DisplayStyle.Flex;
-            //minimapIcon.style.display = DisplayStyle.Flex;
+            if (player.gunStats.Count > 0 && player.AmmoCount > 0)
+            {
+                reticle.SetActive(true);
+            }
+            else
+            {
+                reticle.SetActive(false);
+            }
+        }
+        //if (GameManager.instance.boss != null)
+        //{
+        //    bossHPBar.style.display = DisplayStyle.Flex;
+        //    float bossHealthPercent = GameManager.instance.boss.CurrentHealth / GameManager.instance.boss.MaxHealth;
+        //    bossHPFill.fillAmount = bossHealthPercent;
+        //}
+        //else
+        //{
+        //    bossHPBar.style.display = DisplayStyle.None;
+        //}
+
+
+
+
+        //UpdateEnemyCount(0);
+        //UpdateCollectedModules(0);
+        //UpdateGunLabel(player.CurrentGun.gunModel.name);
+        //UpdateAmmoCount(player.CurrentGun.ammoCur, player.CurrentGun.ammoMax);
+    }
+
+    public void UpdateEnemyCount(int amount)
+    {
+        player.CurrentEnemyCount += amount;
+
+    }
+    public void UpdateCollectedModules(int amount)
+    {
+        player.CollectedModules += amount;
+        collectedModulesCount.text = player.CollectedModules.ToString();
+        if (player.CollectedModules > 0)
+        {
+            minimap.style.display = DisplayStyle.Flex; // Show minimap when at least one module is collected
         }
         else
         {
-            minimap.style.display = DisplayStyle.None;
-            //minimapBorder.style.display = DisplayStyle.None;
-            //minimapIcon.style.display = DisplayStyle.None;
+            minimap.style.display = DisplayStyle.None; // Hide minimap if no modules are collected
         }
-
-
-
-        // Update collected modules count
-        //collectedModulesCount.text = gamemanager.instance.collectedModules.ToString() + "/5";
-
     }
-    public void UpdateEnemyCount(int amount)
+    public void UpdateGunLabel(string gunName)
     {
-        enemyCount += amount;
-        enemyCountText.text = enemyCount.ToString("F0");
-
+        gunLabel.text = gunName;
+    }
+    public void UpdateKeyCount()
+    {
+        player.KeysCollected++;
+        //enemiesTitle.text = "Keys Collected";
+        //enemyCountText.text = player.KeysCollected.ToString();
+    }
+    public void UpdateAmmoCount(int current, int max)
+    {
+        ammoCur.text = current.ToString();
+        ammoMax.text = max.ToString();
+        //if (current == 0)
+        //{
+        //    StartCoroutine(SayRandomFromList(enemyCountText, errorPhrases, 2f, Color.red));
+        //}
     }
 
     public void UpdateGameTimer()
@@ -185,14 +228,44 @@ public class HUDController : MonoBehaviour
             displaySecond = 0;
         }
         gameTimerText.text = gameTimerMinute.ToString("F0") + ":" + displaySecond.ToString("F0");
-
     }
-    public void UpdateKeyCount()
+
+    public void UpdateHealthBar()
     {
-        keyCount++;
-        keyCountText.text = keyCount.ToString("F0") + "/" + keyMaxCount.ToString("F0");
-    }
+        if (!healthChanged && player.CurrentHealth == player.MaxHealth)
+        {
+            return;
+        }
+        if (!healthChanged)
+            return;
 
+        float healthPercent = player.CurrentHealth / player.MaxHealth;
+
+        healthFill.style.height = new Length(healthPercent * 100, LengthUnit.Percent);
+
+
+
+        if (healthPercent <= 0.3f)
+        {
+
+            //StartCoroutine(SayRandomFromList(enemyCountText, warningMessages, 2f, Color.yellow));
+
+
+            healthFill.style.backgroundColor = Color.red;
+            if (player.CurrentHealth <= 0)
+            {
+                healthFill.style.height = new StyleLength(new Length(0, LengthUnit.Percent));
+                //StartCoroutine(SayRandomFromList(enemyCountText, errorPhrases, 2f, Color.red));
+            }
+            healthChanged = false;
+        }
+        else
+        {
+            healthFill.style.backgroundColor = Color.Lerp(Color.red, Color.green, healthPercent);
+            healthChanged = false;
+        }
+
+    }
 
     public void StealthTimer(float length)
     {
@@ -202,7 +275,7 @@ public class HUDController : MonoBehaviour
 
     private IEnumerator StealthCountdown(float length)
     {
-        gamemanager.instance.isStealthed = true;
+        GameManager.instance.isStealthed = true;
 
         float countDown = length;
         stealthTimerText.text = countDown.ToString("F0");
@@ -211,11 +284,14 @@ public class HUDController : MonoBehaviour
             stealthTimerText.text = "Invisible: " + Mathf.CeilToInt(countDown) + "s";
 
             countDown -= Time.deltaTime;
+
             yield return null;
         }
-        gamemanager.instance.isStealthed = false;
+        GameManager.instance.isStealthed = false;
         stealthTimerText.text = "";
-        // stealthTimerText.gameObject.SetActive(false);
+
+
+        stealthTimer.text = "";
 
     }
 
@@ -234,6 +310,16 @@ public class HUDController : MonoBehaviour
         textElement.text = selectedPhrase;
         StartCoroutine(FlashText(textElement, color, duration));
         yield return null;
+
+    }
+    IEnumerator ShootCamAndScope()
+    {
+        float originalFOV = playerController.GetLensView();
+        while (GameManager.instance.playerScript.isShooting)
+            player.ScopeZoomScale = 125f;
+        yield return new WaitForSeconds(0.1f);
+        player.ScopeZoomScale = 0f;
+
 
     }
 

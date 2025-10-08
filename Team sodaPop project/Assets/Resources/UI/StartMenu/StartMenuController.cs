@@ -113,7 +113,7 @@ public class StartMenuController : MonoBehaviour
 
         isShowing = false;
         contentContainer.style.display = DisplayStyle.None;
-        gamemanager.instance.stateUnpause();
+        GameManager.instance.stateUnpause();
 
         // Deactivate the start menu UI
         //  gameObject.SetActive(false);
@@ -146,7 +146,7 @@ public class StartMenuController : MonoBehaviour
     void toggleTransitions(VisualElement element, string transitionName)
     {
 
-        if (gamemanager.instance.isPaused == false)
+        if (GameManager.instance.isPaused == false)
         {
             return;
         }

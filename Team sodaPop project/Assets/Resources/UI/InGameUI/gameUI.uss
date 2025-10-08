@@ -38,3 +38,50 @@
     background-image: url("project://database/Assets/Unity%20Store%20DL/Hits%20Effects%20FREE/Textures/1-Smoke.tiff?fileID=2800000&guid=906fed77d26fb6949a29657f2515367e&type=3#1-Smoke");
     text-overflow: clip;
 }
+
+.playercard-container {
+    flex-grow: 1;
+    flex-direction: row;
+    height: 75px;
+    align-items: flex-end;
+    padding-left: 0;
+    width: auto;
+}
+
+.healthbar-container {
+    flex-grow: 1;
+    background-size: 27% 100%;
+    background-image: resource('Player/Sprites/health-bar');
+    flex-direction: row;
+    background-position-x: right 0;
+    height: 457px;
+    align-items: auto;
+    align-self: flex-end;
+    -unity-text-align: upper-left;
+    top: auto;
+    rotate: 90deg;
+    translate: 176px 0;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.68);
+}
+
+.health {
+    flex-grow: 1;
+    background-image: resource('Player/Sprites/health-bar-fill');
+    background-size: 27% 39%;
+    -unity-background-image-tint-color: rgba(16, 236, 1, 0.12);
+    background-position-x: right 0;
+    background-position-y: bottom 0;
+    height: 100%;
+}
+
+.reticle-x {
+    flex-grow: 1;
+    width: 35px;
+    align-self: center;
+    height: 2px;
+    background-color: rgb(41, 181, 27);
+    left: auto;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: center;
+}

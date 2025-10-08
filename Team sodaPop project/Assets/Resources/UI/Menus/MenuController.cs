@@ -7,15 +7,29 @@ using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
+    public enum PauseMenuTabs { Settings, Inventory, Controls }
 
-
+    public struct MenuTab
+    {
+        public string name;
+        public VisualElement content;
+        public MenuTab(string name)
+        {
+            this.name = name;
+            this.content = new VisualElement();
+            this.content.name = name + "Content";
+        }
+    }
 
     [SerializeField] string[] youLosePhrases;
     [SerializeField] string[] youWinPhrases;
 
+
     private VisualElement menuContainer;
     private VisualElement menuPauseContainer;
     private VisualElement menuSettingsContainer;
+    private TabView pauseMenuTabs;
+    private PauseMenuTabs currentTab;
 
     private VisualElement menuInventoryContainer;
     private VisualElement menuItemContainer;
@@ -53,8 +67,16 @@ public class MenuController : MonoBehaviour
     {
 
         var root = GetComponent<UIDocument>().rootVisualElement;
+
         menuPauseContainer = root.Q<VisualElement>("MenuPauseContainer");
+        pauseMenuTabs = root.Q<TabView>("PauseMenuTabs");
+
+
+        if (menuPauseContainer == null) return;
         menuPauseContainer.style.display = DisplayStyle.None;
+
+
+        AddMenuTab(pauseMenuTabs);
         menuSettingsContainer = root.Q<VisualElement>("MenuSettingsContainer");
         menuSettingsContainer.style.display = DisplayStyle.None;
         menuInventoryContainer = root.Q<VisualElement>("MenuInventoryContainer");
@@ -73,6 +95,31 @@ public class MenuController : MonoBehaviour
         respawnButton.clicked += () => OnRespawnButtonClicked();
 
         //uiInitialized = true;
+    }
+
+    private void AddMenuTab(TabView tabView)
+    {
+
+
+
+
+        foreach (PauseMenuTabs tab in System.Enum.GetValues(typeof(PauseMenuTabs)))
+        {
+
+            var tabViewItem = new Tab(tab.ToString());
+            var content = menuPauseContainer.Q<VisualElement>($"{tab.ToString()}Container");
+            tabViewItem.name = tab.ToString();
+            tabViewItem.label = tab.ToString();
+
+
+            if (content != null)
+            {
+                tabViewItem.contentContainer.Add(content);
+            }
+
+            tabView.Add(tabViewItem);
+        }
+
     }
 
     private void SetupMenu(string title, Color titleColor, bool showRespawn, string[] phrases = null)
@@ -137,7 +184,7 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Resume Button Clicked");
 
-        gamemanager.instance.stateUnpause();
+        GameManager.instance.stateUnpause();
         onResumeButtonClicked?.Invoke();
     }
     private void OnRestartButtonClicked()
@@ -145,7 +192,7 @@ public class MenuController : MonoBehaviour
         Debug.Log("Restart Button Clicked");
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        gamemanager.instance.stateUnpause();
+        GameManager.instance.stateUnpause();
         //restartCount += 1;
         onRestartButtonClicked?.Invoke();
 
@@ -175,8 +222,8 @@ public class MenuController : MonoBehaviour
     {
         //gamemanager.instance.playerScript.spawnPlayer();
         //gamemanager.instance.playerScript.heal(gamemanager.instance.playerScript.HPOrig);
-        gamemanager.instance.playerIsDead = false;
-        gamemanager.instance.stateUnpause();
+        GameManager.instance.playerIsDead = false;
+        GameManager.instance.stateUnpause();
 
     }
 
