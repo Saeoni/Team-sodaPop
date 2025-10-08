@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Team sodaPop project/Assets/Textures/Sprites/health-bar.png.meta
 guid: 16bf14ca5ffe97142a491d4c2b03ea6a
+=======
+guid: e5d2486328c37c34d8485117befed837
+>>>>>>> Stashed changes:Team sodaPop project/Assets/Scenes/Tobias_EnemyAI_Test/ReflectionProbe-0.exr.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

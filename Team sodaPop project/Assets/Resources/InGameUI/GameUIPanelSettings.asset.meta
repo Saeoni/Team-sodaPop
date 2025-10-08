@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Team sodaPop project/Assets/Resources/InGameUI/GameUIPanelSettings.asset.meta
 guid: 5b9baa482e3491245aba0401b371d1db
+=======
+guid: e19638e7f7f1a3e4baeeb9e69e303efb
+>>>>>>> Stashed changes:Team sodaPop project/Assets/Scenes/Tobias_EnemyAI_Test/LightingData.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

@@ -80,8 +80,11 @@
     },
     "com.unity.ide.rider": {
       "version": "3.0.38",
+<<<<<<< Updated upstream
     "com.unity.feature.characters-animation": {
       "version": "1.0.0",
+=======
+>>>>>>> Stashed changes
       "depth": 0,
       "source": "builtin",
       "dependencies": {
