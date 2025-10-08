@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
     public float lensFOVOrig;
     public float zoomFOV = 45f;
     public bool isShooting;
-
+    public CinemachineCamera activeCamera;
     Vector3 moveDir;
     Vector3 playerVel;
 
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
         HPOrig = player.MaxHealth;
 
         gunListPos = 0;
-
+        activeCamera = playerCam;
         changeGun();
         player.ResetHealth();
         playerUI.UpdatePlayerUI();

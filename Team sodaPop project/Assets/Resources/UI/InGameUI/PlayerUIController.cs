@@ -114,7 +114,7 @@ public class PlayerUIController : MonoBehaviour
         // Example of starting a stealth timer for 5 seconds
         //StealthTimer(5f);
         player = GameManager.instance.player.GetComponent<PlayerData>();
-        playerController = GameManager.instance.player.GetComponent<PlayerController>();
+
         ShowUI();
 
     }

@@ -862,7 +862,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -891,7 +891,7 @@ Transform:
   m_GameObject: {fileID: 714208634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.90103, y: 2.46, z: -0.30345002}
+  m_LocalPosition: {x: 0, y: 1.578, z: -5.1610003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1459,7 +1459,8 @@ MonoBehaviour:
   errorPhrases: []
   warningMessages: []
   reticle: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 11400000, guid: fb942227ab9e5604ea1ab48fd9c4e06e, type: 2}
+  playerController: {fileID: 5866666020708054821}
   timeElapsed: 0
   healthChanged: 0
 --- !u!114 &3625367836274417931
@@ -1909,12 +1910,12 @@ GameObject:
   - component: {fileID: 5845789472636036533}
   - component: {fileID: 3246572644922288657}
   m_Layer: 0
-  m_Name: HUD
+  m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7259026164235496611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8623405850615248977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2198,6 +2199,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5608946883344852978, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223157736359688018, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 3246572644922288657}
     - target: {fileID: 8223157736359688018, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
       propertyPath: thirdPersonCam
       value: 
@@ -2205,6 +2214,14 @@ PrefabInstance:
     - target: {fileID: 9117988882859570446, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
       propertyPath: m_Name
       value: NEW_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117988882859570446, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117988882859570446, guid: d52b0c96c0181fb46981ff57b1696d26, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

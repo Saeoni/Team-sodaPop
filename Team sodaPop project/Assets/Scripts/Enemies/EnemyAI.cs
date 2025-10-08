@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
+using UnityEngine.UIElements;
 
 
 
@@ -12,9 +13,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Animator animator;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] Transform healthBarPos;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject keyPrefab;
-    
+
     [Header("Detection & Chase Settings")]
     [SerializeField] float detectionRadius;
     [SerializeField] float chaseSpeed;
@@ -41,18 +43,26 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 _playerDir;
     Vector3 _spawnPos;
     private Vector3 startingPos;
-    
 
+
+    private UIDocument healthBarDoc;
+    private VisualElement healthBar;
+    private int maxHealth;
     void Start()
     {
         _colorOrig = model.material.color;
         GameManager.instance.updateGameGoal(1);
         _spawnPos = transform.position;
         _originalStopDist = agent.stoppingDistance;
-        
+        maxHealth = HP;
+
+
+
 
 
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -60,17 +70,68 @@ public class EnemyAI : MonoBehaviour, IDamage
         _shootTimer += Time.deltaTime;
         UpdateLocomotionAnim();
 
+
+
         if (_playerInTrigger && !canSeePlayer())
         {
-           CheckRoam();
+            CheckRoam();
         }
         else if (!_playerInTrigger)
         {
             CheckRoam();
         }
-       
-    }
 
+    }
+    public void InitializeEnemy()
+    {
+        Debug.Log("Enemy HP set to: " + HP);
+
+        healthBarDoc = healthBarPos.GetComponent<UIDocument>();
+        if (healthBarDoc == null)
+        {
+            Debug.LogWarning("Health bar UIDocument is not assigned.");
+            return;
+        }
+        healthBarDoc.transform.LookAt(GameManager.instance.playerScript.activeCamera.transform);
+        healthBarDoc.transform.Rotate(0, 180, 0);
+        healthBarDoc.rootVisualElement.style.width = 100;
+        healthBarDoc.rootVisualElement.style.height = 15;
+        var root = healthBarDoc.rootVisualElement;
+        healthBar = root.Q<ProgressBar>("Health");
+        healthBar.style.width = (float)HP / maxHealth * 100f;
+        HideHealthBar();
+
+    }
+    public void ShowHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.style.display = DisplayStyle.Flex;
+        }
+    }
+    public void HideHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.style.display = DisplayStyle.None;
+        }
+    }
+    public void UpdateEnemyHealthBar()
+    {
+
+
+        if (healthBarDoc == null)
+        {
+            Debug.LogWarning("Health bar UIDocument is not assigned.");
+            return;
+        }
+
+        if (healthBar != null)
+        {
+            ShowHealthBar();
+            healthBar.style.width = (float)HP / maxHealth * 100f;
+        }
+    }
     void UpdateLocomotionAnim()
     {
         float currentSpeed = agent.velocity.magnitude;
@@ -78,6 +139,16 @@ public class EnemyAI : MonoBehaviour, IDamage
         float currentAnimSpeed = animator.GetFloat("Speed");
 
         animator.SetFloat("Speed", Mathf.Lerp(currentAnimSpeed, normalizedSpeed, Time.deltaTime * animTransSpeed));
+    }
+
+    public void LookAtActiveCamera()
+    {
+        if (GameManager.instance != null && GameManager.instance.player != null)
+        {
+            Transform camTransform = GameManager.instance.playerScript.activeCamera.transform;
+            Vector3 lookPos = new Vector3(camTransform.position.x, transform.position.y, camTransform.position.z);
+            transform.LookAt(lookPos);
+        }
     }
 
 
@@ -129,7 +200,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void CheckRoam()
     {
-       if (_roamTimer >= roamPauseTimer && agent.remainingDistance <= 0.01f)
+        if (_roamTimer >= roamPauseTimer && agent.remainingDistance <= 0.01f)
         {
             BeginRoam();
         }
@@ -138,10 +209,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(_playerDir.x, transform.position.y, _playerDir.z));
-      transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
-   
+
 
     void shoot()
     {
@@ -160,19 +231,24 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         GameManager.instance.updateGameGoal(-1);
 
-        if (keyPrefab != null) 
-        Destroy(gameObject);
+        if (keyPrefab != null)
+            Destroy(gameObject);
 
-            Instantiate(keyPrefab, transform.position, Quaternion.identity);
+        Instantiate(keyPrefab, transform.position, Quaternion.identity);
 
     }
 
     public void takeDamage(int amount)
     {
-        if(HP <= 0)
+        if (HP <= 0)
+        {
+            Debug.Log("Enemy is supposed to dead already.");
             return;
+        }
 
         HP -= amount;
+        UpdateEnemyHealthBar();
+
         StartCoroutine(flashRed());
         agent.SetDestination(GameManager.instance.player.transform.position);
 
@@ -185,6 +261,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = _colorOrig;
+        HideHealthBar();
     }
     void OnTriggerEnter(Collider other)
     {

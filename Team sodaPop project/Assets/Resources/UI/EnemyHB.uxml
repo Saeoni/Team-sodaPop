@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="HealthBar-Container" style="flex-shrink: initial; flex-direction: row-reverse; flex-wrap: nowrap; flex-basis: 100%; overflow: hidden; opacity: 1; flex-grow: 0;">
+        <ui:VisualElement name="HealthBar" style="flex-grow: 1; background-color: rgba(208, 0, 0, 0.05);">
+            <ui:VisualElement name="Health" style="flex-shrink: initial; align-self: flex-end; background-color: rgb(6, 252, 0); background-size: 100% 100%; flex-grow: initial; max-width: 100%; max-height: 100%; width: 61px; height: 100%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
