@@ -93,11 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-<<<<<<< Updated upstream
   m_LightingDataAsset: {fileID: 112000000, guid: 4075ae9405a32f944b6948adf12b348f, type: 2}
-=======
   m_LightingDataAsset: {fileID: 112000000, guid: e19638e7f7f1a3e4baeeb9e69e303efb, type: 2}
->>>>>>> Stashed changes
   m_LightingSettings: {fileID: 4890085278179872738, guid: 81543df10056320459a9d39149ee72b1, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -170,11 +167,8 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-<<<<<<< Updated upstream
   m_NavMeshData: {fileID: 23800000, guid: a5e96cae865d6474cb9a154aaf534592, type: 2}
-=======
   m_NavMeshData: {fileID: 23800000, guid: 46f27f77d411c99449bfc5881c8b53db, type: 2}
->>>>>>> Stashed changes
   m_BuildHeightMesh: 0
 --- !u!4 &302595269
 Transform:
@@ -673,12 +667,9 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-<<<<<<< Updated upstream
   - {fileID: 7993397018769047802}
-=======
   - {fileID: 1026206569}
   - {fileID: 1616806477}
->>>>>>> Stashed changes
   - {fileID: 374646446}
   - {fileID: 302595269}
   - {fileID: 3103637460325629009}
