@@ -93,6 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 112000000, guid: e19638e7f7f1a3e4baeeb9e69e303efb, type: 2}
   m_LightingDataAsset: {fileID: 112000000, guid: 4075ae9405a32f944b6948adf12b348f, type: 2}
   m_LightingDataAsset: {fileID: 112000000, guid: e19638e7f7f1a3e4baeeb9e69e303efb, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 81543df10056320459a9d39149ee72b1, type: 2}
@@ -167,6 +168,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 46f27f77d411c99449bfc5881c8b53db, type: 2}
   m_NavMeshData: {fileID: 23800000, guid: a5e96cae865d6474cb9a154aaf534592, type: 2}
   m_NavMeshData: {fileID: 23800000, guid: 46f27f77d411c99449bfc5881c8b53db, type: 2}
   m_BuildHeightMesh: 0
@@ -627,9 +629,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6672108478736472959, guid: ad653f6a3ad1a63409eb31d8c25fb6b5, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672108478736472959, guid: ad653f6a3ad1a63409eb31d8c25fb6b5, type: 3}
       propertyPath: spawnVFX
       value: 
       objectReference: {fileID: 1611345375}
+    - target: {fileID: 6672108478736472959, guid: ad653f6a3ad1a63409eb31d8c25fb6b5, type: 3}
+      propertyPath: stalkTimer
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 6672108478736472959, guid: ad653f6a3ad1a63409eb31d8c25fb6b5, type: 3}
       propertyPath: stalkTimer
       value: 35
