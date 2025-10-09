@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
         activeCamera = playerCam;
         changeGun();
         player.ResetHealth();
-        playerUI.UpdatePlayerUI();
+
 
     }
     void movement()
@@ -233,6 +233,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
 
     void changeGun()
     {
+        if (player.gunStats.Count == 0)
+            return;
         player.ShootDamage = player.gunStats[gunListPos].shootDamage;
         player.ShootDist = player.gunStats[gunListPos].shootDist;
         player.ShootRate = player.gunStats[gunListPos].shootRate;
@@ -260,5 +262,14 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
     public float GetLensView()
     {
         return playerCam.Lens.FieldOfView;
+    }
+
+    public bool IsDead()
+    {
+        return player.CurrentHealth <= 0;
+    }
+    public bool IsFullyHealed()
+    {
+        return player.CurrentHealth >= player.MaxHealth;
     }
 }

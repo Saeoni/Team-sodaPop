@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
+
 public class PlayerUIController : MonoBehaviour
 {
     //public static HUDController instance;
@@ -21,7 +22,7 @@ public class PlayerUIController : MonoBehaviour
     private Label enemyCountText;
     private int enemyCount;
 
-    public PlayerData player;
+
     public PlayerController playerController;
     private Label collectedModulesTitle;
     private Label collectedModulesCount;
@@ -41,7 +42,7 @@ public class PlayerUIController : MonoBehaviour
 
     private Label ammoCur;
     private Label ammoMax;
-
+    private PlayerController player;
     int gameGoalCount;
     int gameTimerMinute;
     float gameTimerSecond;
@@ -113,7 +114,7 @@ public class PlayerUIController : MonoBehaviour
     {
         // Example of starting a stealth timer for 5 seconds
         //StealthTimer(5f);
-        player = GameManager.instance.player.GetComponent<PlayerData>();
+        player = GameManager.instance.playerScript;
 
         ShowUI();
 
@@ -147,7 +148,7 @@ public class PlayerUIController : MonoBehaviour
         UpdateHealthBar();
         if (reticle != null)
         {
-            if (player.gunStats.Count > 0 && player.AmmoCount > 0)
+            if (player.GetComponent<PlayerData>().gunStats.Count > 0 && player.GetComponent<PlayerData>().AmmoCount > 0)
             {
                 reticle.SetActive(true);
             }
@@ -178,14 +179,14 @@ public class PlayerUIController : MonoBehaviour
 
     public void UpdateEnemyCount(int amount)
     {
-        player.CurrentEnemyCount += amount;
+        player.GetComponent<PlayerData>().CurrentEnemyCount += amount;
 
     }
     public void UpdateCollectedModules(int amount)
     {
-        player.CollectedModules += amount;
-        collectedModulesCount.text = player.CollectedModules.ToString();
-        if (player.CollectedModules > 0)
+        player.GetComponent<PlayerData>().CollectedModules += amount;
+        collectedModulesCount.text = player.GetComponent<PlayerData>().CollectedModules.ToString();
+        if (player.GetComponent<PlayerData>().CollectedModules > 0)
         {
             minimap.style.display = DisplayStyle.Flex; // Show minimap when at least one module is collected
         }
@@ -200,7 +201,7 @@ public class PlayerUIController : MonoBehaviour
     }
     public void UpdateKeyCount()
     {
-        player.KeysCollected++;
+        player.GetComponent<PlayerData>().KeysCollected++;
         //enemiesTitle.text = "Keys Collected";
         //enemyCountText.text = player.KeysCollected.ToString();
     }
@@ -232,14 +233,14 @@ public class PlayerUIController : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        if (!healthChanged && player.CurrentHealth == player.MaxHealth)
+        if (!healthChanged && player.IsFullyHealed())
         {
             return;
         }
         if (!healthChanged)
             return;
 
-        float healthPercent = player.CurrentHealth / player.MaxHealth;
+        float healthPercent = player.GetComponent<PlayerData>().CurrentHealth / player.GetComponent<PlayerData>().MaxHealth;
 
         healthFill.style.height = new Length(healthPercent * 100, LengthUnit.Percent);
 
@@ -252,7 +253,7 @@ public class PlayerUIController : MonoBehaviour
 
 
             healthFill.style.backgroundColor = Color.red;
-            if (player.CurrentHealth <= 0)
+            if (player.GetComponent<PlayerData>().CurrentHealth <= 0)
             {
                 healthFill.style.height = new StyleLength(new Length(0, LengthUnit.Percent));
                 //StartCoroutine(SayRandomFromList(enemyCountText, errorPhrases, 2f, Color.red));
@@ -316,9 +317,9 @@ public class PlayerUIController : MonoBehaviour
     {
         float originalFOV = playerController.GetLensView();
         while (GameManager.instance.playerScript.isShooting)
-            player.ScopeZoomScale = 125f;
+            player.GetComponent<PlayerData>().ScopeZoomScale = 125f;
         yield return new WaitForSeconds(0.1f);
-        player.ScopeZoomScale = 0f;
+        player.GetComponent<PlayerData>().ScopeZoomScale = 0f;
 
 
     }

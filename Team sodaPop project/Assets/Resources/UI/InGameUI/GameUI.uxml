@@ -20,14 +20,13 @@
                     <ui:Label text="00" name="StealthTimer_Text" style="color: rgb(255, 0, 0);" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="PlayerCardContainer" class="playercard-container">
-                <ui:VisualElement name="HealthBarContainer" data-source="project://database/Assets/Resources/Player/ClovisData.asset?fileID=11400000&amp;guid=fb942227ab9e5604ea1ab48fd9c4e06e&amp;type=2#ClovisData" data-source-path="playerHPPercent" class="healthbar-container" style="height: 619px; -unity-background-image-tint-color: rgba(157, 138, 138, 0.68);">
-                    <ui:VisualElement name="HealthBarFill" data-source="project://database/Assets/Resources/Player/ClovisData.asset?fileID=11400000&amp;guid=fb942227ab9e5604ea1ab48fd9c4e06e&amp;type=2#ClovisData" class="health" style="background-size: 27% 100%;">
-                        <Bindings>
-                            <ui:DataBinding property="style.backgroundSize" data-source-path="playerHPPercent" binding-mode="ToTarget" />
-                        </Bindings>
-                    </ui:VisualElement>
-                </ui:VisualElement>
+            <ui:VisualElement name="PlayerCardContainer" class="healthbar-container">
+                <ui:ProgressBar value="22" title="my-progress" name="ProgressBar" style="width: 100%;" />
+                <ui:ProgressBar value="43.5" title="Don&apos;t Die" data-source="project://database/Assets/Resources/Player/ClovisData.asset?fileID=11400000&amp;guid=fb942227ab9e5604ea1ab48fd9c4e06e&amp;type=2#ClovisData" class="progress-bar">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="currentHealth" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:ProgressBar>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="RightSide" style="flex-grow: 1; align-self: flex-start; width: 505px; height: 1016px; flex-direction: column; margin-right: 36px; margin-top: 36px; justify-content: flex-start; align-items: stretch; position: absolute; top: 1px; left: 1381px;">

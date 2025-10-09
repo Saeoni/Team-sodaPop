@@ -25,7 +25,7 @@ MonoBehaviour:
   currentHealth: 100
   speed: 5
   scopeZoomSpeed: 0.5
-  scopeZoomScale: 125
+  scopeZoomScale: 100
   stealth: 5
   ammoCount: 30
   maxAmmo: 30

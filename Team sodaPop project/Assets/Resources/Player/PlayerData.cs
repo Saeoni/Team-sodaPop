@@ -140,6 +140,15 @@ public class PlayerData : ScriptableObject
     public float ScopeZoomScale { get { return scopeZoomScale; } set { scopeZoomScale = value; } }
 
 
+    public bool IsDead()
+    {
+        return currentHealth <= 0;
+    }
+
+    public bool isFullHealth()
+    {
+        return currentHealth >= maxHealth;
+    }
 
 
     private void OnEnable()

@@ -28,7 +28,7 @@
 }
 
 .subtitle {
-    -unity-font-definition: url("project://database/Assets/Fonts/about_dead/About%20Dead.ttf?fileID=12800000&guid=0cde9b60d0cbeff49b3945bcdfbe51ee&type=3#About Dead");
+    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
     font-size: 64px;
     -unity-text-align: middle-center;
     margin-top: 228px;
@@ -60,7 +60,7 @@
     background-size: 100% 100px;
     transition-duration: 0.01s;
     transition-timing-function: ease-in-out;
-    -unity-font-definition: url("project://database/Assets/Fonts/savage_3/Savage.ttf?fileID=12800000&guid=f007fef26dd2df744959f70d7c90d6b1&type=3#Savage");
+    -unity-font-definition: url("project://database/Assets/Fonts/kishore-sharp.ttf?fileID=12800000&guid=990e3c335eec5fe47a091848ad1ddeaa&type=3#kishore-sharp");
     font-size: 50px;
     width: 300px;
     align-self: center;

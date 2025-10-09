@@ -47,9 +47,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-        MenuUICtrl = menuUI.GetComponent<MenuController>();
-        PlayerUICtrl = playerUIObject.GetComponent<PlayerUIController>();
-        StartMenuCtrl = startMenuUI.GetComponent<StartMenuController>();
+
 
 
         playerIsDead = false;
