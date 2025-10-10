@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4129612628836525834
+--- !u!1 &5280573897991022775
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7590137599207252507}
-  - component: {fileID: 7403771911686024313}
-  m_Layer: 0
-  m_Name: scytheCollider
+  - component: {fileID: 2341651484507423819}
+  - component: {fileID: 5978789158149002807}
+  m_Layer: 11
+  m_Name: BladeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7590137599207252507
+--- !u!4 &2341651484507423819
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4129612628836525834}
+  m_GameObject: {fileID: 5280573897991022775}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000089406946, y: -0.000000089406946, z: 0.9669535, w: 0.25495267}
-  m_LocalPosition: {x: -0.749, y: 0.632, z: -0.057}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.00000014342365, y: 0.000000089406946, z: 0.50661415, w: 0.8621729}
+  m_LocalPosition: {x: -0.759, y: 0.647, z: -0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5971469292507233007}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 150.458}
---- !u!136 &7403771911686024313
+  m_Father: {fileID: 5506594842809063891}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60.877}
+--- !u!136 &5978789158149002807
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4129612628836525834}
+  m_GameObject: {fileID: 5280573897991022775}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -51,11 +51,11 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.125
+  m_Radius: 0.1
   m_Height: 1
-  m_Direction: 1
+  m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &6866866997638447298
+--- !u!1 &8490975697920417307
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,71 +63,65 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5971469292507233007}
-  - component: {fileID: 5792052551360469509}
-  - component: {fileID: 4150719853163321577}
-  - component: {fileID: 6143800039472999754}
-  - component: {fileID: 4660458629691162562}
-  - component: {fileID: 3884001677719367417}
-  m_Layer: 7
-  m_Name: Scythe
+  - component: {fileID: 5506594842809063891}
+  - component: {fileID: 8416323470570952567}
+  - component: {fileID: 1275205960318868916}
+  - component: {fileID: 1215244664227793220}
+  - component: {fileID: 6684548468532774587}
+  - component: {fileID: 987769584821587311}
+  m_Layer: 11
+  m_Name: Scythe_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5971469292507233007
+--- !u!4 &5506594842809063891
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866866997638447298}
+  m_GameObject: {fileID: 8490975697920417307}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.74748933, y: 0.08232382, z: 0.2993097, w: -0.58727866}
-  m_LocalPosition: {x: 0.004694759, y: 0.0016623136, z: -0.004575605}
-  m_LocalScale: {x: 0.019999925, y: 0.019999899, z: 0.020000009}
+  m_LocalRotation: {x: -0.04349198, y: -0.6812893, z: 0.23786929, w: -0.6909209}
+  m_LocalPosition: {x: -9.77, y: 1.38, z: -49.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7590137599207252507}
+  - {fileID: 2341651484507423819}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 92.039, z: 0}
---- !u!114 &5792052551360469509
+  m_LocalEulerAnglesHint: {x: -202.595, y: 265.78198, z: -556.968}
+--- !u!114 &8416323470570952567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866866997638447298}
+  m_GameObject: {fileID: 8490975697920417307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4357db5c1afb51a418f441ad02a4ed26, type: 3}
+  m_Script: {fileID: 11500000, guid: ae6ce36ee2495e9468447fe2f5ec9b5c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::damage
-  type: 1
-  rb: {fileID: 3884001677719367417}
-  damageAmount: 999
-  damageRate: 0
-  speed: 20
-  destroyTime: 0
-  explosionPrefab: {fileID: 0}
-  impactEffect: {fileID: 2540079571210241080, guid: 4d306ce1082b6684fb56201d82344882, type: 3}
-  impactParticles: {fileID: 0}
---- !u!33 &4150719853163321577
+  m_EditorClassIdentifier: Assembly-CSharp::Scythe_Projectile
+  speed: 25
+  impactEffect: {fileID: 447409866740539227, guid: da34d66431c8cd04aa98411a543a83bf, type: 3}
+  pullTarget: {fileID: 0}
+--- !u!33 &1275205960318868916
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866866997638447298}
+  m_GameObject: {fileID: 8490975697920417307}
   m_Mesh: {fileID: 3717711707056887608, guid: 047c8ab24f616da41a802ac7d07c28f2, type: 3}
---- !u!23 &6143800039472999754
+--- !u!23 &1215244664227793220
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866866997638447298}
+  m_GameObject: {fileID: 8490975697920417307}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -146,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e1cd62f94fc18cb4ea31d8da77bc166a, type: 2}
+  - {fileID: 2100000, guid: 9eed1ce18545d4045994f740725c6837, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,13 +163,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4660458629691162562
+--- !u!64 &6684548468532774587
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866866997638447298}
+  m_GameObject: {fileID: 8490975697920417307}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -191,13 +185,13 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3717711707056887608, guid: 047c8ab24f616da41a802ac7d07c28f2, type: 3}
---- !u!54 &3884001677719367417
+--- !u!54 &987769584821587311
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866866997638447298}
+  m_GameObject: {fileID: 8490975697920417307}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -213,8 +207,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
