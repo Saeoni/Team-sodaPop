@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f8be0de-94d5-4b9d-95db-0450b48db07e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/doorFunctions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/doorFunctions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="6f8be0de-94d5-4b9d-95db-0450b48db07e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +123,7 @@
       <updated>1760100461437</updated>
       <workItem from="1760100463128" duration="2529000" />
       <workItem from="1760104908733" duration="14000" />
-      <workItem from="1760105209470" duration="676000" />
+      <workItem from="1760105209470" duration="697000" />
     </task>
     <servers />
   </component>
