@@ -52,11 +52,7 @@
       "dependencies": {}
     },
     "com.unity.ide.rider": {
-<<<<<<< HEAD
-      "version": "3.0.38",
-=======
       "version": "3.0.37",
->>>>>>> Level_Designs_Amanda
       "depth": 0,
       "source": "registry",
       "dependencies": {
