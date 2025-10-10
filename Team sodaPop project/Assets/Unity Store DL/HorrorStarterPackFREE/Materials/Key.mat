@@ -65,7 +65,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Key.mat
         m_Texture: {fileID: 2800000, guid: a47c4ab9b6f823547b234703979aef54, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 65e69d5418ead7346bf9ad5d1f44df05, type: 3}
+>>>>>>> Level_Designs_Amanda:Team sodaPop project/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_B.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
