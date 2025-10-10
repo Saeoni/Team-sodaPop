@@ -108,7 +108,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         float currentSpeed = Mathf.Lerp(enemyData.minSpeed, enemyData.maxSpeed, t);
         agent.speed = currentSpeed;
 
-        Transform player = gamemanager.instance.player.transform;
+        Transform player = Gamemanager.Instance.player.transform;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (_hasSpasmed)
@@ -149,7 +149,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             TriggerReaperKill();
         }
 
-        if (gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)
+        if (Gamemanager.Instance.noiseLevel >= Gamemanager.Instance.noiseThreshold)
         {
             TeleportToPlayer();
             StartCoroutine(DelayedKill());
@@ -159,7 +159,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void TeleportToPlayer()
     {
-        Transform player = gamemanager.instance.player.transform;
+        Transform player = Gamemanager.Instance.player.transform;
 
         if (enemyData.teleportVFX != null)
             Instantiate(enemyData.teleportVFX, transform.position, Quaternion.identity);
@@ -182,7 +182,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         _killTriggered = true;
         animator.SetTrigger(enemyData.killTrigger);
-        gamemanager.instance.playerIsDead = true;
+        Gamemanager.Instance.playerIsDead = true;
     }
 
     public void OnSpawnFinish()
@@ -208,11 +208,11 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool CanSeePlayer()
     {
-        if (gamemanager.instance.isStealthed)
+        if (Gamemanager.Instance.isStealthed)
             return false;
 
-        _playerDir = gamemanager.instance.player.transform.position - headPos.position;
-        Vector3 playerPos = gamemanager.instance.player.transform.position;
+        _playerDir = Gamemanager.Instance.player.transform.position - headPos.position;
+        Vector3 playerPos = Gamemanager.Instance.player.transform.position;
         _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);
 
         Debug.DrawRay(headPos.position, _playerDir);
@@ -299,7 +299,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         _currentHP -= amount;
         StartCoroutine(FlashRed());
-        agent.SetDestination(gamemanager.instance.player.transform.position);
+        agent.SetDestination(Gamemanager.Instance.player.transform.position);
 
         animator.SetTrigger(enemyData.damageTrigger);
         if (_currentHP <= 0)
@@ -326,7 +326,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void OnEnemyDeath()
     {
-        gamemanager.instance.updateGameGoal(-1);
+        Gamemanager.Instance.UpdateGameGoal(-1);
         
         if (enemyData.keyPrefab  != null) 
             Instantiate(enemyData.keyPrefab, transform.position, Quaternion.identity);

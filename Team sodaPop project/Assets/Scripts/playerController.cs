@@ -47,7 +47,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-        if (!gamemanager.instance.isPaused)
+        if (!Gamemanager.Instance.isPaused)
         {
             movement();
         }
@@ -144,7 +144,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         StartCoroutine(flashDamage());
         if(HP <= 0)
         {
-            gamemanager.instance.youLose();
+            Gamemanager.Instance.YouLose();
         }
     }
 
@@ -165,32 +165,32 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void updatePlayerUI()
     {
-        gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        Gamemanager.Instance.playerHealthBar.fillAmount = (float)HP / HPOrig;
 
         if(gunList.Count > 0)
         {
-            gamemanager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
-            gamemanager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
+            Gamemanager.Instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
+            Gamemanager.Instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
 
         }
     }
 
     IEnumerator flashDamage()
     {
-        gamemanager.instance.playerDamageFlash.SetActive(true);
+        Gamemanager.Instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        gamemanager.instance.playerDamageFlash.SetActive(false);
+        Gamemanager.Instance.playerDamageFlash.SetActive(false);
     }
     IEnumerator flashHeal()
     {
-        gamemanager.instance.playerHealFlash.SetActive(true);
+        Gamemanager.Instance.playerHealFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        gamemanager.instance.playerHealFlash.SetActive(false);
+        Gamemanager.Instance.playerHealFlash.SetActive(false);
     }
 
     public void spawnPlayer()
     {
-        controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
+        controller.transform.position = Gamemanager.Instance.playerSpawnPos.transform.position;
 
         HP = HPOrig;
         updatePlayerUI();

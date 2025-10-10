@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
 
 
@@ -24,52 +23,52 @@ public class TurretAI : MonoBehaviour, IDamage
     [SerializeField] int HP = 100;
     [SerializeField] LayerMask lineOfSightMask;
 
-    float shootTimer;
-    float angleToPlayer;
-    bool playerInTrigger;
-    Vector3 dirOfPlayer;
-    Color colorOrig;
+    float _shootTimer;
+    float _angleToPlayer;
+    bool _playerInTrigger;
+    Vector3 _dirOfPlayer;
+    Color _colorOrig;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorOrig = model.material.color;
+        _colorOrig = model.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
+        _shootTimer += Time.deltaTime;
 
-        if (playerInTrigger && lineOfSightToPlayer())
+        if (_playerInTrigger && LineOfSightToPlayer())
         {
             RotateToPlayer();
 
-            if (shootTimer >= shootRate)
+            if (_shootTimer >= shootRate)
             {
-                shootTimer = 0f;
+                _shootTimer = 0f;
                 if (useMissiles)
                 {
                     FireHomingMissiles();
                 }
                 else
-                    fireBullet();
+                    FireBullet();
             }
         }
     }
 
-    bool lineOfSightToPlayer()
+    bool LineOfSightToPlayer()
     {
-        Transform player = gamemanager.instance.player.transform;
-        dirOfPlayer = player.position - headPos.position;
-        angleToPlayer = Vector3.Angle(dirOfPlayer, turretHead.forward);
+        Transform player = Gamemanager.Instance.player.transform;
+        _dirOfPlayer = player.position - headPos.position;
+        _angleToPlayer = Vector3.Angle(_dirOfPlayer, turretHead.forward);
 
-        //Debug.DrawRay(headPos.position, dirOfPlayer.normalized * detectionRadius, Color.red);
+        //Debug.DrawRay(headPos.position, _dirOfPlayer.normalized * detectionRadius, Color.red);
 
-        if (angleToPlayer > FOV) return false;
+        if (_angleToPlayer > FOV) return false;
 
         RaycastHit hit;
-        if (Physics.Raycast(headPos.position, dirOfPlayer.normalized, out hit, detectionRadius, lineOfSightMask ))
+        if (Physics.Raycast(headPos.position, _dirOfPlayer.normalized, out hit, detectionRadius, lineOfSightMask ))
         {
             return hit.collider.CompareTag("Player");
         }
@@ -78,15 +77,15 @@ public class TurretAI : MonoBehaviour, IDamage
 
     void RotateToPlayer()
     {
-        Vector3 direction = gamemanager.instance.player.transform.position - turretHead.position;
+        Vector3 direction = Gamemanager.Instance.player.transform.position - turretHead.position;
         direction.y = 0f;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         turretHead.rotation = Quaternion.Lerp(turretHead.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
-    void fireBullet()
+    void FireBullet()
     {
-        Transform player = gamemanager.instance.player.transform;
+        Transform player = Gamemanager.Instance.player.transform;
         Vector3 targetPos = player.position;
         Vector3 directionToPlayer = (targetPos - shootPoint.position);
 
@@ -108,30 +107,30 @@ public class TurretAI : MonoBehaviour, IDamage
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            playerInTrigger = true;
+            _playerInTrigger = true;
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-            playerInTrigger = false;
+            _playerInTrigger = false;
     }
 
-    IEnumerator flashRed()
+    IEnumerator FlashRed()
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        model.material.color = _colorOrig;
     }
 
     public void takeDamage(int amount)
     {
         HP -= amount;
-        StartCoroutine(flashRed());
+        StartCoroutine(FlashRed());
 
         if (HP <= 0)
         {
-            //gamemanger.instance.updateGameGoal(-1);
+            Gamemanager.Instance.UpdateGameGoal(-1);
             Destroy(gameObject);
         }
     }

@@ -2,20 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-public class gamemanager : MonoBehaviour
+public class Gamemanager : MonoBehaviour
 {
 
-    public static gamemanager instance;
+    public static Gamemanager Instance;
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text gameTimerText;
-    [SerializeField] TMP_Text KeyText;
+    [SerializeField] TMP_Text keyText;
     [SerializeField] TMP_Text stealthTimerText;
 
-    public Image playerHPBar;
+    public Image playerHealthBar;
     public GameObject playerDamageFlash;
     public GameObject playerHealFlash;
     public GameObject checkpointPopup;
@@ -31,24 +31,24 @@ public class gamemanager : MonoBehaviour
     public bool isStealthed;
     public float timeElapsed; 
 
-    int gameGoalCount;
-    int gameTimerMinute;
-    float gameTimerSecond;
-    float stealthTimeLeft;
+    int _gameGoalCount;
+    int _gameTimerMinute;
+    float _gameTimerSecond;
+    float _stealthTimeLeft;
 
-    float timeScaleOrig;
+    float _timeScaleOrig;
     
     public bool playerIsDead;
     // Noise logic 
-    public float noiseLevel = 0f;
+    public float noiseLevel;
     public float noiseDecayRate = 1f;
     public float noiseThreshold = 10f;
 
     void Awake()
     {
 
-        instance = this;
-        timeScaleOrig = Time.timeScale;
+        Instance = this;
+        _timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
@@ -66,18 +66,18 @@ public class gamemanager : MonoBehaviour
             if (menuActive == null)
             {
 
-                statePause();
+                StatePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
 
             }
             else if (menuActive == menuPause)
             {
-                stateUnpause();
+                StateUnpause();
             }
         }
 
-        updateGameTimer();
+        UpdateGameTimer();
         noiseLevel = Mathf.Max(0f, noiseLevel - noiseDecayRate * Time.deltaTime);
     }
 
@@ -86,7 +86,7 @@ public class gamemanager : MonoBehaviour
         noiseLevel += amount;
     }
    
-    public void stealthTimer(float length)
+    public void StealthTimer(float length)
     {
         StartCoroutine(StealthCountdown(length));
 
@@ -112,7 +112,7 @@ public class gamemanager : MonoBehaviour
 
 
 
-    public void statePause()
+    public void StatePause()
     {
         isPaused = !isPaused;
         Time.timeScale = 0;
@@ -120,10 +120,10 @@ public class gamemanager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void stateUnpause()
+    public void StateUnpause()
     {
         isPaused = !isPaused;
-        Time.timeScale = timeScaleOrig;
+        Time.timeScale = _timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
@@ -132,42 +132,42 @@ public class gamemanager : MonoBehaviour
 
     public void WinGame()
     {
-       statePause();
+       StatePause();
        menuActive = menuWin;
        menuActive.SetActive(true);
        Debug.Log("Player exited the maze. You win!");      
     }
 
-    public void updateGameTimer()
+    private void UpdateGameTimer()
     {
         if (menuActive == null){
-            gameTimerSecond += Time.deltaTime;
+            _gameTimerSecond += Time.deltaTime;
             timeElapsed += Time.deltaTime;
 
-            int displaySecond = Mathf.FloorToInt(gameTimerSecond);
+            int displaySecond = Mathf.FloorToInt(_gameTimerSecond);
             if (displaySecond >= 60)
             {
-                gameTimerMinute++;
-                gameTimerSecond = 0;
+                _gameTimerMinute++;
+                _gameTimerSecond = 0;
                 displaySecond = 0;
             }
-            gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
+            gameTimerText.text = _gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
         }
     }
 
-    public void updateGameGoal(int amount)
+    public void UpdateGameGoal(int amount)
     {
 
     }
 
-    public void updateKeyCount()
+    public void UpdateKeyCount()
     {
-        KeyText.text = keyCount.ToString();
+        keyText.text = keyCount.ToString();
     }
 
-    public void youLose()
+    public void YouLose()
     {
-        statePause();
+        StatePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
@@ -186,7 +186,7 @@ public class gamemanager : MonoBehaviour
             Destroy(player);
        }
 
-       youLose();
+       YouLose();
     }
 
 

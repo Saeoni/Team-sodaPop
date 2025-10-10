@@ -48,10 +48,10 @@ public class doorFunctions : MonoBehaviour
 
     void unlockDoor()
     {
-        if (gamemanager.instance.keyCount > 0)
+        if (Gamemanager.Instance.keyCount > 0)
         {
-            gamemanager.instance.keyCount--;
-            gamemanager.instance.updateKeyCount();
+            Gamemanager.Instance.keyCount--;
+            Gamemanager.Instance.UpdateKeyCount();
 
             Destroy(gameObject);
         }
