@@ -8,8 +8,388 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8be0de-94d5-4b9d-95db-0450b48db07e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/CannonBullet_mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/CannonBullet_mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Exit platform color.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Exit platform color.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Floor color.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Floor color.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/HPTestColor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/HPTestColor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/KeyTestColor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/KeyTestColor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LaserGlow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LaserGlow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Night SkyBox.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Night SkyBox.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Poison color.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Poison color.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/StealthTestColor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/StealthTestColor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall color.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall color.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Demon.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Demon.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Chaser.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Chaser.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Door.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Door.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Turret Cannon Blaster.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Turret Cannon Blaster.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Scythe_Projectile.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Scythe_Projectile.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Exit Platform.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Exit Platform.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun BAR Rifle.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun BAR Rifle.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Pickup - BAR Rifle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Pickup - BAR Rifle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Pickup - Semi Rifle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Pickup - Semi Rifle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Pickup - Sub Machine.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Pickup - Sub Machine.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Semi Rifle.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Semi Rifle.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Sub Machine.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Gun Sub Machine.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Key Door.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Key Door.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Checkpoint.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Checkpoint.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Floor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Floor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Platform.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Platform.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Walls.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level Items/Walls.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Health Pack.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Health Pack.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Key.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Key.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Stealth Power Up.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Stealth Power Up.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Poison puddle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Poison puddle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SM_Env_Reeds_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SM_Env_Reeds_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Spawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Spawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneTemplateAssets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneTemplateAssets/Common.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneTemplateAssets/Common/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneTemplateAssets/Common/Models/UnityMaterialBall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneTemplateAssets/Common/Models/UnityMaterialBall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Edwin_Test.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Edwin_Test.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Edwin_Test.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Edwin_Test/NavMesh-NavMesh Surface.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Edwin_Test/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuLevel.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuLevel.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumSandbox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumSandbox/NavMesh-NavMesh Surface 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumSandbox/NavMesh-NavMesh Surface 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumSandbox/NavMesh-NavMesh Surface.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumSandbox/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene/ReflectionProbe-0.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuantumScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QuantumScene2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ryan_MenuButtons.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ryan_MenuButtons.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyAI_Test.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyAI_Test.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyAI_Test.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Rock029_1K-PNG/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/URP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/URP.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Layout.wlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Layout.wlt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Cyber_Soldier_Anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Cyber_Soldier_Anim/Unconfirmed 315117.crdownload" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Cyber_Soldier_Anim/Unconfirmed 315117.crdownload.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_BaseColor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_BaseColor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_Metallic.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_Metallic.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_Normal_DirectX.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_Normal_DirectX.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_Roughness.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_Roughness.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/DemonFullBody.mask" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/DemonFullBody.mask.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/DemonLowerBody.mask" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/DemonLowerBody.mask.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/NavMesh-NavMesh Surface 2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/NavMesh-NavMesh Surface 2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/TeleportIn-1.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/TeleportIn-1.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/TeleportIn-2.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/TeleportIn-2.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROCKS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROCKS/ROCKS_Volcanic.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROCKS/ROCKS_Volcanic/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROCKS/ROCKS_Volcanic/Materials/Rocks_Volcanic_C.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROCKS/ROCKS_Volcanic/Materials/Rocks_Volcanic_C.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_C.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_C.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_D.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Bump/Materials/Roof_RoundTile_Bump_D.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_B.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_B.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_C.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_C.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_D.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_RoundTile_Flat/Materials/Roof_RoundTile_Flat_D.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_B.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_B.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_C.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_C.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_D.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/Roof_SquareTile_Bump_D.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/UnderRoof_SquareTile_Bump_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Bump/Materials/UnderRoof_SquareTile_Bump_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_B.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_B.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_C.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_C.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_D.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/ROOF/ROOF_SquareTile_Flat/Materials/Roof_SquareTile_Flat_D.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/SAND.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/SAND/SAND_Beach.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/SAND/SAND_Beach/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/SAND/SAND_Beach/Materials/Sand_Beach_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/SAND/SAND_Beach/Materials/Sand_Beach_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Plain.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Plain/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Plain/Materials/Wood_Plain_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Plain/Materials/Wood_Plain_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Plain/Materials/Wood_Plain_B.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Plain/Materials/Wood_Plain_B.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Planks.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Planks/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Planks/Materials/Wood_Planks_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Cartoon_Texture_Pack/WOOD/WOOD_Planks/Materials/Wood_Planks_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Ground - Earth and Rocks - Free 'Texture A' (Hand-Painted).meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Ground - Earth and Rocks - Free 'Texture A' (Hand-Painted)/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Ground - Earth and Rocks - Free 'Texture A' (Hand-Painted)/Materials/floor 14.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Ground - Earth and Rocks - Free 'Texture A' (Hand-Painted)/Materials/floor 14.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Lightning Hit Red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Lightning Hit Red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Animations/DemoCamera.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Animations/DemoCamera.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Animations/Main Camera.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Animations/Main Camera.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Key.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Key.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Knife.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Knife.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/PictureFrameBody.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/PictureFrameBody.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/PictureFrameGlass.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/PictureFrameGlass.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Shackles.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Shackles.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/SyringeBody.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/SyringeBody.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/SyringeTube.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/SyringeTube.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Packages.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Key.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Key.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Knife.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Knife.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/PictureFrame.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/PictureFrame.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Shackles.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Shackles.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Syringe.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Syringe.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Scenes/DEMO_HorrorStarterPackFree.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Scenes/DEMO_HorrorStarterPackFree.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Demo scene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Demo scene/Lightmap-0_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Demo scene/Lightmap-0_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Prefabs/Hits and explosions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Prefabs/Hits and explosions/Electro hit Red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Prefabs/Hits and explosions/Electro hit Red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Mesh.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Texture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Texture/Skin1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Texture/Skin2.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Texture/Skin3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/Equipment_assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Assault57.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Auge.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Blast_set.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Buzzsub.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/ClusterShotgun.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/ClusterSub.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Grenade.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/HunterRifle.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/HunterRifle/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Lock.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Mkb16.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Nsp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Pistol9.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/RP9.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Russian_sniper.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Russian_sniper/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Shotgun3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/StreetSub.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Sturmgewehr46.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/Submachine5.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/bullet_shells_fbxTexMat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/crowbar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/Scope_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/Scope_a/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/Scope_b.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/Scope_b/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/Scope_c.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/Scope_c/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/lamp_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/lamp_b.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/lamp_c.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/lamp_laser_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/lamp_laser_b.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/laser_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/laser_b.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_b.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_c.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_c/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_d.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_e.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/red_dot_e/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/suppressor_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/suppressor_b.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/suppressor_c.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/equipment_mats/suppressor_d.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/fireaxe.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/grenade_launcher.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/grenade_launcher/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/knife.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/machinegun.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/old_pistol.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/pumpgun_a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/revolver.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/revolver/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/rocket_launcher.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/sce5.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/scorp6.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/FBXTexMat/POLYGON weapons pack/tarusk.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Assets_official/bullet_shells_assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Scenes/Show_scene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Show_scene_unofficial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/POLYGON weapons/Show_scene_unofficial/Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/FX_Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/FX_Materials/RainWater_Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/FX_Materials/RainWater_Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/PolygonCity_Mat_01_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/PolygonCity_Mat_01_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/PolygonCity_Mat_01_C.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/PolygonCity_Mat_01_C.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials/PolyKnights_Mat_Variation_04.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials/PolyKnights_Mat_Variation_04.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials/PolyKnights_Mat_Variation_Snow_To_Grass_Swap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials/PolyKnights_Mat_Variation_Snow_To_Grass_Swap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonSamples/PolygonSciFiCity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonSamples/PolygonSciFiCity/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonSamples/PolygonSciFiCity/Materials/PolygonScifi_Mat_01_A.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonSamples/PolygonSciFiCity/Materials/PolygonScifi_Mat_01_A.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Materials/scythe_Albedo.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Materials/scythe_Albedo.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Materials/scythe_Metalness.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Materials/scythe_Metalness.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh/Default-HighResolution 1.giparams" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh/Default-HighResolution 1.giparams.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh/Default-HighResolution.giparams" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh/Default-HighResolution.giparams.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh/DemoSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/RNMahajan/Big Scythe Of Devil/Mesh/DemoSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Recovery.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Recovery/0.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Recovery/0.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
