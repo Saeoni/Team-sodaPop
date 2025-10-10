@@ -77,12 +77,12 @@ namespace PlayerInput
     public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     {
         /// <summary>
-        /// Provides access to the underlying asset Instance.
+        /// Provides access to the underlying asset instance.
         /// </summary>
         public InputActionAsset asset { get; }
 
         /// <summary>
-        /// Constructs a new Instance.
+        /// Constructs a new instance.
         /// </summary>
         public @InputSystem_Actions()
         {
@@ -1265,7 +1265,7 @@ namespace PlayerInput
             private @InputSystem_Actions m_Wrapper;
 
             /// <summary>
-            /// Construct a new Instance of the input action map wrapper class.
+            /// Construct a new instance of the input action map wrapper class.
             /// </summary>
             public PlayerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
             /// <summary>
@@ -1305,7 +1305,7 @@ namespace PlayerInput
             /// </summary>
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             /// <summary>
-            /// Provides access to the underlying input action map Instance.
+            /// Provides access to the underlying input action map instance.
             /// </summary>
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
@@ -1315,13 +1315,13 @@ namespace PlayerInput
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
             public bool enabled => Get().enabled;
             /// <summary>
-            /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> Instance.
+            /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
             /// </summary>
             public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
             /// <summary>
             /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
             /// </summary>
-            /// <param name="instance">Callback Instance.</param>
+            /// <param name="instance">Callback instance.</param>
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
             /// </remarks>
@@ -1425,7 +1425,7 @@ namespace PlayerInput
             }
         }
         /// <summary>
-        /// Provides a new <see cref="PlayerActions" /> Instance referencing this action map.
+        /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
         /// </summary>
         public PlayerActions @Player => new PlayerActions(this);
 
@@ -1450,7 +1450,7 @@ namespace PlayerInput
             private @InputSystem_Actions m_Wrapper;
 
             /// <summary>
-            /// Construct a new Instance of the input action map wrapper class.
+            /// Construct a new instance of the input action map wrapper class.
             /// </summary>
             public UIActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
             /// <summary>
@@ -1494,7 +1494,7 @@ namespace PlayerInput
             /// </summary>
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
             /// <summary>
-            /// Provides access to the underlying input action map Instance.
+            /// Provides access to the underlying input action map instance.
             /// </summary>
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
@@ -1504,13 +1504,13 @@ namespace PlayerInput
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
             public bool enabled => Get().enabled;
             /// <summary>
-            /// Implicitly converts an <see ref="UIActions" /> to an <see ref="InputActionMap" /> Instance.
+            /// Implicitly converts an <see ref="UIActions" /> to an <see ref="InputActionMap" /> instance.
             /// </summary>
             public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
             /// <summary>
             /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
             /// </summary>
-            /// <param name="instance">Callback Instance.</param>
+            /// <param name="instance">Callback instance.</param>
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
             /// </remarks>
@@ -1620,7 +1620,7 @@ namespace PlayerInput
             }
         }
         /// <summary>
-        /// Provides a new <see cref="UIActions" /> Instance referencing this action map.
+        /// Provides a new <see cref="UIActions" /> instance referencing this action map.
         /// </summary>
         public UIActions @UI => new UIActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
