@@ -8,21 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8be0de-94d5-4b9d-95db-0450b48db07e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Player/UI.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gamemanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gamemanager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IPickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IPickup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/cameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/cameraController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gunstats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gunstats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gunstats.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playerController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player/UI.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

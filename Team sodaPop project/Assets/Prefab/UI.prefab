@@ -594,9 +594,9 @@ MonoBehaviour:
   menuWin: {fileID: 6189116669207576171}
   menuLose: {fileID: 1606096109785194397}
   gameTimerText: {fileID: 8683045970098778033}
-  KeyText: {fileID: 4845669520471171774}
+  keyText: {fileID: 7214196967251344104}
   stealthTimerText: {fileID: 2122180154007819677}
-  playerHPBar: {fileID: 5778324496169937595}
+  playerHealthBar: {fileID: 1432403974090863492}
   playerDamageFlash: {fileID: 6712025218105861796}
   playerHealFlash: {fileID: 2032077206844361211}
   checkpointPopup: {fileID: 7418906436369462817}
@@ -609,6 +609,10 @@ MonoBehaviour:
   isPaused: 0
   isStealthed: 0
   timeElapsed: 0
+  playerIsDead: 0
+  noiseLevel: 0
+  noiseDecayRate: 1
+  noiseThreshold: 10
 --- !u!1 &1606096109785194397
 GameObject:
   m_ObjectHideFlags: 0

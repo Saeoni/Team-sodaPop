@@ -7,7 +7,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Enemy, SpawnProtected, Hands, Guns
 - Active game object:
-  - Name: Floor
+  - Name: Character_FPS_Arms_02
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

@@ -258,18 +258,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NEW_Clovis
       objectReference: {fileID: 0}
-    - target: {fileID: 5624777307486457541, guid: d7a5eef19e701324d96f7800ad2530aa, type: 3}
-      propertyPath: m_Height
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5624777307486457541, guid: d7a5eef19e701324d96f7800ad2530aa, type: 3}
-      propertyPath: m_Radius
-      value: 0.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5624777307486457541, guid: d7a5eef19e701324d96f7800ad2530aa, type: 3}
-      propertyPath: m_Center.y
-      value: 0.9
-      objectReference: {fileID: 0}
     - target: {fileID: 8685243350000975184, guid: d7a5eef19e701324d96f7800ad2530aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
