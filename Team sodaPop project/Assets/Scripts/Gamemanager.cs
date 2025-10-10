@@ -23,7 +23,7 @@ public class Gamemanager : MonoBehaviour
 
     public GameObject playerSpawnPos;
     public GameObject player;
-    public playerController playerScript;
+    public PlayerController playerScript;
 
     public int keyCount;
 
@@ -51,7 +51,7 @@ public class Gamemanager : MonoBehaviour
         _timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+        playerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
         keyCount = 0;

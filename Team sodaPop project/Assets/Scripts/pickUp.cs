@@ -9,7 +9,7 @@ public class pickUp : MonoBehaviour
     [SerializeField] pickupType type;
 
     [SerializeField] int healAmount;
-    [SerializeField] gunstats gun;
+    [SerializeField] Gunstats gun;
 
 
     //    // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +29,7 @@ public class pickUp : MonoBehaviour
         IPickup pickupable = other.GetComponent<IPickup>();
         if (type == pickupType.health)
         {
-            other.GetComponent<playerController>().heal(healAmount);
+            other.GetComponent<PlayerController>().heal(healAmount);
             Destroy(gameObject);
         }
 
