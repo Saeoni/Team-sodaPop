@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using TheWatcher;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
@@ -18,6 +19,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     [SerializeField] List<gunstats> gunList = new List<gunstats>();
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject flashlight;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
@@ -229,5 +231,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
+    }
+
+    void TurnOnFlashlight()
+    {
+        if (flashlight != null)
+            flashlight.SetActive(true);
     }
 }
