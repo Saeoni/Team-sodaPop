@@ -45,6 +45,7 @@ public class gamemanager : MonoBehaviour
 
         instance = this;
         timeScaleOrig = Time.timeScale;
+        NoteDisplayed = false;
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
@@ -70,6 +71,10 @@ public class gamemanager : MonoBehaviour
             else if (menuActive == menuPause)
             {
                 stateUnpause();
+            }
+            else if(menuActive == menuNote)
+            {
+                NoteDisplay();
             }
         }
 
