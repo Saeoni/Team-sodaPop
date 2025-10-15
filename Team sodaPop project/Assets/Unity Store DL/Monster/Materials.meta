@@ -1,6 +1,21 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Monster/Materials.meta
 guid: f5ea8b55b2b9b654583af6c0cb05221b
+========
+guid: e2d400778df2bf64fb12e01fa6a9b35b
+>>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Materials.meta
 folderAsset: yes
+=======
+<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials.meta
+guid: 5a2f5ccbbc4b37642a5a0125e8aa8fdf
+========
+guid: c44ceb9df40e3bb4d830388d0fa79334
+>>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials.meta
+folderAsset: yes
+timeCreated: 1525014727
+licenseType: Store
+>>>>>>> enemyAI_Tobias
 DefaultImporter:
   externalObjects: {}
   userData: 

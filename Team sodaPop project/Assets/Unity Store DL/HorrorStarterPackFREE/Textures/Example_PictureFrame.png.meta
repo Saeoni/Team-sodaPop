@@ -94,5 +94,9 @@ AssetOrigin:
   productId: 178413
   packageName: Horror Starter Pack FREE
   packageVersion: 1.0
+<<<<<<< HEAD
   assetPath: Assets/Unity Store DL/HorrorStarterPackFREE 1/Textures/Example_PictureFrame.png
+=======
+  assetPath: Assets/Unity Store DL/HorrorStarterPackFREE/Textures/Example_PictureFrame.png
+>>>>>>> enemyAI_Tobias
   uploadId: 397464

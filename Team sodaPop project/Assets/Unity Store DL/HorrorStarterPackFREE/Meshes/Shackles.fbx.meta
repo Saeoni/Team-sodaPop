@@ -98,5 +98,9 @@ AssetOrigin:
   productId: 178413
   packageName: Horror Starter Pack FREE
   packageVersion: 1.0
+<<<<<<< HEAD
   assetPath: Assets/Unity Store DL/HorrorStarterPackFREE 1/Meshes/Shackles.fbx
+=======
+  assetPath: Assets/Unity Store DL/HorrorStarterPackFREE/Meshes/Shackles.fbx
+>>>>>>> enemyAI_Tobias
   uploadId: 397464
