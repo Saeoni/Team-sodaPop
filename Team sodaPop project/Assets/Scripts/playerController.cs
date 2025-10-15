@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using TheWatcher;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
@@ -14,10 +15,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float jumpMod;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
+    [SerializeField] float pushStrength = 2f;
 
 
     [SerializeField] List<gunstats> gunList = new List<gunstats>();
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject flashlight;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
@@ -109,6 +112,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             jumpSpeed /= jumpMod;
             isSprinting = false;
         }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        if (body == null || body.isKinematic)
+            return;
+
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0f, hit.moveDirection.z);
+
+        body.linearVelocity = pushDir * pushStrength;
     }
 
     void shoot()
@@ -229,5 +244,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
+    }
+
+    void TurnOnFlashlight()
+    {
+        if (flashlight != null)
+            flashlight.SetActive(true);
     }
 }

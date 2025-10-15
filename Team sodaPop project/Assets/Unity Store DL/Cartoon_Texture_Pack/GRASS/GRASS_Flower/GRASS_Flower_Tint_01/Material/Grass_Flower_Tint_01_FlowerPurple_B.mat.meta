@@ -1,17 +1,8 @@
 fileFormatVersion: 2
-guid: 0fd41b82b4608c84aa03280b40065be9
-timeCreated: 1518470298
-licenseType: Store
+guid: c10526cd1ee4d12479ab481a7d26e9fc
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 111778
-  packageName: FREE Stylized PBR Textures Pack
-  packageVersion: 1.55
-  assetPath: Assets/Cartoon_Texture_Pack/GRASS/GRASS_Flower/GRASS_Flower_Tint_01/Material/Grass_Flower_Tint_01_FlowerPurple_B.mat
-  uploadId: 585011
