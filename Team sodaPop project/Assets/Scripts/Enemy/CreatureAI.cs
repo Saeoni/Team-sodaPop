@@ -22,7 +22,7 @@ public class CreatureAI : EnemyAI
         if (data)
         {
             agent.speed = data.chaseSpeed;
-            agent.SetDestination(Gamemanager.Instance.player.transform.position);
+            agent.SetDestination(gamemanager.instance.player.transform.position);
         }
         else if (data.canPatrol && data.patrolPoints.Length > 0)
         {

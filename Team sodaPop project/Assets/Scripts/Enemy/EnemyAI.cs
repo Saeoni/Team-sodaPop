@@ -72,7 +72,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     private protected virtual void CheckLineOfSight()
     {
-        var player = Gamemanager.Instance.player.transform;
+        var player = gamemanager.instance.player.transform;
         var dirToPlayer = (player.position - headPos.position).normalized;
         var distanceToPlayer = Vector3.Distance(headPos.position, player.position);
        angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
@@ -116,7 +116,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
         CurrentHp -= amount;
         StartCoroutine(FlashRed());
-        agent.SetDestination(Gamemanager.Instance.player.transform.position);
+        agent.SetDestination(gamemanager.instance.player.transform.position);
 
         if (CurrentHp <= 0)
             OnEnemyDeath();
@@ -131,7 +131,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual void OnEnemyDeath()
     {
-        Gamemanager.Instance.UpdateGameGoal(-1);
+        gamemanager.instance.updateGameGoal(-1);
 
         if (enemyData.keyPrefab)
             Instantiate(enemyData.keyPrefab, transform.position, Quaternion.identity);

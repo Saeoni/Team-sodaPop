@@ -77,8 +77,8 @@ public class ReaperAI : EnemyAI
         if (isAggressive) return;
 
         var data = (ReaperData)enemyData;
-        var noiseTriggered = Gamemanager.Instance.noiseLevel >= data.aggressionNoiseThreshold;
-        var timeTriggered = Gamemanager.Instance.noiseLevel >= data.aggressionStalkTime;
+        var noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
+        var timeTriggered = gamemanager.instance.noiseLevel >= data.aggressionStalkTime;
 
         if (!noiseTriggered && !timeTriggered) return;
         isAggressive =  true;
@@ -96,7 +96,7 @@ public class ReaperAI : EnemyAI
         var t = Mathf.Clamp01(stalkTimer / data.maxStalkTime);
         agent.speed = Mathf.Lerp(data.minSpeed, data.maxSpeed, data.speedRampCurve.Evaluate(t));
 
-        var player = Gamemanager.Instance.player.transform;
+        var player = gamemanager.instance.player.transform;
 
         if (PlayerInTrigger && stalkTimer >= data.maxStalkTime * 0.75f)
         {
@@ -128,7 +128,7 @@ public class ReaperAI : EnemyAI
             TriggerKill();
         }
 
-        if (!(Gamemanager.Instance.noiseLevel >= Gamemanager.Instance.noiseThreshold)) return;
+        if (!(gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)) return;
         TeleportToPlayer();
         StartCoroutine(DelayedKill());
     }
@@ -150,13 +150,13 @@ public class ReaperAI : EnemyAI
         var data = (ReaperData)enemyData;
         killTriggered = true;
         animator.SetTrigger(data.killTrigger);
-        Gamemanager.Instance.YouLose();
+        gamemanager.instance.youLose();
     }
 
     private void TeleportToPlayer()
     {
         var data = (ReaperData)enemyData;
-        var player = Gamemanager.Instance.player.transform;
+        var player = gamemanager.instance.player.transform;
         var offset = player.forward * -1.5f;
         var targetPos = player.position + offset;
 
