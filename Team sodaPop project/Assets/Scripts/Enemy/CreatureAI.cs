@@ -5,24 +5,24 @@ public class CreatureAI : EnemyAI
 {
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Direction = Animator.StringToHash("Direction");
-    private int patrolIndex;
-    private float patrolPauseTimer;
-    private bool isPaused;
+    private int _patrolIndex;
+    private float _patrolPauseTimer;
+    private bool _isPaused;
 
-    private Vector3 roamTarget;
-    private float roamPauseTimer;
-    private bool isRoamingPaused;
-
+    private Vector3 _roamTarget;
+    private float _roamPauseTimer;
+    private bool _isRoamingPaused;
+    
     protected override void Update()
     {
-        base.Update();
+        base.Update(); // Includes vision check
 
         var data = (CreatureData)enemyData;
+        if (data == null) return;
 
-        if (data)
+        if (CanSeePlayer)
         {
-            agent.speed = data.chaseSpeed;
-            agent.SetDestination(gamemanager.instance.player.transform.position);
+            // Chase logic handled in OnPlayerSpotted
         }
         else if (data.canPatrol && data.patrolPoints.Length > 0)
         {
@@ -35,6 +35,18 @@ public class CreatureAI : EnemyAI
 
         HandleLocomotion(data);
     }
+    
+    protected override void OnPlayerSpotted()
+    {
+        var data = (CreatureData)enemyData;
+        animator.SetTrigger(data.roarTrigger);
+        agent.speed = data.chaseSpeed;
+        agent.SetDestination(PlayerTransform.position);
+
+        if (!(agent.remainingDistance <= data.stoppingDist)) return;
+        agent.ResetPath();
+        
+    }
 
     protected override void HandleTriggerEnter(Collider other)
     {
@@ -45,24 +57,24 @@ public class CreatureAI : EnemyAI
 
     private void Patrol(CreatureData data)
     {
-        if (isPaused)
+        if (_isPaused)
         {
-            patrolPauseTimer += Time.deltaTime;
-            if (!(patrolPauseTimer >= data.patrolPauseTime)) return;
-            isPaused = false;
-            patrolPauseTimer = 0f;
+            _patrolPauseTimer += Time.deltaTime;
+            if (!(_patrolPauseTimer >= data.patrolPauseTime)) return;
+            _isPaused = false;
+            _patrolPauseTimer = 0f;
 
-            patrolIndex = data.loopPatrol
-                ? (patrolIndex + 1) % data.patrolPoints.Length
-                : Mathf.Min(patrolIndex + 1, data.patrolPoints.Length - 1);
+            _patrolIndex = data.loopPatrol
+                ? (_patrolIndex + 1) % data.patrolPoints.Length
+                : Mathf.Min(_patrolIndex + 1, data.patrolPoints.Length - 1);
 
-            agent.SetDestination(data.patrolPoints[patrolIndex].position);
+            agent.SetDestination(data.patrolPoints[_patrolIndex].position);
             return;
         }
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            isPaused = true;
+            _isPaused = true;
             agent.ResetPath();
         }
 
@@ -71,19 +83,19 @@ public class CreatureAI : EnemyAI
 
     private void Roam(CreatureData data)
     {
-        if (isRoamingPaused)
+        if (_isRoamingPaused)
         {
-            roamPauseTimer += Time.deltaTime;
-            if (!(roamPauseTimer >= data.roamPauseTimer)) return;
-            isRoamingPaused = false;
-            roamPauseTimer = 0f;
+            _roamPauseTimer += Time.deltaTime;
+            if (!(_roamPauseTimer >= data.roamPauseTimer)) return;
+            _isRoamingPaused = false;
+            _roamPauseTimer = 0f;
             PickNewRoamTarget(data);
             return;
         }
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            isRoamingPaused = true;
+            _isRoamingPaused = true;
             agent.ResetPath();
         }
 
@@ -94,9 +106,9 @@ public class CreatureAI : EnemyAI
     {
         var randomCircle = Random.insideUnitCircle * data.roamDist;
         var randomOffset = new Vector3(randomCircle.x, 0f, randomCircle.y);
-        roamTarget = SpawnPos + randomOffset;
+        _roamTarget = SpawnPos + randomOffset;
 
-        if (NavMesh.SamplePosition(roamTarget, out var hit, data.roamDist, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(_roamTarget, out var hit, data.roamDist, NavMesh.AllAreas))
         {
             agent.SetDestination(hit.position);
         }

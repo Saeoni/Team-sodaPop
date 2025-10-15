@@ -11,13 +11,13 @@ public class ReaperAI : EnemyAI
     private static readonly int SpasmIntensity = Animator.StringToHash("SpasmIntensity");
     private static readonly int SpasmSpeed = Animator.StringToHash("AggressiveState");
     
-    private bool isActive;
-    private bool killTriggered;
-    private bool hasTriggeredSpasm;
-    private bool isAggressive;
+    private bool _isActive;
+    private bool _killTriggered;
+    private bool _hasTriggeredSpasm;
+    private bool _isAggressive;
 
-    private float spasmCooldownTimer;
-    private float stalkTimer;
+    private float _spasmCooldownTimer;
+    private float _stalkTimer;
 
     protected override void Awake()
     {
@@ -33,27 +33,27 @@ public class ReaperAI : EnemyAI
         base.Update();
         base.Start();
         agent.enabled = true;
-        isActive = true;
-        stalkTimer = 0f;
+        _isActive = true;
+        _stalkTimer = 0f;
 
         animator.SetBool(HasSpawned, true);
     }
 
     protected override void Update()
     {
-        if (!isActive || killTriggered) return;
+        if (!_isActive || _killTriggered) return;
 
         HandleMovement();
         HandleLocomotion();
 
 
-        if (!hasTriggeredSpasm) return;
-        spasmCooldownTimer += Time.deltaTime;
+        if (!_hasTriggeredSpasm) return;
+        _spasmCooldownTimer += Time.deltaTime;
         var data = (ReaperData)enemyData;
 
-        if (!(spasmCooldownTimer >= data.spasmCooldown)) return;
-        hasTriggeredSpasm = false;
-        spasmCooldownTimer = 0f;
+        if (!(_spasmCooldownTimer >= data.spasmCooldown)) return;
+        _hasTriggeredSpasm = false;
+        _spasmCooldownTimer = 0f;
     }
 
     protected override void HandleTriggerEnter(Collider other)
@@ -65,65 +65,65 @@ public class ReaperAI : EnemyAI
 
     private void TrySpasm()
     {
-        if (hasTriggeredSpasm) return;
+        if (_hasTriggeredSpasm) return;
 
-        hasTriggeredSpasm = true;
-        spasmCooldownTimer = 0f;
+        _hasTriggeredSpasm = true;
+        _spasmCooldownTimer = 0f;
         StartCoroutine(DelayedSpasm());
     }
 
     private void CheckAggression()
     {
-        if (isAggressive) return;
+        if (_isAggressive) return;
 
         var data = (ReaperData)enemyData;
         var noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
         var timeTriggered = gamemanager.instance.noiseLevel >= data.aggressionStalkTime;
 
         if (!noiseTriggered && !timeTriggered) return;
-        isAggressive =  true;
+        _isAggressive =  true;
         animator.SetTrigger(data.aggressiveTrigger);
-        animator.SetBool(AggressiveState, true);
+        animator.SetBool(aggressiveState, true);
     }
 
-    public string AggressiveState { get; set; }
+    public string aggressiveState { get; set; }
 
     private void HandleMovement()
     {
         var data = (ReaperData)enemyData;
-        stalkTimer += Time.deltaTime;
+        _stalkTimer += Time.deltaTime;
 
-        var t = Mathf.Clamp01(stalkTimer / data.maxStalkTime);
+        var t = Mathf.Clamp01(_stalkTimer / data.maxStalkTime);
         agent.speed = Mathf.Lerp(data.minSpeed, data.maxSpeed, data.speedRampCurve.Evaluate(t));
 
-        var player = gamemanager.instance.player.transform;
+        var distanceToPlayer = Vector3.Distance(transform.position, PlayerTransform.position);
 
-        if (PlayerInTrigger && stalkTimer >= data.maxStalkTime * 0.75f)
+        // Call OnPlayerSpotted if stalking has escalated
+        if (!_isAggressive && _stalkTimer >= data.maxStalkTime * 0.5f)
         {
-            var distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer <= data.killDistance)
-            {
+            OnPlayerSpotted();
+        }
+
+        switch (PlayerInTrigger)
+        {
+            case true when _stalkTimer >= data.maxStalkTime * 0.75f && distanceToPlayer <= data.killDistance:
                 TriggerKill();
                 return;
-            }
+            case false:
+                agent.isStopped = false;
+                agent.SetDestination(PlayerTransform.position);
+                animator.SetBool(IsSpasming, false);
+                break;
+            default:
+                agent.isStopped = true;
+                agent.ResetPath();
+                animator.SetBool(IsSpasming, true);
+                break;
         }
 
-        if (!PlayerInTrigger)
-        {
-            agent.isStopped = false;
-            agent.SetDestination(player.position);
-            animator.SetBool(IsSpasming, false);
-        }
-        else
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-            animator.SetBool(IsSpasming, true);
-        }
+        transform.LookAt(PlayerTransform);
 
-        transform.LookAt(player);
-
-        if (stalkTimer >= data.maxStalkTime)
+        if (_stalkTimer >= data.maxStalkTime)
         {
             TriggerKill();
         }
@@ -144,11 +144,32 @@ public class ReaperAI : EnemyAI
         animator.SetFloat(Speed, Mathf.Lerp(animator.GetFloat(Speed), speed, Time.deltaTime * data.animTransSpeed));
         animator.SetFloat(Direction, Mathf.Lerp(animator.GetFloat(Direction), direction, Time.deltaTime * data.animTransSpeed));
     }
+    
+    protected override void OnPlayerSpotted()
+    {
+        var data = (ReaperData)enemyData;
+
+        if (!_isAggressive)
+        {
+            // Trigger cinematic spasm and enter aggressive state
+            animator.SetTrigger(data.spasmTrigger);
+            animator.SetBool(SpasmSpeed, true);
+            _isAggressive = true;
+        }
+
+        // Begin chasing the player
+        agent.speed = data.maxSpeed;
+        agent.SetDestination(PlayerTransform.position);
+
+        // Stop if within striking distance
+        if (!(agent.remainingDistance <= data.stoppingDist)) return;
+        agent.ResetPath();
+    }
 
     private void TriggerKill()
     {
         var data = (ReaperData)enemyData;
-        killTriggered = true;
+        _killTriggered = true;
         animator.SetTrigger(data.killTrigger);
         gamemanager.instance.youLose();
     }

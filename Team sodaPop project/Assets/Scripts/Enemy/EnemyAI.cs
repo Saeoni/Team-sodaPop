@@ -15,17 +15,13 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected int CurrentHp;
     protected Vector3 SpawnPos;
-    private Color colorOrig;
+    private Color _colorOrig;
 
     protected bool PlayerInTrigger;
-    private bool canSeePlayer;
-
-    protected EnemyAI(bool canSeePlayer)
-    {
-        this.canSeePlayer = canSeePlayer;
-    }
-
-    private float angleToPlayer;
+    private protected bool CanSeePlayer;
+    private float _angleToPlayer;
+    private protected Transform PlayerTransform;
+    protected Vector3 PlayerDir;
 
     protected EnemyAI()
     {
@@ -33,13 +29,6 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual void Awake()
     {
-        if (enemyData == null)
-        {
-            Debug.LogError($"Missing EnemyData on {gameObject.name}");
-            enabled = false;
-            return;
-        }
-
         if (agent != null && animator != null && model != null && headPos != null) return;
         Debug.LogError($"Missing component references on {gameObject.name}");
         enabled = false;
@@ -48,10 +37,11 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     protected virtual void Start()
     {
         Debug.LogWarning($"{gameObject.name} fell out of bounds.");
-        CheckLineOfSight();
+       
         CurrentHp = enemyData.maxHP;
         SpawnPos = transform.position;
-        colorOrig = model.material.color;
+        _colorOrig = model.material.color;
+        PlayerTransform = gamemanager.instance.player.transform;
 
         PlaySpawnVFX();
     }
@@ -62,6 +52,8 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         {
             Destroy(gameObject);
         }
+        
+        CheckLineOfSight();
     }
 
     private void PlaySpawnVFX()
@@ -72,31 +64,36 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     private protected virtual void CheckLineOfSight()
     {
-        var player = gamemanager.instance.player.transform;
-        var dirToPlayer = (player.position - headPos.position).normalized;
-        var distanceToPlayer = Vector3.Distance(headPos.position, player.position);
-       angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
+        var dirToPlayer = (PlayerTransform.position - headPos.position).normalized;
+        var distanceToPlayer = Vector3.Distance(headPos.position, PlayerTransform.position);
+        _angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
+        PlayerDir = dirToPlayer;
 
-        if (angleToPlayer <= enemyData.FOV / 2f && distanceToPlayer <= enemyData.detectionRadius)
+        if (_angleToPlayer <= enemyData.FOV / 2f && distanceToPlayer <= enemyData.detectionRadius)
         {
             if (!Physics.Raycast(headPos.position, dirToPlayer, distanceToPlayer, enemyData.lineOfSightMask))
             {
-                canSeePlayer = true;
-                FaceTarget(player.position);
-
-                if (enemyData == null) return;
-                agent.speed = enemyData.chaseSpeed;
-                agent.SetDestination(player.position);
-
-                if (!(agent.remainingDistance <= enemyData.stoppingDist)) return;
-                agent.ResetPath();
-                Debug.Log("Enemy reached stopping distance.");
-
+                CanSeePlayer = true;
+                FaceTarget(PlayerTransform.position);
+                OnPlayerSpotted();
                 return;
             }
         }
 
-        canSeePlayer = false;
+        CanSeePlayer = false;
+    }
+    
+    protected virtual void OnPlayerSpotted()
+    {
+        if (enemyData == null) return;
+
+        var player = gamemanager.instance.player.transform;
+        agent.speed = enemyData.chaseSpeed;
+        agent.SetDestination(player.position);
+
+        if (!(agent.remainingDistance <= enemyData.stoppingDist)) return;
+        agent.ResetPath();
+        Debug.Log($"{gameObject.name} reached stopping distance.");
     }
 
     private void FaceTarget(Vector3 targetPos)
@@ -126,7 +123,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        model.material.color = _colorOrig;
     }
 
     protected virtual void OnEnemyDeath()
