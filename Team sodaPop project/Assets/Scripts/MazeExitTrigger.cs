@@ -6,7 +6,7 @@ public class MazeExitTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gamemanager.instance.WinGame();
+            Gamemanager.Instance.WinGame();
         }
     }
 }

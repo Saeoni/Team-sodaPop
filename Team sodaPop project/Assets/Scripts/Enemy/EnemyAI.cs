@@ -20,8 +20,9 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     protected bool PlayerInTrigger;
     private protected bool CanSeePlayer;
     private float _angleToPlayer;
-    private protected Transform PlayerTransform;
     protected Vector3 PlayerDir;
+    // ReSharper disable once UnassignedField.Global
+    protected Transform PlayerTransform;
 
     protected virtual void Awake()
     {
@@ -38,7 +39,6 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         CurrentHp = enemyData.maxHP;
         SpawnPos = transform.position;
         _colorOrig = model.material.color;
-        PlayerTransform = gamemanager.instance.player.transform;
 
         PlaySpawnVFX();
     }
@@ -82,7 +82,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     {
         if (enemyData == null) return;
 
-        var player = gamemanager.instance.player.transform;
+        var player = Gamemanager.Instance.player.transform;
         agent.speed = enemyData.chaseSpeed;
         agent.SetDestination(player.position);
 
@@ -108,7 +108,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
         CurrentHp -= amount;
         StartCoroutine(FlashRed());
-        agent.SetDestination(gamemanager.instance.player.transform.position);
+        agent.SetDestination(Gamemanager.Instance.player.transform.position);
 
         if (CurrentHp <= 0)
             OnEnemyDeath();
@@ -123,7 +123,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual void OnEnemyDeath()
     {
-        gamemanager.instance.updateGameGoal(-1);
+        Gamemanager.Instance.UpdateGameGoal(-1);
 
         if (enemyData.keyPrefab)
             Instantiate(enemyData.keyPrefab, transform.position, Quaternion.identity);
@@ -159,3 +159,4 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     protected virtual void HandleTriggerExit(Collider other) { }
     protected virtual void HandleTriggerStay(Collider other) { }
 }
+

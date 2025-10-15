@@ -18,9 +18,11 @@ public class ReaperAI : EnemyAI
 
     private float _spasmCooldownTimer;
     private float _stalkTimer;
+    private Transform _playerTransform;
 
     protected override void Awake()
     {
+        base.Awake();
         if (PlayerInTrigger)
         {
             TrySpasm();
@@ -30,16 +32,21 @@ public class ReaperAI : EnemyAI
 
     protected override void Start()
     {
-        HandleMovement();
-        base.Update();
+       
         base.Start();
         agent.enabled = true;
         _isActive = true;
         _stalkTimer = 0f;
 
+        _playerTransform = Gamemanager.Instance.player.transform;
+
+        GameObject vfx = null;
         if(enemyData.spawnVFX != null)
-            Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
-        Destroy(gameObject, 3f);
+        {
+            vfx = Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
+        }
+
+        Destroy(vfx, 3f); // Destroy VFX after 3 seconds
         
 
         animator.SetBool(HasSpawned, true);
@@ -47,10 +54,13 @@ public class ReaperAI : EnemyAI
 
     protected override void Update()
     {
+     base.Update();
+        
         if (!_isActive || _killTriggered) return;
 
+        HandleMovement();
         HandleLocomotion();
-
+        CheckAggression();
 
         if (!_hasTriggeredSpasm) return;
         _spasmCooldownTimer += Time.deltaTime;
@@ -82,17 +92,15 @@ public class ReaperAI : EnemyAI
         if (_isAggressive) return;
 
         var data = (ReaperData)enemyData;
-        var noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
-        var timeTriggered = gamemanager.instance.noiseLevel >= data.aggressionStalkTime;
+        var noiseTriggered = Gamemanager.Instance.noiseLevel >= data.aggressionNoiseThreshold;
+        var timeTriggered = Gamemanager.Instance.noiseLevel >= data.aggressionStalkTime;
 
         if (!noiseTriggered && !timeTriggered) return;
         _isAggressive =  true;
         animator.SetTrigger(data.aggressiveTrigger);
-        animator.SetBool(null, true);
+        animator.SetBool(SpasmSpeed, true);
     }
-
-   
-
+    
     private void HandleMovement()
     {
         var data = (ReaperData)enemyData;
@@ -101,7 +109,7 @@ public class ReaperAI : EnemyAI
         var t = Mathf.Clamp01(_stalkTimer / data.maxStalkTime);
         agent.speed = Mathf.Lerp(data.minSpeed, data.maxSpeed, data.speedRampCurve.Evaluate(t));
 
-        var distanceToPlayer = Vector3.Distance(transform.position, PlayerTransform.position);
+        var distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
 
         // Call OnPlayerSpotted if stalking has escalated
         if (!_isAggressive && _stalkTimer >= data.maxStalkTime * 0.5f)
@@ -116,7 +124,7 @@ public class ReaperAI : EnemyAI
                 return;
             case false:
                 agent.isStopped = false;
-                agent.SetDestination(PlayerTransform.position);
+                agent.SetDestination(_playerTransform.position);
                 animator.SetBool(IsSpasming, false);
                 break;
             default:
@@ -126,14 +134,14 @@ public class ReaperAI : EnemyAI
                 break;
         }
 
-        transform.LookAt(PlayerTransform);
+        transform.LookAt(_playerTransform);
 
         if (_stalkTimer >= data.maxStalkTime)
         {
             TriggerKill();
         }
 
-        if (!(gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)) return;
+        if (!(Gamemanager.Instance.noiseLevel >= Gamemanager.Instance.noiseThreshold)) return;
         TeleportToPlayer();
         StartCoroutine(DelayedKill());
     }
@@ -164,11 +172,10 @@ public class ReaperAI : EnemyAI
 
         // Begin chasing the player
         agent.speed = data.maxSpeed;
-        agent.SetDestination(PlayerTransform.position);
+        agent.SetDestination(_playerTransform.position);
 
-        // Stop if within striking distance
-        if (!(agent.remainingDistance <= data.stoppingDist)) return;
-        agent.ResetPath();
+        if (agent.remainingDistance <= data.stoppingDist)
+            agent.ResetPath();
     }
 
     private void TriggerKill()
@@ -176,21 +183,20 @@ public class ReaperAI : EnemyAI
         var data = (ReaperData)enemyData;
         _killTriggered = true;
         animator.SetTrigger(data.killTrigger);
-        gamemanager.instance.youLose();
+        Gamemanager.Instance.YouLose();
     }
 
     private void TeleportToPlayer()
     {
         var data = (ReaperData)enemyData;
-        var player = gamemanager.instance.player.transform;
-        var offset = player.forward * -1.5f;
-        var targetPos = player.position + offset;
+        var offset = _playerTransform.forward * -1.5f;
+        var targetPos = _playerTransform.position + offset;
 
         if (data.teleportVFX)
             Instantiate(data.teleportVFX, transform.position, Quaternion.identity);
 
         transform.position = targetPos;
-        transform.LookAt(player);
+        transform.LookAt(_playerTransform);
         agent.Warp(targetPos);
     }
 

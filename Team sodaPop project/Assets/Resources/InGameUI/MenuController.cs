@@ -124,7 +124,7 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Resume Button Clicked");
 
-        gamemanager.instance.stateUnpause();
+        Gamemanager.Instance.StateUnpause();
         onResumeButtonClicked?.Invoke();
     }
     private void OnRestartButtonClicked()
@@ -132,7 +132,7 @@ public class MenuController : MonoBehaviour
         Debug.Log("Restart Button Clicked");
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        gamemanager.instance.stateUnpause();
+        Gamemanager.Instance.StateUnpause();
         //restartCount += 1;
         onRestartButtonClicked?.Invoke();
 
@@ -160,10 +160,10 @@ public class MenuController : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        gamemanager.instance.playerScript.spawnPlayer();
-        gamemanager.instance.playerScript.heal(gamemanager.instance.playerScript.HPOrig);
-        gamemanager.instance.playerIsDead = false;
-        gamemanager.instance.stateUnpause();
+        Gamemanager.Instance.playerScript.SpawnPlayer();
+        Gamemanager.Instance.playerScript.heal(Gamemanager.Instance.playerScript.hpOrig);
+        Gamemanager.Instance._playerIsDead = false;
+        Gamemanager.Instance.StateUnpause();
 
     }
 
