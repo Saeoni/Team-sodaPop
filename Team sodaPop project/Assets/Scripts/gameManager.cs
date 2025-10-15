@@ -183,7 +183,7 @@ public class gamemanager : MonoBehaviour
         menuController.OpenLoseMenu();
 
 
-<<<<<<< HEAD
+
        if (playerDamageFlash != null && player != null)
        {
           playerDamageFlash.SetActive(true);
@@ -192,8 +192,7 @@ public class gamemanager : MonoBehaviour
        }
 
        youLose();
-=======
->>>>>>> 0750ec146e0097b3f6bf821e2246c8c0213fe602
+
     }
 
 

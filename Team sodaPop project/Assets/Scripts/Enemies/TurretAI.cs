@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 
 
-public class TurretAI : MonoBehaviour, IDamage
+public partial class TurretAI : MonoBehaviour, IDamage
 {
 
     [Header("Core Components")]
