@@ -4,7 +4,7 @@ using System.Collections;
 public class pickUp : MonoBehaviour
 {
 
-    enum pickupType { health, key, stealth, gun}
+    enum pickupType { health, key, stealth, gun, Note}
 
     [SerializeField] pickupType type;
 
@@ -44,6 +44,11 @@ public class pickUp : MonoBehaviour
         else if (type == pickupType.stealth)
         {
             gamemanager.instance.stealthTimer(10.0f);
+            Destroy(gameObject);
+        }
+        else if(type == pickupType.Note)
+        {
+            gamemanager.instance.NoteDisplay();
             Destroy(gameObject);
         }
 

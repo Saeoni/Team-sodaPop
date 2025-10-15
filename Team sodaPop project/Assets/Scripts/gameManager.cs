@@ -11,6 +11,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuNote;
     [SerializeField] TMP_Text gameTimerText;
     [SerializeField] TMP_Text KeyText;
     [SerializeField] TMP_Text stealthTimerText;
@@ -28,6 +29,7 @@ public class gamemanager : MonoBehaviour
     public int keyCount;
 
     public bool isPaused;
+    public bool NoteDisplayed;
     public bool isStealthed;
     public float timeElapsed; 
 
@@ -179,5 +181,29 @@ public class gamemanager : MonoBehaviour
        youLose();
     }
 
+    public void NoteDisplay()
+    {
+        if(NoteDisplayed == true)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                NoteDisplayed = !NoteDisplayed;
+                Time.timeScale = timeScaleOrig;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                menuActive.SetActive(false);
+                menuActive = null;
+            }
 
+        }
+        else
+        {
+            NoteDisplayed = !NoteDisplayed;
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            menuActive = menuNote;
+            menuActive.SetActive(true);
+        }
+    }
 }
