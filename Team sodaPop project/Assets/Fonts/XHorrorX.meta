@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Team sodaPop project/Assets/Fonts/XHorrorX.meta
 guid: a1849cc18996b424091780f44c92f073
+========
+guid: d2cddab5658bf9b49ad4de642e84ec38
+>>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Fonts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

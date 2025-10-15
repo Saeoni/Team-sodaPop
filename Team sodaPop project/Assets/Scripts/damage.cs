@@ -3,83 +3,115 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
+    enum damageType { moving, stationary, DOT, homing }
 
-    enum damageType { moving, stationary, DOT, homing, cinematicPull}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
+
+    [Header("Scythe Collider Control")]
+    [SerializeField] Collider scytheCollider;
+    [SerializeField] float activationDelay = 2f;
 
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
+
+    [Header("Impact FX")]
     [SerializeField] GameObject explosionPrefab;
-    [SerializeField] private GameObject impactEffect;
-   
+    [SerializeField] GameObject impactEffect;
+    [SerializeField] ParticleSystem impactParticles;
 
     bool isDamaging;
-   
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //moving projectiles will disappear after a certain time
-        if(type == damageType.moving || type == damageType.homing || type == damageType.cinematicPull)
+
+        if (scytheCollider != null) 
+            scytheCollider.enabled = false;
+
+        StartCoroutine(EnableColliderAfterDelay());
+
+        if (type == damageType.moving || type == damageType.homing)
         {
             Destroy(gameObject, destroyTime);
 
-            if(type == damageType.moving)
-            {
+            if (rb != null)
                 rb.linearVelocity = transform.forward * speed;
-            }
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (type == damageType.homing)
         {
-            //checks player position and follows it
-           Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
+            Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
             rb.linearVelocity = targetDir * speed;
         }
+    }
 
-       
+    IEnumerator EnableColliderAfterDelay()
+    {
+        yield return new WaitForSeconds(activationDelay);
+
+        if (scytheCollider != null)
+            scytheCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.isTrigger)
+            return;
+
+       
+
+        IDamage dmg = other.GetComponent<IDamage>();
+
+        if (dmg != null && (type == damageType.stationary || type == damageType.moving || type == damageType.homing))
+        {
+            dmg.takeDamage(damageAmount);
+        }
+
+        if (impactParticles != null)
+            impactParticles.Play();
+
+        Vector3 hitPoint = other.ClosestPoint(transform.position);
+        Vector3 direction = (hitPoint - transform.position);
+
+        if (direction.sqrMagnitude > 0.0001f) // Only rotate if there's a direction
+        {
+            Quaternion rotation = Quaternion.LookRotation(direction.normalized);
+            Instantiate(impactEffect, hitPoint, rotation);
+        }
+        else
+        {
+            //  Fallback: spawn with default rotation
+            Instantiate(impactEffect, hitPoint, Quaternion.identity);
+        }
+
+        if ((type == damageType.moving || type == damageType.homing) && explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(explosion, 2f);
+        }
+
+        if (type == damageType.moving || type == damageType.homing)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.isTrigger)
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        
-
-        if(dmg != null && (type == damageType.moving || type == damageType.homing))
+        if (dmg != null && type == damageType.DOT)
         {
-            dmg.takeDamage(damageAmount);
-        }
-
-        if ((type == damageType.homing || type == damageType.moving) && explosionPrefab != null)
-        {
-            Debug.Log("Projectile hit: " + other.name);
-          GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);  
-            Destroy(explosion, 2f );
-        }
-       
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.isTrigger) 
-            return;
-
-        IDamage dmg = other.GetComponent<IDamage>();
-
-        if(dmg != null && type == damageType.DOT)
-        {
-            if(!isDamaging)
+            if (!isDamaging)
             {
                 StartCoroutine(damageother(dmg));
             }
@@ -93,6 +125,4 @@ public class damage : MonoBehaviour
         yield return new WaitForSeconds(damageRate);
         isDamaging = false;
     }
-
-   
 }
