@@ -30,11 +30,17 @@ public class ReaperAI : EnemyAI
 
     protected override void Start()
     {
+        HandleMovement();
         base.Update();
         base.Start();
         agent.enabled = true;
         _isActive = true;
         _stalkTimer = 0f;
+
+        if(enemyData.spawnVFX != null)
+            Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject, 3f);
+        
 
         animator.SetBool(HasSpawned, true);
     }
@@ -43,7 +49,6 @@ public class ReaperAI : EnemyAI
     {
         if (!_isActive || _killTriggered) return;
 
-        HandleMovement();
         HandleLocomotion();
 
 
@@ -83,10 +88,10 @@ public class ReaperAI : EnemyAI
         if (!noiseTriggered && !timeTriggered) return;
         _isAggressive =  true;
         animator.SetTrigger(data.aggressiveTrigger);
-        animator.SetBool(aggressiveState, true);
+        animator.SetBool(null, true);
     }
 
-    public string aggressiveState { get; set; }
+   
 
     private void HandleMovement()
     {

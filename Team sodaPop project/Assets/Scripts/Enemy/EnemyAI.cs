@@ -23,10 +23,6 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     private protected Transform PlayerTransform;
     protected Vector3 PlayerDir;
 
-    protected EnemyAI()
-    {
-    }
-
     protected virtual void Awake()
     {
         if (agent != null && animator != null && model != null && headPos != null) return;
@@ -36,6 +32,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual void Start()
     {
+        CheckLineOfSight();
         Debug.LogWarning($"{gameObject.name} fell out of bounds.");
        
         CurrentHp = enemyData.maxHP;
@@ -52,8 +49,6 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         {
             Destroy(gameObject);
         }
-        
-        CheckLineOfSight();
     }
 
     private void PlaySpawnVFX()
