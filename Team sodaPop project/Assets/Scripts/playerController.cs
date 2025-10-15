@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float jumpMod;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
+    [SerializeField] float pushStrength = 2f;
 
 
     [SerializeField] List<gunstats> gunList = new List<gunstats>();
@@ -111,6 +112,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             jumpSpeed /= jumpMod;
             isSprinting = false;
         }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        if (body == null || body.isKinematic)
+            return;
+
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0f, hit.moveDirection.z);
+
+        body.linearVelocity = pushDir * pushStrength;
     }
 
     void shoot()
