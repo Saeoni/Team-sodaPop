@@ -63,7 +63,7 @@ public class HUDController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (gamemanager.instance.isPaused)
+        if (Gamemanager.Instance.isPaused)
         {
             HideUI();
         }
@@ -135,8 +135,8 @@ public class HUDController : MonoBehaviour
     }
     public void UpdatePlayerUI()
     {
-        ammoCur.text = gamemanager.instance.ammoCur.ToString();
-        ammoMax.text = gamemanager.instance.ammoMax.ToString();
+        ammoCur.text = Gamemanager.Instance.ammoCur.ToString();
+        ammoMax.text = Gamemanager.Instance.ammoMax.ToString();
         // Update collected modules count
         //collectedModulesCount.text = gamemanager.instance.collectedModules.ToString() + "/5";
 
@@ -179,7 +179,7 @@ public class HUDController : MonoBehaviour
 
     private IEnumerator StealthCountdown(float length)
     {
-        gamemanager.instance.isStealthed = true;
+        Gamemanager.Instance.isStealthed = true;
 
         float countDown = length;
         stealthTimerText.text = countDown.ToString("F0");
@@ -190,7 +190,7 @@ public class HUDController : MonoBehaviour
             countDown -= Time.deltaTime;
             yield return null;
         }
-        gamemanager.instance.isStealthed = false;
+        Gamemanager.Instance.isStealthed = false;
         stealthTimerText.text = "";
         // stealthTimerText.gameObject.SetActive(false);
 

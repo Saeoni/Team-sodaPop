@@ -1,54 +1,50 @@
 
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.EventSystems;
-
-
 
 
 public class StartMenuController : MonoBehaviour
 {
 
-    public static StartMenuController instance;
+    public static StartMenuController Instance;
 
-    private VisualElement contentContainer;
-    private VisualElement scrim1;
-    private VisualElement scrim2;
-    private VisualElement title;
-    private VisualElement subtitle;
+    private VisualElement _contentContainer;
+    private VisualElement _scrim1;
+    private VisualElement _scrim2;
+    private VisualElement _title;
+    private VisualElement _subtitle;
 
-    public Button startButton;
-    public Button quitButton;
-    public Button setting;
+    private Button _startButton;
+    private Button _quitButton;
+    public Button Setting;
     //private Button creditsButton;
     //private Button backButton;
-    private VisualElement creditsScreen;
-    private VisualElement mainMenuScreen;
+    private VisualElement _creditsScreen;
+    private VisualElement _mainMenuScreen;
    
-    private Coroutine coroutine = null;
+    private protected Coroutine Coroutine = null;
 
-    private string transName;
-    private VisualElement currentElement;
+    private string _transName;
+    private VisualElement _currentElement;
 
     public bool isShowing;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    private void Awake()
     { 
-        instance = this;
+        Instance = this;
 
     }
-   
-    
-  
-    void Start()
+
+
+    public void Start()
     {
-        gamemanager.instance.statePause();
+        Gamemanager.Instance.StatePause();
         InitializeUI();
-        contentContainer.style.display = DisplayStyle.Flex;
+        _contentContainer.style.display = DisplayStyle.Flex;
         isShowing = true;
-        startButton.Focus();
+        _startButton.Focus();
 
     }
 
@@ -58,20 +54,20 @@ public class StartMenuController : MonoBehaviour
     {
 
         var root = GetComponent<UIDocument>().rootVisualElement;
-        contentContainer = root.Q<VisualElement>("ContentContainer");
-        scrim1 = root.Q<VisualElement>("Scrim1");
-        scrim2 = root.Q<VisualElement>("Scrim2");
+        _contentContainer = root.Q<VisualElement>("ContentContainer");
+        _scrim1 = root.Q<VisualElement>("Scrim1");
+        _scrim2 = root.Q<VisualElement>("Scrim2");
 
-        startButton = root.Q<Button>("StartButton");
-        quitButton = root.Q<Button>("QuitButton");
-        title = root.Q<VisualElement>("Title");
-        subtitle = root.Q<VisualElement>("Subtitle");
+        _startButton = root.Q<Button>("StartButton");
+        _quitButton = root.Q<Button>("QuitButton");
+        _title = root.Q<VisualElement>("Title");
+        _subtitle = root.Q<VisualElement>("Subtitle");
         //creditsButton = root.Q<Button>("CreditsButton");
         //backButton = root.Q<Button>("BackButton");
         //creditsScreen = root.Q<VisualElement>("CreditsScreen");
         //mainMenuScreen = root.Q<VisualElement>("MainMenuScreen");
-        startButton.RegisterCallback<ClickEvent>(OnStartButtonClicked);
-        quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClicked);
+        _startButton.RegisterCallback<ClickEvent>(OnStartButtonClicked);
+        _quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClicked);
         //creditsButton.clicked += OnCreditsButtonClicked;
         //backButton.clicked += OnBackButtonClicked;
         //creditsScreen.style.display = DisplayStyle.None;
@@ -80,19 +76,19 @@ public class StartMenuController : MonoBehaviour
 
     }
 
-    void OnStartButtonClicked(ClickEvent evt)
+    private void OnStartButtonClicked(ClickEvent evt)
     {
 
         isShowing = false;
-        contentContainer.style.display = DisplayStyle.None;
-        gamemanager.instance.stateUnpause();
+        _contentContainer.style.display = DisplayStyle.None;
+        Gamemanager.Instance.StateUnpause();
 
         enabled = false;
 
 
     }
-   
-    void OnQuitButtonClicked(ClickEvent evt)
+
+    private static void OnQuitButtonClicked(ClickEvent evt)
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -102,23 +98,23 @@ public class StartMenuController : MonoBehaviour
 
     }
 
-    void toggleTransitions(VisualElement element, string transitionName)
+    private void ToggleTransitions(VisualElement element, string transitionName)
     {
         
-        if (gamemanager.instance.isPaused == false)
+        if (!Gamemanager.Instance.isPaused)
         {
             return;
         }
         else
-            {transName = transitionName;
+        {_transName = transitionName;
 
-        element.ToggleInClassList(transName);
+            element.ToggleInClassList(_transName);
             element.RegisterCallback<TransitionEndEvent>(ToggleBackTransition);
         }
     }
 
-    void ToggleBackTransition(TransitionEndEvent evt)
+    private void ToggleBackTransition(TransitionEndEvent evt)
     {
-        currentElement.ToggleInClassList(transName);
+        _currentElement.ToggleInClassList(_transName);
     }
 }

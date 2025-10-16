@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Renderer model;
     [SerializeField] protected Transform headPos;
 
+    protected Transform _playerTransform;
     protected int CurrentHp;
     protected Vector3 SpawnPos;
     private Color _colorOrig;
@@ -20,9 +22,9 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     protected bool PlayerInTrigger;
     private protected bool CanSeePlayer;
     private float _angleToPlayer;
-    private protected Transform PlayerTransform;
-    protected Vector3 PlayerDir;
-
+    
+    public float angleToPlayer => _angleToPlayer;
+    
     protected virtual void Awake()
     {
         if (agent != null && animator != null && model != null && headPos != null) return;
@@ -38,7 +40,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         CurrentHp = enemyData.maxHP;
         SpawnPos = transform.position;
         _colorOrig = model.material.color;
-        PlayerTransform = gamemanager.instance.player.transform;
+        _playerTransform = Gamemanager.Instance.player.transform;
 
         PlaySpawnVFX();
     }
@@ -59,17 +61,17 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     private protected virtual void CheckLineOfSight()
     {
-        var dirToPlayer = (PlayerTransform.position - headPos.position).normalized;
-        var distanceToPlayer = Vector3.Distance(headPos.position, PlayerTransform.position);
+        var dirToPlayer = (_playerTransform.position - headPos.position).normalized;
+        var distanceToPlayer = Vector3.Distance(headPos.position, _playerTransform.position);
         _angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
-        PlayerDir = dirToPlayer;
+        
 
         if (_angleToPlayer <= enemyData.FOV / 2f && distanceToPlayer <= enemyData.detectionRadius)
         {
             if (!Physics.Raycast(headPos.position, dirToPlayer, distanceToPlayer, enemyData.lineOfSightMask))
             {
                 CanSeePlayer = true;
-                FaceTarget(PlayerTransform.position);
+                FaceTarget(_playerTransform.position);
                 OnPlayerSpotted();
                 return;
             }
@@ -82,7 +84,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     {
         if (enemyData == null) return;
 
-        var player = gamemanager.instance.player.transform;
+        var player = Gamemanager.Instance.player.transform;
         agent.speed = enemyData.chaseSpeed;
         agent.SetDestination(player.position);
 
@@ -108,7 +110,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
         CurrentHp -= amount;
         StartCoroutine(FlashRed());
-        agent.SetDestination(gamemanager.instance.player.transform.position);
+        agent.SetDestination(Gamemanager.Instance.player.transform.position);
 
         if (CurrentHp <= 0)
             OnEnemyDeath();
@@ -123,7 +125,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual void OnEnemyDeath()
     {
-        gamemanager.instance.updateGameGoal(-1);
+        Gamemanager.Instance.UpdateGameGoal(-1);
 
         if (enemyData.keyPrefab)
             Instantiate(enemyData.keyPrefab, transform.position, Quaternion.identity);

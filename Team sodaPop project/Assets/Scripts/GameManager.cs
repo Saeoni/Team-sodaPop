@@ -1,23 +1,22 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
-public class gamemanager : MonoBehaviour
+public class Gamemanager : MonoBehaviour
 {
 
-    public static gamemanager instance;
-    public playerController _player;
+    public static Gamemanager Instance;
+    public playerController playerController;
 
-
-    [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuUI;
+    [SerializeField] private GameObject menuActive;
+    [SerializeField] private GameObject menuUI;
 
     public HUDController hudUI;
     public MenuController menuController;
     public StartMenuController startMenuController;
-
-    public GameObject playerHPBar;
-    public Image playerHPBarFill;
+    public GameObject playerHpBar; 
+    public Image playerHpBarFill;
 
 
     public GameObject playerDamageFlash;
@@ -45,21 +44,26 @@ public class gamemanager : MonoBehaviour
     public float noiseDecayRate = 1f;
     public float noiseThreshold = 10f;
 
-    int gameGoalCount;
-    int gameTimerMinute;
-    float gameTimerSecond;
-    float stealthTimeLeft;
+    private int _gameGoalCount;
+    private int _gameTimerMinute;
+    private float _gameTimerSecond;
+    private float _stealthTimeLeft;
 
     public bool playerIsDead;
 
 
-    float timeScaleOrig;
+    private float _timeScaleOrig;
 
-    void Awake()
+    public Gamemanager(GameObject menuActive)
+    {
+        this.menuActive = menuActive;
+    }
+
+    public void Awake()
     {
 
-        instance = this;
-        timeScaleOrig = Time.timeScale;
+        Instance = this;
+        _timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
@@ -68,19 +72,20 @@ public class gamemanager : MonoBehaviour
         playerIsDead = false;
 
     }
-    void Start()
+
+    public void Start()
     {
 
 
         menuController = MenuController.instance;
         hudUI = HUDController.instance;
-        startMenuController = StartMenuController.instance;
+        startMenuController = StartMenuController.Instance;
 
 
 
     }
 
-    void Update()
+    private void Update()
     {
 
         if (Input.GetButtonDown("Cancel"))
@@ -90,7 +95,7 @@ public class gamemanager : MonoBehaviour
             if (menuActive == null)
             {
 
-                statePause();
+                StatePause();
                 menuActive = menuUI;
 
                 menuActive.SetActive(true);
@@ -101,7 +106,7 @@ public class gamemanager : MonoBehaviour
             else if (menuActive == menuUI)
             {
 
-                stateUnpause();
+                StateUnpause();
 
 
 
@@ -118,13 +123,8 @@ public class gamemanager : MonoBehaviour
     {
         noiseLevel += amount;
     }
-
-
-
-
-
-
-    public void statePause()
+    
+    public void StatePause()
     {
         isPaused = !isPaused;
         Time.timeScale = 0;
@@ -135,11 +135,11 @@ public class gamemanager : MonoBehaviour
 
     }
 
-    public void stateUnpause()
+    public void StateUnpause()
     {
         isPaused = !isPaused;
         menuController.CloseMenu();
-        Time.timeScale = timeScaleOrig;
+        Time.timeScale = _timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -156,7 +156,7 @@ public class gamemanager : MonoBehaviour
 
     public void WinGame()
     {
-        statePause();
+        StatePause();
         menuActive = menuUI;
         menuActive.SetActive(true);
         menuController.OpenWinMenu();
@@ -166,33 +166,26 @@ public class gamemanager : MonoBehaviour
 
 
 
-    public void updateGameGoal(int amount)
+    public void UpdateGameGoal(int amount)
     {
         HUDController.instance.UpdateEnemyCount(amount);
 
     }
 
 
-    public void youLose()
+    public void YouLose()
     {
         playerIsDead = true;
-        statePause();
+        StatePause();
         menuActive = menuUI;
 
         menuActive.SetActive(true);
         menuController.OpenLoseMenu();
 
 
-
-       if (playerDamageFlash != null && player != null)
-       {
-          playerDamageFlash.SetActive(true);
-          _player.KillPlayer();
-            
-       }
-
-       youLose();
-
+        if (playerDamageFlash == null || player == null) return;
+        playerDamageFlash.SetActive(true);
+       playerController.KillPlayer();
     }
 
 

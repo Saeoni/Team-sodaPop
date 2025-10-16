@@ -6,13 +6,13 @@ public class ButtonFunctions : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void resume()
     {
-        gamemanager.instance.stateUnpause();
+        Gamemanager.Instance.StateUnpause();
     }
 
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gamemanager.instance.stateUnpause();
+        Gamemanager.Instance.StateUnpause();
     }
 
     public void quit()
@@ -26,7 +26,7 @@ public class ButtonFunctions : MonoBehaviour
 
     public void respawn()
     {
-        gamemanager.instance.playerScript.spawnPlayer();
-        gamemanager.instance.stateUnpause();
+        Gamemanager.Instance.playerScript.spawnPlayer();
+        Gamemanager.Instance.StateUnpause();
     }
 }

@@ -13,16 +13,28 @@ public class CreatureAI : EnemyAI
     private float _roamPauseTimer;
     private bool _isRoamingPaused;
     
+    protected override void Start()
+    {
+        base.Start();
+        _playerTransform = Gamemanager.Instance.player.transform;
+    }
+
     protected override void Update()
     {
-        base.Update(); // Includes vision check
+        base.Update(); // Includes CheckLineOfSight()
 
         var data = (CreatureData)enemyData;
         if (data == null) return;
 
         if (CanSeePlayer)
         {
-            // Chase logic handled in OnPlayerSpotted
+            Debug.Log($"Creature sees player at angle: {angleToPlayer}");
+
+            // Optional: trigger cinematic reaction if angle is narrow
+            if (angleToPlayer <= data.FOV * 0.25f)
+            {
+                OnPlayerSpotted(); // ✅ Trigger chase if not already
+            }
         }
         else if (data.canPatrol && data.patrolPoints.Length > 0)
         {
@@ -41,7 +53,7 @@ public class CreatureAI : EnemyAI
         var data = (CreatureData)enemyData;
         animator.SetTrigger(data.roarTrigger);
         agent.speed = data.chaseSpeed;
-        agent.SetDestination(PlayerTransform.position);
+        agent.SetDestination(_playerTransform.position);
 
         if (!(agent.remainingDistance <= data.stoppingDist)) return;
         agent.ResetPath();
@@ -51,8 +63,7 @@ public class CreatureAI : EnemyAI
     protected override void HandleTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        var data = (CreatureData)enemyData;
-        animator.SetTrigger(data.roarTrigger);
+        OnPlayerSpotted();
     }
 
     private void Patrol(CreatureData data)
