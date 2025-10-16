@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Enemy, SpawnProtected
 - Active game object:
-  - Name: Demon_Reaper
+  - Name: RippleFX
   - Tag: Untagged
-  - Layer: Enemy
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

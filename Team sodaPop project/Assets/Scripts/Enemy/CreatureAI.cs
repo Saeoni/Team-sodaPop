@@ -16,7 +16,7 @@ public class CreatureAI : EnemyAI
     protected override void Start()
     {
         base.Start();
-        _playerTransform = Gamemanager.Instance.player.transform;
+        PlayerTransform = Gamemanager.Instance.player.transform;
     }
 
     protected override void Update()
@@ -53,7 +53,7 @@ public class CreatureAI : EnemyAI
         var data = (CreatureData)enemyData;
         animator.SetTrigger(data.roarTrigger);
         agent.speed = data.chaseSpeed;
-        agent.SetDestination(_playerTransform.position);
+        agent.SetDestination(PlayerTransform.position);
 
         if (!(agent.remainingDistance <= data.stoppingDist)) return;
         agent.ResetPath();

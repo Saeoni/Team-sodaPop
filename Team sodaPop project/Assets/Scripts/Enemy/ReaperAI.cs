@@ -18,8 +18,7 @@ public class ReaperAI : EnemyAI
 
     private float _spasmCooldownTimer;
     private float _stalkTimer;
-    private Transform _playerTransform;
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -36,7 +35,7 @@ public class ReaperAI : EnemyAI
         _isActive = true;
         _stalkTimer = 0f;
 
-        _playerTransform = Gamemanager.Instance.player.transform;
+        PlayerTransform = Gamemanager.Instance.player.transform;
 
         if (enemyData.spawnVFX != null)
         {
@@ -57,17 +56,13 @@ public class ReaperAI : EnemyAI
         HandleLocomotion();
         CheckAggression();
 
-        if (_hasTriggeredSpasm)
-        {
-            _spasmCooldownTimer += Time.deltaTime;
-            var data = (ReaperData)enemyData;
+        if (!_hasTriggeredSpasm) return;
+        _spasmCooldownTimer += Time.deltaTime;
+        var data = (ReaperData)enemyData;
 
-            if (_spasmCooldownTimer >= data.spasmCooldown)
-            {
-                _hasTriggeredSpasm = false;
-                _spasmCooldownTimer = 0f;
-            }
-        }
+        if (!(_spasmCooldownTimer >= data.spasmCooldown)) return;
+        _hasTriggeredSpasm = false;
+        _spasmCooldownTimer = 0f;
     }
 
     protected override void HandleTriggerEnter(Collider other)
@@ -109,7 +104,7 @@ public class ReaperAI : EnemyAI
         var t = Mathf.Clamp01(_stalkTimer / data.maxStalkTime);
         agent.speed = Mathf.Lerp(data.minSpeed, data.maxSpeed, data.speedRampCurve.Evaluate(t));
 
-        var distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
+        var distanceToPlayer = Vector3.Distance(transform.position, PlayerTransform.position);
 
         if (!_isAggressive && _stalkTimer >= data.maxStalkTime * 0.5f)
         {
@@ -123,7 +118,7 @@ public class ReaperAI : EnemyAI
                 return;
             case false:
                 agent.isStopped = false;
-                agent.SetDestination(_playerTransform.position);
+                agent.SetDestination(PlayerTransform.position);
                 animator.SetBool(IsSpasming, false);
                 break;
             default:
@@ -133,7 +128,7 @@ public class ReaperAI : EnemyAI
                 break;
         }
 
-        transform.LookAt(_playerTransform);
+        transform.LookAt(PlayerTransform);
 
         if (_stalkTimer >= data.maxStalkTime)
         {
@@ -159,6 +154,7 @@ public class ReaperAI : EnemyAI
         animator.SetFloat(Direction, Mathf.Lerp(animator.GetFloat(Direction), direction, Time.deltaTime * data.animTransSpeed));
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     protected override void OnPlayerSpotted()
     {
         var data = (ReaperData)enemyData;
@@ -171,13 +167,11 @@ public class ReaperAI : EnemyAI
         }
 
         agent.speed = data.maxSpeed;
-        agent.SetDestination(_playerTransform.position);
+        agent.SetDestination(PlayerTransform.position);
 
-        if (agent.remainingDistance <= data.stoppingDist)
-        {
-            agent.ResetPath();
-            Debug.Log("Reaper reached stopping distance.");
-        }
+        if (!(agent.remainingDistance <= data.stoppingDist)) return;
+        agent.ResetPath();
+        Debug.Log("Reaper reached stopping distance.");
     }
 
     private void TriggerKill()
@@ -191,14 +185,14 @@ public class ReaperAI : EnemyAI
     private void TeleportToPlayer()
     {
         var data = (ReaperData)enemyData;
-        var offset = _playerTransform.forward * -1.5f;
-        var targetPos = _playerTransform.position + offset;
+        var offset = PlayerTransform.forward * -1.5f;
+        var targetPos = PlayerTransform.position + offset;
 
         if (data.teleportVFX)
             Instantiate(data.teleportVFX, transform.position, Quaternion.identity);
 
         transform.position = targetPos;
-        transform.LookAt(_playerTransform);
+        transform.LookAt(PlayerTransform);
         agent.Warp(targetPos);
     }
 
