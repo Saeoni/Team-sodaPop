@@ -8,6 +8,7 @@ public class gamemanager : MonoBehaviour
     public static gamemanager instance;
 
     [SerializeField] GameObject menuActive;
+    [SerializeField] GameObject menuStart;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -39,6 +40,13 @@ public class gamemanager : MonoBehaviour
     float stealthTimeLeft;
 
     float timeScaleOrig;
+
+    void Start()
+    {
+        statePause();
+        menuActive = menuStart;
+        menuActive.SetActive(true);
+    }
 
     void Awake()
     {
