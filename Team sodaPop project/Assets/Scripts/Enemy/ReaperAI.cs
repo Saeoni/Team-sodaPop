@@ -226,4 +226,18 @@ public class ReaperAI : EnemyAI
         if (CurrentHp <= 0)
             base.OnEnemyDeath();
     }
+
+    public void TriggerPunchHitEffect()
+    {
+        var data = (ReaperData)enemyData;
+        if (data.punchHitFX == null) return;
+
+        var fx = Instantiate(data.punchHitFX, transform.position, Quaternion.identity);
+
+        foreach (string child in new[] { "BasicHit", "Shockwave4", "Shockwave3", "Shockwave2", "Shockwave1", "Flash", "Sparks" })
+        {
+            var ps = fx.transform.Find(child)?.GetComponent<ParticleSystem>();
+            if (ps != null) ps.Play();
+        }
+    }
 }

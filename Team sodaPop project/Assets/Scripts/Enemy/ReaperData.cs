@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewReaperData", menuName = "Enemy/ReaperData")]
 public class ReaperData : EnemyData
 {
+
+    [SerializeField] private Transform hitEffectPoint;
+    
     [Header("Spasm Settings")]
     public string spasmTrigger = "Spasm";
     public float spasmCooldown = 5f;
@@ -23,6 +27,9 @@ public class ReaperData : EnemyData
     [Header("Teleport FX")]
     public GameObject teleportVFX;
 
+    [Header("Kill VFX")] 
+    public GameObject punchHitFX;
+    
     [Header("Animation")]
     public float animTransSpeed = 5f;
 
