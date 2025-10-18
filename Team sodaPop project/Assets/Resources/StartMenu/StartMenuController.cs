@@ -44,7 +44,7 @@ public class StartMenuController : MonoBehaviour
   
     void Start()
     {
-        Gamemanager.Instance.StatePause();
+        gamemanager.instance.statePause();
         InitializeUI();
         contentContainer.style.display = DisplayStyle.Flex;
         isShowing = true;
@@ -85,7 +85,7 @@ public class StartMenuController : MonoBehaviour
 
         isShowing = false;
         contentContainer.style.display = DisplayStyle.None;
-        Gamemanager.Instance.StateUnpause();
+        gamemanager.instance.stateUnpause();
 
         enabled = false;
 
@@ -105,7 +105,7 @@ public class StartMenuController : MonoBehaviour
     void toggleTransitions(VisualElement element, string transitionName)
     {
         
-        if (Gamemanager.Instance.isPaused == false)
+        if (gamemanager.instance.isPaused == false)
         {
             return;
         }

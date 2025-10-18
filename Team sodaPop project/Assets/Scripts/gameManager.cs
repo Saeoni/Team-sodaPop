@@ -1,14 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-using UnityEngine.Serialization;
-
-public class Gamemanager : MonoBehaviour
+public class gamemanager : MonoBehaviour
 {
 
-    public static Gamemanager Instance;
+    public static gamemanager instance;
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
@@ -16,55 +13,49 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuNote;
     [SerializeField] TMP_Text gameTimerText;
-    [FormerlySerializedAs("KeyText")] [SerializeField] TMP_Text keyText;
+    [SerializeField] TMP_Text KeyText;
     [SerializeField] TMP_Text stealthTimerText;
 
-    [FormerlySerializedAs("playerHPBar")] public Image playerHpBar;
+    public Image playerHPBar;
     public GameObject playerDamageFlash;
     public GameObject playerHealFlash;
     public GameObject checkpointPopup;
-    public int ammoCur;
-    public int ammoMax;
+    public TMP_Text ammoCur, ammoMax;
 
     public GameObject playerSpawnPos;
     public GameObject player;
-    public PlayerController playerScript;
+    public playerController playerScript;
 
-    public float noiseLevel;
-    public float noiseThreshold;
-    public event Action<float> OnNoiseChanged;
-    
     public int keyCount;
 
     public bool isPaused;
-    [FormerlySerializedAs("NoteDisplayed")] public bool noteDisplayed;
+    public bool NoteDisplayed;
     public bool isStealthed;
-    public float timeElapsed;
+    public float timeElapsed; 
 
-    private int _gameGoalCount;
-    private int _gameTimerMinute;
-    private float _gameTimerSecond;
-    private float _stealthTimeLeft;
+    int gameGoalCount;
+    int gameTimerMinute;
+    float gameTimerSecond;
+    float stealthTimeLeft;
 
-    private float _timeScaleOrig;
-    public bool _playerIsDead;
+    float timeScaleOrig;
 
-    private void Awake()
+    void Awake()
     {
 
-        Instance = this;
-        _timeScaleOrig = Time.timeScale;
-        noteDisplayed = false;
+        instance = this;
+        timeScaleOrig = Time.timeScale;
+        NoteDisplayed = false;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<PlayerController>();
+        playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
         keyCount = 0;
 
     }
 
-    private void Update()
+    void Update()
     {
 
         if (Input.GetButtonDown("Cancel"))
@@ -72,14 +63,14 @@ public class Gamemanager : MonoBehaviour
             if (menuActive == null)
             {
 
-                StatePause();
+                statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
 
             }
             else if (menuActive == menuPause)
             {
-                StateUnpause();
+                stateUnpause();
             }
             else if(menuActive == menuNote)
             {
@@ -87,16 +78,12 @@ public class Gamemanager : MonoBehaviour
             }
         }
 
-        UpdateGameTimer();
+        updateGameTimer();
 
     }
 
-    public void RegisterNoise(float amount)
-    {
-        noiseLevel += amount;
-        OnNoiseChanged?.Invoke(noiseLevel);
-    }
-    public void StealthTimer(float length)
+   
+    public void stealthTimer(float length)
     {
         StartCoroutine(StealthCountdown(length));
 
@@ -119,8 +106,10 @@ public class Gamemanager : MonoBehaviour
         stealthTimerText.gameObject.SetActive(false);
 
     }
-    
-    public void StatePause()
+
+
+
+    public void statePause()
     {
         isPaused = !isPaused;
         Time.timeScale = 0;
@@ -128,10 +117,10 @@ public class Gamemanager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void StateUnpause()
+    public void stateUnpause()
     {
         isPaused = !isPaused;
-        Time.timeScale = _timeScaleOrig;
+        Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
@@ -140,41 +129,42 @@ public class Gamemanager : MonoBehaviour
 
     public void WinGame()
     {
-       StatePause();
+       statePause();
        menuActive = menuWin;
        menuActive.SetActive(true);
        Debug.Log("Player exited the maze. You win!");      
     }
 
-    public void UpdateGameTimer()
+    public void updateGameTimer()
     {
-        if (menuActive != null) return;
-        _gameTimerSecond += Time.deltaTime;
-        timeElapsed += Time.deltaTime;
+        if (menuActive == null){
+            gameTimerSecond += Time.deltaTime;
+            timeElapsed += Time.deltaTime;
 
-        int displaySecond = Mathf.FloorToInt(_gameTimerSecond);
-        if (displaySecond >= 60)
-        {
-            _gameTimerMinute++;
-            _gameTimerSecond = 0;
-            displaySecond = 0;
+            int displaySecond = Mathf.FloorToInt(gameTimerSecond);
+            if (displaySecond >= 60)
+            {
+                gameTimerMinute++;
+                gameTimerSecond = 0;
+                displaySecond = 0;
+            }
+            gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
         }
-        gameTimerText.text = _gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
     }
 
-    public void UpdateGameGoal(int amount)
+    public void updateGameGoal(int amount)
     {
 
     }
 
-    public void UpdateKeyCount()
+    public void updateKeyCount()
     {
-        keyText.text = keyCount.ToString();
+        KeyText.text = keyCount.ToString();
     }
 
-    public void YouLose()
+    public void youLose()
     {
-        StatePause();
+        statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
@@ -193,25 +183,27 @@ public class Gamemanager : MonoBehaviour
             Destroy(player);
        }
 
-       YouLose();
+       youLose();
     }
 
     public void NoteDisplay()
     {
-        if(noteDisplayed)
+        if(NoteDisplayed == true)
         {
-            if (!Input.GetButtonDown("Cancel")) return;
-            noteDisplayed = !noteDisplayed;
-            Time.timeScale = _timeScaleOrig;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            menuActive.SetActive(false);
-            menuActive = null;
+            if (Input.GetButtonDown("Cancel"))
+            {
+                NoteDisplayed = !NoteDisplayed;
+                Time.timeScale = timeScaleOrig;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                menuActive.SetActive(false);
+                menuActive = null;
+            }
 
         }
         else
         {
-            noteDisplayed = !noteDisplayed;
+            NoteDisplayed = !NoteDisplayed;
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

@@ -41,7 +41,6 @@ public class CreatureAI : EnemyAI
         var data = (CreatureData)enemyData;
         animator.SetTrigger(data.roarTrigger);
         agent.speed = data.chaseSpeed;
-       
         agent.SetDestination(PlayerTransform.position);
 
         if (!(agent.remainingDistance <= data.stoppingDist)) return;

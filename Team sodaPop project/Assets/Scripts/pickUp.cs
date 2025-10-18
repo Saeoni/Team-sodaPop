@@ -29,7 +29,7 @@ public class pickUp : MonoBehaviour
         IPickup pickupable = other.GetComponent<IPickup>();
         if (type == pickupType.health)
         {
-            other.GetComponent<PlayerController>().heal(healAmount);
+            other.GetComponent<playerController>().heal(healAmount);
             Destroy(gameObject);
         }
 
@@ -48,7 +48,7 @@ public class pickUp : MonoBehaviour
         }
         else if(type == pickupType.Note)
         {
-            Gamemanager.Instance.NoteDisplay();
+            gamemanager.instance.NoteDisplay();
             Destroy(gameObject);
         }
 

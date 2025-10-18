@@ -5,75 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72707fec-61f2-4fe1-9837-cfeba70b3342" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/dictionaries/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Night SkyBox.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Night SkyBox.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/DemoScenePlaneMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Materials/Accesories.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Materials/Upper.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_AlbedoTransparency.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_AlbedoTransparency.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_MetallicSmoothness.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_MetallicSmoothness.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_Normal.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Materials/Ball_mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_BaseColor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Hits Effects FREE/Materials/Fire Hit/Fire Smoke.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Demo scene/Demo fire 1Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Models.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Character auras/Plexus.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Sparks/Sparks white.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Monster/Materials/M_Monster_Body_skin2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Monster/Materials/M_Monster_Body_skin3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Monster/Materials/M_Monster_Sword_skin1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Monster/Prefab/Sword Skin2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/InGameUI/HUDController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/InGameUI/HUDController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/InGameUI/MenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/InGameUI/MenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/StartMenu/StartMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/StartMenu/StartMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EdwinItemSandboxTesting/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/EdwinItemSandboxTesting/NavMesh-NavMesh Surface.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level/NavMesh-NavMesh Surface.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Demon.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Demon.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias's Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tobias's Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MazeExitTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MazeExitTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/buttonFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/buttonFunction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/checkpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/checkpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/damage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/damage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gunstats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/gunstats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Scenes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Scenes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/FlashLight_DFSA.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/FlashLight_DFSA.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/Knife.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Materials/PictureFrameGlass.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Knife.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Prefabs/Syringe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Scenes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/HorrorStarterPackFREE/Scenes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Models.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Monster/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/FX_Materials/RainWater_Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonCity/Materials/PolygonCity_Mat_01_C.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials/PolyKnights_Mat_Variation_04.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/PolygonKnights/Materials/PolyKnights_Mat_Variation_Snow_To_Grass_Swap.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Texture_Me/Ground - Earth and Rocks - Free 'Texture A' (Hand-Painted)/Materials/floor 14.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Texture_Me/Ground - Earth and Rocks - Free 'Texture A' (Hand-Painted)/Materials/floor 14.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,25 +20,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Samuraisoc&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Samuraisoc"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Saeoni/Team-sodaPop.git&quot;,
-    &quot;accountId&quot;: &quot;490a2f7b-d9f4-4614-830e-e4e9369ceb02&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Saeoni/Team-sodaPop.git",
+    "accountId": "490a2f7b-d9f4-4614-830e-e4e9369ceb02"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 2
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="345ctQ6MGd4yoAx5iwQe4HdbXT4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -111,7 +48,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Staging-",
+    "git-widget-placeholder": "enemyAI__Tobias",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -186,7 +123,6 @@
       <option name="presentableId" value="Default" />
       <updated>1760507097299</updated>
       <workItem from="1760507098707" duration="2278000" />
-      <workItem from="1760512766326" duration="3497000" />
     </task>
     <servers />
   </component>

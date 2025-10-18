@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 [CreateAssetMenu]
 public class gunstats : ScriptableObject

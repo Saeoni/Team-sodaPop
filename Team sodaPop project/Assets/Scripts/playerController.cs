@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Serialization;
+using NUnit.Framework;
+using TheWatcher;
 
-public class PlayerController : MonoBehaviour, IDamage, IPickup
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
@@ -24,29 +25,25 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
 
-    [FormerlySerializedAs("HPOrig")] public int hpOrig;
-    private int _speedOrig;
-    private int _jumpCount;
-    private int _gunListPos;
+    public int HPOrig;
+    int speedOrig;
+    int jumpCount;
+    int gunListPos;
 
-    private Vector3 _moveDir;
-    private Vector3 _playerVel;
+    Vector3 moveDir;
+    Vector3 playerVel;
 
-    private float _shootTimer;
-#pragma warning disable CS0414 // Field is assigned but its value is never used
-    private bool _isSprinting;
-#pragma warning restore CS0414 // Field is assigned but its value is never used
-#pragma warning disable CS0414 // Field is assigned but its value is never used
-    private bool _isTired = false;
-#pragma warning restore CS0414 // Field is assigned but its value is never used
+    float shootTimer;
+    bool isSprinting;
+    bool isTired = false;
    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        hpOrig = HP;
-        _speedOrig = speed;
-        UpdatePlayerUI();
+        HPOrig = HP;
+        speedOrig = speed;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -54,7 +51,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-        if (!Gamemanager.Instance.isPaused)
+        if (!gamemanager.instance.isPaused)
         {
             movement();
         }
@@ -63,41 +60,41 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
 
     void movement()
     {
-        _shootTimer += Time.deltaTime;
+        shootTimer += Time.deltaTime;
 
         if(controller.isGrounded)
         {
-            _jumpCount = 0;
-            _playerVel = Vector3.zero;
+            jumpCount = 0;
+            playerVel = Vector3.zero;
         }
         else
         {
-            _playerVel.y -= gravity * Time.deltaTime;
+            playerVel.y -= gravity * Time.deltaTime;
         }
 
-        _moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward);
-        controller.Move(_moveDir * speed * Time.deltaTime);
+        moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward);
+        controller.Move(moveDir * speed * Time.deltaTime);
 
         // jumping mechanics
         jump();
 
-        controller.Move(_playerVel * Time.deltaTime);
+        controller.Move(playerVel * Time.deltaTime);
 
         // shooting mechanics
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[_gunListPos].ammoCur > 0  && _shootTimer >= shootRate)
-            Shoot();
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0  && shootTimer >= shootRate)
+            shoot();
 
-        SelectGun();
-        Reload();
+        selectGun();
+        reload();
 
     }
 
     void jump()
     {
-        if(Input.GetButtonDown("Jump") && _jumpCount < jumpMax)
+        if(Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
-            _jumpCount++;
-            _playerVel.y = jumpSpeed;
+            jumpCount++;
+            playerVel.y = jumpSpeed;
         }
     }
 
@@ -107,14 +104,14 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
         {
             speed *= sprintMod;
             jumpSpeed *= jumpMod;
-            _isSprinting = true;
+            isSprinting = true;
         }
 
         if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
             jumpSpeed /= jumpMod;
-            _isSprinting = false;
+            isSprinting = false;
         }
     }
 
@@ -130,38 +127,40 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
         body.linearVelocity = pushDir * pushStrength;
     }
 
-    private void Shoot()
+    void shoot()
     {
-        _shootTimer = 0;
-        gunList[_gunListPos].ammoCur--;
-        UpdatePlayerUI();
+        shootTimer = 0;
+        gunList[gunListPos].ammoCur--;
+        updatePlayerUI();
 
         RaycastHit hit;
-        if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist)) return;
-        Debug.Log(hit.collider.name);
-
-        IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-        if(dmg != null)
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist)) 
         {
-            dmg.takeDamage(shootDamage);
+            Debug.Log(hit.collider.name);
+
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+            if(dmg != null)
+            {
+                dmg.takeDamage(shootDamage);
+            }
         }
     }
 
-    private void Reload()
+    void reload()
     {
         if (Input.GetButton("Reload"))
-            gunList[_gunListPos].ammoCur = gunList[_gunListPos].ammoMax;
+            gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
     }
 
     public void takeDamage(int amount)
     {
         HP -= amount;
-        UpdatePlayerUI();
-        StartCoroutine(FlashDamage());
+        updatePlayerUI();
+        StartCoroutine(flashDamage());
         if(HP <= 0)
         {
-            Gamemanager.Instance.YouLose();
+            gamemanager.instance.youLose();
         }
     }
 
@@ -172,64 +171,66 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
 
     public void heal(int amount)
     {
-        if(HP < hpOrig)
+        if(HP < HPOrig)
         {
             HP += amount;
-            UpdatePlayerUI();
-            StartCoroutine(FlashHeal());
+            updatePlayerUI();
+            StartCoroutine(flashHeal());
         }
 
-        else if(HP > hpOrig)
+        else if(HP > HPOrig)
         {
-            HP = hpOrig;
-            UpdatePlayerUI();
+            HP = HPOrig;
+            updatePlayerUI();
         }
     }
 
-    private void UpdatePlayerUI()
+    public void updatePlayerUI()
     {
-        Gamemanager.Instance.playerHpBar.fillAmount = (float)HP / hpOrig;
+        gamemanager.instance.playerHPBarFill.fillAmount = (float)HP / HPOrig;
 
-        if (gunList.Count <= 0) return;
-        Gamemanager.Instance.ammoCur = gunList[_gunListPos].ammoCur;
-        Gamemanager.Instance.ammoMax = gunList[_gunListPos].ammoMax;
-        HUDController.instance.UpdatePlayerUI();
+        if(gunList.Count > 0)
+        {
+            gamemanager.instance.ammoCur = gunList[gunListPos].ammoCur;
+            gamemanager.instance.ammoMax = gunList[gunListPos].ammoMax;
+            HUDController.instance.UpdatePlayerUI();
+
+        }
     }
 
-    private IEnumerator FlashDamage()
+    IEnumerator flashDamage()
     {
-        Gamemanager.Instance.playerDamageFlash.SetActive(true);
+        gamemanager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        Gamemanager.Instance.playerDamageFlash.SetActive(false);
+        gamemanager.instance.playerDamageFlash.SetActive(false);
     }
-
-    private IEnumerator FlashHeal()
+    IEnumerator flashHeal()
     {
-        Gamemanager.Instance.playerHealFlash.SetActive(true);
+        gamemanager.instance.playerHealFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        Gamemanager.Instance.playerHealFlash.SetActive(false);
+        gamemanager.instance.playerHealFlash.SetActive(false);
     }
 
-    public void SpawnPlayer()
+    public void spawnPlayer()
     {
-        controller.transform.position = Gamemanager.Instance.playerSpawnPos.transform.position;
+        controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
 
-        HP = hpOrig;
-        UpdatePlayerUI();
+        HP = HPOrig;
+        updatePlayerUI();
 
     }
 
-    private void SelectGun()
+    void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && _gunListPos < gunList.Count - 1)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
         {
-            _gunListPos++;
-            ChangeGun();
+            gunListPos++;
+            changeGun();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && _gunListPos > 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
         {
-            _gunListPos--;
-            ChangeGun();
+            gunListPos--;
+            changeGun();
         }
 
     }
@@ -237,20 +238,20 @@ public class PlayerController : MonoBehaviour, IDamage, IPickup
     public void getGunStats(gunstats gun)
     {
         gunList.Add(gun);
-        _gunListPos = gunList.Count - 1;
-        ChangeGun();
+        gunListPos = gunList.Count - 1;
+        changeGun();
     }
 
-    private void ChangeGun()
+    void changeGun()
     {
-        shootDamage = gunList[_gunListPos].shootDamage;
-        shootDist = gunList[_gunListPos].shootDist;
-        shootRate = gunList[_gunListPos].shootRate;
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDist = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
 
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[_gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[_gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
-        UpdatePlayerUI();
+        updatePlayerUI();
     }
 
     void TurnOnFlashlight()

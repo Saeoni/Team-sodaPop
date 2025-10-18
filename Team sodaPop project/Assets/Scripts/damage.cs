@@ -45,7 +45,7 @@ public class damage : MonoBehaviour
     {
         if (type == damageType.homing)
         {
-            Vector3 targetDir = (Gamemanager.Instance.player.transform.position - transform.position).normalized;
+            Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
             rb.linearVelocity = targetDir * speed;
         }
     }
