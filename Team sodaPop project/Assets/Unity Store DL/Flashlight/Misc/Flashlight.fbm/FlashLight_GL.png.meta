@@ -1,17 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta
 guid: b4089e439bbd5d94b87ea47dec0dadda
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
-========
-guid: 7b01557ac5af90b4fb97e0890407014f
-TextureImporter:
-  internalIDToNameTable: []
-  externalObjects: {}
-  serializedVersion: 10
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -42,12 +34,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
-    wrapU: -1
-    wrapV: -1
-    wrapW: -1
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -70,13 +62,10 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
   cookieLightType: 0
-========
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -126,13 +115,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta
-========
-AssetOrigin:
-  serializedVersion: 1
-  productId: 167606
-  packageName: Cursed Priest
-  packageVersion: 1.0
-  assetPath: Assets/Cursed Priest/Textures/Head_AO.png
-  uploadId: 369212
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta

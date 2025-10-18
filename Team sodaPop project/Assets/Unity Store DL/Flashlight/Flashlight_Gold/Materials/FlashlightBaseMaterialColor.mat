@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
 --- !u!114 &-5911045404888159244
-========
---- !u!114 &-4713259804122638504
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,11 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
   m_Name: FlashlightBaseMaterialColor
-========
-  m_Name: M_Monster_Body_skin2
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -36,17 +28,10 @@ Material:
   - _EMISSION
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
   - _SPECGLOSSMAP
   - _SPECULAR_SETUP
   m_InvalidKeywords: []
   m_LightmapFlags: 1
-========
-  - _OCCLUSIONMAP
-  m_InvalidKeywords:
-  - _METALLICGLOSSMAP
-  m_LightmapFlags: 2
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -59,7 +44,6 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
         m_Texture: {fileID: 2800000, guid: e8a291073274e564c812f583317376bc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -69,13 +53,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Cube:
         m_Texture: {fileID: 8900000, guid: 2bd2793cbf530b4498132361548a0fec, type: 3}
-========
-        m_Texture: {fileID: 2800000, guid: 20db101c7aa92734a80dd17451af52c1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 976b8a0f61650e74587e7c0170dd6265, type: 3}
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -91,15 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
         m_Texture: {fileID: 0}
-========
-        m_Texture: {fileID: 2800000, guid: 5b957b61ed0428b4daa3d50e90e8178b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 20db101c7aa92734a80dd17451af52c1, type: 3}
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -107,15 +76,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
         m_Texture: {fileID: 0}
-========
-        m_Texture: {fileID: 2800000, guid: f6972644f14210f44beca9d54e85793e, type: 3}
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: be6cf2c10b9000b4993aecec93725f77, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -154,14 +119,10 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _EmissionScaleUI: 0
     - _EnvironmentReflections: 1
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
     - _GlossMapScale: 1
     - _Glossiness: 0.5
-========
-    - _GlossMapScale: 0.604
-    - _Glossiness: 0
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -169,12 +130,8 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
     - _Shininess: 0.3630957
     - _Smoothness: 1
-========
-    - _Smoothness: 0.604
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -185,18 +142,11 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Flashlight_Gold/Materials/FlashlightBaseMaterialColor.mat
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _ReflectColor: {r: 0.08088237, g: 0.08088237, b: 0.08088237, a: 0.5019608}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
-========
-    - _BaseColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    - _EmissionColor: {r: 31.999996, g: 31.999996, b: 31.999996, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Unity Store DL/Monster/Materials/M_Monster_Body_skin2.mat
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/HorrorStarterPackFREE/Textures/AllModels_Material _MetallicSmoothness.png.meta
 guid: 8e039cb6fcce395498f6ea098f1b0cca
-========
-guid: 670f1c056a06d7049b90d1fd1e480427
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -27,7 +23,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -59,16 +54,9 @@ TextureImporter:
   textureType: 0
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/HorrorStarterPackFREE/Textures/AllModels_Material _MetallicSmoothness.png.meta
-========
-  ignorePngGamma: 0
-  applyGammaDecoding: 0
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -103,17 +91,9 @@ TextureImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/HorrorStarterPackFREE/Textures/AllModels_Material _MetallicSmoothness.png.meta
   productId: 178413
   packageName: Horror Starter Pack FREE
   packageVersion: 1.0
   assetPath: Assets/Unity Store DL/HorrorStarterPackFREE 1/Textures/AllModels_Material
     _MetallicSmoothness.png
   uploadId: 397464
-========
-  productId: 247933
-  packageName: Magic Effects FREE
-  packageVersion: 1.6
-  assetPath: Assets/Hovl Studio/Magic effects pack/Materials/VFXatlas.psd
-  uploadId: 762116
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta
