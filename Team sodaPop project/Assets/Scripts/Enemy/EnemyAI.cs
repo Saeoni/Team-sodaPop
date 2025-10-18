@@ -11,7 +11,10 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected Renderer model;
-    [SerializeField] protected Transform headPos;
+    [SerializeField] protected Transform headPos; 
+    [SerializeField] public Transform leftHandHitSpawn;
+    [SerializeField] public Transform rightHandHitSpawn;
+
 
     protected Transform PlayerTransform;
     protected int CurrentHp;

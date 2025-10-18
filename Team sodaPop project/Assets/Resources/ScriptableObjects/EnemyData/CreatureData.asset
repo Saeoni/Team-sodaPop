@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79694276afdff4b4c8cabbd788384890, type: 3}
+  m_Name: CreatureData
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureData
+  maxHP: 100
+  detectionRadius: 15
+  FOV: 90
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 1
+  faceTargetSpeed: 5
+  stoppingDist: 0
+  chaseSpeed: 8
+  keyPrefab: {fileID: 0}
+  spawnVFX: {fileID: 0}
+  deathVFX: {fileID: 0}
+  roarTrigger: Roar
+  roarPoseTrigger: RoarPose
+  crouchTrigger: Crouch
+  crouchPoseTrigger: CrouchPose
+  biteTrigger: Bite
+  eatTrigger: Eat
+  deathTrigger: Die
+  idle1Trigger: Idle1
+  idle2Trigger: Idle2
+  idlePoseTrigger: IdlePose
+  jumpOutTrigger: JumpOut
+  jumpInTrigger: JumpIn
+  punchTrigger: Punch
+  slideTrigger: Slide
+  sniffTrigger: Sniff
+  walk1Trigger: Walk1
+  walk2Trigger: Walk2
+  animTransSpeed: 5
+  roamDist: 5
+  roamSpeed: 1.5
+  roamPauseTimer: 2
+  canPatrol: 1
+  patrolPoints: []
+  loopPatrol: 1
+  patrolSpeed: 2
+  patrolPauseTime: 2
+  creepSpeed: 1.2
+  leapRange: 6
+  leapDelay: 0.8
+  eatDuration: 3
+  idleVariants:
+  - Idle1
+  - Idle2
+  walkVariants:
+  - Walk1
+  - Walk2
+  - Crouch
+  crouchIdleTrigger: CrouchPose
+  ambientAnimInterval: 6

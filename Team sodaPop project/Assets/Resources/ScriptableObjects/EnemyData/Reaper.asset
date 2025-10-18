@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1ada7445ded40418b893831df9efea, type: 3}
   m_Name: Reaper
   m_EditorClassIdentifier: 
-  maxHP: 200
+  maxHP: 999
   detectionRadius: 15
   FOV: 90
   lineOfSightMask:
@@ -28,7 +28,7 @@ MonoBehaviour:
   spasmCooldown: 5
   spasmDelay: 0.4
   spasmIntensityRange: {x: 0, y: 2}
-  maxStalkTime: 25
+  maxStalkTime: 35
   minSpeed: 2
   maxSpeed: 6
   speedRampCurve:
@@ -40,5 +40,14 @@ MonoBehaviour:
   killDistance: 2
   killTrigger: Kill
   damageTrigger: GetDamage
+  stalkTeleportOutVFX: {fileID: 7509876027503243370, guid: cec20977e4ad75348a212ed6149b7cc9, type: 3}
   teleportVFX: {fileID: 4771212496169573362, guid: 4cf4a16f3f412f14da64b2f5ed325ced, type: 3}
+  stalkTeleportCooldown: 6
+  stalkTeleportChance: 0.3
+  stalkTeleportDelay: 3
+  redSlashOfDeath: {fileID: 8376925494954743491, guid: 4831b3632f6b1ab40a6991aeecc4e977, type: 3}
+  dualPunchHitFX: {fileID: 5483084540717949031, guid: 93384001d97f73e45b24cac103133482, type: 3}
   animTransSpeed: 5
+  aggressionNoiseThreshold: 0.8
+  aggressionStalkTime: 6
+  aggressiveTrigger: Spasm

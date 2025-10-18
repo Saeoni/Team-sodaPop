@@ -172,7 +172,7 @@ ModelImporter:
       takeName: Demon|Get-damage
       internalID: -922236753715791470
       firstFrame: 0
-      lastFrame: 121
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -375,7 +375,7 @@ ModelImporter:
       takeName: Demon|Punch2
       internalID: 3389643049034010190
       firstFrame: 0
-      lastFrame: 121
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -394,7 +394,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.64767116
+        functionName: TriggerRightHandFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -404,7 +411,7 @@ ModelImporter:
       takeName: Demon|Punch3
       internalID: -6122846026800670103
       firstFrame: 0
-      lastFrame: 121
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -423,7 +430,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.70108366
+        functionName: TriggerDualHandHitFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
