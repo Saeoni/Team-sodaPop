@@ -41,16 +41,15 @@ public class gamemanager : MonoBehaviour
 
     float timeScaleOrig;
 
-    void Start()
+    /*void Start()
     {
         statePause();
         menuActive = menuStart;
         menuActive.SetActive(true);
-    }
+    }*/
 
     void Awake()
     {
-
         instance = this;
         timeScaleOrig = Time.timeScale;
 
@@ -109,8 +108,6 @@ public class gamemanager : MonoBehaviour
         stealthTimerText.gameObject.SetActive(false);
 
     }
-
-
 
     public void statePause()
     {
