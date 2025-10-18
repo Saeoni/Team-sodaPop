@@ -1,12 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/Flashlight/Materials.meta
-guid: 7ca321a86db50254f8a1c8d5e222a8f0
-========
-guid: 7acfa210781346e418f73a099b4b56a4
->>>>>>>> enemyAI_Tobias:Team sodaPop project/Assets/Resources/Enemy/Assets_Tobias/Creep Horror Creature/Materials.meta
+guid: fe1137f3a81dafd40bdaf3cb4e0b635f
 folderAsset: yes
-timeCreated: 1525014686
-licenseType: Store
 DefaultImporter:
   externalObjects: {}
   userData: 
