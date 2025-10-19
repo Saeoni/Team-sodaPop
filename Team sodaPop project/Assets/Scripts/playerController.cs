@@ -16,6 +16,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
     [SerializeField] float pushStrength = 2f;
+    [SerializeField] Animator animate;
 
 
     [SerializeField] List<gunstats> gunList = new List<gunstats>();
@@ -79,6 +80,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jump();
 
         controller.Move(playerVel * Time.deltaTime);
+
+        //animation
+        float animSpeed = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
+        animate.SetFloat("Speed", animSpeed, 0.1f, Time.deltaTime);
 
         // shooting mechanics
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0  && shootTimer >= shootRate)
