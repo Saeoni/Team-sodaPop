@@ -19,7 +19,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
 
     [SerializeField] List<gunstats> gunList = new List<gunstats>();
-    [SerializeField] GameObject gunModel;
+    [SerializeField] Transform gunModelParent;
     [SerializeField] GameObject flashlight;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int speedOrig;
     int jumpCount;
     int gunListPos;
+    GameObject currentGunModel;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -236,13 +237,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void changeGun()
     {
+        if (currentGunModel != null)
+        {
+            Destroy(currentGunModel);
+        }
+
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
 
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        GameObject newGun = Instantiate(gunList[gunListPos].gunModel, gunModelParent);
+        
+        Collider col = newGun.GetComponent<Collider>();
+        if (col != null)
+            Destroy(col);
 
+        currentGunModel = newGun;
+        
         updatePlayerUI();
     }
 
