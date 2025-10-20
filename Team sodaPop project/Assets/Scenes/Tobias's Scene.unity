@@ -246,6 +246,70 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &838502820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 838502822}
+  - component: {fileID: 838502821}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &838502821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838502820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 45aebccb84ff9c64198ed5a59c494eab, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &838502822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838502820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.10949, y: 0, z: -17.20603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120232508
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +605,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 20
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!136 &919132149157593258
 CapsuleCollider:
@@ -622,13 +686,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03812bc4c6cff324fbca739c5bf979e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureAI
-  enemyData: {fileID: 0}
-  agent: {fileID: 0}
-  animator: {fileID: 0}
-  model: {fileID: 0}
-  headPos: {fileID: 0}
-  leftHandHitSpawn: {fileID: 0}
-  rightHandHitSpawn: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: c895f37415eff7c4e97a28f711eaf5be, type: 2}
+  agent: {fileID: 919132149157593259}
+  animator: {fileID: 919132149157593260}
+  model: {fileID: 1630794972793266347}
+  headPos: {fileID: 9079267174974081091}
+  leftHandHitSpawn: {fileID: 4504050207159744500}
+  rightHandHitSpawn: {fileID: 8025900830600034755}
   roarCooldown: 8
   sniffCooldown: 10
   punchCooldown: 12
@@ -1519,7 +1583,7 @@ Transform:
   m_GameObject: {fileID: 6025028098683507203}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2628,3 +2692,4 @@ SceneRoots:
   - {fileID: 6727367241250057229}
   - {fileID: 2563585749573835120}
   - {fileID: 543450653697923602}
+  - {fileID: 838502822}
