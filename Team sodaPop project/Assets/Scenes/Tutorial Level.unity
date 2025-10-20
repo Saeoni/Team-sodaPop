@@ -246,6 +246,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c8814c03ae6d6d478d0e6943aaf1552, type: 3}
+--- !u!1 &198441230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8598699161214804822, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+  m_PrefabInstance: {fileID: 1668675412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &220738930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0525d4c894f4db1468d1dac8e6e768f1, type: 3}
@@ -2746,6 +2751,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f82ce8acb15bb14f9ede7ed4c75be24, type: 3}
+--- !u!1 &1725919293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3645355463481715832, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
+  m_PrefabInstance: {fileID: 1987706595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1725919299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725919293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34c19d1897ae384293d95dfa52c21df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Raycast
+  raylength: 5
+  crosshair: {fileID: 1781922751}
+  interactKey: 101
 --- !u!1001 &1741309436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2881,6 +2906,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 659ffda2fd4a2ee4cb3bc9ccc0f4c4af, type: 3}
+--- !u!114 &1781922751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3603196553480742131, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+  m_PrefabInstance: {fileID: 1668675412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1810649117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3631,7 +3667,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3645355463481715832, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1725919299}
   m_SourcePrefab: {fileID: 100100000, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
 --- !u!114 &1987706596 stripped
 MonoBehaviour:
@@ -3710,6 +3749,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0525d4c894f4db1468d1dac8e6e768f1, type: 3}
+--- !u!114 &2121179945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 981181230594856424, guid: 371789c6719a8a0478e656f4a26c71d3, type: 3}
+  m_PrefabInstance: {fileID: 1668675412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2131854344 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 71bcc7358e55d684a93819f475ae0e05, type: 3}
@@ -3818,11 +3868,11 @@ PrefabInstance:
     - target: {fileID: 5842046029452798973, guid: e182a78652ad48a44b82224a051f2df0, type: 3}
       propertyPath: noteCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 198441230}
     - target: {fileID: 5842046029452798973, guid: e182a78652ad48a44b82224a051f2df0, type: 3}
       propertyPath: noteTextAreaUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2121179945}
     - target: {fileID: 5842046029452798973, guid: e182a78652ad48a44b82224a051f2df0, type: 3}
       propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
