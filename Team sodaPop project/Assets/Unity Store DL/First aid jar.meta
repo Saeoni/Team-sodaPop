@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Team sodaPop project/Assets/Unity Store DL/First aid jar.meta
 guid: 3f869879f910d6445848b56207a9ec48
+========
+guid: 4f15c72a731e3f14c8f471d8297ff702
+>>>>>>>> parent of bf5c1860 (Level One):Team sodaPop project/Assets/Unity Store DL/HorrorStarterPackFREE/Meshes.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
