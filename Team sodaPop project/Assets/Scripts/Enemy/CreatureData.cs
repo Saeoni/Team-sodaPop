@@ -16,7 +16,6 @@ public class CreatureData : EnemyData
     public float punchCooldown = 5f;
 
     [Header("Animator Parameters")]
-    public string speedParam = "Speed";          // locomotion blend tree
     public string chaseStyleParam = "ChaseStyle"; // 0=Idle,1=Run,2=Creepy,3=Crouch
     public string ambientIndexParam = "AmbientIndex"; // drives ambient blend tree
     public string isDeadBool = "isDead";
@@ -34,7 +33,6 @@ public class CreatureData : EnemyData
 
     [Header("Locomotion Settings")]
     public float animTransSpeed = 5f;
-    public new float chaseSpeed = 3.5f;
     public float creepSpeed = 1.2f;
 
     [Header("Movement Mode")]

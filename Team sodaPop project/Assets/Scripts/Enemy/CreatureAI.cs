@@ -56,18 +56,22 @@ public class CreatureAI : EnemyAI
         }
 
         // 🔹 Decide behaviour based on trigger + line of sight
-        if (PlayerInTrigger && !CanSeePlayer)
+        if (!PlayerInTrigger || CanSeePlayer)
+        {
+            if (PlayerInTrigger)
+            {
+                if (!PlayerInTrigger || !CanSeePlayer) return;
+                HandleRoamOrPatrol(data, chaseStyle: 3); // Crouch chase
+                ChooseAttackStyle(data);
+            }
+            else
+            {
+                HandleRoamOrPatrol(data, chaseStyle: 1); // Normal patrol/roam
+            }
+        }
+        else
         {
             HandleRoamOrPatrol(data, chaseStyle: 2); // Creepy Walk
-        }
-        else if (!PlayerInTrigger)
-        {
-            HandleRoamOrPatrol(data, chaseStyle: 1); // Normal patrol/roam
-        }
-        else if (PlayerInTrigger && CanSeePlayer)
-        {
-            HandleRoamOrPatrol(data, chaseStyle: 3); // Crouch chase
-            ChooseAttackStyle(data);
         }
     }
 
@@ -127,11 +131,8 @@ public class CreatureAI : EnemyAI
             return;
         }
 
-        if (distance >= data.leapRange)
-        {
-            StartCoroutine(PerformLeapAttack(data));
-            return;
-        }
+        if (!(distance >= data.leapRange)) return;
+        StartCoroutine(PerformLeapAttack(data));
     }
 
     private IEnumerator PerformBiteAttack(CreatureData data)
@@ -244,7 +245,8 @@ public class CreatureAI : EnemyAI
     private void HandleLocomotion(CreatureData data)
     {
         float speed = agent.velocity.magnitude;
-        animator.SetFloat(data.speedParam, speed, data.animTransSpeed, Time.deltaTime);
+        animator.SetFloat("Speed",
+            
     }
     
     protected override void OnEnemyDeath()
@@ -291,15 +293,13 @@ public class CreatureAI : EnemyAI
         }
 
         // If dead, trigger death animation before cleanup
-        if (CurrentHp <= 0)
-        {
-            animator.SetBool(data.isDeadBool, true);
+        if (CurrentHp > 0) return;
+        animator.SetBool(data.isDeadBool, true);
 
-            if (!string.IsNullOrEmpty(data.deathTrigger))
-                animator.SetTrigger(data.deathTrigger);
+        if (!string.IsNullOrEmpty(data.deathTrigger))
+            animator.SetTrigger(data.deathTrigger);
 
-            // Call base death logic (spawns key, VFX, destroys object)
-            OnEnemyDeath();
-        }
+        // Call base death logic (spawns key, VFX, destroys object)
+        OnEnemyDeath();
     }
 }
