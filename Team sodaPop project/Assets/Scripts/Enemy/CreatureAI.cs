@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class CreatureAI : EnemyAI
 {
@@ -8,8 +9,7 @@ public class CreatureAI : EnemyAI
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int DirectionX = Animator.StringToHash("DirectionX");
     private static readonly int DirectionZ = Animator.StringToHash("DirectionZ");
-    private static readonly int IsJumping = Animator.StringToHash("IsJumping");
-    
+
     private int _patrolIndex;
     private float _patrolPauseTimer;
     private bool _isPaused;
@@ -20,8 +20,7 @@ public class CreatureAI : EnemyAI
 
     private bool _isLeaping;
     private float _ambientTimer;
-
-    // Cooldown timers
+    
     private float _roarTimer;
     private float _sniffTimer;
     private float _punchTimer;
@@ -36,6 +35,8 @@ public class CreatureAI : EnemyAI
         _roarTimer = 0;
         _sniffTimer = 0;
         _punchTimer = 0;
+        
+        animator.GetLayerIndex("Ambient");
     }
 
     protected override void Update()
@@ -45,23 +46,23 @@ public class CreatureAI : EnemyAI
         if (data == null) return;
         if (_isLeaping) return;
 
-        // 🔹 Timers
+        // Timers
         _roarTimer -= Time.deltaTime;
         _sniffTimer -= Time.deltaTime;
         _punchTimer -= Time.deltaTime;
         _ambientTimer += Time.deltaTime;
 
-        // 🔹 Always update locomotion blend tree
-        HandleLocomotion(data);
+        // Always update locomotion blend tree
+        HandleLocomotion();
 
-        // 🔹 If agent has reached destination, increment roam/patrol pause timers
+        // If agent has reached destination, increment roam/patrol pause timers
         if (agent.remainingDistance < 0.01f)
         {
             _roamPauseTimer += Time.deltaTime;
             _patrolPauseTimer += Time.deltaTime;
         }
 
-        // 🔹 Decide behaviour based on trigger + line of sight
+        // Decide behaviour based on trigger + line of sight
         if (!PlayerInTrigger || CanSeePlayer)
         {
             if (PlayerInTrigger)
@@ -103,15 +104,25 @@ public class CreatureAI : EnemyAI
     private void HandleAmbientBehaviour(CreatureData data)
     {
         if (_ambientTimer < data.ambientAnimInterval) return;
-
-        int roll = Random.Range(0, 5); // 0–4 ambient slots
-        if (roll == 2 && _sniffTimer > 0f) roll = 0;
-        if (roll == 4 && _roarTimer > 0f) roll = 0;
-
+        
+        int roll = Random.Range(0, 6); // 0-5
+        
+        // Gate sniff (index 3) - only allowed when crouched (chaseStyle==) and off coolDown
+        float chaseStyle = animator.GetFloat(data.chaseStyleParam);
+        bool isCrouched = Mathf.Approximately(chaseStyle, 3f);
+        if (roll == 3 && (!isCrouched || _sniffTimer > 0f))
+            roll = 0; // Fallback to A_Pose
+        
+        // Gate roar pose (index 5) - only off of cooldown
+        if (roll == 5 && _roarTimer > 0f)
+            roll = 0;
+        
+        // Apply to animator
         animator.SetFloat(data.ambientIndexParam, roll);
-
-        if (roll == 2) _sniffTimer = data.sniffCooldown;
-        if (roll == 4) _roarTimer = data.roarCooldown;
+        
+        // Reset cooldowns
+        if (roll == 3) _sniffTimer = data.sniffCooldown;
+        if (roll == 5) _roarTimer = data.roarCooldown;
 
         _ambientTimer = 0f;
     }
@@ -137,20 +148,21 @@ public class CreatureAI : EnemyAI
             return;
         }
 
-        if (!(distance >= data.leapRange)) return;
-        StartCoroutine(PerformLeapAttack(data));
+        if (distance >= data.leapRange)
+        {
+            StartCoroutine(PerformLeapAttack(data));
+        }
     }
 
     private IEnumerator PerformBiteAttack(CreatureData data)
     {
         agent.isStopped = true;
         transform.LookAt(PlayerTransform);
-        yield return new WaitForSeconds(0.3f);
-
+        
         animator.SetTrigger(data.biteTrigger);
-        yield return new WaitForSeconds(4.8f);
-
-       
+        
+        yield return new WaitForSeconds(0.6f);
+        
         agent.isStopped = false;
     }
 
@@ -177,6 +189,23 @@ public class CreatureAI : EnemyAI
         agent.isStopped = false;
     }
 
+    public void DealPunchDamage()
+    {
+        var data = (CreatureData)enemyData;
+        if (Gamemanager.Instance.playerController != null)
+        {
+            Gamemanager.Instance.playerController.takeDamage(data.punchDamage);
+        }
+    }
+    
+    public void DealBiteDamage()
+    {
+        var data = (CreatureData)enemyData;
+        if (Gamemanager.Instance.playerController != null)
+        {
+            Gamemanager.Instance.playerController.takeDamage(data.biteDamage);
+        }
+    }
     private IEnumerator DelayedKill()
     {
         yield return new WaitForSeconds(1.2f);
@@ -246,11 +275,11 @@ public class CreatureAI : EnemyAI
         }
     }
 
-    private void HandleLocomotion(CreatureData data)
+    private void HandleLocomotion()
     {
-        Vector3 velocity = agent.velocity;
-        float speed = velocity.magnitude;
-        Vector3 localDirection = transform.InverseTransformDirection(velocity.normalized);
+        var velocity = agent.velocity;
+        var speed = velocity.magnitude;
+        var localDirection = transform.InverseTransformDirection(velocity.normalized);
 
         animator.SetFloat(Speed, speed);
         animator.SetFloat(DirectionX, localDirection.x);

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -40,7 +39,7 @@ public class Gamemanager : MonoBehaviour
     public float timeElapsed;
 
     // Noise logic 
-    public float noiseLevel = 0f;
+    public float noiseLevel;
     public float noiseDecayRate = 1f;
     public float noiseThreshold = 10f;
 
@@ -67,7 +66,7 @@ public class Gamemanager : MonoBehaviour
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+        playerSpawnPos = GameObject.FindWithTag($"Player Spawn Pos");
 
         playerIsDead = false;
 
