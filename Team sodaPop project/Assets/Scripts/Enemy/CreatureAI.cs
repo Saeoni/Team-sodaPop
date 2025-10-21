@@ -4,6 +4,12 @@ using System.Collections;
 
 public class CreatureAI : EnemyAI
 {
+    
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int DirectionX = Animator.StringToHash("DirectionX");
+    private static readonly int DirectionZ = Animator.StringToHash("DirectionZ");
+    private static readonly int IsJumping = Animator.StringToHash("IsJumping");
+    
     private int _patrolIndex;
     private float _patrolPauseTimer;
     private bool _isPaused;
@@ -144,7 +150,7 @@ public class CreatureAI : EnemyAI
         animator.SetTrigger(data.biteTrigger);
         yield return new WaitForSeconds(4.8f);
 
-        Gamemanager.Instance.YouLose();
+       
         agent.isStopped = false;
     }
 
@@ -167,8 +173,6 @@ public class CreatureAI : EnemyAI
 
         animator.SetTrigger(data.eatTrigger);
         yield return new WaitForSeconds(data.eatDuration);
-
-        Gamemanager.Instance.YouLose();
         _isLeaping = false;
         agent.isStopped = false;
     }
@@ -244,11 +248,17 @@ public class CreatureAI : EnemyAI
 
     private void HandleLocomotion(CreatureData data)
     {
-        float speed = agent.velocity.magnitude;
-        animator.SetFloat("Speed",
-            
+        Vector3 velocity = agent.velocity;
+        float speed = velocity.magnitude;
+        Vector3 localDirection = transform.InverseTransformDirection(velocity.normalized);
+
+        animator.SetFloat(Speed, speed);
+        animator.SetFloat(DirectionX, localDirection.x);
+        animator.SetFloat(DirectionZ, localDirection.z);
     }
-    
+
+   
+
     protected override void OnEnemyDeath()
     {
         var data = (CreatureData)enemyData;
@@ -301,5 +311,10 @@ public class CreatureAI : EnemyAI
 
         // Call base death logic (spawns key, VFX, destroys object)
         OnEnemyDeath();
+    }
+
+    public void KillPlayer()
+    {
+        Gamemanager.Instance.YouLose();
     }
 }
