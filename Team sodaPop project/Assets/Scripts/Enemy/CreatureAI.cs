@@ -10,6 +10,10 @@ public class CreatureAI : EnemyAI
     private static readonly int DirectionX = Animator.StringToHash("DirectionX");
     private static readonly int DirectionZ = Animator.StringToHash("DirectionZ");
 
+    [SerializeField] public GameObject leftHandHitBox;
+    [SerializeField] public GameObject rightHandHitBox;
+    [SerializeField] public GameObject biteHitBox;
+    
     private int _patrolIndex;
     private float _patrolPauseTimer;
     private bool _isPaused;
@@ -136,14 +140,11 @@ public class CreatureAI : EnemyAI
             int closeStyle = Random.Range(0, 2);
             if (closeStyle == 0 && _punchTimer <= 0f)
             {
-                animator.SetTrigger(data.punchTrigger);
-                agent.speed = 0f;
-                StartCoroutine(DelayedKill());
-                _punchTimer = data.punchCooldown;
+               StartPunch(data);
             }
             else
             {
-                StartCoroutine(PerformBiteAttack(data));
+                StartBite(data);
             }
             return;
         }
@@ -154,16 +155,33 @@ public class CreatureAI : EnemyAI
         }
     }
 
-    private IEnumerator PerformBiteAttack(CreatureData data)
+    private void StartPunch(CreatureData data)
     {
+        // Stop movement and face player
         agent.isStopped = true;
         transform.LookAt(PlayerTransform);
-        
+
+        // Reset attack session to prevent double-hits
+        EnemyHitbox.BeginNewAttack();
+
+        // Trigger punch animation
+        animator.SetTrigger(data.punchTrigger);
+
+        // Apply cooldown
+        _punchTimer = data.punchCooldown;
+    }
+    
+    private void StartBite(CreatureData data)
+    {
+        // Stop movement and face player
+        agent.isStopped = true;
+        transform.LookAt(PlayerTransform);
+
+        // Reset attack session
+        EnemyHitbox.BeginNewAttack();
+
+        // Trigger bite animation
         animator.SetTrigger(data.biteTrigger);
-        
-        yield return new WaitForSeconds(0.6f);
-        
-        agent.isStopped = false;
     }
 
     private IEnumerator PerformLeapAttack(CreatureData data)
@@ -188,30 +206,7 @@ public class CreatureAI : EnemyAI
         _isLeaping = false;
         agent.isStopped = false;
     }
-
-    public void DealPunchDamage()
-    {
-        var data = (CreatureData)enemyData;
-        if (Gamemanager.Instance.playerController != null)
-        {
-            Gamemanager.Instance.playerController.takeDamage(data.punchDamage);
-        }
-    }
     
-    public void DealBiteDamage()
-    {
-        var data = (CreatureData)enemyData;
-        if (Gamemanager.Instance.playerController != null)
-        {
-            Gamemanager.Instance.playerController.takeDamage(data.biteDamage);
-        }
-    }
-    private IEnumerator DelayedKill()
-    {
-        yield return new WaitForSeconds(1.2f);
-        Gamemanager.Instance.YouLose();
-    }
-
     private void Patrol(CreatureData data)
     {
         if (_isPaused)
@@ -341,7 +336,27 @@ public class CreatureAI : EnemyAI
         // Call base death logic (spawns key, VFX, destroys object)
         OnEnemyDeath();
     }
+     
+    public void EnableLeftHandHitbox()
+    {
+        Debug.Log("Left hand hitbox enabled");
+        leftHandHitBox.SetActive(true);
+    }
 
+    public void EnableRightHandHitbox()
+    {
+        Debug.Log("Right hand hitbox enabled");
+        rightHandHitBox.SetActive(true);
+    }
+
+    public void DisableHandHitboxes()
+    {
+        Debug.Log("Disabling both hand hitboxes");
+        leftHandHitBox.SetActive(false);
+        rightHandHitBox.SetActive(false);
+    }
+    public void EnableBiteHitbox() => biteHitBox.SetActive(true);
+    public void DisableBiteHitbox() => biteHitBox.SetActive(false);
     public void KillPlayer()
     {
         Gamemanager.Instance.YouLose();

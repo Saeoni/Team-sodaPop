@@ -10,6 +10,7 @@ public enum MovementMode
 [CreateAssetMenu(fileName = "NewCreatureData", menuName = "Enemy/CreatureData")]
 public class CreatureData : EnemyData
 {
+    
     [Header("Combat Settings")]
     public string punchTrigger = "Punch";
     public string biteTrigger = "Bite";
@@ -55,4 +56,5 @@ public class CreatureData : EnemyData
     [Header("Creeper Death")]
     public string deathTrigger = "Die";
     public string isDeadBool = "isDead";
+ 
 }

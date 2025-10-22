@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79694276afdff4b4c8cabbd788384890, type: 3}
-  m_Name: Creature
+  m_Name: Creature 2
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
-  maxHP: 100
+  maxHP: 75
   detectionRadius: 15
   FOV: 90
   lineOfSightMask:
@@ -20,7 +20,7 @@ MonoBehaviour:
     m_Bits: 1
   faceTargetSpeed: 5
   stoppingDist: 0
-  chaseSpeed: 10
+  chaseSpeed: 4
   keyPrefab: {fileID: 0}
   spawnVFX: {fileID: 0}
   deathVFX: {fileID: 0}
@@ -33,10 +33,10 @@ MonoBehaviour:
   chaseStyleParam: ChaseStyle
   animTransSpeed: 5
   creepSpeed: 2
-  movementMode: 2
-  roamDist: 20
-  roamSpeed: 1.5
-  roamPauseTimer: 2
+  movementMode: 1
+  roamDist: 0
+  roamSpeed: 0
+  roamPauseTimer: 0
   patrolPoints: []
   loopPatrol: 1
   patrolSpeed: 2
@@ -44,7 +44,7 @@ MonoBehaviour:
   leapOutTrigger: LeapOut
   leapInTrigger: LeapIn
   eatTrigger: Eat
-  leapRange: 6
+  leapRange: 8
   jumpOutDuration: 1.28
   jumpInDuration: 1.28
   eatDuration: 3
