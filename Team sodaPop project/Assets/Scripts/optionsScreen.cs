@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Audio;
+using JetBrains.Annotations;
 public class optionsScreen : MonoBehaviour
 {
+    public Slider masterSlider, musicSlider, sfxSlider;
+    public AudioMixer theMixer;
+    public TMP_Text masterLabel, musicLabel, sfxLabel;
     public TMP_Text resoultionLabel;
     public Toggle fullscreenTog, vsyncTog;
     private int selectedResoultion;
@@ -34,17 +38,30 @@ public class optionsScreen : MonoBehaviour
                 UpdateResLabel();
             }
 
-            if(!foundRes)
-            {
-                ResItem newRes = new ResItem();
-                newRes.horizontial = Screen.width;
-                newRes.vertical = Screen.height;
-
-                resoultions.Add(newRes);
-                selectedResoultion = resoultions.Count - 1;
-                UpdateResLabel();
-            }
+           
         }
+
+        if (!foundRes)
+        {
+            ResItem newRes = new ResItem();
+            newRes.horizontial = Screen.width;
+            newRes.vertical = Screen.height;
+
+            resoultions.Add(newRes);
+            selectedResoultion = resoultions.Count - 1;
+            UpdateResLabel();
+        }
+
+        float vol = 0f;
+        theMixer.GetFloat("MasterVol", out vol);
+        masterSlider.value = vol;
+        theMixer.GetFloat("MusicVol", out vol);
+        musicSlider.value = vol;
+        theMixer.GetFloat("SFXVol", out vol);
+        sfxSlider.value = vol;
+        masterLabel.text = Mathf.RoundToInt(masterSlider.value + 80).ToString();
+        musicLabel.text = Mathf.RoundToInt(musicSlider.value + 80).ToString();
+        sfxLabel.text = Mathf.RoundToInt(sfxSlider.value + 80).ToString();
     }
 
     // Update is called once per frame
@@ -93,6 +110,30 @@ public class optionsScreen : MonoBehaviour
         }
 
         Screen.SetResolution(resoultions[selectedResoultion].horizontial, resoultions[selectedResoultion].vertical, fullscreenTog.isOn);
+    }
+
+    public void SetMasterVol()
+    {
+        masterLabel.text = Mathf.RoundToInt(masterSlider.value + 80).ToString();
+        theMixer.SetFloat("MasterVol", masterSlider.value);
+
+        PlayerPrefs.SetFloat("MasterVol", masterSlider.value);
+    }
+
+    public void SetMusicVol()
+    {
+        musicLabel.text = Mathf.RoundToInt(musicSlider.value + 80).ToString();
+        theMixer.SetFloat("MusicVol", musicSlider.value);
+
+        PlayerPrefs.SetFloat("MusicVol", musicSlider.value);
+    }
+
+    public void SetSFXVol()
+    {
+        sfxLabel.text = Mathf.RoundToInt(sfxSlider.value + 80).ToString();
+        theMixer.SetFloat("SFXVol", sfxSlider.value);
+
+        PlayerPrefs.SetFloat("SFXVol", sfxSlider.value);
     }
 }
 [System.Serializable]
