@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    public string firstLevel;
+
+    public GameObject optionsMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void resume()
     {
@@ -32,6 +35,17 @@ public class ButtonFunctions : MonoBehaviour
 
     public void Launch()
     {
-        SceneManager.LoadScene("Tutorial Level");
+        SceneManager.LoadScene(firstLevel);
     }
+
+    public void Options()
+    {
+        optionsMenu.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        optionsMenu?.SetActive(false);
+    }
+
 }

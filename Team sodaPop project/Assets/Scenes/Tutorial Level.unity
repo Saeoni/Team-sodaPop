@@ -3624,6 +3624,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8856990496630620905, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 1781922751}
     - target: {fileID: 2387032945779045128, guid: 51046b14374a33d4d907020878dab018, type: 3}
       propertyPath: m_Range
       value: 15
