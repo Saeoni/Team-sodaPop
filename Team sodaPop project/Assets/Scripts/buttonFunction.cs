@@ -29,4 +29,9 @@ public class ButtonFunctions : MonoBehaviour
         gamemanager.instance.playerScript.spawnPlayer();
         gamemanager.instance.stateUnpause();
     }
+
+    public void Launch()
+    {
+        SceneManager.LoadScene("Tutorial Level");
+    }
 }
