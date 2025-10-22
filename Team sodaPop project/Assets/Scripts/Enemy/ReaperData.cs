@@ -39,3 +39,6 @@ public class ReaperData : EnemyData
     public float aggressionStalkTime = 6f;
     public string aggressiveTrigger = "Spasm";
 }
+
+
+
