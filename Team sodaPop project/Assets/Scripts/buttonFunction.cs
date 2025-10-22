@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    public string firstLevel;
+    float timeScaleOrig;
+
+    public GameObject optionsMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void resume()
     {
@@ -29,4 +33,29 @@ public class ButtonFunctions : MonoBehaviour
         gamemanager.instance.playerScript.spawnPlayer();
         gamemanager.instance.stateUnpause();
     }
+
+    public void Launch()
+    {
+        SceneManager.LoadScene(firstLevel);
+    }
+
+    public void Options()
+    {
+        optionsMenu.SetActive(true);
+        gamemanager.instance.stateUnpause();
+        timeScaleOrig = Time.timeScale;
+        Time.timeScale = 0;
+        Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseOptions()
+    {
+        optionsMenu?.SetActive(false);
+        Time.timeScale = timeScaleOrig;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 }
