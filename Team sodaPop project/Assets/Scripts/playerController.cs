@@ -26,6 +26,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
 
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audSteps;
+    [UnityEngine.Range(0, 1)][SerializeField] float audStepsVol;
+
     int HPOrig;
     int speedOrig;
     int jumpCount;
@@ -38,6 +42,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     float shootTimer;
     bool isSprinting;
     bool isTired = false;
+    bool isPlayingSteps;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,6 +70,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         if(controller.isGrounded)
         {
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playStep());
+            }
+
             jumpCount = 0;
             playerVel = Vector3.zero;
         }
@@ -266,5 +276,22 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         if (flashlight != null)
             flashlight.SetActive(true);
+    }
+
+    IEnumerator playStep()
+    {
+        isPlayingSteps = true;
+        aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+
+        if (isSprinting)
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        isPlayingSteps = false;
     }
 }
