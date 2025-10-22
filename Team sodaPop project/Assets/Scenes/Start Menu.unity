@@ -343,9 +343,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 356621693}
-        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
-        m_MethodName: CloseOptions
+      - m_Target: {fileID: 1335517018}
+        m_TargetAssemblyTypeName: optionsScreen, Assembly-CSharp
+        m_MethodName: ResRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1859,9 +1859,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 356621693}
-        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
-        m_MethodName: CloseOptions
+      - m_Target: {fileID: 1335517018}
+        m_TargetAssemblyTypeName: optionsScreen, Assembly-CSharp
+        m_MethodName: ResLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2512,8 +2512,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c494cc936f192fc46924c9b791e74b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::optionsScreen
+  resoultionLabel: {fileID: 33897233}
   fullscreenTog: {fileID: 1500439767}
   vsyncTog: {fileID: 1531807770}
+  resoultions:
+  - horizontial: 1920
+    vertical: 1080
+  - horizontial: 1280
+    vertical: 720
+  - horizontial: 854
+    vertical: 480
 --- !u!1 &1337597330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5450710195835817348, guid: 70f36e2684884434da88ac30f82abae5, type: 3}
@@ -3892,7 +3900,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.10490081, g: 0.654088, b: 0.20267, a: 1}
     m_PressedColor: {r: 0.028149687, g: 0.024563752, b: 0.8679245, a: 1}
     m_SelectedColor: {r: 0.105882354, g: 0.654902, b: 0.20392157, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3906,14 +3914,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2144012358}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 356621693}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
-        m_MethodName: CloseOptions
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
