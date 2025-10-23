@@ -1,12 +1,14 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class gamemanager : MonoBehaviour
 {
     public static gamemanager instance;
-
+    public playerController playerController;
+    
     [SerializeField] private GameObject menuActive;
     [SerializeField] private GameObject menuStart;
     [SerializeField] private GameObject menuPause;
@@ -29,10 +31,14 @@ public class gamemanager : MonoBehaviour
 
     public int keyCount;
 
-    public bool isPaused;
-    public bool NoteDisplayed;
+    public bool isPaused; 
+    public bool noteDisplayed;
     public bool isStealthed;
     public float timeElapsed;
+
+    public float noiseLevel = 0f;
+    public float noiseThreshold = 100f;
+    public float noiseDecayRate = 10f;
 
     private int gameGoalCount;
     private int gameTimerMinute;
@@ -52,7 +58,7 @@ public class gamemanager : MonoBehaviour
     {
         instance = this;
         timeScaleOrig = Time.timeScale;
-        NoteDisplayed = false;
+        noteDisplayed = false;
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
@@ -84,6 +90,16 @@ public class gamemanager : MonoBehaviour
         updateGameTimer();
     }
 
+    public void AddNoise(float amount)
+    {
+        noiseLevel += amount;
+        noiseLevel = Mathf.Clamp(noiseLevel, 0f, noiseThreshold);
+    }
+
+    public void DecayNoise(float rate)
+    {
+        noiseLevel = Mathf.MoveTowards(noiseLevel, 0f, noiseDecayRate * Time.deltaTime);
+    }
 
     public void stealthTimer(float length)
     {
@@ -182,11 +198,11 @@ public class gamemanager : MonoBehaviour
 
     public void NoteDisplay()
     {
-        if (NoteDisplayed)
+        if (noteDisplayed)
         {
             if (Input.GetButtonDown("Cancel"))
             {
-                NoteDisplayed = !NoteDisplayed;
+                noteDisplayed = !noteDisplayed;
                 Time.timeScale = timeScaleOrig;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -196,7 +212,7 @@ public class gamemanager : MonoBehaviour
         }
         else
         {
-            NoteDisplayed = !NoteDisplayed;
+            noteDisplayed = !noteDisplayed;
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

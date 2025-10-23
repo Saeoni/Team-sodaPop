@@ -4,114 +4,198 @@ using UnityEngine;
 
 public class ReaperAI : EnemyAI
 {
+    private enum ReaperPunchType { LeftHand, RightHand, DualHand}
+    
     private static readonly int HasSpawned = Animator.StringToHash("hasSpawned");
     private static readonly int IsSpasming = Animator.StringToHash("IsSpasming");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Direction = Animator.StringToHash("Direction");
     private static readonly int SpasmIntensity = Animator.StringToHash("SpasmIntensity");
     private static readonly int SpasmSpeed = Animator.StringToHash("AggressiveState");
-    
-    private bool isActive;
-    private bool killTriggered;
-    private bool hasTriggeredSpasm;
-    private bool isAggressive;
+    private static readonly int Punch1Trigger = Animator.StringToHash("Punch1Trigger");
+    private static readonly int Punch2Trigger = Animator.StringToHash("Punch2Trigger");
+    private static readonly int Punch3Trigger = Animator.StringToHash("Punch3Trigger");
 
-    private float spasmCooldownTimer;
-    private float stalkTimer;
+    private bool _isActive;
+    private bool _killTriggered;
+    private bool _hasTriggeredSpasm;
+    private bool _isAggressive;
+    private bool _isTeleporting;
+
+    private float _spasmCooldownTimer;
+    private float _stalkTimer;
+    private float _stalkTeleportTimer;
 
     protected override void Awake()
     {
-        if (PlayerInTrigger)
-        {
-            TrySpasm();
-        }
-        
+        base.Awake();
+        if (PlayerInTrigger) TrySpasm();
     }
 
     protected override void Start()
     {
-        base.Update();
         base.Start();
         agent.enabled = true;
-        isActive = true;
-        stalkTimer = 0f;
+        _isActive = true;
+        _stalkTimer = 0f;
+        PlayerTransform = gamemanager.instance.player.transform;
+
+        if (enemyData.spawnVFX != null)
+        {
+            var vfx = Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
+            Destroy(vfx, 3f);
+        }
 
         animator.SetBool(HasSpawned, true);
     }
 
     protected override void Update()
     {
-        if (!isActive || killTriggered) return;
+        base.Update();
+        if (!_isActive || _killTriggered) return;
 
         HandleMovement();
         HandleLocomotion();
+        CheckAggression();
 
+        if (_hasTriggeredSpasm)
+        {
+            _spasmCooldownTimer += Time.deltaTime;
+            var data = (ReaperData)enemyData;
+            if (_spasmCooldownTimer >= data.spasmCooldown)
+            {
+                _hasTriggeredSpasm = false;
+                _spasmCooldownTimer = 0f;
+            }
+        }
 
-        if (!hasTriggeredSpasm) return;
-        spasmCooldownTimer += Time.deltaTime;
+        HandleStalkTeleport();
+    }
+
+    private void HandleStalkTeleport()
+    {
+        _stalkTeleportTimer += Time.deltaTime;
         var data = (ReaperData)enemyData;
 
-        if (!(spasmCooldownTimer >= data.spasmCooldown)) return;
-        hasTriggeredSpasm = false;
-        spasmCooldownTimer = 0f;
+        if (!_isAggressive || _killTriggered || _isTeleporting ||
+            !(_stalkTeleportTimer >= data.stalkTeleportCooldown)) return;
+        _stalkTeleportTimer = 0f;
+        if (Random.value <= data.stalkTeleportChance)
+            StartCoroutine(PerformStalkTeleportSequence());
+    }
+
+    private IEnumerator PerformStalkTeleportSequence()
+    {
+        _isTeleporting = true;
+        TeleportOut();
+
+        yield return new WaitForSeconds(((ReaperData)enemyData).stalkTeleportDelay);
+
+        TeleportIn(false); // suspenseful reappearance
+        _isTeleporting = false;
+    }
+
+    private void TeleportOut()
+    {
+        var data = (ReaperData)enemyData;
+        if (data.stalkTeleportOutVFX)
+            Instantiate(data.stalkTeleportOutVFX, transform.position, Quaternion.identity);
+
+        model.enabled = false;
+        agent.enabled = false;
+    }
+
+    private void TeleportIn(bool forKill)
+    {
+        var data = (ReaperData)enemyData;
+        Vector3 targetPos;
+
+        if (forKill)
+        {
+            Vector3 offset = PlayerTransform.forward * 1.5f;
+            targetPos = PlayerTransform.position + offset;
+        }
+        else
+        {
+            Vector3 offset = Random.insideUnitSphere * 8f;
+            offset.y = 0f;
+            targetPos = PlayerTransform.position + offset;
+        }
+
+        transform.position = targetPos;
+        agent.Warp(targetPos);
+        transform.LookAt(PlayerTransform);
+
+        if (data.teleportVFX)
+            Instantiate(data.teleportVFX, transform.position, Quaternion.identity);
+
+        model.enabled = true;
+        agent.enabled = true;
+        
+        animator.SetTrigger(((ReaperData)enemyData).teleportTrigger);
     }
 
     protected override void HandleTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        Debug.Log("Reaper senses the player... preparing to spasm");
         TrySpasm();
+        TeleportIn(true); // cinematic kill setup
+        StartCoroutine(DelayedKill());
     }
 
     private void TrySpasm()
     {
-        if (hasTriggeredSpasm) return;
-
-        hasTriggeredSpasm = true;
-        spasmCooldownTimer = 0f;
+        if (_hasTriggeredSpasm) return;
+        _hasTriggeredSpasm = true;
+        _spasmCooldownTimer = 0f;
         StartCoroutine(DelayedSpasm());
     }
 
     private void CheckAggression()
     {
-        if (isAggressive) return;
+        if (_isAggressive) return;
 
         var data = (ReaperData)enemyData;
-        var noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
-        var timeTriggered = gamemanager.instance.noiseLevel >= data.aggressionStalkTime;
+      //  bool noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
+        bool timeTriggered = _stalkTimer >= data.aggressionStalkTime;
 
-        if (!noiseTriggered && !timeTriggered) return;
-        isAggressive =  true;
+       // if (!noiseTriggered && !timeTriggered) return;
+
+        _isAggressive = true;
         animator.SetTrigger(data.aggressiveTrigger);
-        animator.SetBool(AggressiveState, true);
+        animator.SetBool(SpasmSpeed, true);
     }
-
-    public string AggressiveState { get; set; }
 
     private void HandleMovement()
     {
         var data = (ReaperData)enemyData;
-        stalkTimer += Time.deltaTime;
+        _stalkTimer += Time.deltaTime;
 
-        var t = Mathf.Clamp01(stalkTimer / data.maxStalkTime);
+        var t = Mathf.Clamp01(_stalkTimer / data.maxStalkTime);
         agent.speed = Mathf.Lerp(data.minSpeed, data.maxSpeed, data.speedRampCurve.Evaluate(t));
 
-        var player = gamemanager.instance.player.transform;
+        var distanceToPlayer = Vector3.Distance(transform.position, PlayerTransform.position);
 
-        if (PlayerInTrigger && stalkTimer >= data.maxStalkTime * 0.75f)
+        if (!_isAggressive && _stalkTimer >= data.maxStalkTime * 0.5f)
+            OnPlayerSpotted();
+
+        if (_stalkTimer >= data.maxStalkTime || (PlayerInTrigger && distanceToPlayer <= data.killDistance))
         {
-            var distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer <= data.killDistance)
-            {
-                TriggerKill();
-                return;
-            }
+            TeleportIn(true);
+            TriggerKill();
+            return;
+        }
+
+       // if (gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)
+        {
+            TeleportIn(false);
+            StartCoroutine(DelayedKill());
         }
 
         if (!PlayerInTrigger)
         {
             agent.isStopped = false;
-            agent.SetDestination(player.position);
+            agent.SetDestination(PlayerTransform.position);
             animator.SetBool(IsSpasming, false);
         }
         else
@@ -121,51 +205,57 @@ public class ReaperAI : EnemyAI
             animator.SetBool(IsSpasming, true);
         }
 
-        transform.LookAt(player);
-
-        if (stalkTimer >= data.maxStalkTime)
-        {
-            TriggerKill();
-        }
-
-        if (!(gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)) return;
-        TeleportToPlayer();
-        StartCoroutine(DelayedKill());
+        transform.LookAt(PlayerTransform);
     }
 
     private void HandleLocomotion()
     {
         var data = (ReaperData)enemyData;
-
         var speed = agent.velocity.magnitude;
-        var localVelocity = transform.InverseTransformDirection(agent.velocity);
-        var direction = localVelocity.x;
+        var direction = transform.InverseTransformDirection(agent.velocity).x;
 
         animator.SetFloat(Speed, Mathf.Lerp(animator.GetFloat(Speed), speed, Time.deltaTime * data.animTransSpeed));
-        animator.SetFloat(Direction, Mathf.Lerp(animator.GetFloat(Direction), direction, Time.deltaTime * data.animTransSpeed));
+        animator.SetFloat(Direction,
+            Mathf.Lerp(animator.GetFloat(Direction), direction, Time.deltaTime * data.animTransSpeed));
+    }
+
+    protected override void OnPlayerSpotted()
+    {
+        var data = (ReaperData)enemyData;
+
+        if (!_isAggressive)
+        {
+            animator.SetTrigger(data.spasmTrigger);
+            animator.SetBool(SpasmSpeed, true);
+            _isAggressive = true;
+        }
+
+        agent.speed = data.maxSpeed;
+        agent.SetDestination(PlayerTransform.position);
+
+        if (agent.remainingDistance <= data.stoppingDist)
+            agent.ResetPath();
     }
 
     private void TriggerKill()
     {
-        var data = (ReaperData)enemyData;
-        killTriggered = true;
-        animator.SetTrigger(data.killTrigger);
+        _killTriggered = true;
+        var punchType = (ReaperPunchType)Random.Range(0, 3);
+
+        switch (punchType)
+        {
+            case ReaperPunchType.LeftHand:
+                animator.SetTrigger(Punch1Trigger);
+                break;
+            case ReaperPunchType.RightHand:
+                animator.SetTrigger(Punch2Trigger);
+                break;
+            case ReaperPunchType.DualHand:
+                animator.SetTrigger(Punch3Trigger);
+                break;
+        }
+
         gamemanager.instance.youLose();
-    }
-
-    private void TeleportToPlayer()
-    {
-        var data = (ReaperData)enemyData;
-        var player = gamemanager.instance.player.transform;
-        var offset = player.forward * -1.5f;
-        var targetPos = player.position + offset;
-
-        if (data.teleportVFX)
-            Instantiate(data.teleportVFX, transform.position, Quaternion.identity);
-
-        transform.position = targetPos;
-        transform.LookAt(player);
-        agent.Warp(targetPos);
     }
 
     private IEnumerator DelayedKill()
@@ -174,7 +264,6 @@ public class ReaperAI : EnemyAI
         TriggerKill();
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator DelayedSpasm()
     {
         var data = (ReaperData)enemyData;
@@ -183,20 +272,47 @@ public class ReaperAI : EnemyAI
         var intensity = Random.Range((int)data.spasmIntensityRange.x, (int)data.spasmIntensityRange.y);
         animator.SetInteger(SpasmIntensity, intensity);
         animator.SetTrigger(data.spasmTrigger);
+    }
 
-        Debug.Log($"Spasm triggered with intensity {intensity}");
+    private void SpawnPunchHitFX(Vector3 spawnPosition, bool isDualHand)
+    {
+        var data = (ReaperData)enemyData;
+        var fxPrefab = isDualHand ? data.dualPunchHitFX : data.redSlashOfDeath;
+
+        if (fxPrefab == null) return;
+
+        var fx = Instantiate(fxPrefab, spawnPosition, Quaternion.identity);
+
+        foreach (string child in new[]
+                 {
+                     "BasicHit", "Shockwave (3)", "Shockwave (2)", "Shockwave (1)", "Shockwave", "Flash", "Sparks"
+                 })
+        {
+            var ps = fx.transform.Find(child)?.GetComponent<ParticleSystem>();
+            if (ps != null) ps.Play();
+        }
+    }
+    public void TriggerLeftHandFX() => SpawnPunchHitFX(leftHandHitSpawn.position, false);
+    public void TriggerRightHandFX() => SpawnPunchHitFX(rightHandHitSpawn.position, false);
+
+    public void TriggerDualHandFX()
+    {
+        SpawnPunchHitFX(leftHandHitSpawn.position, true);
+        SpawnPunchHitFX(rightHandHitSpawn.position, true);
     }
 
     public override void takeDamage(int amount)
     {
-        if (CurrentHp <= 0) return;
+        if (_killTriggered || _isTeleporting) return;
 
-        CurrentHp -= amount;
         var data = (ReaperData)enemyData;
-        animator.SetTrigger(data.damageTrigger);
-        StartCoroutine(FlashRed());
 
-        if (CurrentHp <= 0)
-            base.OnEnemyDeath();
+        // Trigger damage reaction
+        animator.SetTrigger(data.damageTrigger);
+
+        // Trigger spasm as rage response
+        animator.SetTrigger(data.spasmTrigger);
+        animator.SetBool(SpasmSpeed, true);
     }
+    
 }
