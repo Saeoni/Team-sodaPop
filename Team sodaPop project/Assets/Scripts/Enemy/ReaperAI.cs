@@ -156,10 +156,10 @@ public class ReaperAI : EnemyAI
         if (_isAggressive) return;
 
         var data = (ReaperData)enemyData;
-      //  bool noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
+        bool noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
         bool timeTriggered = _stalkTimer >= data.aggressionStalkTime;
 
-       // if (!noiseTriggered && !timeTriggered) return;
+       if (!noiseTriggered && !timeTriggered) return;
 
         _isAggressive = true;
         animator.SetTrigger(data.aggressiveTrigger);
@@ -186,7 +186,7 @@ public class ReaperAI : EnemyAI
             return;
         }
 
-       // if (gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)
+        if (gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)
         {
             TeleportIn(false);
             StartCoroutine(DelayedKill());
