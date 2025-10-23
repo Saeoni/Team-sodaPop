@@ -1,13 +1,12 @@
 using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using Meryel.Serilog;
 using UnityEditor;
-using UnityEngine;
-
-
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -16,38 +15,38 @@ using Serilog = Meryel.Serilog;
 
 namespace Meryel.UnityCodeAssist.Editor.Input
 {
-
     public class InputManagerMonitor
     {
-        private static readonly Lazy<InputManagerMonitor> _instance = new Lazy<InputManagerMonitor>(() => new InputManagerMonitor());
-        public static InputManagerMonitor Instance => _instance.Value;
+        private static readonly Lazy<InputManagerMonitor> _instance = new(() => new InputManagerMonitor());
 
         //UnityInputManager inputManager;
-        readonly string inputManagerFilePath;
-        DateTime previousTagManagerLastWrite;
+        private readonly string inputManagerFilePath;
+        private DateTime previousTagManagerLastWrite;
 
         public InputManagerMonitor()
         {
             EditorApplication.update += Update;
             inputManagerFilePath = CommonTools.GetInputManagerFilePath();
 
-            if (!System.IO.File.Exists(inputManagerFilePath))
+            if (!File.Exists(inputManagerFilePath))
             {
-                Serilog.Log.Error("InputManager file not found at {location}", inputManagerFilePath);
+                Log.Error("InputManager file not found at {location}", inputManagerFilePath);
                 return;
             }
 
             try
             {
-                previousTagManagerLastWrite = System.IO.File.GetLastWriteTime(inputManagerFilePath);
+                previousTagManagerLastWrite = File.GetLastWriteTime(inputManagerFilePath);
             }
             catch (Exception ex)
             {
-                Serilog.Log.Debug(ex, "Exception at {Location}", nameof(System.IO.File.GetLastWriteTime));
+                Log.Debug(ex, "Exception at {Location}", nameof(File.GetLastWriteTime));
             }
         }
 
-        void Update()
+        public static InputManagerMonitor Instance => _instance.Value;
+
+        private void Update()
         {
 #if !ENABLE_LEGACY_INPUT_MANAGER
             return;
@@ -59,13 +58,14 @@ namespace Meryel.UnityCodeAssist.Editor.Input
             var currentInputManagerLastWrite = previousTagManagerLastWrite;
             try
             {
-                if (System.IO.File.Exists(inputManagerFilePath))
-                    currentInputManagerLastWrite = System.IO.File.GetLastWriteTime(inputManagerFilePath);
+                if (File.Exists(inputManagerFilePath))
+                    currentInputManagerLastWrite = File.GetLastWriteTime(inputManagerFilePath);
             }
             catch (Exception ex)
             {
-                Serilog.Log.Debug(ex, "Exception at {Location}", nameof(System.IO.File.GetLastWriteTime));
+                Log.Debug(ex, "Exception at {Location}", nameof(File.GetLastWriteTime));
             }
+
             if (currentInputManagerLastWrite != previousTagManagerLastWrite)
             {
                 previousTagManagerLastWrite = currentInputManagerLastWrite;
@@ -84,11 +84,11 @@ namespace Meryel.UnityCodeAssist.Editor.Input
 #pragma warning disable CS0162
 #pragma warning disable IDE0035
 
-            Serilog.Log.Debug("InputMonitor {Event}", nameof(Bump));
+            Log.Debug("InputMonitor {Event}", nameof(Bump));
 
-            if (!System.IO.File.Exists(inputManagerFilePath))
+            if (!File.Exists(inputManagerFilePath))
             {
-                Serilog.Log.Error("InputManager file not found at {location}", inputManagerFilePath);
+                Log.Error("InputManager file not found at {location}", inputManagerFilePath);
                 return;
             }
 
@@ -100,7 +100,6 @@ namespace Meryel.UnityCodeAssist.Editor.Input
 #pragma warning restore CS0162
 #pragma warning restore IDE0035
         }
-
     }
 
 
@@ -114,9 +113,9 @@ namespace Meryel.UnityCodeAssist.Editor.Input
             //axis.descriptiveName
             var axesWithName = axes.Where(a => a.Name == name);
 
-            int threshold = 80;
+            var threshold = 80;
 
-            var sb = new System.Text.StringBuilder();
+            var sb = new StringBuilder();
 
             foreach (var axis in axesWithName)
                 if (!string.IsNullOrEmpty(axis.descriptiveName))
@@ -160,5 +159,4 @@ namespace Meryel.UnityCodeAssist.Editor.Input
             return sb.ToString();
         }
     }
-
 }

@@ -1,0 +1,169 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
+
+public abstract class EnemyAI : MonoBehaviour, IDamage
+{
+    [Header("Assigned Data")]
+    [SerializeField] protected EnemyData enemyData; // Direct reference to subclassed data
+
+    [Header("References")]
+    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Renderer model;
+    [SerializeField] protected Transform headPos;
+
+    protected int CurrentHp;
+    protected Vector3 SpawnPos;
+    private Color colorOrig;
+
+    protected bool PlayerInTrigger;
+    private bool canSeePlayer;
+
+    protected EnemyAI(bool canSeePlayer)
+    {
+        this.canSeePlayer = canSeePlayer;
+    }
+
+    private float angleToPlayer;
+
+    protected EnemyAI()
+    {
+    }
+
+    protected virtual void Awake()
+    {
+        if (enemyData == null)
+        {
+            Debug.LogError($"Missing EnemyData on {gameObject.name}");
+            enabled = false;
+            return;
+        }
+
+        if (agent != null && animator != null && model != null && headPos != null) return;
+        Debug.LogError($"Missing component references on {gameObject.name}");
+        enabled = false;
+    }
+
+    protected virtual void Start()
+    {
+        Debug.LogWarning($"{gameObject.name} fell out of bounds.");
+        CheckLineOfSight();
+        CurrentHp = enemyData.maxHP;
+        SpawnPos = transform.position;
+        colorOrig = model.material.color;
+
+        PlaySpawnVFX();
+    }
+
+    protected virtual void Update()
+    {
+        if (transform.position.y < -50f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void PlaySpawnVFX()
+    {
+        if (enemyData.spawnVFX != null)
+            Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
+    }
+
+    private protected virtual void CheckLineOfSight()
+    {
+        var player = gamemanager.Instance.player.transform;
+        var dirToPlayer = (player.position - headPos.position).normalized;
+        var distanceToPlayer = Vector3.Distance(headPos.position, player.position);
+       angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
+
+        if (angleToPlayer <= enemyData.FOV / 2f && distanceToPlayer <= enemyData.detectionRadius)
+        {
+            if (!Physics.Raycast(headPos.position, dirToPlayer, distanceToPlayer, enemyData.lineOfSightMask))
+            {
+                canSeePlayer = true;
+                FaceTarget(player.position);
+
+                if (enemyData == null) return;
+                agent.speed = enemyData.chaseSpeed;
+                agent.SetDestination(player.position);
+
+                if (!(agent.remainingDistance <= enemyData.stoppingDist)) return;
+                agent.ResetPath();
+                Debug.Log("Enemy reached stopping distance.");
+
+                return;
+            }
+        }
+
+        canSeePlayer = false;
+    }
+
+    private void FaceTarget(Vector3 targetPos)
+    {
+        var direction = (targetPos - transform.position).normalized;
+        direction.y = 0f;
+
+        if (direction == Vector3.zero) return;
+
+        var targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * enemyData.faceTargetSpeed);
+    }
+
+    public virtual void takeDamage(int amount)
+    {
+        if (CurrentHp <= 0) return;
+
+        CurrentHp -= amount;
+        StartCoroutine(FlashRed());
+        agent.SetDestination(Gamemanager.Instance.player.transform.position);
+
+        if (CurrentHp <= 0)
+            OnEnemyDeath();
+    }
+
+    protected IEnumerator FlashRed()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = colorOrig;
+    }
+
+    protected virtual void OnEnemyDeath()
+    {
+        Gamemanager.Instance.UpdateGameGoal(-1);
+
+        if (enemyData.keyPrefab)
+            Instantiate(enemyData.keyPrefab, transform.position, Quaternion.identity);
+
+        if (enemyData.deathVFX)
+            Instantiate(enemyData.deathVFX, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            PlayerInTrigger = true;
+
+        HandleTriggerEnter(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            PlayerInTrigger = false;
+
+        HandleTriggerExit(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        HandleTriggerStay(other);
+    }
+
+    protected virtual void HandleTriggerEnter(Collider other) { }
+    protected virtual void HandleTriggerExit(Collider other) { }
+    protected virtual void HandleTriggerStay(Collider other) { }
+}

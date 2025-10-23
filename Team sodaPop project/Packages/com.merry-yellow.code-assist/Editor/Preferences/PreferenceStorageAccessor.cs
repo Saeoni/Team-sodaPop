@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-
 #if UNITY_EDITOR_WIN
 using Microsoft.Win32;
 using System.Text;
@@ -16,7 +14,7 @@ using System.Xml.Linq;
 
 
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -28,28 +26,28 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
 {
     public abstract class PreferanceStorageAccessor
     {
-        protected string prefPath;
         protected string[] cachedData = new string[0];
+        protected bool ignoreNextChange;
 
-        protected abstract void FetchKeysFromSystem();
+        public Action? PrefEntryChangedDelegate;
+        protected string prefPath;
+
+        public Action? StartLoadingDelegate;
+        public Action? StopLoadingDelegate;
 
         protected PreferanceStorageAccessor(string pathToPrefs)
         {
             prefPath = pathToPrefs;
         }
 
+        protected abstract void FetchKeysFromSystem();
+
         public string[] GetKeys(bool reloadData = true)
         {
-            if (reloadData || cachedData.Length == 0)
-            {
-                FetchKeysFromSystem();
-            }
+            if (reloadData || cachedData.Length == 0) FetchKeysFromSystem();
 
             return cachedData;
         }
-
-        public Action? PrefEntryChangedDelegate;
-        protected bool ignoreNextChange = false;
 
         public void IgnoreNextChange()
         {
@@ -67,9 +65,6 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
             PrefEntryChangedDelegate?.Invoke();
         }
 
-        public Action? StartLoadingDelegate;
-        public Action? StopLoadingDelegate;
-
         public abstract void StartMonitoring();
         public abstract void StopMonitoring();
         public abstract bool IsMonitoring();
@@ -79,12 +74,12 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
 
     public class WindowsPrefStorage : PreferanceStorageAccessor
     {
-        readonly RegistryMonitor monitor;
+        private readonly RegistryMonitor monitor;
 
         public WindowsPrefStorage(string pathToPrefs) : base(pathToPrefs)
         {
             monitor = new RegistryMonitor(RegistryHive.CurrentUser, prefPath);
-            monitor.RegChanged += new EventHandler(OnRegChanged);
+            monitor.RegChanged += OnRegChanged;
         }
 
         private void OnRegChanged(object sender, EventArgs e)
@@ -96,7 +91,7 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
         {
             cachedData = new string[0];
 
-            using (RegistryKey rootKey = Registry.CurrentUser.OpenSubKey(prefPath))
+            using (var rootKey = Registry.CurrentUser.OpenSubKey(prefPath))
             {
                 if (rootKey != null)
                 {
@@ -107,7 +102,7 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
 
             // Clean <key>_h3320113488 nameing
             //cachedData = cachedData.Select((key) => { return key.Substring(0, key.LastIndexOf("_h", StringComparison.Ordinal)); }).ToArray();
-            for (int i = 0; i < cachedData.Length; i++)
+            for (var i = 0; i < cachedData.Length; i++)
             {
                 var indexOfSuffix = cachedData[i].LastIndexOf("_h", StringComparison.Ordinal);
                 if (indexOfSuffix >= 0)
@@ -134,18 +129,14 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
 
         private void EncodeAnsiInPlace()
         {
-            Encoding utf8 = Encoding.UTF8;
-            Encoding ansi = Encoding.GetEncoding(1252);
+            var utf8 = Encoding.UTF8;
+            var ansi = Encoding.GetEncoding(1252);
 
-            for (int i = 0; i < cachedData.Length; i++)
-            {
-                cachedData[i] = utf8.GetString(ansi.GetBytes(cachedData[i]));
-            }
+            for (var i = 0; i < cachedData.Length; i++) cachedData[i] = utf8.GetString(ansi.GetBytes(cachedData[i]));
         }
     }
 
 #elif UNITY_EDITOR_LINUX
-
     public class LinuxPrefStorage : PreferanceStorageAccessor
     {
         readonly FileSystemWatcher fileWatcher;
@@ -199,7 +190,6 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
     }
 
 #elif UNITY_EDITOR_OSX
-
     public class MacPrefStorage : PreferanceStorageAccessor
     {
         private readonly FileSystemWatcher fileWatcher;
@@ -252,8 +242,10 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
                 process.StartInfo.Arguments = cmdStr;
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
-                process.OutputDataReceived += new DataReceivedEventHandler((sender, evt) => { stdOut += evt.Data + "\n"; });
-                process.ErrorDataReceived += new DataReceivedEventHandler((sender, evt) => { errOut += evt.Data + "\n"; });
+                process.OutputDataReceived += new DataReceivedEventHandler((sender, evt) => { stdOut +=
+ evt.Data + "\n"; });
+                process.ErrorDataReceived += new DataReceivedEventHandler((sender, evt) => { errOut +=
+ evt.Data + "\n"; });
 
                 process.Start();
 

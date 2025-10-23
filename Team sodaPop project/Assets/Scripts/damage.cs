@@ -1,50 +1,43 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class damage : MonoBehaviour
 {
+    [SerializeField] private damageType type;
+    [SerializeField] private Rigidbody rb;
 
-    enum damageType { moving, stationary, DOT, homing, cinematicPull}
-    [SerializeField] damageType type;
-    [SerializeField] Rigidbody rb;
-
-    [SerializeField] int damageAmount;
-    [SerializeField] float damageRate;
-    [SerializeField] int speed;
-    [SerializeField] int destroyTime;
-    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] private int damageAmount;
+    [SerializeField] private float damageRate;
+    [SerializeField] private int speed;
+    [SerializeField] private int destroyTime;
+    [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private GameObject impactEffect;
-   
 
-    bool isDamaging;
-   
+
+    private bool isDamaging;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         //moving projectiles will disappear after a certain time
-        if(type == damageType.moving || type == damageType.homing || type == damageType.cinematicPull)
+        if (type == damageType.moving || type == damageType.homing || type == damageType.cinematicPull)
         {
             Destroy(gameObject, destroyTime);
 
-            if(type == damageType.moving)
-            {
-                rb.linearVelocity = transform.forward * speed;
-            }
+            if (type == damageType.moving) rb.linearVelocity = transform.forward * speed;
         }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (type == damageType.homing)
         {
             //checks player position and follows it
-           Vector3 targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
+            var targetDir = (gamemanager.instance.player.transform.position - transform.position).normalized;
             rb.linearVelocity = targetDir * speed;
         }
-
-       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,41 +45,32 @@ public class damage : MonoBehaviour
         if (other.isTrigger)
             return;
 
-        IDamage dmg = other.GetComponent<IDamage>();
+        var dmg = other.GetComponent<IDamage>();
 
-        
 
-        if(dmg != null && (type == damageType.moving || type == damageType.homing))
-        {
-            dmg.takeDamage(damageAmount);
-        }
+        if (dmg != null && (type == damageType.moving || type == damageType.homing)) dmg.takeDamage(damageAmount);
 
         if ((type == damageType.homing || type == damageType.moving) && explosionPrefab != null)
         {
             Debug.Log("Projectile hit: " + other.name);
-          GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);  
-            Destroy(explosion, 2f );
+            var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(explosion, 2f);
         }
-       
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.isTrigger) 
+        if (other.isTrigger)
             return;
 
-        IDamage dmg = other.GetComponent<IDamage>();
+        var dmg = other.GetComponent<IDamage>();
 
-        if(dmg != null && type == damageType.DOT)
-        {
-            if(!isDamaging)
-            {
+        if (dmg != null && type == damageType.DOT)
+            if (!isDamaging)
                 StartCoroutine(damageother(dmg));
-            }
-        }
     }
 
-    IEnumerator damageother(IDamage d)
+    private IEnumerator damageother(IDamage d)
     {
         isDamaging = true;
         d.takeDamage(damageAmount);
@@ -94,5 +78,12 @@ public class damage : MonoBehaviour
         isDamaging = false;
     }
 
-   
+    private enum damageType
+    {
+        moving,
+        stationary,
+        DOT,
+        homing,
+        cinematicPull
+    }
 }

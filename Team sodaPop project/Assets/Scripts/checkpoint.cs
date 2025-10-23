@@ -1,15 +1,17 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+
 public class checkpoint : MonoBehaviour
 {
-    [SerializeField] Renderer model;
+    [SerializeField] private Renderer model;
 
-    Color colorOrig;
+    private Color colorOrig;
 
     private void Start()
     {
         colorOrig = model.material.color;
     }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && gamemanager.instance.playerSpawnPos.transform.position != transform.position)
@@ -19,7 +21,7 @@ public class checkpoint : MonoBehaviour
         }
     }
 
-    IEnumerator checkpointFeedback()
+    private IEnumerator checkpointFeedback()
     {
         gamemanager.instance.checkpointPopup.SetActive(true);
         model.material.color = Color.red;

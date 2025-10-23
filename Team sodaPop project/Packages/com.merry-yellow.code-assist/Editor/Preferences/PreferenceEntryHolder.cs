@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-
-
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -13,7 +12,7 @@ using Serilog = Meryel.Serilog;
 //namespace BgTools.PlayerPrefsEditor
 namespace Meryel.UnityCodeAssist.Editor.Preferences
 {
-    [System.Serializable]
+    [Serializable]
     public class PreferenceEntryHolder : ScriptableObject
     {
         public List<PreferenceEntry>? userDefList;
@@ -33,7 +32,7 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class PreferenceEntry
     {
         public enum PrefTypes
@@ -58,7 +57,7 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
                 PrefTypes.String => m_strValue,
                 PrefTypes.Int => m_intValue.ToString(),
                 PrefTypes.Float => m_floatValue.ToString(),
-                _ => string.Empty,
+                _ => string.Empty
             };
         }
     }

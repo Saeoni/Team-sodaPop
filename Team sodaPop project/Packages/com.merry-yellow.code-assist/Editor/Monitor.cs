@@ -1,14 +1,20 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using UnityEngine;
+using Meryel.Serilog;
+using Meryel.UnityCodeAssist.Editor.Input;
+using Meryel.UnityCodeAssist.Editor.Preferences;
+using Meryel.UnityCodeAssist.Synchronizer.Model;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEditorInternal;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
+using GameObject = UnityEngine.GameObject;
+using Object = UnityEngine.Object;
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -17,12 +23,11 @@ using Serilog = Meryel.Serilog;
 
 namespace Meryel.UnityCodeAssist.Editor
 {
-
     //[InitializeOnLoad]
     public static class Monitor
     {
-        private readonly static string tagManagerFilePath;
-        private static System.DateTime previousTagManagerLastWrite;
+        private static readonly string tagManagerFilePath;
+        private static DateTime previousTagManagerLastWrite;
 
         private static bool isAppFocused;
         private static bool isAppFocusedOnTagManager;
@@ -35,12 +40,13 @@ namespace Meryel.UnityCodeAssist.Editor
             tagManagerFilePath = CommonTools.GetTagManagerFilePath();
             try
             {
-                previousTagManagerLastWrite = System.IO.File.GetLastWriteTime(tagManagerFilePath);
+                previousTagManagerLastWrite = File.GetLastWriteTime(tagManagerFilePath);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                Serilog.Log.Debug(ex, "Exception at {Location}", nameof(System.IO.File.GetLastWriteTime));
+                Log.Debug(ex, "Exception at {Location}", nameof(File.GetLastWriteTime));
             }
+
             dirtyDict = new Dictionary<GameObject, int>();
             dirtyCounter = 0;
 
@@ -72,14 +78,16 @@ namespace Meryel.UnityCodeAssist.Editor
             if (delayedRequestUpdate == null)
                 return;
 
-            var processor = MQTTnetInitializer.Publisher as Synchronizer.Model.IProcessor;
+            var processor = MQTTnetInitializer.Publisher as IProcessor;
             processor?.Process(delayedRequestUpdate);
         }
 
         /// <summary>
-        /// Empty method for invoking static class ctor
+        ///     Empty method for invoking static class ctor
         /// </summary>
-        public static void Bump() { }
+        public static void Bump()
+        {
+        }
 
         private static void EditorSceneManager_activeSceneChangedInEditMode(Scene arg0, Scene arg1)
         {
@@ -89,12 +97,13 @@ namespace Meryel.UnityCodeAssist.Editor
 
         private static void EditorSceneManager_sceneOpened(Scene scene, OpenSceneMode mode)
         {
-            Serilog.Log.Debug("Monitor {Event} scene:{Scene} mode:{Mode}", nameof(EditorSceneManager_sceneOpened), scene.name, mode);
+            Log.Debug("Monitor {Event} scene:{Scene} mode:{Mode}", nameof(EditorSceneManager_sceneOpened), scene.name,
+                mode);
             //Debug.Log("EditorSceneManager_sceneOpened");
             OnHierarchyChanged();
         }
 
-        static void OnUpdate()
+        private static void OnUpdate()
         {
             string? currentEditorFocus = null;
             if (Selection.activeObject)
@@ -105,12 +114,13 @@ namespace Meryel.UnityCodeAssist.Editor
             var currentTagManagerLastWrite = previousTagManagerLastWrite;
             try
             {
-                currentTagManagerLastWrite = System.IO.File.GetLastWriteTime(tagManagerFilePath);
+                currentTagManagerLastWrite = File.GetLastWriteTime(tagManagerFilePath);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                Serilog.Log.Debug(ex, "Exception at {Location}", nameof(System.IO.File.GetLastWriteTime));
+                Log.Debug(ex, "Exception at {Location}", nameof(File.GetLastWriteTime));
             }
+
             if (currentTagManagerLastWrite != previousTagManagerLastWrite)
             {
                 previousTagManagerLastWrite = currentTagManagerLastWrite;
@@ -121,26 +131,26 @@ namespace Meryel.UnityCodeAssist.Editor
                 // since unity does not commit changes to the file immediately, checking if user is displaying and focusing on tag manager (tags & layers) inspector
                 isAppFocusedOnTagManager = true;
             }
-            
 
-            if (isAppFocused != UnityEditorInternal.InternalEditorUtility.isApplicationActive)
+
+            if (isAppFocused != InternalEditorUtility.isApplicationActive)
             {
-                isAppFocused = UnityEditorInternal.InternalEditorUtility.isApplicationActive;
+                isAppFocused = InternalEditorUtility.isApplicationActive;
                 OnOnUnityEditorFocusChanged(isAppFocused);
                 //Serilog.Log.Debug("On focus {State}", isAppFocused);
             }
         }
 
-        static void OnTagsOrLayersModified()
+        private static void OnTagsOrLayersModified()
         {
-            Serilog.Log.Debug("Monitor {Event}", nameof(OnTagsOrLayersModified));
+            Log.Debug("Monitor {Event}", nameof(OnTagsOrLayersModified));
 
             Assister.SendTagsAndLayers();
         }
 
-        static void OnHierarchyChanged()
+        private static void OnHierarchyChanged()
         {
-            Serilog.Log.Debug("Monitor {Event}", nameof(OnHierarchyChanged));
+            Log.Debug("Monitor {Event}", nameof(OnHierarchyChanged));
 
             // For requesting active doc's GO
             MQTTnetInitializer.Publisher?.SendHandshake();
@@ -150,7 +160,7 @@ namespace Meryel.UnityCodeAssist.Editor
             //Assister.SendTagsAndLayers(); Don't send tags & layers here
         }
 
-        static void OnSceneListChanged()
+        private static void OnSceneListChanged()
         {
             // link below for scenes which are not on build list, but we can skip this for now, because of performance and needlessness (user probably wont work with it if its not on build list)
             // https://gist.github.com/xfleckx/2527f0420fbcc428a8b86be191d8ad96
@@ -158,17 +168,17 @@ namespace Meryel.UnityCodeAssist.Editor
             var scenes = EditorBuildSettings.scenes;
             var count = scenes.Length;
 
-            string[] buildIndicies = new string[count];
-            string[] names = new string[count];
-            string[] paths = new string[count];
-            string[] namesAndPaths = new string[count * 2];
-            string[] pathsAndNames = new string[count * 2];
+            var buildIndicies = new string[count];
+            var names = new string[count];
+            var paths = new string[count];
+            var namesAndPaths = new string[count * 2];
+            var pathsAndNames = new string[count * 2];
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 var scene = scenes[i];
                 var path = scene.path;
-                var name = System.IO.Path.GetFileNameWithoutExtension(path);
+                var name = Path.GetFileNameWithoutExtension(path);
 
                 buildIndicies[i] = i.ToString();
                 names[i] = name;
@@ -182,9 +192,10 @@ namespace Meryel.UnityCodeAssist.Editor
             MQTTnetInitializer.Publisher?.SendSceneList(names, paths, buildIndicies, namesAndPaths, pathsAndNames);
         }
 
-        static UndoPropertyModification[] MyPostprocessModificationsCallback(UndoPropertyModification[] modifications)
+        private static UndoPropertyModification[] MyPostprocessModificationsCallback(
+            UndoPropertyModification[] modifications)
         {
-            Serilog.Log.Debug("Monitor {Event}", nameof(MyPostprocessModificationsCallback));
+            Log.Debug("Monitor {Event}", nameof(MyPostprocessModificationsCallback));
 
             foreach (var modification in modifications)
             {
@@ -202,7 +213,7 @@ namespace Meryel.UnityCodeAssist.Editor
         //    // code for the action to take on Undo
         //}
 
-        static void OnOnUnityEditorFocusChanged(bool isFocused)
+        private static void OnOnUnityEditorFocusChanged(bool isFocused)
         {
             if (!isFocused)
             {
@@ -229,33 +240,31 @@ namespace Meryel.UnityCodeAssist.Editor
             }
         }
 
-        static void OnSelectionChanged()
+        private static void OnSelectionChanged()
         {
-            
             //**--check order, last selected should be sent last as well
             //**--limit here, what if too many?
             //selectedObjects.UnionWith(Selection.objects);
-            foreach(var so in Selection.objects)
-            {
-                SetDirty(so);
-            }
+            foreach (var so in Selection.objects) SetDirty(so);
         }
 
         public static void SetDirty(Object? obj)
         {
             if (obj == null)
                 return;
-            else if (obj is GameObject go && go)
+            if (obj is GameObject go && go)
+            {
                 SetDirty(go);
+            }
             else if (obj is Component component && component)
-            //SetDirty(component.gameObject);
+                //SetDirty(component.gameObject);
             {
                 var componentGo = component.gameObject;
                 if (componentGo)
                     SetDirty(componentGo);
             }
             //else
-                //;//**--scriptable obj
+            //;//**--scriptable obj
         }
 
         public static void SetDirty(GameObject go)
@@ -264,7 +273,7 @@ namespace Meryel.UnityCodeAssist.Editor
             dirtyDict[go] = dirtyCounter;
         }
 
-        static void FlushAllDirty()
+        private static void FlushAllDirty()
         {
             // Sending order is important, must send them in the same order as they are added to/modified in the collection
             // Using dict instead of hashset because of that. Dict value is used as add/modify order
@@ -299,34 +308,19 @@ namespace Meryel.UnityCodeAssist.Editor
         public static void LazyLoad(string category)
         {
             if (category == "PlayerPrefs")
-            {
-                Preferences.PreferenceMonitor.InstanceOfPlayerPrefs.Bump();
-            }
+                PreferenceMonitor.InstanceOfPlayerPrefs.Bump();
             else if (category == "EditorPrefs")
-            {
-                Preferences.PreferenceMonitor.InstanceOfEditorPrefs.Bump();
-            }
+                PreferenceMonitor.InstanceOfEditorPrefs.Bump();
             else if (category == "InputManager")
-            {
-                Input.InputManagerMonitor.Instance.Bump();
-            }
+                InputManagerMonitor.Instance.Bump();
             else if (category == "AnimationHuman")
-            {
                 MQTTnetInitializer.Publisher?.SendComponentHumanTrait(HumanTrait.BoneName, HumanTrait.MuscleName);
-            }
             else if (category == "Scene")
-            {
                 OnSceneListChanged();
-            }
             else if (category == "ShaderGlobalKeywords")
-            {
                 MQTTnetInitializer.Publisher?.SendShaderGlobalKeywords();
-            }
             else
-            {
-                Serilog.Log.Error("Invalid LazyLoad category {Category}", category);
-            }
+                Log.Error("Invalid LazyLoad category {Category}", category);
         }
     }
-
 }
