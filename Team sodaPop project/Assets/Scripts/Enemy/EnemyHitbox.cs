@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyHitbox : MonoBehaviour
 {
     [SerializeField] private int damage = 5;
-    private static int _currentAttackId = 0;   // shared across all hitboxes
+    private static int _currentAttackId;   // shared across all hitboxes
     private int _lastAttackIdApplied = -1;     // per hitbox
 
     private void OnTriggerEnter(Collider other)
@@ -13,7 +13,7 @@ public class EnemyHitbox : MonoBehaviour
         // Prevent double-hits in the same attack session
         if (_lastAttackIdApplied == _currentAttackId) return;
 
-        gamemanager.instance.playerController.takeDamage(damage);
+        gamemanager.instance.playerScript.takeDamage(damage);
         _lastAttackIdApplied = _currentAttackId;
     }
 

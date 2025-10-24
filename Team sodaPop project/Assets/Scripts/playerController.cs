@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
-    [SerializeField] private CharacterController controller;
-
+    [Header("Player Stats")]
     [SerializeField] private int HP;
     [SerializeField] private int speed;
     [SerializeField] private int sprintMod;
@@ -15,19 +15,27 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] private int gravity;
     [SerializeField] private float pushStrength = 2f;
     [SerializeField] private Animator animate;
-
-
+    
+    [Header("Weapon & Flashlight Settings")]
     [SerializeField] private List<gunstats> gunList = new();
     [SerializeField] private Transform gunModelParent;
     [SerializeField] private GameObject flashlight;
     [SerializeField] private int shootDamage;
     [SerializeField] private float shootRate;
     [SerializeField] private int shootDist;
-
+    
+    [Header("Audio")]
     [SerializeField] private AudioSource aud;
     [SerializeField] private AudioClip[] audSteps;
     [Range(0, 1)] [SerializeField] private float audStepsVol;
-
+    
+    [Header("Noise Settings")]
+    [SerializeField] private float walkNoise = 5f;
+    [SerializeField] private float sprintNoise = 15f;
+    [SerializeField] private float jumpNoise = 20f;
+    [SerializeField] private float landNoise = 10f;
+    [SerializeField] private float shootNoise = 30f;
+    
     private GameObject currentGunModel;
     private int gunListPos;
 
@@ -42,10 +50,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     private float shootTimer;
     private int speedOrig;
+    
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private PlayerNoiseSystem noiseSystem;
 
+    private Camera playerCam;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        controller = GetComponent<CharacterController>();
+        noiseSystem = GetComponent<PlayerNoiseSystem>();
+        playerCam = Camera.main;
         HPOrig = HP;
         speedOrig = speed;
         updatePlayerUI();
@@ -54,9 +70,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     // Update is called once per frame
     private void Update()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+        if (playerCam != null)
+            Debug.DrawLine(playerCam.transform.position, playerCam.transform.position + playerCam.transform.forward, Color.red);
 
-        if (!gamemanager.instance.isPaused) movement();
+        if (gamemanager.instance != null && !gamemanager.instance.isPaused)
+            movement();
+
         sprint();
     }
 
@@ -129,6 +148,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
+            
+            if (noiseSystem != null)
+                noiseSystem.AddNoise(jumpNoise);
         }
     }
 
@@ -154,6 +176,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0;
         gunList[gunListPos].ammoCur--;
         updatePlayerUI();
+        
+        if (noiseSystem != null)
+            noiseSystem.AddNoise(shootNoise);
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist))
@@ -264,6 +289,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         isPlayingSteps = true;
         aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
 
+        if (noiseSystem != null)
+        {
+            noiseSystem.AddNoise(isSprinting ? sprintNoise : walkNoise);
+        }
         if (isSprinting)
             yield return new WaitForSeconds(0.3f);
         else

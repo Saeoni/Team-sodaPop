@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1ada7445ded40418b893831df9efea, type: 3}
   m_Name: ReaperData
   m_EditorClassIdentifier: Assembly-CSharp::ReaperData
-  maxHP: 0
+  maxHP: 999
   detectionRadius: 15
   FOV: 90
   lineOfSightMask:
     serializedVersion: 2
     m_Bits: 1
   faceTargetSpeed: 8
-  stoppingDist: 1
+  stoppingDist: 0
   chaseSpeed: 3
   keyPrefab: {fileID: 0}
-  spawnVFX: {fileID: 6499773011378678529, guid: 21127ad63b548944685a7635f1068d4f, type: 3}
-  deathVFX: {fileID: 0}
+  hearingRadius: 15
+  aggressionNoiseThreshold: 0.8
+  idleChangeInterval: 5
+  idleWeights: {x: 0.6, y: 0.3, z: 0.1}
   spasmTrigger: Spasm
   spasmCooldown: 5
   spasmDelay: 0.4
@@ -42,6 +44,7 @@ MonoBehaviour:
   damageTrigger: GetDamage
   stalkTeleportOutVFX: {fileID: 1326163905947862670, guid: f81a23246a3500548a366208e6ea6a16, type: 3}
   teleportVFX: {fileID: 8445770779711665913, guid: 3b6627180fc131942b31cbc14c0ba874, type: 3}
+  spawnVFX: {fileID: 6499773011378678529, guid: 21127ad63b548944685a7635f1068d4f, type: 3}
   stalkTeleportCooldown: 10
   stalkTeleportChance: 2
   stalkTeleportDelay: 2
@@ -49,6 +52,8 @@ MonoBehaviour:
   dualPunchHitFX: {fileID: 0}
   animTransSpeed: 5
   teleportTrigger: Teleport
-  aggressionNoiseThreshold: 0.8
   aggressionStalkTime: 6
   aggressiveTrigger: Spasm
+  hearingRadius: 15
+  aggressionNoiseThreshold: 0.8
+  calmDownDelay: 5

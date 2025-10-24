@@ -15,6 +15,8 @@ public abstract class EnemyData : ScriptableObject
 
     [Header("Spawn, Drops & Death FX")]
     public GameObject keyPrefab;
-    public GameObject spawnVFX;
-    public GameObject deathVFX;
+    [Header("Hearing")]
+    public float hearingRadius = 15f;
+    [Range(0f, 1f)]
+    public float aggressionNoiseThreshold = 0.5f;
 }

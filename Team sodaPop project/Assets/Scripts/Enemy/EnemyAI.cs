@@ -21,13 +21,26 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     protected Vector3 SpawnPos;
     private Color _colorOrig;
 
-    protected bool PlayerInTrigger;
-    private protected bool CanSeePlayer;
+    protected float AngleToPlayer;
 
-    protected float angleToPlayer { get; private set; }
+    protected bool canSeePlayer { get; private set; }
+    protected bool canHearPlayer { get; private set; }
+    protected bool playerInTrigger {  get; private set; }
 
     protected virtual void Awake()
     {
+        if (gamemanager.instance != null && gamemanager.instance.player != null)
+        {
+            PlayerTransform = gamemanager.instance.player.transform;
+        }
+        else
+        {
+            // Fallback: try to find by tag
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+                PlayerTransform = playerObj.transform;
+        }
+        
         if (agent != null && animator != null && model != null && headPos != null) return;
         Debug.LogError($"Missing component references on {gameObject.name}");
         enabled = false;
@@ -35,10 +48,8 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual void Start()
     {
-        CheckLineOfSight();
-        Debug.LogWarning($"{gameObject.name} fell out of bounds.");
         
-        if (gamemanager.instance == null || gamemanager.instance.player == null)
+        if (PlayerTransform == null)
         {
             Debug.LogWarning($"{name} could not find player reference. Disabling AI.");
             enabled = false;
@@ -48,56 +59,63 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         CurrentHp = enemyData.maxHP;
         SpawnPos = transform.position;
         _colorOrig = model.material.color;
-        PlayerTransform = gamemanager.instance.player.transform;
-
-        PlaySpawnVFX();
     }
 
     protected virtual void Update()
     {
+        // Kill enemies that fall out of the world
         if (transform.position.y < -50f)
         {
             Destroy(gameObject);
+            return;
         }
+
+        // Update perception each frame
+        if (PlayerTransform == null) return;
+        canSeePlayer = CheckLineOfSight();
+        HandlePerception();
     }
 
-    private void PlaySpawnVFX()
+    protected virtual void HandlePerception()
     {
-        if (enemyData.spawnVFX != null)
-            Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
-    }
-
-    private protected virtual void CheckLineOfSight()
-    {
-        var dirToPlayer = (PlayerTransform.position - headPos.position).normalized;
-        var distanceToPlayer = Vector3.Distance(headPos.position, PlayerTransform.position);
-        angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
         
+    }
+    
+    protected bool CheckLineOfSight()
+    {
+        if (PlayerTransform == null || headPos == null) return false;
 
-        if (angleToPlayer <= enemyData.FOV / 2f && distanceToPlayer <= enemyData.detectionRadius)
+        Vector3 dirToPlayer = (PlayerTransform.position - headPos.position).normalized;
+        float distanceToPlayer = Vector3.Distance(headPos.position, PlayerTransform.position);
+        AngleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
+
+        if (AngleToPlayer <= enemyData.FOV / 2f && distanceToPlayer <= enemyData.detectionRadius)
         {
             if (!Physics.Raycast(headPos.position, dirToPlayer, distanceToPlayer, enemyData.lineOfSightMask))
             {
-                CanSeePlayer = true;
+                // Enemy sees the player
                 FaceTarget(PlayerTransform.position);
                 OnPlayerSpotted();
-                return;
+                return true;
             }
         }
 
-        CanSeePlayer = false;
+        return false;
     }
     
     protected virtual void OnPlayerSpotted()
     {
-        if (enemyData == null) return;
-        
-        agent.speed = enemyData.chaseSpeed;
-        agent.SetDestination(PlayerTransform.position);
+       
+    }
+    protected bool CheckHearing()
+    {
+        if (PlayerTransform == null) return false;
 
-        if (!(agent.remainingDistance <= enemyData.stoppingDist)) return;
-        agent.ResetPath();
-        Debug.Log($"{gameObject.name} reached stopping distance.");
+        return gamemanager.instance.CanPlayerBeHeard(
+            transform.position,
+            enemyData.hearingRadius,
+            enemyData.aggressionNoiseThreshold
+        );
     }
 
     private void FaceTarget(Vector3 targetPos)
@@ -136,17 +154,14 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
         if (enemyData.keyPrefab)
             Instantiate(enemyData.keyPrefab, transform.position, Quaternion.identity);
-
-        if (enemyData.deathVFX)
-            Instantiate(enemyData.deathVFX, transform.position, Quaternion.identity);
-
+        
         Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            PlayerInTrigger = true;
+            playerInTrigger = true;
 
         HandleTriggerEnter(other);
     }
@@ -154,7 +169,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-            PlayerInTrigger = false;
+            playerInTrigger = false;
 
         HandleTriggerExit(other);
     }

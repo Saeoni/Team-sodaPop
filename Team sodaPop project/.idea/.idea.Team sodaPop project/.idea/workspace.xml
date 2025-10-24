@@ -7,8 +7,18 @@
     <list default="true" id="6d146ef5-2f37-46ed-abc9-f5905eb75c3b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/Meshes/Demon.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/Meshes/Demon.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/spawnVFX.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/spawnVFX.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyHitbox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyHitbox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,23 +67,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.44973546",
-    "git-widget-placeholder": "Tobias's__Branch",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.44973546&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Tobias's__Branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" />
@@ -148,6 +158,7 @@
       <workItem from="1761008514232" duration="598000" />
       <workItem from="1761185056005" duration="581000" />
       <workItem from="1761192004398" duration="1464000" />
+      <workItem from="1761277924828" duration="13042000" />
     </task>
     <task id="LOCAL-00001" summary="Code updates">
       <option name="closed" value="true" />

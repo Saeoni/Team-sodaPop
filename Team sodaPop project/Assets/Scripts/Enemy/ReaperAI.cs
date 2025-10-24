@@ -15,7 +15,8 @@ public class ReaperAI : EnemyAI
     private static readonly int Punch1Trigger = Animator.StringToHash("Punch1Trigger");
     private static readonly int Punch2Trigger = Animator.StringToHash("Punch2Trigger");
     private static readonly int Punch3Trigger = Animator.StringToHash("Punch3Trigger");
-
+    private static readonly int IdleIndex = Animator.StringToHash("IdleIndex");
+    
     private bool _isActive;
     private bool _killTriggered;
     private bool _hasTriggeredSpasm;
@@ -25,11 +26,13 @@ public class ReaperAI : EnemyAI
     private float _spasmCooldownTimer;
     private float _stalkTimer;
     private float _stalkTeleportTimer;
+    private float _idleChangeTimer;
+    private int _currentIdleIndex;
 
     protected override void Awake()
     {
         base.Awake();
-        if (PlayerInTrigger) TrySpasm();
+        if (playerInTrigger) TrySpasm();
     }
 
     protected override void Start()
@@ -38,15 +41,6 @@ public class ReaperAI : EnemyAI
         agent.enabled = true;
         _isActive = true;
         _stalkTimer = 0f;
-        PlayerTransform = gamemanager.instance.player.transform;
-
-        if (enemyData.spawnVFX != null)
-        {
-            var vfx = Instantiate(enemyData.spawnVFX, transform.position, Quaternion.identity);
-            Destroy(vfx, 3f);
-        }
-
-        animator.SetBool(HasSpawned, true);
     }
 
     protected override void Update()
@@ -57,7 +51,7 @@ public class ReaperAI : EnemyAI
         HandleMovement();
         HandleLocomotion();
         CheckAggression();
-
+        HandleIdleRandomization();
         if (_hasTriggeredSpasm)
         {
             _spasmCooldownTimer += Time.deltaTime;
@@ -72,6 +66,44 @@ public class ReaperAI : EnemyAI
         HandleStalkTeleport();
     }
 
+    public void OnSpawnFinished()
+    {
+        var data = (ReaperData)enemyData;
+        
+        if (data.spawnVFX == null) return;
+        var vfx = Instantiate(data.spawnVFX, transform.position, Quaternion.identity);
+        Destroy(vfx, 3f);
+        
+        // Spawn Sequence Complete
+        animator.SetBool(HasSpawned, true);
+    }
+
+    private void HandleIdleRandomization()
+    {
+        var data = (ReaperData)enemyData;
+        
+        // Only randomize when basically in Idle
+        if (animator.GetFloat(Speed) > 0.1f) return;
+        
+        _idleChangeTimer += Time.deltaTime;
+        if (_idleChangeTimer >= data.idleChangeInterval)
+        {
+            _idleChangeTimer = 0f;
+            _currentIdleIndex = GetWeightedIdleIndex(data.idleWeights);
+            animator.SetFloat(IdleIndex, _currentIdleIndex);
+        }
+    }
+
+    private static int GetWeightedIdleIndex(Vector3 weights)
+    {
+        var total = weights.x * weights.y * weights.z;
+        var roll = Random.value *  total;
+
+        if (roll < weights.x) return 0;              // Idle1
+        return roll < weights.x + weights.y ? 1 :   // Idle2
+            2; // Idle3
+    }
+    
     private void HandleStalkTeleport()
     {
         _stalkTeleportTimer += Time.deltaTime;
@@ -156,7 +188,8 @@ public class ReaperAI : EnemyAI
         if (_isAggressive) return;
 
         var data = (ReaperData)enemyData;
-        bool noiseTriggered = gamemanager.instance.noiseLevel >= data.aggressionNoiseThreshold;
+        var noiseTriggered = gamemanager.instance.CanPlayerBeHeard(transform.position, data.hearingRadius,
+            data.aggressionNoiseThreshold);
         bool timeTriggered = _stalkTimer >= data.aggressionStalkTime;
 
        if (!noiseTriggered && !timeTriggered) return;
@@ -179,20 +212,23 @@ public class ReaperAI : EnemyAI
         if (!_isAggressive && _stalkTimer >= data.maxStalkTime * 0.5f)
             OnPlayerSpotted();
 
-        if (_stalkTimer >= data.maxStalkTime || (PlayerInTrigger && distanceToPlayer <= data.killDistance))
+        if (_stalkTimer >= data.maxStalkTime || (playerInTrigger && distanceToPlayer <= data.killDistance))
         {
             TeleportIn(true);
             TriggerKill();
             return;
         }
 
-        if (gamemanager.instance.noiseLevel >= gamemanager.instance.noiseThreshold)
+        if (gamemanager.instance.CanPlayerBeHeard(
+                transform.position,
+                data.hearingRadius,
+                data.aggressionNoiseThreshold))
         {
             TeleportIn(false);
             StartCoroutine(DelayedKill());
         }
 
-        if (!PlayerInTrigger)
+        if (!playerInTrigger)
         {
             agent.isStopped = false;
             agent.SetDestination(PlayerTransform.position);
@@ -315,4 +351,33 @@ public class ReaperAI : EnemyAI
         animator.SetBool(SpasmSpeed, true);
     }
     
+    private void OnDrawGizmosSelected()
+    {
+        var data = (ReaperData)enemyData;
+        
+        if ( data == null || headPos == null) return;
+
+        // 👂 Hearing radius (green wire sphere)
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, data.hearingRadius);
+
+        // 👀 Vision cone (yellow lines)
+        Gizmos.color = Color.yellow;
+        Vector3 forward = headPos.forward;
+        float halfFOV = enemyData.FOV / 2f;
+
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
+
+        Vector3 leftRayDirection = leftRayRotation * forward;
+        Vector3 rightRayDirection = rightRayRotation * forward;
+
+        Gizmos.DrawRay(headPos.position, leftRayDirection * enemyData.detectionRadius);
+        Gizmos.DrawRay(headPos.position, rightRayDirection * enemyData.detectionRadius);
+
+        // Forward direction line
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(headPos.position, forward * enemyData.detectionRadius);
+    }
+
 }
