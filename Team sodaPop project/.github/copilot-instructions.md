@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Enemy, Water, UI, Player, Gun
 - Active game object:
-  - Name: Reaper_Enemy
+  - Name: spawnVFX
   - Tag: Untagged
-  - Layer: Enemy
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

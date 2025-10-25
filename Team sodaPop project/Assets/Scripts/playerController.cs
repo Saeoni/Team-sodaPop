@@ -64,7 +64,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         playerCam = Camera.main;
         HPOrig = HP;
         speedOrig = speed;
-        updatePlayerUI();
+        UpdatePlayerUI();
     }
 
     // Update is called once per frame
@@ -94,7 +94,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void takeDamage(int amount)
     {
         HP -= amount;
-        updatePlayerUI();
+        UpdatePlayerUI();
         StartCoroutine(flashDamage());
         if (HP <= 0) gamemanager.instance.youLose();
     }
@@ -175,7 +175,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer = 0;
         gunList[gunListPos].ammoCur--;
-        updatePlayerUI();
+        UpdatePlayerUI();
         
         if (noiseSystem != null)
             noiseSystem.AddNoise(shootNoise);
@@ -207,19 +207,31 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (HP < HPOrig)
         {
             HP += amount;
-            updatePlayerUI();
+            UpdatePlayerUI();
             StartCoroutine(flashHeal());
         }
     }
 
-    public void updatePlayerUI()
+    private void UpdatePlayerUI()
     {
-        gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        UpdatePlayerHpBar();
 
         if (gunList.Count > 0)
         {
             gamemanager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
             gamemanager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
+        }
+    }
+
+    private void UpdatePlayerHpBar()
+    {
+        if (gamemanager.instance?.playerHPBar != null)
+        {
+            gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        }
+        else
+        {
+            Debug.LogWarning("No player hp bar found");
         }
     }
 
@@ -242,7 +254,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
 
         HP = HPOrig;
-        updatePlayerUI();
+        UpdatePlayerUI();
     }
 
     private void selectGun()
@@ -275,7 +287,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         currentGunModel = newGun;
 
-        updatePlayerUI();
+        UpdatePlayerUI();
     }
 
     private void TurnOnFlashlight()
