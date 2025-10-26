@@ -51,6 +51,6 @@ public class ReaperData : EnemyData
     [Header("Spawn")]
     public GameObject spawnVFX;
     public string spawnTrigger = "SpawnTrigger";
-    
+    public float spawnDelay = 2.5f;
 }
 

@@ -25,7 +25,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
 
     protected bool canSeePlayer { get; private set; }
     protected bool canHearPlayer { get; private set; }
-    protected bool playerInTrigger {  get; private set; }
+    protected bool playerInTrigger {  get; set; }
 
     protected virtual void Awake()
     {
@@ -73,7 +73,7 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         // Update perception each frame
         if (PlayerTransform == null) return;
         canSeePlayer = CheckLineOfSight();
-        HandlePerception();
+        canHearPlayer = CheckHearing();
     }
 
     protected virtual void HandlePerception()
@@ -81,9 +81,12 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         
     }
     
+    protected virtual void OnPlayerSpotted()
+    {}
+    
     protected bool CheckLineOfSight()
     {
-        if (PlayerTransform == null || headPos == null) return false;
+        if (PlayerTransform == null || headPos == null || agent == null) return false;
 
         Vector3 dirToPlayer = (PlayerTransform.position - headPos.position).normalized;
         float distanceToPlayer = Vector3.Distance(headPos.position, PlayerTransform.position);
@@ -93,9 +96,19 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         {
             if (!Physics.Raycast(headPos.position, dirToPlayer, distanceToPlayer, enemyData.lineOfSightMask))
             {
-                // Enemy sees the player
                 FaceTarget(PlayerTransform.position);
-                OnPlayerSpotted();
+
+                if (agent.enabled && agent.isOnNavMesh)
+                {
+                    agent.SetDestination(PlayerTransform.position);
+                    agent.stoppingDistance = enemyData.stoppingDist;
+
+                    if (agent.remainingDistance <= agent.stoppingDistance)
+                    {
+                        // Optional: trigger attack or cinematic logic
+                    }
+                }
+
                 return true;
             }
         }
@@ -103,10 +116,6 @@ public abstract class EnemyAI : MonoBehaviour, IDamage
         return false;
     }
     
-    protected virtual void OnPlayerSpotted()
-    {
-       
-    }
     protected bool CheckHearing()
     {
         if (PlayerTransform == null) return false;

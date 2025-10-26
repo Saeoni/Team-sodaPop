@@ -23,6 +23,7 @@ public class ReaperAI : EnemyAI
     private bool _hasTriggeredSpasm;
     private bool _isAggressive;
     private bool _isTeleporting;
+    private bool _hasSpawned;
 
     private float _spasmCooldownTimer;
     private float _stalkTimer;
@@ -30,14 +31,12 @@ public class ReaperAI : EnemyAI
     private float _idleChangeTimer;
     private float _randomTeleportCooldown;
     private int _currentIdleIndex;
-    
+
     protected override void Start()
     {
         base.Start();
-        agent.enabled = true;
-        _isActive = true;
+        TriggerSpawn();
         _stalkTimer = 0f;
-       TriggerSpawn();
     }
 
     protected override void Update()
@@ -63,59 +62,70 @@ public class ReaperAI : EnemyAI
         }
     }
 
-    private void TriggerSpawn()
-    {
-        var data = (ReaperData)enemyData;
-
-        if (data.spawnVFX)
-        {
-            var vfx = Instantiate(data.spawnVFX, transform.position, Quaternion.identity);
-            Destroy(vfx, 3f);
-        }
-
-        if (!string.IsNullOrEmpty(data.spawnTrigger)) 
-            animator.SetTrigger(data.spawnTrigger);
-    }
-
     protected override void HandlePerception()
     {
         var data = (ReaperData)enemyData;
-
         if (_isAggressive) return;
 
+        bool heardPlayer = canHearPlayer;
         bool timeTriggered = _stalkTimer >= data.aggressionStalkTime;
 
-        if (canSeePlayer || canHearPlayer || playerInTrigger || timeTriggered)
-        {
-            _isAggressive = true;
-            animator.SetTrigger(data.aggressiveTrigger);
-            animator.SetBool(SpasmSpeed, true);
-        }
+        if (!heardPlayer || !timeTriggered) return;
+        _isAggressive = true;
+        animator.SetTrigger(data.aggressiveTrigger);
+        animator.SetBool(SpasmSpeed, true);
     }
 
-    protected void HandlePlayerTriggerEnter()
+    protected override void HandleTriggerEnter(Collider other)
+    {
+        if (playerInTrigger || !other.CompareTag("Player")) return;
+
+        playerInTrigger = true;
+        HandlePlayerTriggerEnter();
+    }
+
+    private void HandlePlayerTriggerEnter()
     {
         TrySpasm();
-        TeleportIn(true);
         StartCoroutine(DelayedKill());
     }
 
-    protected override void OnPlayerSpotted()
+    public override void takeDamage(int amount)
     {
+        if (_killTriggered || _isTeleporting) return;
+
         var data = (ReaperData)enemyData;
+        animator.SetTrigger(data.damageTrigger);
+        animator.SetTrigger(data.spasmTrigger);
+        animator.SetBool(SpasmSpeed, true);
+    }
 
-        if (!_isAggressive)
-        {
-            animator.SetTrigger(data.spasmTrigger);
-            animator.SetBool(SpasmSpeed, true);
-            _isAggressive = true;
-        }
+    private void TriggerSpawn()
+    {
+        if (_hasSpawned) return;
+    
+       
+        var data = (ReaperData)enemyData;
+        StartCoroutine(DelayedActivation(data.spawnDelay));
+        if (data.spawnVFX)
+            PlayVFX(data.spawnVFX, transform.position, 3f);
+        
 
-        agent.speed = data.maxSpeed;
-        agent.SetDestination(PlayerTransform.position);
+        // Trigger spawn animation
+        if (!string.IsNullOrEmpty(data.spawnTrigger))
+            animator.SetTrigger(data.spawnTrigger);
 
-        if (agent.remainingDistance <= data.stoppingDist)
-            agent.ResetPath();
+        animator.SetBool(HasSpawned, true);
+        
+    }
+
+    private IEnumerator DelayedActivation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        agent.enabled = true;
+        _isActive = true;
+        Debug.Log("Reaper Is Active");
     }
 
     private void HandleMovement()
@@ -128,12 +138,8 @@ public class ReaperAI : EnemyAI
 
         float distanceToPlayer = Vector3.Distance(transform.position, PlayerTransform.position);
 
-        if (!_isAggressive && _stalkTimer >= data.maxStalkTime * 0.5f)
-            OnPlayerSpotted();
-
-        if (_stalkTimer >= data.maxStalkTime || (playerInTrigger && distanceToPlayer <= data.killDistance))
+        if (_isAggressive && playerInTrigger && distanceToPlayer <= data.killDistance)
         {
-            TeleportIn(true);
             TriggerKill();
             return;
         }
@@ -147,14 +153,8 @@ public class ReaperAI : EnemyAI
 
         if (!agent.isOnNavMesh) return;
         
-        if (playerInTrigger)
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-            animator.SetBool(IsSpasming, true);
-        }
         else if (_isAggressive)
-        { 
+        {
             agent.isStopped = false;
             agent.SetDestination(PlayerTransform.position);
             animator.SetBool(IsSpasming, false);
@@ -205,8 +205,7 @@ public class ReaperAI : EnemyAI
     private void TryRandomTeleport()
     {
         var data = (ReaperData)enemyData;
-        
-        if (!canSeePlayer || playerInTrigger || !_isAggressive || _isTeleporting) return;
+        if (_isAggressive || _isTeleporting || playerInTrigger) return;
 
         _randomTeleportCooldown += Time.deltaTime;
         if (_randomTeleportCooldown < data.randomTeleportInterval) return;
@@ -243,8 +242,8 @@ public class ReaperAI : EnemyAI
     {
         var data = (ReaperData)enemyData;
         if (data.stalkTeleportOutVFX)
-            Instantiate(data.stalkTeleportOutVFX, transform.position, Quaternion.identity);
-
+            if (data.stalkTeleportOutVFX)
+                PlayVFX(data.stalkTeleportOutVFX, transform.position, 3f);
         model.enabled = false;
         agent.enabled = false;
     }
@@ -252,6 +251,9 @@ public class ReaperAI : EnemyAI
     private void TeleportIn(bool forKill)
     {
         var data = (ReaperData)enemyData;
+
+        if (!_isAggressive && !forKill) return;
+
         Vector3 offset = forKill ? PlayerTransform.forward * 1.5f : Random.insideUnitSphere * 8f;
         offset.y = 0f;
         Vector3 targetPos = PlayerTransform.position + offset;
@@ -266,12 +268,11 @@ public class ReaperAI : EnemyAI
         transform.LookAt(PlayerTransform);
 
         if (data.teleportVFX)
-            Instantiate(data.teleportVFX, transform.position, Quaternion.identity);
-
-        model.enabled = true;
-        if (agent.isOnNavMesh) agent.enabled = true;
+            PlayVFX(data.teleportVFX, transform.position, 3f);
 
         animator.SetTrigger(data.teleportTrigger);
+        model.enabled = true;
+        if (agent.isOnNavMesh) agent.enabled = true;
     }
 
     private void TriggerKill()
@@ -315,17 +316,14 @@ public class ReaperAI : EnemyAI
         animator.SetTrigger(data.spasmTrigger);
     }
 
-    public void OnSpawnFinished()
+    private void PlayVFX(GameObject prefab, Vector3 position, float duration = 3f)
     {
-        var data = (ReaperData)enemyData;
-        if (data.spawnVFX == null) return;
-
-        var vfx = Instantiate(data.spawnVFX, transform.position, Quaternion.identity);
+        if (prefab == null) return;
+        var vfx = Instantiate(prefab, position, Quaternion.identity);
         Destroy(vfx, 3f);
-
-        animator.SetBool(HasSpawned, true);
     }
 
+    
     private void SpawnPunchHitFX(Vector3 spawnPosition, bool isDualHand)
     {
         var data = (ReaperData)enemyData;
@@ -353,47 +351,33 @@ public class ReaperAI : EnemyAI
         SpawnPunchHitFX(leftHandHitSpawn.position, true);
         SpawnPunchHitFX(rightHandHitSpawn.position, true);
     }
-
-    public override void takeDamage(int amount)
-    {
-        if (_killTriggered || _isTeleporting) return;
-
-        var data = (ReaperData)enemyData;
-
-        animator.SetTrigger(data.damageTrigger);
-        animator.SetTrigger(data.spasmTrigger);
-        animator.SetBool(SpasmSpeed, true);
-    }
-
-
     
-    private void OnDrawGizmosSelected()
-    {
-        var data = (ReaperData)enemyData;
-        
-        if ( data == null || headPos == null) return;
+  private void OnDrawGizmosSelected()
+  {
+    var data = (ReaperData)enemyData;
+    if (data == null || headPos == null) return;
 
-        // 👂 Hearing radius (green wire sphere)
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, data.hearingRadius);
+    // 👂 Hearing radius
+    Gizmos.color = Color.green;
+    Gizmos.DrawWireSphere(transform.position, data.hearingRadius);
 
-        // 👀 Vision cone (yellow lines)
-        Gizmos.color = Color.yellow;
-        Vector3 forward = headPos.forward;
-        float halfFOV = enemyData.FOV / 2f;
+    // 👀 Vision cone
+    Gizmos.color = Color.yellow;
+    Vector3 forward = headPos.forward;
+    float halfFOV = enemyData.FOV / 2f;
 
-        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
-        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
+    Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
+    Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
 
-        Vector3 leftRayDirection = leftRayRotation * forward;
-        Vector3 rightRayDirection = rightRayRotation * forward;
+    Vector3 leftRayDirection = leftRayRotation * forward;
+    Vector3 rightRayDirection = rightRayRotation * forward;
 
-        Gizmos.DrawRay(headPos.position, leftRayDirection * enemyData.detectionRadius);
-        Gizmos.DrawRay(headPos.position, rightRayDirection * enemyData.detectionRadius);
+    Gizmos.DrawRay(headPos.position, leftRayDirection * enemyData.detectionRadius);
+    Gizmos.DrawRay(headPos.position, rightRayDirection * enemyData.detectionRadius);
 
-        // Forward direction line
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(headPos.position, forward * enemyData.detectionRadius);
-    }
+    // 🔴 Forward direction
+    Gizmos.color = Color.red;
+    Gizmos.DrawRay(headPos.position, forward * enemyData.detectionRadius);
+  }
 
 }
