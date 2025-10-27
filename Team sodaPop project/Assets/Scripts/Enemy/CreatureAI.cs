@@ -66,11 +66,11 @@ public class CreatureAI : EnemyAI
         }
 
         // Decide behaviour based on trigger + line of sight
-        if (!PlayerInTrigger || CanSeePlayer)
+        if (!playerInTrigger || canSeePlayer)
         {
-            if (PlayerInTrigger)
+            if (playerInTrigger)
             {
-                if (!PlayerInTrigger || !CanSeePlayer) return;
+                if (!playerInTrigger || !canSeePlayer) return;
                 HandleRoamOrPatrol(data, chaseStyle: 3); // Crouch chase
                 ChooseAttackStyle(data);
             }
