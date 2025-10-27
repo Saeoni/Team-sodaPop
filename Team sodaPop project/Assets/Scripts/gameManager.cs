@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class gamemanager : MonoBehaviour
 {
     public static gamemanager instance;
-    public playerController playerController;
+   
+    
     
     [SerializeField] private GameObject menuActive;
     [SerializeField] private GameObject menuStart;
@@ -28,7 +29,7 @@ public class gamemanager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
-
+    public PlayerNoiseSystem playerNoise;
     public int keyCount;
 
     public bool isPaused; 
@@ -90,15 +91,14 @@ public class gamemanager : MonoBehaviour
         updateGameTimer();
     }
 
-    public void AddNoise(float amount)
+    public bool CanPlayerBeHeard(Vector3 enemyPosition, float hearingRadius, float aggressionNoiseThreshold)
     {
-        noiseLevel += amount;
-        noiseLevel = Mathf.Clamp(noiseLevel, 0f, noiseThreshold);
-    }
+        if (player == null || playerNoise == null) return false;
 
-    public void DecayNoise(float rate)
-    {
-        noiseLevel = Mathf.MoveTowards(noiseLevel, 0f, noiseDecayRate * Time.deltaTime);
+        float distance = Vector3.Distance(enemyPosition, player.transform.position);
+        if (distance > hearingRadius) return false;
+
+        return playerNoise.normalizedNoise >= aggressionNoiseThreshold;
     }
 
     public void stealthTimer(float length)
