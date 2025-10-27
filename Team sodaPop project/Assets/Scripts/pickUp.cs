@@ -1,15 +1,11 @@
 using UnityEngine;
-using System.Collections;
 
 public class pickUp : MonoBehaviour
 {
+    [SerializeField] private pickupType type;
 
-    enum pickupType { health, key, stealth, gun, Note}
-
-    [SerializeField] pickupType type;
-
-    [SerializeField] int healAmount;
-    [SerializeField] gunstats gun;
+    [SerializeField] private int healAmount;
+    [SerializeField] private gunstats gun;
 
 
     //    // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,7 +22,7 @@ public class pickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IPickup pickupable = other.GetComponent<IPickup>();
+        var pickupable = other.GetComponent<IPickup>();
         if (type == pickupType.health)
         {
             other.GetComponent<playerController>().heal(healAmount);
@@ -46,7 +42,7 @@ public class pickUp : MonoBehaviour
             gamemanager.instance.stealthTimer(10.0f);
             Destroy(gameObject);
         }
-        else if(type == pickupType.Note)
+        else if (type == pickupType.Note)
         {
             gamemanager.instance.NoteDisplay();
             Destroy(gameObject);
@@ -58,6 +54,14 @@ public class pickUp : MonoBehaviour
             pickupable.getGunStats(gun);
             Destroy(gameObject);
         }
+    }
 
+    private enum pickupType
+    {
+        health,
+        key,
+        stealth,
+        gun,
+        Note
     }
 }

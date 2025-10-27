@@ -4,8 +4,8 @@
  */
 
 using System.Collections;
+using Meryel.Serilog;
 using UnityEditor;
-using UnityEngine;
 
 //namespace Unity.EditorCoroutines.Editor
 namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
@@ -13,19 +13,20 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
     public static class EditorWindowCoroutineExtension
     {
         /// <summary>
-        /// Start an <see cref="EditorCoroutine">EditorCoroutine</see>, owned by the calling <see cref="EditorWindow">EditorWindow</see> instance.
-        /// <code> 
+        ///     Start an <see cref="EditorCoroutine">EditorCoroutine</see>, owned by the calling
+        ///     <see cref="EditorWindow">EditorWindow</see> instance.
+        ///     <code> 
         /// using System.Collections;
         /// using Unity.EditorCoroutines.Editor;
         /// using UnityEditor;
-        ///
+        /// 
         /// public class ExampleWindow : EditorWindow
         /// {
         ///     void OnEnable()
         ///     {
         ///         this.StartCoroutine(CloseWindowDelayed());
         ///     }
-        ///
+        /// 
         ///     IEnumerator CloseWindowDelayed() //close the window after 1000 frames have elapsed
         ///     {
         ///         int count = 1000;
@@ -46,13 +47,15 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
         }
 
         /// <summary>
-        /// Immediately stop an <see cref="EditorCoroutine">EditorCoroutine</see> that was started by the calling <see cref="EditorWindow"/> instance. This method is safe to call on an already completed <see cref="EditorCoroutine">EditorCoroutine</see>.
-        /// <code>
+        ///     Immediately stop an <see cref="EditorCoroutine">EditorCoroutine</see> that was started by the calling
+        ///     <see cref="EditorWindow" /> instance. This method is safe to call on an already completed
+        ///     <see cref="EditorCoroutine">EditorCoroutine</see>.
+        ///     <code>
         /// using System.Collections;
         /// using Unity.EditorCoroutines.Editor;
         /// using UnityEditor;
         /// using UnityEngine;
-        ///
+        /// 
         /// public class ExampleWindow : EditorWindow
         /// {
         ///     EditorCoroutine coroutine;
@@ -60,12 +63,12 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
         ///     {
         ///         coroutine = this.StartCoroutine(CloseWindowDelayed());
         ///     }
-        ///
+        /// 
         ///     private void OnDisable()
         ///     {
         ///         this.StopCoroutine(coroutine);
         ///     }
-        ///
+        /// 
         ///     IEnumerator CloseWindowDelayed()
         ///     {
         ///         while (true)
@@ -80,15 +83,16 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
         /// <param name="coroutine"></param>
         public static void StopCoroutine(this EditorWindow window, EditorCoroutine coroutine)
         {
-            if(coroutine == null)
+            if (coroutine == null)
             {
-                Serilog.Log.Warning("Provided EditorCoroutine handle is null.");
+                Log.Warning("Provided EditorCoroutine handle is null.");
                 return;
             }
 
-            if(coroutine.m_Owner == null)
+            if (coroutine.m_Owner == null)
             {
-                Serilog.Log.Error("The EditorCoroutine is ownerless. Please use EditorCoroutineEditor.StopCoroutine to terminate such coroutines.");
+                Log.Error(
+                    "The EditorCoroutine is ownerless. Please use EditorCoroutineEditor.StopCoroutine to terminate such coroutines.");
                 return;
             }
 
@@ -97,9 +101,9 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
 
             var owner = coroutine.m_Owner.Target as EditorWindow;
 
-            if (owner == null || owner != null && owner != window)
+            if (owner == null || (owner != null && owner != window))
             {
-                Serilog.Log.Error("The EditorCoroutine is owned by another object: {0}.", coroutine.m_Owner.Target);
+                Log.Error("The EditorCoroutine is owned by another object: {0}.", coroutine.m_Owner.Target);
                 return;
             }
 

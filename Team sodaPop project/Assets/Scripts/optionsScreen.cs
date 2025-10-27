@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Audio;
-using JetBrains.Annotations;
+using UnityEngine.UI;
+
 public class optionsScreen : MonoBehaviour
 {
     public Slider masterSlider, musicSlider, sfxSlider;
@@ -11,40 +12,34 @@ public class optionsScreen : MonoBehaviour
     public TMP_Text masterLabel, musicLabel, sfxLabel;
     public TMP_Text resoultionLabel;
     public Toggle fullscreenTog, vsyncTog;
+    public List<ResItem> resoultions = new();
+
     public Slider sensitivitySlider;
     private int selectedResoultion;
-    public List<ResItem> resoultions = new List<ResItem>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         fullscreenTog.isOn = Screen.fullScreen;
         if (QualitySettings.vSyncCount == 0)
-        {
             vsyncTog.isOn = false;
-        }
         else
-        {
             vsyncTog.isOn = true;
-        }
 
-        bool foundRes = false;
-        for (int i = 0; i < resoultions.Count; i++)
-        {
+        var foundRes = false;
+        for (var i = 0; i < resoultions.Count; i++)
             if (Screen.width == resoultions[i].horizontial && Screen.height == resoultions[i].vertical)
             {
-                foundRes = true; 
+                foundRes = true;
 
                 selectedResoultion = i;
 
                 UpdateResLabel();
             }
 
-           
-        }
-
         if (!foundRes)
         {
-            ResItem newRes = new ResItem();
+            var newRes = new ResItem();
             newRes.horizontial = Screen.width;
             newRes.vertical = Screen.height;
 
@@ -53,7 +48,7 @@ public class optionsScreen : MonoBehaviour
             UpdateResLabel();
         }
 
-        float vol = 0f;
+        var vol = 0f;
         theMixer.GetFloat("MasterVol", out vol);
         masterSlider.value = vol;
         theMixer.GetFloat("MusicVol", out vol);
@@ -68,35 +63,28 @@ public class optionsScreen : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     public void ResLeft()
     {
         selectedResoultion--;
-        if (selectedResoultion < 0)
-        {
-            selectedResoultion = 0;
-        }
+        if (selectedResoultion < 0) selectedResoultion = 0;
         UpdateResLabel();
-
     }
 
     public void ResRight()
     {
         selectedResoultion++;
-        if (selectedResoultion > resoultions.Count - 1)
-        {
-            selectedResoultion = resoultions.Count - 1;
-        }
+        if (selectedResoultion > resoultions.Count - 1) selectedResoultion = resoultions.Count - 1;
         UpdateResLabel();
     }
 
     public void UpdateResLabel()
     {
-        resoultionLabel.text = resoultions[selectedResoultion].horizontial.ToString() + " x " + resoultions[selectedResoultion].vertical.ToString();
+        resoultionLabel.text = resoultions[selectedResoultion].horizontial + " x " +
+                               resoultions[selectedResoultion].vertical;
     }
 
     public void ApplyGraphics()
@@ -104,15 +92,12 @@ public class optionsScreen : MonoBehaviour
         //Screen.fullScreen = fullscreenTog.isOn;
 
         if (vsyncTog.isOn)
-        {
             QualitySettings.vSyncCount = 1;
-        }
         else
-        {
             QualitySettings.vSyncCount = 0;
-        }
 
-        Screen.SetResolution(resoultions[selectedResoultion].horizontial, resoultions[selectedResoultion].vertical, fullscreenTog.isOn);
+        Screen.SetResolution(resoultions[selectedResoultion].horizontial, resoultions[selectedResoultion].vertical,
+            fullscreenTog.isOn);
     }
 
     public void SetMasterVol()
@@ -145,7 +130,8 @@ public class optionsScreen : MonoBehaviour
         PlayerPrefs.SetFloat("mouseSensitivity", value);
     }
 }
-[System.Serializable]
+
+[Serializable]
 public class ResItem
 {
     public int horizontial, vertical;

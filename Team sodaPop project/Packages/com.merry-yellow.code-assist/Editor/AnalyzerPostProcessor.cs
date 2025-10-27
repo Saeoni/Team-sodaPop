@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using UnityEngine;
 using UnityEditor;
-
-
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -23,6 +18,29 @@ namespace Meryel.UnityCodeAssist.Editor
 
     public class AnalyzerPostProcessor : AssetPostprocessor
     {
+        private const string NewLine = "\r\n";
+
+        private static readonly string[] Analyzers =
+        {
+#if MERYEL_UCA_LITE_VERSION
+            "Meryel.UnityCodeAssist.AnalyzersLite.dll",
+#else
+            "Meryel.UnityCodeAssist.Analyzers.dll",
+#endif
+            "Meryel.UnityCodeAssist.Common.dll",
+            "Meryel.UnityCodeAssist.Completion.dll",
+            "Meryel.UnityCodeAssist.CompletionInternals.dll",
+            "Meryel.UnityCodeAssist.Logger.dll",
+            "Meryel.UnityCodeAssist.MQTTnet.dll",
+            "Meryel.UnityCodeAssist.MQTTnet.Extensions.ManagedClient.dll",
+            "Meryel.UnityCodeAssist.Newtonsoft.Json.dll",
+            "Meryel.UnityCodeAssist.ProjectData.dll",
+            "Meryel.UnityCodeAssist.RoslynAnalyzerManager.dll",
+            "Meryel.UnityCodeAssist.Synchronizer.dll",
+            "Meryel.UnityCodeAssist.SynchronizerModel.dll",
+            "Meryel.UnityCodeAssist.VSIXLibrary.dll"
+        };
+
         public static string OnGeneratedCSProject(string path, string content)
         {
             // do not add roslyn analyzers to Visual Studio projects for performance
@@ -35,8 +53,9 @@ namespace Meryel.UnityCodeAssist.Editor
             analyzerGroup.Append(NewLine);
             analyzerGroup.Append("  <ItemGroup>");
 
-            var prefix = $"{NewLine}    <Analyzer Include=\"{CommonTools.GetExternalReferencesPath().Replace('/', '\\')}\\";
-            var suffix = $"\" />";
+            var prefix =
+                $"{NewLine}    <Analyzer Include=\"{CommonTools.GetExternalReferencesPath().Replace('/', '\\')}\\";
+            var suffix = "\" />";
 
             foreach (var analyzer in Analyzers)
             {
@@ -60,28 +79,5 @@ namespace Meryel.UnityCodeAssist.Editor
 
             return content;
         }
-
-        private const string NewLine = "\r\n";
-
-        private readonly static string[] Analyzers = new string[]
-        {
-#if MERYEL_UCA_LITE_VERSION
-            "Meryel.UnityCodeAssist.AnalyzersLite.dll",
-#else
-            "Meryel.UnityCodeAssist.Analyzers.dll",
-#endif
-            "Meryel.UnityCodeAssist.Common.dll",
-            "Meryel.UnityCodeAssist.Completion.dll",
-            "Meryel.UnityCodeAssist.CompletionInternals.dll",
-            "Meryel.UnityCodeAssist.Logger.dll",
-            "Meryel.UnityCodeAssist.MQTTnet.dll",
-            "Meryel.UnityCodeAssist.MQTTnet.Extensions.ManagedClient.dll",
-            "Meryel.UnityCodeAssist.Newtonsoft.Json.dll",
-            "Meryel.UnityCodeAssist.ProjectData.dll",
-            "Meryel.UnityCodeAssist.RoslynAnalyzerManager.dll",
-            "Meryel.UnityCodeAssist.Synchronizer.dll",
-            "Meryel.UnityCodeAssist.SynchronizerModel.dll",
-            "Meryel.UnityCodeAssist.VSIXLibrary.dll",
-        };
     }
 }

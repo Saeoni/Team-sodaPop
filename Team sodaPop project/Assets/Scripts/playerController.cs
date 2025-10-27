@@ -1,52 +1,50 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
-using TheWatcher;
+using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
-    [SerializeField] CharacterController controller;
-    Recoil recoil;
+    [SerializeField] private CharacterController controller;
 
-    [SerializeField] int HP;
-    [SerializeField] int speed;
-    [SerializeField] int sprintMod;
-    [SerializeField] float jumpSpeed;
-    [SerializeField] float jumpMod;
-    [SerializeField] int jumpMax;
-    [SerializeField] int gravity;
-    [SerializeField] float pushStrength = 2f;
-    [SerializeField] Animator animate;
+    [SerializeField] private int HP;
+    [SerializeField] private int speed;
+    [SerializeField] private int sprintMod;
+    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float jumpMod;
+    [SerializeField] private int jumpMax;
+    [SerializeField] private int gravity;
+    [SerializeField] private float pushStrength = 2f;
+    [SerializeField] private Animator animate;
 
 
-    [SerializeField] List<gunstats> gunList = new List<gunstats>();
-    [SerializeField] Transform gunModelParent;
-    [SerializeField] GameObject flashlight;
-    [SerializeField] int shootDamage;
-    [SerializeField] float shootRate;
-    [SerializeField] int shootDist;
+    [SerializeField] private List<gunstats> gunList = new();
+    [SerializeField] private Transform gunModelParent;
+    [SerializeField] private GameObject flashlight;
+    [SerializeField] private int shootDamage;
+    [SerializeField] private float shootRate;
+    [SerializeField] private int shootDist;
 
-    [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip[] audSteps;
-    [UnityEngine.Range(0, 1)][SerializeField] float audStepsVol;
+    [SerializeField] private AudioSource aud;
+    [SerializeField] private AudioClip[] audSteps;
+    [Range(0, 1)] [SerializeField] private float audStepsVol;
 
-    int HPOrig;
-    int speedOrig;
-    int jumpCount;
-    int gunListPos;
-    GameObject currentGunModel;
+    private GameObject currentGunModel;
+    private int gunListPos;
 
-    Vector3 moveDir;
-    Vector3 playerVel;
+    private int HPOrig;
+    private bool isPlayingSteps;
+    private bool isSprinting;
+    private bool isTired = false;
+    private int jumpCount;
 
-    float shootTimer;
-    bool isSprinting;
-    bool isTired = false;
-    bool isPlayingSteps;
+    private Vector3 moveDir;
+    private Vector3 playerVel;
+
+    private float shootTimer;
+    private int speedOrig;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         HPOrig = HP;
         speedOrig = speed;
@@ -54,27 +52,48 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-        if (!gamemanager.instance.isPaused)
-        {
-            movement();
-        }
+        if (!gamemanager.instance.isPaused) movement();
         sprint();
     }
 
-    void movement()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var body = hit.collider.attachedRigidbody;
+
+        if (body == null || body.isKinematic)
+            return;
+
+        var pushDir = new Vector3(hit.moveDirection.x, 0f, hit.moveDirection.z);
+
+        body.linearVelocity = pushDir * pushStrength;
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+        updatePlayerUI();
+        StartCoroutine(flashDamage());
+        if (HP <= 0) gamemanager.instance.youLose();
+    }
+
+    public void getGunStats(gunstats gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
+        changeGun();
+    }
+
+    private void movement()
     {
         shootTimer += Time.deltaTime;
 
-        if(controller.isGrounded)
+        if (controller.isGrounded)
         {
-            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
-            {
-                StartCoroutine(playStep());
-            }
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps) StartCoroutine(playStep());
 
             jumpCount = 0;
             playerVel = Vector3.zero;
@@ -84,7 +103,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             playerVel.y -= gravity * Time.deltaTime;
         }
 
-        moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward);
+        moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
 
         // jumping mechanics
@@ -93,28 +112,27 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         controller.Move(playerVel * Time.deltaTime);
 
         //animation
-        float animSpeed = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
+        var animSpeed = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
         animate.SetFloat("Speed", animSpeed, 0.1f, Time.deltaTime);
 
         // shooting mechanics
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0  && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate)
             shoot();
 
         selectGun();
         reload();
-
     }
 
-    void jump()
+    private void jump()
     {
-        if(Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
         }
     }
 
-    void sprint()
+    private void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
         {
@@ -131,35 +149,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Rigidbody body = hit.collider.attachedRigidbody;
-
-        if (body == null || body.isKinematic)
-            return;
-
-        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0f, hit.moveDirection.z);
-
-        body.linearVelocity = pushDir * pushStrength;
-    }
-
-    void shoot()
+    private void shoot()
     {
         shootTimer = 0;
         gunList[gunListPos].ammoCur--;
         updatePlayerUI();
 
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist)) 
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist))
         {
             Debug.Log(hit.collider.name);
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            var dmg = hit.collider.GetComponent<IDamage>();
 
-            if(dmg != null)
-            {
-                dmg.takeDamage(shootDamage);
-            }
+            if (dmg != null) dmg.takeDamage(shootDamage);
         }
 
         if (recoil)
@@ -168,21 +171,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
     }
 
-    void reload()
+    private void reload()
     {
         if (Input.GetButton("Reload"))
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
-    }
-
-    public void takeDamage(int amount)
-    {
-        HP -= amount;
-        updatePlayerUI();
-        StartCoroutine(flashDamage());
-        if(HP <= 0)
-        {
-            gamemanager.instance.youLose();
-        }
     }
 
     public void KillPlayer()
@@ -192,7 +184,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void heal(int amount)
     {
-        if(HP < HPOrig)
+        if (HP < HPOrig)
         {
             HP += amount;
             updatePlayerUI();
@@ -204,21 +196,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         gamemanager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
 
-        if(gunList.Count > 0)
+        if (gunList.Count > 0)
         {
             gamemanager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
             gamemanager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
-
         }
     }
 
-    IEnumerator flashDamage()
+    private IEnumerator flashDamage()
     {
         gamemanager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gamemanager.instance.playerDamageFlash.SetActive(false);
     }
-    IEnumerator flashHeal()
+
+    private IEnumerator flashHeal()
     {
         gamemanager.instance.playerHealFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
@@ -231,12 +223,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         HP = HPOrig;
         updatePlayerUI();
-
     }
 
-    void selectGun()
+    private void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
         {
             gunListPos++;
             changeGun();
@@ -246,66 +237,43 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             gunListPos--;
             changeGun();
         }
-
     }
 
-    public void getGunStats(gunstats gun)
+    private void changeGun()
     {
-        gunList.Add(gun);
-        gunListPos = gunList.Count - 1;
-        changeGun();
-    }
-
-    void changeGun()
-    {
-        if (currentGunModel != null)
-        {
-            Destroy(currentGunModel);
-        }
+        if (currentGunModel != null) Destroy(currentGunModel);
 
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
 
-        GameObject newGun = Instantiate(gunList[gunListPos].gunModel, gunModelParent);
-        
-        Collider col = newGun.GetComponent<Collider>();
+        var newGun = Instantiate(gunList[gunListPos].gunModel, gunModelParent);
+
+        var col = newGun.GetComponent<Collider>();
         if (col != null)
             Destroy(col);
 
         currentGunModel = newGun;
-        
+
         updatePlayerUI();
     }
 
-    void TurnOnFlashlight()
+    private void TurnOnFlashlight()
     {
         if (flashlight != null)
             flashlight.SetActive(true);
     }
 
-    IEnumerator playStep()
+    private IEnumerator playStep()
     {
         isPlayingSteps = true;
         aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
 
         if (isSprinting)
-        {
             yield return new WaitForSeconds(0.3f);
-        }
         else
-        {
             yield return new WaitForSeconds(0.5f);
-        }
 
         isPlayingSteps = false;
-    }
-
-    private void LateUpdate()
-    {
-        if (recoil)
-        {
-            recoil.applyRecoil = false;
-        }
     }
 }

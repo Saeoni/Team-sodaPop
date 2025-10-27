@@ -1,10 +1,9 @@
 ﻿using System;
+using Meryel.Serilog;
 using UnityEditor;
-
-
+using UnityEditor.MPE;
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
-using MQTTnet = Meryel.UnityCodeAssist.MQTTnet;
+
 #pragma warning restore IDE0005
 
 
@@ -28,18 +27,20 @@ namespace Meryel.UnityCodeAssist.Editor
         }
 
         /// <summary>
-        /// Empty method for invoking static class ctor
+        ///     Empty method for invoking static class ctor
         /// </summary>
-        public static void Bump() { }
+        public static void Bump()
+        {
+        }
 
         /// <summary>
-        /// false for profiler standalone process
+        ///     false for profiler standalone process
         /// </summary>
         /// <returns></returns>
         public static bool IsMainUnityEditorProcess()
         {
 #if UNITY_2020_2_OR_NEWER
-            if (UnityEditor.AssetDatabase.IsAssetImportWorkerProcess())
+            if (AssetDatabase.IsAssetImportWorkerProcess())
                 return false;
 #elif UNITY_2019_3_OR_NEWER
 			if (UnityEditor.Experimental.AssetDatabaseExperimental.IsAssetImportWorkerProcess())
@@ -47,7 +48,7 @@ namespace Meryel.UnityCodeAssist.Editor
 #endif
 
 #if UNITY_2021_1_OR_NEWER
-            if (UnityEditor.MPE.ProcessService.level == UnityEditor.MPE.ProcessLevel.Secondary)
+            if (ProcessService.level == ProcessLevel.Secondary)
                 return false;
 #elif UNITY_2020_2_OR_NEWER
 			if (UnityEditor.MPE.ProcessService.level == UnityEditor.MPE.ProcessLevel.Slave)
@@ -65,22 +66,22 @@ namespace Meryel.UnityCodeAssist.Editor
             if (!IsMainUnityEditorProcess())
             {
                 // if try to creaate NetMQ, will recieve AddressAlreadyInUseException during binding
-                Serilog.Log.Debug("MQTTnet won't initialize on secondary processes");
+                Log.Debug("MQTTnet won't initialize on secondary processes");
                 return;
             }
 
-            Serilog.Log.Debug("MQTTnet initializing");
+            Log.Debug("MQTTnet initializing");
 
             //Serilog.Log.Debug("MQTTnet constructing");
             Publisher = new MQTTnetPublisher();
-            
+
             RunOnShutdown(OnShutDown);
-            Serilog.Log.Debug("MQTTnet initialized");
+            Log.Debug("MQTTnet initialized");
         }
 
         private static void OnShutDown()
         {
-            Serilog.Log.Debug("MQTTnet OnShutDown");
+            Log.Debug("MQTTnet OnShutDown");
             Clear();
         }
 
@@ -91,20 +92,23 @@ namespace Meryel.UnityCodeAssist.Editor
 
         private static void AssemblyReloadEvents_beforeAssemblyReload()
         {
-            Serilog.Log.Debug("MQTTnet AssemblyReloadEvents_beforeAssemblyReload");
+            Log.Debug("MQTTnet AssemblyReloadEvents_beforeAssemblyReload");
 
             Clear();
         }
 
         private static void EditorApplication_quitting()
         {
-            Serilog.Log.Debug("MQTTnet EditorApplication_quitting");
+            Log.Debug("MQTTnet EditorApplication_quitting");
 
             Publisher?.SendDisconnect();
             Clear();
         }
 
-        static void Clear() => Publisher?.Clear();
+        private static void Clear()
+        {
+            Publisher?.Clear();
+        }
 
 
         private static void RunOnceOnUpdate(Action action)
@@ -128,7 +132,6 @@ namespace Meryel.UnityCodeAssist.Editor
 #else
             AppDomain.CurrentDomain.DomainUnload += (_, __) => action();
 #endif
-
         }
     }
 }

@@ -1,21 +1,23 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
+
 public class gamemanager : MonoBehaviour
 {
-
     public static gamemanager instance;
-
-    [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuStart;
-    [SerializeField] GameObject menuPause;
-    [SerializeField] GameObject menuWin;
-    [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject menuNote;
-    [SerializeField] TMP_Text gameTimerText;
-    [SerializeField] TMP_Text KeyText;
-    [SerializeField] TMP_Text stealthTimerText;
+    public playerController playerController;
+    
+    [SerializeField] private GameObject menuActive;
+    [SerializeField] private GameObject menuStart;
+    [SerializeField] private GameObject menuPause;
+    [SerializeField] private GameObject menuWin;
+    [SerializeField] private GameObject menuLose;
+    [SerializeField] private GameObject menuNote;
+    [SerializeField] private TMP_Text gameTimerText;
+    [SerializeField] private TMP_Text KeyText;
+    [SerializeField] private TMP_Text stealthTimerText;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash;
@@ -29,17 +31,21 @@ public class gamemanager : MonoBehaviour
 
     public int keyCount;
 
-    public bool isPaused;
-    public bool NoteDisplayed;
+    public bool isPaused; 
+    public bool noteDisplayed;
     public bool isStealthed;
-    public float timeElapsed; 
+    public float timeElapsed;
 
-    int gameGoalCount;
-    int gameTimerMinute;
-    float gameTimerSecond;
-    float stealthTimeLeft;
+    public float noiseLevel = 0f;
+    public float noiseThreshold = 100f;
+    public float noiseDecayRate = 10f;
 
-    float timeScaleOrig;
+    private int gameGoalCount;
+    private int gameTimerMinute;
+    private float gameTimerSecond;
+    private float stealthTimeLeft;
+
+    private float timeScaleOrig;
 
     /*void Start()
     {
@@ -48,59 +54,63 @@ public class gamemanager : MonoBehaviour
         menuActive.SetActive(true);
     }*/
 
-    void Awake()
+    private void Awake()
     {
         instance = this;
         timeScaleOrig = Time.timeScale;
-        NoteDisplayed = false;
+        noteDisplayed = false;
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
         keyCount = 0;
-
     }
 
-    void Update()
+    private void Update()
     {
-
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null)
             {
-
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
-
             }
             else if (menuActive == menuPause)
             {
                 stateUnpause();
             }
-            else if(menuActive == menuNote)
+            else if (menuActive == menuNote)
             {
                 NoteDisplay();
             }
         }
 
         updateGameTimer();
-
     }
 
-   
+    public void AddNoise(float amount)
+    {
+        noiseLevel += amount;
+        noiseLevel = Mathf.Clamp(noiseLevel, 0f, noiseThreshold);
+    }
+
+    public void DecayNoise(float rate)
+    {
+        noiseLevel = Mathf.MoveTowards(noiseLevel, 0f, noiseDecayRate * Time.deltaTime);
+    }
+
     public void stealthTimer(float length)
     {
         StartCoroutine(StealthCountdown(length));
-
     }
 
     private IEnumerator StealthCountdown(float length)
     {
         isStealthed = true;
 
-        float countDown = length;
+        var countDown = length;
         stealthTimerText.gameObject.SetActive(true);
         while (countDown > 0)
         {
@@ -109,9 +119,9 @@ public class gamemanager : MonoBehaviour
             countDown -= Time.deltaTime;
             yield return null;
         }
+
         isStealthed = false;
         stealthTimerText.gameObject.SetActive(false);
-
     }
 
     public void statePause()
@@ -134,32 +144,33 @@ public class gamemanager : MonoBehaviour
 
     public void WinGame()
     {
-       statePause();
-       menuActive = menuWin;
-       menuActive.SetActive(true);
-       Debug.Log("Player exited the maze. You win!");      
+        statePause();
+        menuActive = menuWin;
+        menuActive.SetActive(true);
+        Debug.Log("Player exited the maze. You win!");
     }
 
     public void updateGameTimer()
     {
-        if (menuActive == null){
+        if (menuActive == null)
+        {
             gameTimerSecond += Time.deltaTime;
             timeElapsed += Time.deltaTime;
 
-            int displaySecond = Mathf.FloorToInt(gameTimerSecond);
+            var displaySecond = Mathf.FloorToInt(gameTimerSecond);
             if (displaySecond >= 60)
             {
                 gameTimerMinute++;
                 gameTimerSecond = 0;
                 displaySecond = 0;
             }
+
             gameTimerText.text = gameTimerMinute.ToString("00") + ":" + displaySecond.ToString("00");
         }
     }
 
     public void updateGameGoal(int amount)
     {
-
     }
 
     public void updateKeyCount()
@@ -178,37 +189,30 @@ public class gamemanager : MonoBehaviour
     {
         Debug.Log("Player Killed by Reaper!");
 
-       if (playerDamageFlash != null)
-       {
-          playerDamageFlash.SetActive(true);
-       }
+        if (playerDamageFlash != null) playerDamageFlash.SetActive(true);
 
-       if (player != null)
-       {
-            Destroy(player);
-       }
+        if (player != null) Destroy(player);
 
-       youLose();
+        youLose();
     }
 
     public void NoteDisplay()
     {
-        if(NoteDisplayed == true)
+        if (noteDisplayed)
         {
             if (Input.GetButtonDown("Cancel"))
             {
-                NoteDisplayed = !NoteDisplayed;
+                noteDisplayed = !noteDisplayed;
                 Time.timeScale = timeScaleOrig;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 menuActive.SetActive(false);
                 menuActive = null;
             }
-
         }
         else
         {
-            NoteDisplayed = !NoteDisplayed;
+            noteDisplayed = !noteDisplayed;
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

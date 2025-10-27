@@ -5,43 +5,98 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d146ef5-2f37-46ed-abc9-f5905eb75c3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Demon.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Demon.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Chaser.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Chaser.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Turret Cannon Blaster.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Enemy Turret Cannon Blaster.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Scythe_Projectile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/Scythe_Projectile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyAI_Test..unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyAI_Test..unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/EnemyAI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/EnemyAI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ReaperAI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ReaperAI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ScytheSlam_TriggerKill.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ScytheSlam_TriggerKill.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/Scythe_Projectile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/Scythe_Projectile.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/TeleportGrab_GrabPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/TeleportGrab_GrabPlayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ThrowCatch_FinalizeKill.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ThrowCatch_FinalizeKill.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ThrowScythe_ProjectileSpawn.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/ThrowScythe_ProjectileSpawn.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/TurretAI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy and Behaviour Scripts/TurretAI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Demon Horror Creature with Weapon.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Demon Horror Creature with Weapon/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Demon Horror Creature with Weapon/Textures/Demon_tex.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Human Animations/Scripts/SpineProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Human Animations/Scripts/SpineProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyAI_Test.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Behavioural.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Flashlight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Flashlight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IDamage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IPickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IPickup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MazeExitTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MazeExitTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NoteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NoteController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Raycast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Raycast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/buttonFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/buttonFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/cameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/cameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/checkpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/checkpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/damage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/damage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/doorFunctions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/doorFunctions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/gameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/gunstats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/gunstats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/newLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/newLevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/optionsScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/optionsScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/pickUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/playerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/CyberSoldier.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/CyberSoldier/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/Script/Prefab Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/Script/Prefab Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Glass_Global.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Glass_Global.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Glass_Object.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Glass_Object.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Global.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Global.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Object.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Shaders/Prototype_Object.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/AboutWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/AboutWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/AnalyzerPostProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/AnalyzerPostProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Assister.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Assister.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Cleanup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Cleanup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorCoroutine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorCoroutine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorCoroutineUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorCoroutineUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorWaitForSeconds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorWaitForSeconds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorWindowCoroutineExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/EditorCoroutines/EditorWindowCoroutineExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/FeedbackWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/FeedbackWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/Binary2TextExec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/Binary2TextExec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/InputManagerMonitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/InputManagerMonitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/Text2Yaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/Text2Yaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/UnityInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Input/UnityInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/LazyInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/LazyInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/CommonTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/CommonTools.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/ELogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/ELogger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/LoggerExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/LoggerExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/UnitySink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Logger/UnitySink.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MQTTnetInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MQTTnetInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MQTTnetPublisher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MQTTnetPublisher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MainThreadDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MainThreadDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MerryYellow.CodeAssist.Editor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/MerryYellow.CodeAssist.Editor.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Monitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Monitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/PreferenceEntryHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/PreferenceEntryHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/PreferenceMonitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/PreferenceMonitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/PreferenceStorageAccessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/PreferenceStorageAccessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/RegistryMonitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Preferences/RegistryMonitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/ScriptFinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/ScriptFinder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/SetupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/SetupManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/StatusWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/StatusWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/UnityClassExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/UnityClassExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/UnityEditorShell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/UnityEditorShell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/Editor/Updater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.merry-yellow.code-assist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +123,13 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8081513dc2364383b8289d30d2169b2e9f8c00/43/aae00613/IExternalCodeEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RippleDistortionShader.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/gameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/gameManager.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@1e1527b3a17b/Shaders/Particles/ParticlesUnlit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -91,23 +145,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.44973546",
-    "git-widget-placeholder": "Staging-",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.44973546&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Staging-&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" />
@@ -180,6 +234,7 @@
       <workItem from="1761000850231" duration="1051000" />
       <workItem from="1761002504995" duration="5453000" />
       <workItem from="1761008514232" duration="598000" />
+      <workItem from="1761185056005" duration="581000" />
     </task>
     <task id="LOCAL-00001" summary="Code updates">
       <option name="closed" value="true" />

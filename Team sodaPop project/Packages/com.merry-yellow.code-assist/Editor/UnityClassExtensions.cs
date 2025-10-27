@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
+using Meryel.Serilog;
+using Meryel.UnityCodeAssist.Synchronizer.Model;
 using UnityEditor;
 using UnityEditor.Animations;
-
-
+using UnityEngine;
+using UnityEngine.Rendering;
+using GameObject = UnityEngine.GameObject;
+using Object = UnityEngine.Object;
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -17,9 +20,9 @@ using Serilog = Meryel.Serilog;
 
 namespace Meryel.UnityCodeAssist.Editor
 {
-    internal static partial class UnityClassExtensions
+    internal static class UnityClassExtensions
     {
-        static GameObject? GetParentGO(GameObject go)
+        private static GameObject? GetParentGO(GameObject go)
         {
             if (!go)
                 return null;
@@ -28,11 +31,10 @@ namespace Meryel.UnityCodeAssist.Editor
 
             if (parentTransform && parentTransform.gameObject)
                 return parentTransform.gameObject;
-            else
-                return null;
+            return null;
         }
 
-        static string GetId(UnityEngine.Object? obj)
+        private static string GetId(Object? obj)
         {
             try
             {
@@ -45,12 +47,12 @@ namespace Meryel.UnityCodeAssist.Editor
             catch (Exception ex)
             {
                 // OnBeforeSerialize of user scripts may raise exception
-                Serilog.Log.Warning(ex, "GetGlobalObjectIdSlow failed for obj {Obj}", obj);
+                Log.Warning(ex, "GetGlobalObjectIdSlow failed for obj {Obj}", obj);
                 return "GlobalObjectId_V1-0-00000000000000000000000000000000-0-0";
             }
         }
 
-        public static Synchronizer.Model.Component_Material? ToSyncModelOfComponentMaterial(this GameObject go)
+        public static Component_Material? ToSyncModelOfComponentMaterial(this GameObject go)
         {
             if (!go.TryGetComponent<Renderer>(out var renderer))
                 return null;
@@ -83,9 +85,9 @@ namespace Meryel.UnityCodeAssist.Editor
                     continue;
                 processedShaders.Add(shader);
 
-                int propertyCount = shader.GetPropertyCount();
+                var propertyCount = shader.GetPropertyCount();
 
-                for (int i = 0; i < propertyCount; i++)
+                for (var i = 0; i < propertyCount; i++)
                 {
                     var propertyName = shader.GetPropertyName(i);
                     var propertyId = Shader.PropertyToID(propertyName);
@@ -94,7 +96,8 @@ namespace Meryel.UnityCodeAssist.Editor
                         continue;
 
                     var propertyTypeRaw = shader.GetPropertyType(i);
-                    GetExtendedTypeAndValue(propertyId, propertyTypeRaw, material, out var propertyTypeExtended, out var propertyValue);
+                    GetExtendedTypeAndValue(propertyId, propertyTypeRaw, material, out var propertyTypeExtended,
+                        out var propertyValue);
 
                     propertyNames.Add(propertyName);
                     propertyIndices.Add(propertyId.ToString());
@@ -107,16 +110,17 @@ namespace Meryel.UnityCodeAssist.Editor
                 var passCount = material.passCount;
                 var passNames = new string[passCount];
                 var passIndices = new string[passCount];
-                for (int i = 0; i < passCount; i++)
+                for (var i = 0; i < passCount; i++)
                 {
                     passNames[i] = material.GetPassName(i);
                     passIndices[i] = i.ToString();
                 }
+
                 passNamesContainer.Add(passNames);
                 passIndicesContainer.Add(passIndices);
             }
 
-            var data = new Synchronizer.Model.Component_Material
+            var data = new Component_Material
             {
                 GameObjectId = GetId(go),
                 PropertyNames = propertyNames.ToArray(),
@@ -125,56 +129,57 @@ namespace Meryel.UnityCodeAssist.Editor
                 PropertyValues = propertyValues.ToArray(),
                 Keywords = ConcatenateListOfArrays(keywordsContainer),
                 PassNames = ConcatenateListOfArrays(passNamesContainer),
-                PassIndices = ConcatenateListOfArrays(passIndicesContainer),
+                PassIndices = ConcatenateListOfArrays(passIndicesContainer)
             };
             return data;
 
 
-            static void GetExtendedTypeAndValue(int propertyId, UnityEngine.Rendering.ShaderPropertyType typeRaw, Material material, out Synchronizer.Model.Component_Material.MaterialPropertyType typeExtended, out string value)
+            static void GetExtendedTypeAndValue(int propertyId, ShaderPropertyType typeRaw, Material material,
+                out Component_Material.MaterialPropertyType typeExtended, out string value)
             {
                 // Handle scalar types based on shader declaration
                 switch (typeRaw)
                 {
-                    case UnityEngine.Rendering.ShaderPropertyType.Color:
-                        typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Color;
+                    case ShaderPropertyType.Color:
+                        typeExtended = Component_Material.MaterialPropertyType.Color;
                         value = material.GetColor(propertyId).ToString();
                         break;
 
-                    case UnityEngine.Rendering.ShaderPropertyType.Vector:
-                        typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Vector;
+                    case ShaderPropertyType.Vector:
+                        typeExtended = Component_Material.MaterialPropertyType.Vector;
                         value = material.GetVector(propertyId).ToString();
                         break;
 
-                    case UnityEngine.Rendering.ShaderPropertyType.Float:
-                        typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Float;
+                    case ShaderPropertyType.Float:
+                        typeExtended = Component_Material.MaterialPropertyType.Float;
                         value = material.GetFloat(propertyId).ToString();
                         break;
 
-                    case UnityEngine.Rendering.ShaderPropertyType.Range:
-                        typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Range;
+                    case ShaderPropertyType.Range:
+                        typeExtended = Component_Material.MaterialPropertyType.Range;
                         value = material.GetFloat(propertyId).ToString();
                         break;
 
-                    case UnityEngine.Rendering.ShaderPropertyType.Texture:
-                        {
-                            typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Texture;
-                            var texture = material.GetTexture(propertyId);
-                            if (texture)
-                                value = texture.name;
-                            else
-                                value = string.Empty;
-                        }
+                    case ShaderPropertyType.Texture:
+                    {
+                        typeExtended = Component_Material.MaterialPropertyType.Texture;
+                        var texture = material.GetTexture(propertyId);
+                        if (texture)
+                            value = texture.name;
+                        else
+                            value = string.Empty;
+                    }
                         break;
 
-                    case UnityEngine.Rendering.ShaderPropertyType.Int:
-                        typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Integer;
+                    case ShaderPropertyType.Int:
+                        typeExtended = Component_Material.MaterialPropertyType.Integer;
                         value = material.GetInteger(propertyId).ToString();
                         break;
 
                     default:
-                        typeExtended = Synchronizer.Model.Component_Material.MaterialPropertyType.Invalid;
+                        typeExtended = Component_Material.MaterialPropertyType.Invalid;
                         value = string.Empty;
-                        Serilog.Log.Error("invalid material type {TypeRaw}", typeRaw);
+                        Log.Error("invalid material type {TypeRaw}", typeRaw);
                         break;
                 }
             }
@@ -183,17 +188,17 @@ namespace Meryel.UnityCodeAssist.Editor
             {
                 if (listOfArrays.Count == 0)
                     return new string[0];
-                else if (listOfArrays.Count == 1)
+                if (listOfArrays.Count == 1)
                     return listOfArrays[0];
 
-                int totalLength = 0;
+                var totalLength = 0;
                 foreach (var arr in listOfArrays)
                     totalLength += arr.Length;
 
-                string[] result = new string[totalLength];
-                Span<string> span = result.AsSpan();
+                var result = new string[totalLength];
+                var span = result.AsSpan();
 
-                int offset = 0;
+                var offset = 0;
                 foreach (var arr in listOfArrays)
                 {
                     arr.AsSpan().CopyTo(span.Slice(offset));
@@ -202,11 +207,9 @@ namespace Meryel.UnityCodeAssist.Editor
 
                 return result;
             }
-
-
         }
 
-        public static Synchronizer.Model.Component_Animation? ToSyncModelOfComponentAnimation(this GameObject go)
+        public static Component_Animation? ToSyncModelOfComponentAnimation(this GameObject go)
         {
             if (!go.TryGetComponent<Animation>(out var animation))
                 return null;
@@ -214,7 +217,7 @@ namespace Meryel.UnityCodeAssist.Editor
             if (!animation.isActiveAndEnabled)
                 return null;
 
-            var data = new Synchronizer.Model.Component_Animation
+            var data = new Component_Animation
             {
                 GameObjectId = GetId(go)
             };
@@ -229,16 +232,13 @@ namespace Meryel.UnityCodeAssist.Editor
             */
 
             var states = new List<string>();
-            foreach (AnimationState state in animation)
-            {
-                states.Add(state.name);
-            }
+            foreach (AnimationState state in animation) states.Add(state.name);
             data.States = states.ToArray();
 
             return data;
         }
 
-        public static Synchronizer.Model.Component_Animator? ToSyncModelOfComponentAnimator(this GameObject go)
+        public static Component_Animator? ToSyncModelOfComponentAnimator(this GameObject go)
         {
             if (!go.TryGetComponent<Animator>(out var animator))
                 return null;
@@ -249,7 +249,7 @@ namespace Meryel.UnityCodeAssist.Editor
             if (!animator.runtimeAnimatorController)
                 return null;
 
-            var data = new Synchronizer.Model.Component_Animator
+            var data = new Component_Animator
             {
                 GameObjectId = GetId(go)
             };
@@ -257,13 +257,13 @@ namespace Meryel.UnityCodeAssist.Editor
             var layerCount = animator.layerCount;
             data.LayerIndices = new string[layerCount];
             data.LayerNames = new string[layerCount];
-            for (int i = 0; i < layerCount; i++)
+            for (var i = 0; i < layerCount; i++)
             {
                 data.LayerIndices[i] = i.ToString();
                 data.LayerNames[i] = animator.GetLayerName(i);
             }
 
-            int curParameterIndex = 0;
+            var curParameterIndex = 0;
             try
             {
                 var parameterCount = animator.parameterCount;
@@ -285,7 +285,7 @@ namespace Meryel.UnityCodeAssist.Editor
             }
             catch (IndexOutOfRangeException indexOutOfRangeException)
             {
-                Serilog.Log.Debug(indexOutOfRangeException, "handling IndexOutOfRangeException of animator.GetParameter(i)");
+                Log.Debug(indexOutOfRangeException, "handling IndexOutOfRangeException of animator.GetParameter(i)");
 
                 var parameterCount = curParameterIndex;
 
@@ -309,7 +309,7 @@ namespace Meryel.UnityCodeAssist.Editor
             data.StateFullPaths = new string[stateCount];
             data.StateFullPathHashes = new string[stateCount];
             data.StateMotionNames = new string[stateCount];
-            for (int i = 0; i < stateCount; i++)
+            for (var i = 0; i < stateCount; i++)
             {
                 var state = states[i].state;
                 var fullPath = states[i].fullPath;
@@ -333,7 +333,7 @@ namespace Meryel.UnityCodeAssist.Editor
             data.TransitionUsernameHashes = new string[transitionCount];
             data.TransitionFullPaths = new string[transitionCount];
             data.TransitionFullPathHashes = new string[transitionCount];
-            for (int i = 0; i < transitionCount; i++)
+            for (var i = 0; i < transitionCount; i++)
             {
                 var transition = transitions[i].transition;
                 var fullPath = transitions[i].fullPath;
@@ -347,7 +347,7 @@ namespace Meryel.UnityCodeAssist.Editor
 
             var clips = animator.runtimeAnimatorController.animationClips;
             data.Clips = new string[clips.Length];
-            for (int i = 0; i < clips.Length; i++)
+            for (var i = 0; i < clips.Length; i++)
                 data.Clips[i] = clips[i].name;
 
             return data;
@@ -361,11 +361,12 @@ namespace Meryel.UnityCodeAssist.Editor
             }
         }
 
-        
 
-        public static bool GetAnimatorStateInfo(Animator animator, out List<(AnimatorState state, string fullPath)>? states, out List<(AnimatorTransition transition, string fullPath)>? transitions)
+        public static bool GetAnimatorStateInfo(Animator animator,
+            out List<(AnimatorState state, string fullPath)>? states,
+            out List<(AnimatorTransition transition, string fullPath)>? transitions)
         {
-            AnimatorController? controller = animator.runtimeAnimatorController as AnimatorController;
+            var controller = animator.runtimeAnimatorController as AnimatorController;
             if (!controller || controller == null)
             {
                 states = null;
@@ -376,14 +377,15 @@ namespace Meryel.UnityCodeAssist.Editor
             AnimatorControllerLayer[] layers = controller.layers;
             states = new List<(AnimatorState, string)>();
             transitions = new List<(AnimatorTransition, string)>();
-            foreach (AnimatorControllerLayer layer in layers)
+            foreach (var layer in layers)
             {
                 if (layer == null || layer.stateMachine == null)
                     continue;
 
-                ChildAnimatorState[] animStates = layer.stateMachine.states;
+                var animStates = layer.stateMachine.states;
                 getStateMachineInfo(layer.stateMachine, 0, layer.name, states, transitions);
             }
+
             return true;
 
 
@@ -398,10 +400,12 @@ namespace Meryel.UnityCodeAssist.Editor
                 states.AddRange(stateMachine.states.Select(s => (s.state, curPath + "." + s.state.name)));
 
                 //var transitions = stateMachine.GetStateMachineTransitions(stateMachine);
-                transitions.AddRange(stateMachine.GetStateMachineTransitions(stateMachine).Select(t => (t, curPath + "." + t.name)));
+                transitions.AddRange(stateMachine.GetStateMachineTransitions(stateMachine)
+                    .Select(t => (t, curPath + "." + t.name)));
 
                 foreach (var subStateMachine in stateMachine.stateMachines)
-                    getStateMachineInfo(subStateMachine.stateMachine, depth + 1, curPath + "." + subStateMachine.stateMachine.name, states, transitions);
+                    getStateMachineInfo(subStateMachine.stateMachine, depth + 1,
+                        curPath + "." + subStateMachine.stateMachine.name, states, transitions);
             }
         }
 
@@ -410,7 +414,7 @@ namespace Meryel.UnityCodeAssist.Editor
             if (!go)
                 return null;
 
-            var data = new Synchronizer.Model.GameObject()
+            var data = new Synchronizer.Model.GameObject
             {
                 Id = GetId(go),
 
@@ -424,14 +428,14 @@ namespace Meryel.UnityCodeAssist.Editor
 
                 Components = getComponents(go),
 
-                Priority = priority,
+                Priority = priority
             };
             return data;
 
             static string[] getChildrenIds(GameObject g)
             {
                 var ids = new List<string>();
-                var limit = 10;//**--
+                var limit = 10; //**--
                 foreach (Transform child in g.transform)
                 {
                     if (!child || !child.gameObject)
@@ -442,12 +446,15 @@ namespace Meryel.UnityCodeAssist.Editor
                     if (--limit <= 0)
                         break;
                 }
+
                 return ids.ToArray();
             }
 
             //**--limit/10
-            static string[] getComponents(GameObject g) =>
-              g.GetComponents<Component>().Where(c => c).Select(c => c.GetType().FullName).Take(10).ToArray();
+            static string[] getComponents(GameObject g)
+            {
+                return g.GetComponents<Component>().Where(c => c).Select(c => c.GetType().FullName).Take(10).ToArray();
+            }
             /*(string[] componentNames, Synchronizer.Model.ComponentData[] componentData) getComponents(GameObject g)
             {
                 var components = g.GetComponents<Component>();
@@ -458,7 +465,7 @@ namespace Meryel.UnityCodeAssist.Editor
                 {
                     var name = comp.name;
 
-                    
+
                 }
 
                 return (names, data.ToArray());
@@ -480,7 +487,7 @@ namespace Meryel.UnityCodeAssist.Editor
                     list.Add(parentModel);
             }
 
-            int limit = 10;
+            var limit = 10;
             foreach (Transform child in go.transform)
             {
                 if (!child || !child.gameObject)
@@ -499,13 +506,14 @@ namespace Meryel.UnityCodeAssist.Editor
             return list.ToArray();
         }
 
-        internal static Synchronizer.Model.ComponentData[]? ToSyncModelOfComponents(this GameObject go)
+        internal static ComponentData[]? ToSyncModelOfComponents(this GameObject go)
         {
             if (!go)
                 return null;
 
-            var limit = 10;//**--
-            return go.GetComponents<Component>().Where(c => c).Select(c => c.ToSyncModel(go)).Where(cd => cd != null).Take(limit).ToArray()!;
+            var limit = 10; //**--
+            return go.GetComponents<Component>().Where(c => c).Select(c => c.ToSyncModel(go)).Where(cd => cd != null)
+                .Take(limit).ToArray()!;
 
             /*
             var components = go.GetComponents<Component>();
@@ -530,62 +538,66 @@ namespace Meryel.UnityCodeAssist.Editor
             */
         }
 
-        internal static Synchronizer.Model.ComponentData? ToSyncModel(this Component component, GameObject go)
+        internal static ComponentData? ToSyncModel(this Component component, GameObject go)
         {
             if (!component || !go)
                 return null;
 
-            Type type = component.GetType();
+            var type = component.GetType();
             var list = new List<(string, string)>();
             ShowFieldInfo(type, component, list);
 
-            var data = new Synchronizer.Model.ComponentData()
+            var data = new ComponentData
             {
                 GameObjectId = GetId(go),
                 Component = component.GetType().FullName,
-                Type = Synchronizer.Model.ComponentData.DataType.Component,
-                Data = list.ToArray(),
+                Type = ComponentData.DataType.Component,
+                Data = list.ToArray()
             };
             return data;
         }
 
-        internal static Synchronizer.Model.ComponentData? ToSyncModel(this ScriptableObject so)
+        internal static ComponentData? ToSyncModel(this ScriptableObject so)
         {
             if (!so)
                 return null;
 
-            Type type = so.GetType();
+            var type = so.GetType();
             var list = new List<(string, string)>();
             ShowFieldInfo(type, so, list);
 
-            var data = new Synchronizer.Model.ComponentData()
+            var data = new ComponentData
             {
                 GameObjectId = GetId(so),
                 Component = so.GetType().FullName,
-                Type = Synchronizer.Model.ComponentData.DataType.ScriptableObject,
-                Data = list.ToArray(),
+                Type = ComponentData.DataType.ScriptableObject,
+                Data = list.ToArray()
             };
             return data;
         }
 
 
-        static bool IsTypeCompatible(Type type)
+        private static bool IsTypeCompatible(Type type)
         {
-            if (type == null || !(type.IsSubclassOf(typeof(MonoBehaviour)) || type.IsSubclassOf(typeof(ScriptableObject))))
+            if (type == null ||
+                !(type.IsSubclassOf(typeof(MonoBehaviour)) || type.IsSubclassOf(typeof(ScriptableObject))))
                 return false;
             return true;
         }
 
-        static void ShowFieldInfo(Type type)//, MonoImporter importer, List<string> names, List<Object> objects, ref bool didModify)
+        private static void
+            ShowFieldInfo(
+                Type type) //, MonoImporter importer, List<string> names, List<Object> objects, ref bool didModify)
         {
             // Only show default properties for types that support it (so far only MonoBehaviour derived types)
             if (!IsTypeCompatible(type))
                 return;
 
-            ShowFieldInfo(type.BaseType);//, importer, names, objects, ref didModify);
+            ShowFieldInfo(type.BaseType); //, importer, names, objects, ref didModify);
 
-            FieldInfo[] infos = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-            foreach (FieldInfo field in infos)
+            var infos = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic |
+                                       BindingFlags.DeclaredOnly);
+            foreach (var field in infos)
             {
                 if (!field.IsPublic)
                 {
@@ -610,16 +622,16 @@ namespace Meryel.UnityCodeAssist.Editor
 
                 if (field.FieldType.IsValueType && field.FieldType.IsPrimitive && !field.FieldType.IsEnum)
                 {
-
                 }
                 else if (field.FieldType == typeof(string))
                 {
-
                 }
             }
         }
 
-        static void ShowFieldInfo(Type type, UnityEngine.Object unityObjectInstance, List<(string, string)> fields)//, MonoImporter importer, List<string> names, List<Object> objects, ref bool didModify)
+        private static void
+            ShowFieldInfo(Type type, Object unityObjectInstance,
+                List<(string, string)> fields) //, MonoImporter importer, List<string> names, List<Object> objects, ref bool didModify)
         {
             // Only show default properties for types that support it (so far only MonoBehaviour derived types)
             if (!IsTypeCompatible(type))
@@ -628,10 +640,11 @@ namespace Meryel.UnityCodeAssist.Editor
             if (!unityObjectInstance)
                 return;
 
-            ShowFieldInfo(type.BaseType, unityObjectInstance, fields);//, importer, names, objects, ref didModify);
+            ShowFieldInfo(type.BaseType, unityObjectInstance, fields); //, importer, names, objects, ref didModify);
 
-            FieldInfo[] infos = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-            foreach (FieldInfo field in infos)
+            var infos = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic |
+                                       BindingFlags.DeclaredOnly);
+            foreach (var field in infos)
             {
                 if (!field.IsPublic)
                 {
@@ -669,7 +682,7 @@ namespace Meryel.UnityCodeAssist.Editor
                 if (field.FieldType.IsValueType && field.FieldType.IsPrimitive && !field.FieldType.IsEnum)
                 {
                     var val = field.GetValue(unityObjectInstance);
-                    fields.Add((field.Name, val.ToString()));//**--culture
+                    fields.Add((field.Name, val.ToString())); //**--culture
                 }
                 else if (field.FieldType == typeof(string))
                 {
@@ -678,6 +691,5 @@ namespace Meryel.UnityCodeAssist.Editor
                 }
             }
         }
-
     }
 }

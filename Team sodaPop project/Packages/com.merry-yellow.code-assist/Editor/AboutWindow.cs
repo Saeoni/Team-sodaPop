@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+using Meryel.Serilog;
 using UnityEditor;
-
-
+using UnityEngine;
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -17,18 +13,7 @@ namespace Meryel.UnityCodeAssist.Editor
 {
     public class AboutWindow : EditorWindow
     {
-        GUIStyle? styleLabel;
-
-        public static void Display()
-        {
-            // Get existing open window or if none, make a new one:
-            var window = GetWindow<AboutWindow>();
-            window.Show();
-
-            Serilog.Log.Debug("Displaying about window");
-
-            MQTTnetInitializer.Publisher?.SendAnalyticsEvent("Gui", "AboutWindow_Display");
-        }
+        private GUIStyle? styleLabel;
 
         private void OnEnable()
         {
@@ -43,33 +28,35 @@ namespace Meryel.UnityCodeAssist.Editor
             styleLabel ??= new GUIStyle(GUI.skin.label)
             {
                 wordWrap = true,
-                alignment = TextAnchor.MiddleLeft,
+                alignment = TextAnchor.MiddleLeft
             };
 
             EditorGUILayout.LabelField($"Version number: {Assister.Version}", styleLabel, GUILayout.ExpandWidth(true));
 
 #if MERYEL_UCA_LITE_VERSION
-            EditorGUILayout.LabelField($"License type: Lite", styleLabel, GUILayout.ExpandWidth(true));
+            EditorGUILayout.LabelField("License type: Lite", styleLabel, GUILayout.ExpandWidth(true));
 #else // MERYEL_UCA_LITE_VERSION
             EditorGUILayout.LabelField($"License type: Full", styleLabel, GUILayout.ExpandWidth(true));
 #endif // MERYEL_UCA_LITE_VERSION
 
-            if (GUILayout.Button("Update"))
-            {
-                Updater.CheckUpdateForced();
-            }
+            if (GUILayout.Button("Update")) Updater.CheckUpdateForced();
 
             if (GUILayout.Button("View changelog"))
-            {
                 Application.OpenURL("https://unitycodeassist.netlify.app/changelog");
-            }
 
             if (GUILayout.Button("View third party notices"))
-            {
                 Application.OpenURL("https://unitycodeassist.netlify.app/thirdpartynotices");
-            }
+        }
 
+        public static void Display()
+        {
+            // Get existing open window or if none, make a new one:
+            var window = GetWindow<AboutWindow>();
+            window.Show();
+
+            Log.Debug("Displaying about window");
+
+            MQTTnetInitializer.Publisher?.SendAnalyticsEvent("Gui", "AboutWindow_Display");
         }
     }
-
 }
