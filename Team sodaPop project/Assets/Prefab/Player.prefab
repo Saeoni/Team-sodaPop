@@ -98,7 +98,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 81d6d44f2623b054cba8b2f1849d8d3e, type: 3}
   - {fileID: 8300000, guid: 09f6ef232715d7849aca1254dec5560d, type: 3}
   - {fileID: 8300000, guid: f13fdd2b9cdeb6b41978e3e9376f0c4b, type: 3}
-  audStepsVol: 0.381
+  audStepsVol: 0.425
 --- !u!143 &7353325378666277497
 CharacterController:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 238
+  Priority: 229
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

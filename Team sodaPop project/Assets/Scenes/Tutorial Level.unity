@@ -5298,10 +5298,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3398085117756604531, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
-      propertyPath: Priority
-      value: 229
-      objectReference: {fileID: 0}
     - target: {fileID: 4373711193034448547, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07
@@ -5341,10 +5337,6 @@ PrefabInstance:
     - target: {fileID: 4373711193034448547, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664106028949461040, guid: d259bcc3f82f24c4d86238d13e7966b7, type: 3}
-      propertyPath: audStepsVol
-      value: 0.425
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
