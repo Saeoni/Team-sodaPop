@@ -14,6 +14,7 @@ public class optionsScreen : MonoBehaviour
     public Toggle fullscreenTog, vsyncTog;
     public List<ResItem> resoultions = new();
 
+    public Slider sensitivitySlider;
     private int selectedResoultion;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,6 +58,8 @@ public class optionsScreen : MonoBehaviour
         masterLabel.text = Mathf.RoundToInt(masterSlider.value + 80).ToString();
         musicLabel.text = Mathf.RoundToInt(musicSlider.value + 80).ToString();
         sfxLabel.text = Mathf.RoundToInt(sfxSlider.value + 80).ToString();
+        sensitivitySlider.value = PlayerPrefs.GetFloat("mouseSensitivity", 300f);
+        sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
     }
 
     // Update is called once per frame
@@ -120,6 +123,12 @@ public class optionsScreen : MonoBehaviour
 
         PlayerPrefs.SetFloat("SFXVol", sfxSlider.value);
     }
+
+     public void OnSensitivityChanged(float value)
+    {
+        //mouseSensitivity = value;
+        PlayerPrefs.SetFloat("mouseSensitivity", value);
+    }
 }
 
 [Serializable]
@@ -127,3 +136,4 @@ public class ResItem
 {
     public int horizontial, vertical;
 }
+

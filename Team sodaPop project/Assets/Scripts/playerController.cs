@@ -164,6 +164,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
             if (dmg != null) dmg.takeDamage(shootDamage);
         }
+
+        if (recoil)
+        {
+            recoil.applyRecoil = true;
+        }
     }
 
     private void reload()
