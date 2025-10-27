@@ -7,6 +7,7 @@ using TheWatcher;
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
+    Recoil recoil;
 
     [SerializeField] int HP;
     [SerializeField] int speed;
@@ -160,6 +161,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 dmg.takeDamage(shootDamage);
             }
         }
+
+        if (recoil)
+        {
+            recoil.applyRecoil = true;
+        }
     }
 
     void reload()
@@ -293,5 +299,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
 
         isPlayingSteps = false;
+    }
+
+    private void LateUpdate()
+    {
+        if (recoil)
+        {
+            recoil.applyRecoil = false;
+        }
     }
 }
