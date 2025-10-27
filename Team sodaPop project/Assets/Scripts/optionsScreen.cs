@@ -63,7 +63,7 @@ public class optionsScreen : MonoBehaviour
         masterLabel.text = Mathf.RoundToInt(masterSlider.value + 80).ToString();
         musicLabel.text = Mathf.RoundToInt(musicSlider.value + 80).ToString();
         sfxLabel.text = Mathf.RoundToInt(sfxSlider.value + 80).ToString();
-        sensitivitySlider.value = PlayerPrefs.GetFloat("mouseSensitivity", 120f);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("mouseSensitivity", 300f);
         sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
     }
 
