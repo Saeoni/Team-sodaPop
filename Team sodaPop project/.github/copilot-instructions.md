@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Enemy, Water, UI, Player, Gun
 - Active game object:
-  - Name: spawnVFX
+  - Name: RightHandHitBox
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

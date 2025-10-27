@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewReaperData", menuName = "Enemy/ReaperData")]
 public class ReaperData : EnemyData
@@ -15,7 +16,7 @@ public class ReaperData : EnemyData
     public float maxSpeed = 5f;
     public float maxStalkTime = 20f;
     public float animTransSpeed = 5f;
-    public AnimationCurve speedRampCurve;
+    public AnimationCurve speedRampCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
     [Header("Idle Randomization")]
     public float idleChangeInterval = 3f;
@@ -52,5 +53,15 @@ public class ReaperData : EnemyData
     public GameObject spawnVFX;
     public string spawnTrigger = "SpawnTrigger";
     public float spawnDelay = 2.5f;
+    
+    [Header("VFX Durations")]
+    public float spawnVFXDuration = 3f;
+    public float teleportVFXDuration = 3f;
+   
+    [Header("Teleport Proximity")]
+    public float maxTeleportDistance = 10f;
+    public float minTeleportDistance = 2f;
+    public float proximityTightenTime = 60f;
+    public AnimationCurve proximityCurve = AnimationCurve.Linear(0, 1, 1, 0); // 1 = far, 0 = close
 }
 

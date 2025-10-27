@@ -9,10 +9,49 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/Meshes/Demon.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/Meshes/Demon.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportFX.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportFX.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportInFX.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportInFX.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/EnemyData/ReaperData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/EnemyData/ReaperData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Cyber_Soldier_Anim/QAdiscussion.mp4.crdownload.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Additive.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Additive.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Arrow1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Arrow1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crack.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crack.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CraterFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CraterFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crystal1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crystal1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CrystalFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CrystalFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/DistortionPoint.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/DistortionPoint.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Electro.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Electro.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flare.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flare.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Floor3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Floor3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/GlowFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/GlowFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Heart.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Heart.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Mask1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Mask1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Point.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Point.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/ProjectileFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/ProjectileFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Slash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Slash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Smoke26.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Smoke26.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/SmokeFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/SmokeFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Snowflake.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Snowflake.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Star.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Star.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Stone.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Stone.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Trail67.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Trail67.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +202,8 @@
       <workItem from="1761192004398" duration="1464000" />
       <workItem from="1761277924828" duration="13042000" />
       <workItem from="1761357747882" duration="10084000" />
-      <workItem from="1761496882336" duration="11853000" />
+      <workItem from="1761496882336" duration="12067000" />
+      <workItem from="1761524516521" duration="6900000" />
     </task>
     <task id="LOCAL-00001" summary="Code updates">
       <option name="closed" value="true" />

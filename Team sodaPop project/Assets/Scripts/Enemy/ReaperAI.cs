@@ -103,37 +103,52 @@ public class ReaperAI : EnemyAI
     private void TriggerSpawn()
     {
         if (_hasSpawned) return;
-    
-       
+
         var data = (ReaperData)enemyData;
-        StartCoroutine(DelayedActivation(data.spawnDelay));
-        if (data.spawnVFX)
-            PlayVFX(data.spawnVFX, transform.position, 3f);
-        
 
         // Trigger spawn animation
         if (!string.IsNullOrEmpty(data.spawnTrigger))
             animator.SetTrigger(data.spawnTrigger);
 
         animator.SetBool(HasSpawned, true);
-        
+
+        // Delay activation until animation finishes
+        StartCoroutine(DelayedActivation(data.spawnDelay));
     }
+
+    public void TriggerSpawnVFX()
+    {
+        var data = (ReaperData)enemyData;
+
+        if (data.spawnVFX == null) return;
+
+        var vfx = Instantiate(data.spawnVFX, transform.position, Quaternion.identity);
+        vfx.transform.parent = null; // Detach from Reaper hierarchy
+
+        StartCoroutine(CleanupVFX(vfx, data.spawnVFXDuration));
+        Debug.Log("Spawn VFX triggered via animation event.");
+    }
+
 
     private IEnumerator DelayedActivation(float delay)
     {
         yield return new WaitForSeconds(delay);
 
         agent.enabled = true;
+        _hasSpawned = true;
         _isActive = true;
-        Debug.Log("Reaper Is Active");
+        _isAggressive = false; // Not aggressive yet — just ambient stalking
+        Debug.Log("Reaper is now active and stalking.");
     }
 
     private void HandleMovement()
     {
+        if (!_hasSpawned || !agent.isOnNavMesh) return;
+
         var data = (ReaperData)enemyData;
         _stalkTimer += Time.deltaTime;
 
-        var t = Mathf.Clamp01(_stalkTimer / data.maxStalkTime);
+        float t = Mathf.Clamp01(_stalkTimer / data.maxStalkTime);
         agent.speed = Mathf.Lerp(data.minSpeed, data.maxSpeed, data.speedRampCurve.Evaluate(t));
 
         float distanceToPlayer = Vector3.Distance(transform.position, PlayerTransform.position);
@@ -144,30 +159,21 @@ public class ReaperAI : EnemyAI
             return;
         }
 
-        if (canHearPlayer)
+        if (_isAggressive && canHearPlayer)
         {
             TeleportIn(false);
             StartCoroutine(DelayedKill());
             return;
         }
 
-        if (!agent.isOnNavMesh) return;
-        
-        else if (_isAggressive)
-        {
-            agent.isStopped = false;
-            agent.SetDestination(PlayerTransform.position);
-            animator.SetBool(IsSpasming, false);
-        }
-        else
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-            animator.SetBool(IsSpasming, false);
-        }
+        agent.isStopped = false;
+        agent.SetDestination(PlayerTransform.position);
+        animator.SetBool(IsSpasming, false);
 
-        transform.LookAt(PlayerTransform);
+        if (_isAggressive)
+            transform.LookAt(PlayerTransform);
     }
+    
 
     private void HandleLocomotion()
     {
@@ -240,21 +246,20 @@ public class ReaperAI : EnemyAI
 
     private void TeleportOut()
     {
-        var data = (ReaperData)enemyData;
-        if (data.stalkTeleportOutVFX)
-            if (data.stalkTeleportOutVFX)
-                PlayVFX(data.stalkTeleportOutVFX, transform.position, 3f);
-        model.enabled = false;
+    
+        model.Equals(false);
         agent.enabled = false;
     }
 
     private void TeleportIn(bool forKill)
     {
         var data = (ReaperData)enemyData;
-
         if (!_isAggressive && !forKill) return;
 
-        Vector3 offset = forKill ? PlayerTransform.forward * 1.5f : Random.insideUnitSphere * 8f;
+        float t = Mathf.Clamp01(_stalkTimer / data.proximityTightenTime);
+        float radius = Mathf.Lerp(data.maxTeleportDistance, data.minTeleportDistance, data.proximityCurve.Evaluate(t));
+
+        Vector3 offset = forKill ? PlayerTransform.forward * 1.5f : Random.insideUnitSphere * radius;
         offset.y = 0f;
         Vector3 targetPos = PlayerTransform.position + offset;
 
@@ -262,18 +267,31 @@ public class ReaperAI : EnemyAI
         bool validNavPos = NavMesh.SamplePosition(targetPos, out hit, 2f, NavMesh.AllAreas);
         targetPos = validNavPos ? hit.position : transform.position;
 
+        agent.enabled = true;
+        agent.Warp(targetPos);
         transform.position = targetPos;
-        if (agent.isOnNavMesh) agent.Warp(targetPos);
 
-        transform.LookAt(PlayerTransform);
-
-        if (data.teleportVFX)
-            PlayVFX(data.teleportVFX, transform.position, 3f);
+        if (_isAggressive)
+            transform.LookAt(PlayerTransform);
 
         animator.SetTrigger(data.teleportTrigger);
-        model.enabled = true;
-        if (agent.isOnNavMesh) agent.enabled = true;
+        gameObject.SetActive(true);
+        animator.enabled = true;
     }
+    
+    public void TriggerTeleportVFX()
+    {
+        var data = (ReaperData)enemyData;
+
+        if (data.teleportVFX == null) return;
+
+        var vfx = Instantiate(data.teleportVFX, transform.position, Quaternion.identity);
+        vfx.transform.parent = null; // Detach from Reaper
+
+        StartCoroutine(CleanupVFX(vfx, data.teleportVFXDuration));
+        Debug.Log("Teleport VFX triggered via animation event.");
+    }
+
 
     private void TriggerKill()
     {
@@ -319,10 +337,25 @@ public class ReaperAI : EnemyAI
     private void PlayVFX(GameObject prefab, Vector3 position, float duration = 3f)
     {
         if (prefab == null) return;
+
         var vfx = Instantiate(prefab, position, Quaternion.identity);
-        Destroy(vfx, 3f);
+
+        vfx.transform.parent = null; // ✅ Detach from Reaper or any hierarchy
+        StartCoroutine(CleanupVFX(vfx, duration));
     }
 
+    private IEnumerator CleanupVFX(GameObject fx, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        var psList = fx.GetComponentsInChildren<ParticleSystem>();
+        foreach (var ps in psList)
+        {
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        Destroy(fx);
+    }
     
     private void SpawnPunchHitFX(Vector3 spawnPosition, bool isDualHand)
     {
@@ -352,32 +385,32 @@ public class ReaperAI : EnemyAI
         SpawnPunchHitFX(rightHandHitSpawn.position, true);
     }
     
-  private void OnDrawGizmosSelected()
-  {
-    var data = (ReaperData)enemyData;
-    if (data == null || headPos == null) return;
+    private void OnDrawGizmosSelected()
+    {
+        var data = (ReaperData)enemyData;
+        if (data == null || headPos == null) return;
 
-    // 👂 Hearing radius
-    Gizmos.color = Color.green;
-    Gizmos.DrawWireSphere(transform.position, data.hearingRadius);
+        // 👂 Hearing radius
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, data.hearingRadius);
 
-    // 👀 Vision cone
-    Gizmos.color = Color.yellow;
-    Vector3 forward = headPos.forward;
-    float halfFOV = enemyData.FOV / 2f;
+        // 👀 Vision cone
+        Gizmos.color = Color.yellow;
+        Vector3 forward = headPos.forward;
+        float halfFOV = enemyData.FOV / 2f;
 
-    Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
-    Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
 
-    Vector3 leftRayDirection = leftRayRotation * forward;
-    Vector3 rightRayDirection = rightRayRotation * forward;
+        Vector3 leftRayDirection = leftRayRotation * forward;
+        Vector3 rightRayDirection = rightRayRotation * forward;
 
-    Gizmos.DrawRay(headPos.position, leftRayDirection * enemyData.detectionRadius);
-    Gizmos.DrawRay(headPos.position, rightRayDirection * enemyData.detectionRadius);
+        Gizmos.DrawRay(headPos.position, leftRayDirection * enemyData.detectionRadius);
+        Gizmos.DrawRay(headPos.position, rightRayDirection * enemyData.detectionRadius);
 
-    // 🔴 Forward direction
-    Gizmos.color = Color.red;
-    Gizmos.DrawRay(headPos.position, forward * enemyData.detectionRadius);
-  }
+        // 🔴 Forward direction
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(headPos.position, forward * enemyData.detectionRadius);
+    }
 
 }
