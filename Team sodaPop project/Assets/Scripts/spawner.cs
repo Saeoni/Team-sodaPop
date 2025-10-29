@@ -2,49 +2,41 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-    [Header("Spawn settings")]
-    [SerializeField] GameObject objectToSpawn;
-    [SerializeField] int numToSpawn;
-    [SerializeField] int spawnRate;
-    [SerializeField] Transform[] spawnPos;
+    [Header("Spawn settings")] [SerializeField]
+    private GameObject objectToSpawn;
 
-    float spawnTimer;
-    int spawnCount;
-    bool startSpawn;
+    [SerializeField] private int numToSpawn;
+    [SerializeField] private int spawnRate;
+    [SerializeField] private Transform[] spawnPos;
+    private int spawnCount;
 
-    void Start()
+    private float spawnTimer;
+    private bool startSpawn;
+
+    private void Start()
     {
-        
     }
 
-    void Update()
+    private void Update()
     {
         if (startSpawn)
         {
             spawnTimer += Time.deltaTime;
-            if (spawnCount < numToSpawn && spawnTimer >= spawnRate)
-            {
-                spawn();
-            }
-          
+            if (spawnCount < numToSpawn && spawnTimer >= spawnRate) spawn();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            startSpawn = true;
-        }
+        if (other.CompareTag("Player")) startSpawn = true;
     }
 
-    void spawn()
+    private void spawn()
     {
-        int arrayPos = Random.Range(0, spawnPos.Length);
+        var arrayPos = Random.Range(0, spawnPos.Length);
 
         Instantiate(objectToSpawn, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
         spawnCount++;
         spawnTimer = 0;
-        
     }
 }

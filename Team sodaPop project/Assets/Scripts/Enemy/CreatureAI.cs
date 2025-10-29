@@ -1,7 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-using Random = UnityEngine.Random;
 
 public class CreatureAI : EnemyAI
 {
@@ -67,11 +66,11 @@ public class CreatureAI : EnemyAI
         }
 
         // Decide behaviour based on trigger + line of sight
-        if (!PlayerInTrigger || CanSeePlayer)
+        if (!playerInTrigger || canSeePlayer)
         {
-            if (PlayerInTrigger)
+            if (playerInTrigger)
             {
-                if (!PlayerInTrigger || !CanSeePlayer) return;
+                if (!playerInTrigger || !canSeePlayer) return;
                 HandleRoamOrPatrol(data, chaseStyle: 3); // Crouch chase
                 ChooseAttackStyle(data);
             }
@@ -162,7 +161,7 @@ public class CreatureAI : EnemyAI
         transform.LookAt(PlayerTransform);
 
         // Reset attack session to prevent double-hits
-        EnemyHitbox.BeginNewAttack();
+        //EnemyHitbox.BeginNewAttack();
 
         // Trigger punch animation
         animator.SetTrigger(data.punchTrigger);
@@ -178,7 +177,7 @@ public class CreatureAI : EnemyAI
         transform.LookAt(PlayerTransform);
 
         // Reset attack session
-        EnemyHitbox.BeginNewAttack();
+        //EnemyHitbox.BeginNewAttack();
 
         // Trigger bite animation
         animator.SetTrigger(data.biteTrigger);
@@ -359,6 +358,6 @@ public class CreatureAI : EnemyAI
     public void DisableBiteHitbox() => biteHitBox.SetActive(false);
     public void KillPlayer()
     {
-        Gamemanager.Instance.YouLose();
+        gamemanager.instance.youLose();
     }
 }

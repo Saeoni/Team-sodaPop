@@ -5,362 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d146ef5-2f37-46ed-abc9-f5905eb75c3b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team sodaPop project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Demon Horror Creature with Weapon.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Demon Horror Creature with Weapon.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/DemoScenePlaneMat.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/DemoScenePlaneMat.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/plane_DefaultMaterial_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/plane_DefaultMaterial_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/plane_DefaultMaterial_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/DemoSceneAssets/plane_DefaultMaterial_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials/Creep1_mat.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials/Creep1_mat.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials/Creep2_mat.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials/Creep2_mat.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials/Creep3_mat.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Materials/Creep3_mat.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Meshes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Meshes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex/Creep_Metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex/Creep_Metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex/occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex/occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex/scatter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex/scatter.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex2/scatter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex2/scatter.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex3/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex3/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex3/scatter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Creep Horror Creature/Textures/tex3/scatter.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials/Accesories.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials/Accesories.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials/Body.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials/Body.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials/Head.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Materials/Head.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Mesh.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Mesh/Priest.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Mesh/Priest.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Accesories_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Accesories_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Body_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Body_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Head_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Accesories_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Accesories_AlbedoTransparency.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Accesories_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Accesories_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Body_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Body_AlbedoTransparency.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Body_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Body_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Body_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Body_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Head_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Head_AlbedoTransparency.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Head_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Head_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Head_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Head_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Upper_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Priest_Upper_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Upper_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Cursed Priest/Textures/Upper_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_AlbedoTransparency.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_AlbedoTransparency.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_MetallicSmoothness.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_MetallicSmoothness.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_Normal.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials/plane_DefaultMaterial_Normal.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Meshes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Meshes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Meshes/Demon_apose_clean.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Meshes/Demon_apose_clean.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Meshes/Teleport.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Meshes/Teleport.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_BaseColor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_BaseColor.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_Emissive.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_Emissive.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_Metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_Metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_Normal_OpenGL.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex/Ball_Normal_OpenGL.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon1_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon1_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_damaged_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_damaged_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_BaseColor.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex/Materials/Demon1_BaseColor.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Hits Effects FREE/Prefab/Lightning Hit Red.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Hits Effects FREE/Prefab/Lightning Hit Red.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Demo scene.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Demo scene.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Demo scene/Lightmap-0_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Demo scene/Lightmap-0_comp_dir.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Demo scene/Lightmap-0_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Demo scene/Lightmap-0_comp_light.exr.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Materials/VFXatlas.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Crystal1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Crystal1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Cylinder.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Cylinder.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Slash.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Slash.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Torus1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Models/Torus1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/AoE effects.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/AoE effects.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Character auras.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Character auras.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Environment.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Environment.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Hits and explosions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Hits and explosions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Magic circles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Magic circles.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Magic shields.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Magic shields.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Portals.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Portals.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Slash effects.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Slash effects.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Smoke effects.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Smoke effects.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Sparks.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Prefabs/Sparks.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Settings.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Settings.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Circle2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Circle2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab_Height.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab_Height.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Concrete slab_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Crystal1_Base.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Crystal1_Base.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Crystal1_MS.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Crystal1_MS.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Crystal1_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/Crystal1_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/FlashFree1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/FlashFree1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/FlashFree2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/FlashFree2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/GlowFree1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/GlowFree1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/MagicCircle2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Magic effects pack/Textures/MagicCircle2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Monster Skin1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Monster Skin1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Monster Skin3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Monster Skin3.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Sword Skin1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Sword Skin1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Sword Skin2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Mesh/Sword Skin2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Monster.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Monster.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Prefab/Monster Skin3.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Prefab/Monster Skin3.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Prefab/Sword Skin1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Prefab/Sword Skin1.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture/Skin1.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture/Skin1.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture/Skin2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture/Skin2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture/Skin3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Assets_Tobias/Monster/Texture/Skin3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Human Animations.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Human Animations.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Human Animations/Animations/Female/Social/Conversation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Human Animations/Animations/Female/Social/Conversation.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/DemoSceneAssets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/DemoSceneAssets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Meshes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Meshes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures/tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures/tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures/tex2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures/tex2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures/tex3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Creep Horror Creature/Textures/tex3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Mesh.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Cursed Priest/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/DemoSceneAssets/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Meshes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Meshes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Ball_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_damaged_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_damaged_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Demon Horror Creature with Weapon/Textures/Demon_tex/Demon_default_tex.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Demo scene.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Demo scene.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Models.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/AoE effects.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/AoE effects.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Character auras.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Character auras.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Environment.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Environment.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Hits and explosions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Hits and explosions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Magic circles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Magic circles.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Magic shields.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Magic shields.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Portals.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Portals.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Slash effects.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Slash effects.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Smoke effects.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Smoke effects.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Sparks.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Prefabs/Sparks.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Settings.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Settings.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Magic effects pack/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Mesh.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Texture.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Texture.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Texture/Skin1.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Texture/Skin1.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Texture/Skin3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Assets_Tobias/Monster/Texture/Skin3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/CannonBullet_mat.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/CannonBullet_mat.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Night SkyBox.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Night SkyBox.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wood color.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Wood color.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/New Scene Teleport.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/New Scene Teleport.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Player Anim.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Player Anim.controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EdwinItemSandboxTesting/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/EdwinItemSandboxTesting/NavMesh-NavMesh Surface.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Five.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Five.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Two/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Two/NavMesh-NavMesh Surface.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias's Scene/NavMesh-NavMesh Surface.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tobias's Scene/NavMesh-NavMesh Surface.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level/LightingData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level/LightingData.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tutorial Level/ReflectionProbe-0.exr.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Behavioural.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/DemoSceneAssets/DemoAnimCont.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/Meshes/Demon.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Animations/Demon Horror Creature with Weapon/Meshes/Demon.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportFX.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportFX.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportInFX.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemy Prefabs/TeleportInFX.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/EnemyData/ReaperData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/EnemyData/ReaperData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tobias_EnemyTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Creature 1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Creature 1.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Creature 2.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Creature 2.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose Menu Image.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Lose Menu Image.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/New Material.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/New Material.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Pause Menu Image.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Pause Menu Image.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/RippleGlow_Ring.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/RippleGlow_Ring.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/The Watchers Keep Image.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/The Watchers Keep Image.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Materials/Firstaid.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Materials/Firstaid.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Materials/Firstaid_2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Materials/Firstaid_2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Models/Firstaid.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Models/Firstaid.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Prefabs/Firstaid.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Prefabs/Firstaid.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Prefabs/Firstaid_2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Prefabs/Firstaid_2.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Scenes/Demo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Scenes/Demo.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_2_Color.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_2_Color.tga.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_AO.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_AO.tga.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_Color.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_Color.tga.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_Metallic_Smoothness.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_Metallic_Smoothness.tga.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_Normal.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/First aid jar/Textures/firstaid_Normal.tga.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_GL.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_NM.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/FlashLight_NM.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/LP_FlashLight_AL.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Misc/Flashlight.fbm/LP_FlashLight_AL.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/FlashLight_DFSA.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/FlashLight_DFSA.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/FlashLight_Opac.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/FlashLight_Opac.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/Flashlight_Cookie2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/Flashlight_Cookie2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/Flashlight_Cookie3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Flashlight/Textures/Flashlight_Cookie3.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Documentation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Documentation.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Documentation/Readme IMPORTANT.pdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Documentation/Readme IMPORTANT.pdf.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Documentation/Readme IMPORTANT.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Documentation/Readme IMPORTANT.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Basic.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Basic.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 1.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 1.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 3.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 3.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 5.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave 5.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Shockwave.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Spark 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Spark 2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Spark.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Basic/Spark.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow/Flash.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow/Flash.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow/Impact 1.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow/Impact 1.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow/Impact.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/1.2/Shadow/Impact.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Crit 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Crit 2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Flash.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Flash.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Hit.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Hit.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Shockwave 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Shockwave 2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Shockwave.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Basic Hit/Basic Shockwave.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Flash B.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Flash B.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Flash.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Flash.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Hit B.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Hit B.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Hit.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Hit.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Shockwave 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Shockwave 2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Shockwave.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Shockwave.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Smoke.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Smoke.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Spark.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Fire Hit/Fire Spark.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Floor.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Floor.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Texture.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Texture.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Texture/Albedo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Texture/Albedo.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Texture/Height.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Floor/Texture/Height.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Flash.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Flash.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Hit.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Hit.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Shockwave.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Shockwave.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Smoke.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Smoke.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Spark.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Ice Hit/Ice Spark.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue).meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue).meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning HitB.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning HitB.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning ShockwaveB.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning ShockwaveB.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning SparkB.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning SparkB.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning TrailB.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Lightning Hit (Blue)/Lightning TrailB.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Flash.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Flash.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Hit.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Hit.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Shockwave.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Shockwave.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Spark.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Love Hit/Love Spark.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Flash.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Flash.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Hit.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Hit.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Shockwave.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Shockwave.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Simbol 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Simbol 2.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Simbol.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Materials/Magic Hit/Magic Simbol.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/1.2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/1.2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/1.2/Basic Hit 8  (NEW).prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/1.2/Basic Hit 8  (NEW).prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/1.2/Shadow Hit (NEW).prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/1.2/Shadow Hit (NEW).prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Basic Hit .prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Basic Hit .prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Basic Hit 2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Basic Hit 2.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Basic Hit 7.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Basic Hit 7.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Fire Hit .prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Fire Hit .prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Ice Hit .prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Ice Hit .prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Lightning Hit Blue.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Lightning Hit Blue.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Love Hit .prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Love Hit .prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Magic Hit 2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Prefab/Magic Hit 2.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/HIT EFFECTS FREE Scene Demo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/HIT EFFECTS FREE Scene Demo.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/SampleScene_Profiles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/SampleScene_Profiles.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/SampleScene_Profiles/PP Volumen Profile.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/SampleScene_Profiles/PP Volumen Profile.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/Script.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/Script.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/Script/Prefab Manager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Scene Demo/Script/Prefab Manager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Crit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Crit.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Crit_.tiff.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Crit_.tiff.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Crit_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Crit_2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Fire_.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Fire_.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Ice Hit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Ice Hit.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Love.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Love.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Love1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Love1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Particle 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Particle 2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Particle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Particle.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Point.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Point.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Shockwave 1.tiff.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Shockwave 1.tiff.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Shockwave 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Shockwave 2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Shockwave.tiff.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Shockwave.tiff.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Smoke.tiff.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Smoke.tiff.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Sparks.tiff.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1-Sparks.tiff.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Impact 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Impact 2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Impact.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Impact.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Point.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Point.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Shockwave.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Shockwave.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 3.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 6.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark 6.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Basic/Spark.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow/Impact (3).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow/Impact (3).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow/Impact (4).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow/Impact (4).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow/Impact (5).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Hits Effects FREE/Textures/1.2/Shadow/Impact (5).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/ClovisHair/MP_ClovisHair_base.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/ClovisHair/MP_ClovisHair_base.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_base.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_base.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_heightmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_heightmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_normals.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/MP_Clovis/Materials/MP_Clovis_normals.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Demo/Ground.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Demo/Ground.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Barrels_normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Boxes_AO.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Boxes_AO.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Boxes_normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Maps/Medfan_Boxes_normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Materials/Medfan_Barrels.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Materials/Medfan_Barrels.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Materials/Medfan_Boxes.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Materials/Medfan_Boxes.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Models/Barrel_01.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Models/Barrel_01.FBX.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Models/Barrel_02.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Models/Barrel_02.FBX.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Models/Barrel_Col.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Medfan_BarrelsAndBoxes/Models/Barrel_Col.FBX.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Builtin/Materials/Metal Body.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Builtin/Materials/Metal Body.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Builtin/Mesh/Gun.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Builtin/Mesh/Gun.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Metal_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Metal_AlbedoTransparency.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Metal_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Metal_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Metal_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Metal_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Wooden_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Old Deringer Gun/Textures/Wooden_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/DemoScene/Bottles_mat.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/DemoScene/Bottles_mat.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/DemoScene/MagicPotion_Emissive.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/DemoScene/MagicPotion_Emissive.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/DemoScene/MagicPotion_Roughness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/DemoScene/MagicPotion_Roughness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Models/MagicPotionUnity 1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Models/MagicPotionUnity 1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Textures/MagicPotion_Emissive2K.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Textures/MagicPotion_Emissive2K.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Textures/MagicPotion_Emissive4K.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Textures/MagicPotion_Emissive4K.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Textures/MagicPotion_Roughness2K.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/StylizedMagicPotion/Textures/MagicPotion_Roughness2K.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Models/FixedScaleCharacters/Characters.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Models/FixedScaleCharacters/Characters.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Models/SM_Buildings_FloorChamfered_1x1_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Models/SM_Buildings_FloorChamfered_1x1_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Models/SM_Buildings_FloorChamfered_1x1_01P.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/SyntyStudios/PolygonPrototype/Models/SM_Buildings_FloorChamfered_1x1_01P.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Model/VintageRifle.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Model/VintageRifle.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/bullet/ammo_44_40_DefaultMaterial_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/bullet/ammo_44_40_DefaultMaterial_AlbedoTransparency.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/bullet/ammo_44_40_DefaultMaterial_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/bullet/ammo_44_40_DefaultMaterial_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/winchester_DefaultMaterial_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/winchester_DefaultMaterial_AlbedoTransparency.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/winchester_DefaultMaterial_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/winchester_DefaultMaterial_MetallicSmoothness.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/winchester_DefaultMaterial_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/VintageRifle/Texture/winchester_DefaultMaterial_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Animations/Cyber_Soldier_Anim/QAdiscussion.mp4.crdownload.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Additive.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Additive.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Arrow1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Arrow1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Circle2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crack.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crack.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CraterFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CraterFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crystal1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Crystal1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CrystalFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/CrystalFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/DistortionPoint.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/DistortionPoint.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Electro.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Electro.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flare.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flare.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Flash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/FlashFree3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Floor3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Floor3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/GlowFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/GlowFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Gradient2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Heart.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Heart.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/MagicCircle2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Mask1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Mask1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Point.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Point.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/ProjectileFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/ProjectileFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Slash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Slash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Smoke26.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Smoke26.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/SmokeFree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/SmokeFree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Snowflake.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Snowflake.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Star.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Star.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Stone.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Stone.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/TechCircle2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Trail67.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Store DL/Magic effects pack/Materials/Trail67.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -369,6 +60,13 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -387,15 +85,16 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8081513dc2364383b8289d30d2169b2e9f8c00/43/aae00613/IExternalCodeEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RippleDistortionShader.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/CreatureData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ReaperData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/gameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/gameManager.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/playerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@1e1527b3a17b/Shaders/Particles/ParticlesUnlit.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Packages/tsconfig.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -410,23 +109,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.44973546",
-    "git-widget-placeholder": "Fix-Branch",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.44973546&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Tobias's__Branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" />
@@ -499,7 +198,12 @@
       <workItem from="1761000850231" duration="1051000" />
       <workItem from="1761002504995" duration="5453000" />
       <workItem from="1761008514232" duration="598000" />
-      <workItem from="1761107288356" duration="2802000" />
+      <workItem from="1761185056005" duration="581000" />
+      <workItem from="1761192004398" duration="1464000" />
+      <workItem from="1761277924828" duration="13042000" />
+      <workItem from="1761357747882" duration="10084000" />
+      <workItem from="1761496882336" duration="12067000" />
+      <workItem from="1761524516521" duration="6900000" />
     </task>
     <task id="LOCAL-00001" summary="Code updates">
       <option name="closed" value="true" />
@@ -523,44 +227,6 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="User">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="*" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="user">
-                    <value>
-                      <list>
-                        <option value="*" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Code updates" />

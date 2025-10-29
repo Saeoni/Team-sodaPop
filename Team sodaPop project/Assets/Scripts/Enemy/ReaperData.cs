@@ -1,44 +1,67 @@
-using UnityEngine; 
+using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewReaperData", menuName = "Enemy/ReaperData")]
 public class ReaperData : EnemyData
 {
-    [Header("Spasm Settings")]
+
+    [Header("Aggression")]
+    public float aggressionStalkTime = 10f;
+    public string aggressiveTrigger = "Aggressive";
     public string spasmTrigger = "Spasm";
-    public float spasmCooldown = 5f;
-    public float spasmDelay = 0.4f;
-    public Vector2 spasmIntensityRange = new Vector2(0, 2);
+    public float calmDownDelay = 5f;
 
-    [Header("Kill Logic")]
-    public float maxStalkTime = 10f;
-    public float minSpeed = 2f;
-    public float maxSpeed = 6f;
-    public AnimationCurve speedRampCurve;
-    public float killDistance = 2f;
-    public string killTrigger = "Kill";
+    [Header("Locomotion")]
+    public float minSpeed = 1f;
+    public float maxSpeed = 5f;
+    public float maxStalkTime = 20f;
+    public float animTransSpeed = 5f;
+    public AnimationCurve speedRampCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-    [Header("Damage Response")]
-    public string damageTrigger = "GetDamage";
+    [Header("Idle Randomization")]
+    public float idleChangeInterval = 3f;
+    public Vector3 idleWeights = new Vector3(1f, 1f, 1f);
 
-    [Header("Stalk Teleport Settings")] 
-    public GameObject stalkTeleportOutVFX;
+    [Header("Teleportation")]
     public GameObject teleportVFX;
-    public float stalkTeleportCooldown;
-    public float stalkTeleportChance;
-    public float stalkTeleportDelay;
+    public string teleportTrigger = "Teleport";
+    public float killDistance = 2f;
 
-    [Header("Kill VFX")] 
+    [Header("Stalk Teleport")]
+    public GameObject stalkTeleportOutVFX;
+   // public GameObject preTeleportCueVFX;
+    public float stalkTeleportCooldown = 10f;
+    public float stalkTeleportPreDelay = 1.5f;
+    public float stalkTeleportDelay = 2f;
+    [Range(0f, 1f)] public float stalkTeleportChance = 0.3f;
+
+    [Header("Random Teleport")]
+    [Range(0f, 1f)] public float randomTeleportChance = 0.05f;
+    public float randomTeleportInterval = 3f;
+
+    [Header("Spasm")]
+    public float spasmCooldown = 5f;
+    public float spasmDelay = 1f;
+    public Vector2 spasmIntensityRange = new Vector2(1f, 3f);
+
+    [Header("Combat FX")]
     public GameObject redSlashOfDeath;
     public GameObject dualPunchHitFX;
+    public string damageTrigger = "Damage";
+
+    [Header("Spawn")]
+    public GameObject spawnVFX;
+    public string spawnTrigger = "SpawnTrigger";
+    public float spawnDelay = 2.5f;
     
-    [Header("Animation")]
-    public float animTransSpeed = 5f;
-    public string teleportTrigger = "Teleport";
-    
-    [Header("Aggression Settings")] public float aggressionNoiseThreshold = 0.8f;
-    public float aggressionStalkTime = 6f;
-    public string aggressiveTrigger = "Spasm";
+    [Header("VFX Durations")]
+    public float spawnVFXDuration = 3f;
+    public float teleportVFXDuration = 3f;
+   
+    [Header("Teleport Proximity")]
+    public float maxTeleportDistance = 10f;
+    public float minTeleportDistance = 2f;
+    public float proximityTightenTime = 60f;
+    public AnimationCurve proximityCurve = AnimationCurve.Linear(0, 1, 1, 0); // 1 = far, 0 = close
 }
-
-
 

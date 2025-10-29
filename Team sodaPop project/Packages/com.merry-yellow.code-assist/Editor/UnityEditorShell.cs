@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
+using Meryel.Serilog;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor;
-
-
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -19,6 +20,15 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
 {
     public class UnityEditorShell
     {
+        // we are using unity actions for posterity in case we want to inspect those in-editor someday
+        private static readonly List<UnityAction> ActionsQueue;
+
+        static UnityEditorShell()
+        {
+            ActionsQueue = new List<UnityAction>();
+            EditorApplication.update += OnUpdate;
+        }
+
         public static string DefaultShellApp
         {
             get
@@ -35,21 +45,11 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
             }
         }
 
-        // we are using unity actions for posterity in case we want to inspect those in-editor someday
-        private static readonly List<UnityAction> ActionsQueue;
-
-        static UnityEditorShell()
-        {
-            ActionsQueue = new List<UnityAction>();
-            EditorApplication.update += OnUpdate;
-        }
-
         // while running the Unity Editor update loop, we'll unqueue any tasks if such exist.
         // actions can be 
         private static void OnUpdate()
         {
             while (ActionsQueue.Count > 0)
-            {
                 lock (ActionsQueue)
                 {
                     var action = ActionsQueue[0];
@@ -59,14 +59,13 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
                     }
                     catch (Exception e)
                     {
-                        Serilog.Log.Error(e, "error invoking shell action");
+                        Log.Error(e, "error invoking shell action");
                     }
                     finally
                     {
                         ActionsQueue.RemoveAt(0);
                     }
                 }
-            }
         }
 
         private static void Enqueue(UnityAction action)
@@ -80,7 +79,7 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
         public static ShellCommandEditorToken Execute(string cmd)
         {
             var shellCommandEditorToken = new ShellCommandEditorToken();
-            System.Threading.ThreadPool.QueueUserWorkItem(delegate (object state)
+            ThreadPool.QueueUserWorkItem(delegate
             {
                 Process? process = null;
 
@@ -89,10 +88,7 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
                     var processStartInfo = CreateProcessStartInfo(cmd);
 
                     // in case the command was already killed from the editor when the thread was queued
-                    if (shellCommandEditorToken.IsKillRequested)
-                    {
-                        return;
-                    }
+                    if (shellCommandEditorToken.IsKillRequested) return;
 
                     process = Process.Start(processStartInfo);
                     SetupProcessCallbacks(process, processStartInfo, shellCommandEditorToken);
@@ -100,7 +96,7 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
                 }
                 catch (Exception e)
                 {
-                    Serilog.Log.Error(e, "error starting shell");
+                    Log.Error(e, "error starting shell");
                     process?.Close();
 
                     Enqueue(() =>
@@ -122,7 +118,7 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
             processStartInfo.Arguments = "/c";
 #endif
 
-            processStartInfo.Arguments += (" \"" + cmd + " \"");
+            processStartInfo.Arguments += " \"" + cmd + " \"";
             processStartInfo.CreateNoWindow = true;
             processStartInfo.ErrorDialog = true;
             processStartInfo.UseShellExecute = false;
@@ -135,22 +131,20 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
             return processStartInfo;
         }
 
-        private static void SetupProcessCallbacks(Process process, ProcessStartInfo processStartInfo, ShellCommandEditorToken shellCommandEditorToken)
+        private static void SetupProcessCallbacks(Process process, ProcessStartInfo processStartInfo,
+            ShellCommandEditorToken shellCommandEditorToken)
         {
             shellCommandEditorToken.BindProcess(process);
 
-            process.ErrorDataReceived += delegate (object sender, DataReceivedEventArgs e)
+            process.ErrorDataReceived += delegate(object sender, DataReceivedEventArgs e)
             {
-                Serilog.Log.Error("error on shell.ErrorDataReceived: {data}", e.Data);
+                Log.Error("error on shell.ErrorDataReceived: {data}", e.Data);
             };
-            process.OutputDataReceived += delegate (object sender, DataReceivedEventArgs e)
+            process.OutputDataReceived += delegate(object sender, DataReceivedEventArgs e)
             {
-                Serilog.Log.Debug("shell.OutputDataReceived: {data}", e.Data);
+                Log.Debug("shell.OutputDataReceived: {data}", e.Data);
             };
-            process.Exited += delegate (object sender, System.EventArgs e)
-            {
-                Serilog.Log.Debug("shell.Exited: {data}", e.ToString());
-            };
+            process.Exited += delegate(object sender, EventArgs e) { Log.Debug("shell.Exited: {data}", e.ToString()); };
         }
 
         private static void ReadProcessOutput(Process process, ShellCommandEditorToken shellCommandEditorToken)
@@ -158,24 +152,18 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
             do
             {
                 var line = process.StandardOutput.ReadLine();
-                if (line == null)
-                {
-                    break;
-                }
+                if (line == null) break;
 
                 line = line.Replace("\\", "/");
-                Enqueue(delegate () { shellCommandEditorToken.FeedLog(UnityShellLogType.Log, line); });
+                Enqueue(delegate { shellCommandEditorToken.FeedLog(UnityShellLogType.Log, line); });
             } while (true);
 
             while (true)
             {
                 var error = process.StandardError.ReadLine();
-                if (string.IsNullOrEmpty(error))
-                {
-                    break;
-                }
+                if (string.IsNullOrEmpty(error)) break;
 
-                Enqueue(delegate () { shellCommandEditorToken.FeedLog(UnityShellLogType.Error, error); });
+                Enqueue(delegate { shellCommandEditorToken.FeedLog(UnityShellLogType.Error, error); });
             }
 
             process.WaitForExit();
@@ -183,15 +171,21 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
             process.Close();
             Enqueue(() => { shellCommandEditorToken.MarkAsDone(exitCode); });
         }
-
     }
 
     public class ShellCommandEditorToken
     {
+        private Process? _process;
+
+        public bool IsKillRequested { get; private set; }
+
+        public bool HasError { get; private set; }
+
+        public int ExitCode { get; private set; }
+
+        public bool IsDone { get; private set; }
         public event UnityAction<UnityShellLogType, string>? OnLog;
         public event UnityAction<int>? OnExit;
-
-        private Process? _process;
 
         internal void BindProcess(Process process)
         {
@@ -202,20 +196,12 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
         {
             OnLog?.Invoke(unityShellLogType, log);
 
-            if (unityShellLogType == UnityShellLogType.Error)
-            {
-                HasError = true;
-            }
+            if (unityShellLogType == UnityShellLogType.Error) HasError = true;
         }
-
-        public bool IsKillRequested { get; private set; }
 
         public void Kill()
         {
-            if (IsKillRequested)
-            {
-                return;
-            }
+            if (IsKillRequested) return;
 
             IsKillRequested = true;
             if (_process != null)
@@ -229,12 +215,6 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
             }
         }
 
-        public bool HasError { get; private set; }
-
-        public int ExitCode { get; private set; }
-
-        public bool IsDone { get; private set; }
-
         internal void MarkAsDone(int exitCode)
         {
             ExitCode = exitCode;
@@ -243,7 +223,7 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
         }
 
         /// <summary>
-        /// This method is intended for compiler use. Don't call it in your code.
+        ///     This method is intended for compiler use. Don't call it in your code.
         /// </summary>
         public ShellCommandAwaiter GetAwaiter()
         {
@@ -251,7 +231,7 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
         }
     }
 
-    public struct ShellCommandAwaiter : System.Runtime.CompilerServices.ICriticalNotifyCompletion
+    public struct ShellCommandAwaiter : ICriticalNotifyCompletion
     {
         private readonly ShellCommandEditorToken _shellCommandEditorToken;
 
@@ -275,13 +255,9 @@ namespace Meryel.UnityCodeAssist.Editor.Shell
         public void UnsafeOnCompleted(Action continuation)
         {
             if (IsCompleted)
-            {
                 continuation();
-            }
             else
-            {
-                _shellCommandEditorToken.OnExit += (_) => { continuation(); };
-            }
+                _shellCommandEditorToken.OnExit += _ => { continuation(); };
         }
     }
 

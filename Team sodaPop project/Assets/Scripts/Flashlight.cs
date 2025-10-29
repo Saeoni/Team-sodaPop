@@ -5,17 +5,17 @@ namespace TheWatcher
     public class Flashlight : MonoBehaviour
     {
         [SerializeField] private Light flashlight;
-        private bool isOn = false;
+        private bool isOn;
 
 
-        void Start()
+        private void Start()
         {
             if (flashlight == null)
                 flashlight = GetComponent<Light>();
             flashlight.enabled = isOn;
         }
 
-        void Update()
+        private void Update()
         {
             if (Input.GetButtonDown("Flashlight"))
             {

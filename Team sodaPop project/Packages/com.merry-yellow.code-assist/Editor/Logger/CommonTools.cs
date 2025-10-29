@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using Meryel.UnityCodeAssist.Synchronizer.Model;
+using UnityEngine;
 using static System.IO.Path;
-
-
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -25,7 +23,7 @@ namespace Meryel.UnityCodeAssist.Editor
         }
 
         /// <summary>
-        /// does NOT include the trailing slash
+        ///     does NOT include the trailing slash
         /// </summary>
         /// <returns></returns>
         public static string GetExternalReferencesPath()
@@ -71,11 +69,12 @@ namespace Meryel.UnityCodeAssist.Editor
             var osPath = new OSPath(rawPath);
             var unixPath = osPath.Unix;
             var trimmed = unixPath.TrimEnd('\\', '/');
-            var capitalized = FirstCharToUpper(trimmed); // this is required for TypeScript, so doing it here as well just in case
+            var capitalized =
+                FirstCharToUpper(trimmed); // this is required for TypeScript, so doing it here as well just in case
             return capitalized!;
         }
 
-        static string? FirstCharToUpper(string? input)
+        private static string? FirstCharToUpper(string? input)
         {
             switch (input)
             {
@@ -86,13 +85,13 @@ namespace Meryel.UnityCodeAssist.Editor
         }
 
         /// <summary>
-        /// Get the path to the project folder.
+        ///     Get the path to the project folder.
         /// </summary>
         /// <returns>The project folder path</returns>
-        static string GetProjectPathRaw()
+        private static string GetProjectPathRaw()
         {
             // Application.dataPath returns the path including /Assets, which we need to strip off
-            var path = UnityEngine.Application.dataPath;
+            var path = Application.dataPath;
             var directory = new DirectoryInfo(path);
             var parent = directory.Parent;
             if (parent != null)
@@ -101,7 +100,10 @@ namespace Meryel.UnityCodeAssist.Editor
             return path;
         }
 
-        public static string GetHashForLogFile(string path) => Synchronizer.Model.Utilities.GetHashForLogFile(path);
+        public static string GetHashForLogFile(string path)
+        {
+            return Utilities.GetHashForLogFile(path);
+        }
     }
 
     // https://github.com/dmitrynogin/cdsf/blob/master/Cds.Folders/OSPath.cs
@@ -109,21 +111,19 @@ namespace Meryel.UnityCodeAssist.Editor
     {
         public static readonly OSPath Empty = "";
 
-        public static bool IsWindows => DirectorySeparatorChar == '\\';
-
         public OSPath(string text)
         {
             Text = text.Trim();
         }
 
-        public static implicit operator OSPath(string text) => new OSPath(text);
-        public static implicit operator string(OSPath path) => path.Normalized;
-        public override string ToString() => Normalized;
+        public static bool IsWindows => DirectorySeparatorChar == '\\';
 
         protected string Text { get; }
 
         public string Normalized => IsWindows ? Windows : Unix;
+
         public string Windows => Text.Replace('/', '\\');
+
         //public string Unix => Simplified.Text.Replace('\\', '/');
         public string Unix => Text.Replace('\\', '/');
 
@@ -137,15 +137,36 @@ namespace Meryel.UnityCodeAssist.Editor
 
         public OSPath Parent => GetDirectoryName(Text);
 
-        public bool Contains(OSPath path) =>
-            Normalized.StartsWith(path);
+        public static implicit operator OSPath(string text)
+        {
+            return new OSPath(text);
+        }
 
-        public static OSPath operator +(OSPath left, OSPath right) =>
-            new OSPath(Combine(left, right.Relative));
+        public static implicit operator string(OSPath path)
+        {
+            return path.Normalized;
+        }
 
-        public static OSPath operator -(OSPath left, OSPath right) =>
-            left.Contains(right)
-            ? new OSPath(left.Normalized.Substring(right.Normalized.Length)).Relative
-            : left;
+        public override string ToString()
+        {
+            return Normalized;
+        }
+
+        public bool Contains(OSPath path)
+        {
+            return Normalized.StartsWith(path);
+        }
+
+        public static OSPath operator +(OSPath left, OSPath right)
+        {
+            return new OSPath(Combine(left, right.Relative));
+        }
+
+        public static OSPath operator -(OSPath left, OSPath right)
+        {
+            return left.Contains(right)
+                ? new OSPath(left.Normalized.Substring(right.Normalized.Length)).Relative
+                : left;
+        }
     }
 }

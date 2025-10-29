@@ -1,14 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Linq;
-using UnityEngine;
+using Meryel.Serilog;
 using UnityEditor;
-
-
+using UnityEngine;
+using Object = UnityEngine.Object;
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -17,10 +14,8 @@ using Serilog = Meryel.Serilog;
 
 namespace Meryel.UnityCodeAssist.Editor
 {
-
     public class ScriptFinder //: MonoBehaviour
     {
-
         internal static Type? GetType123(string typeName)
         {
             //**--
@@ -40,23 +35,17 @@ namespace Meryel.UnityCodeAssist.Editor
 
             // Try Type.GetType() first. This will work with types defined
             // by the Mono runtime, in the same assembly as the caller, etc.
-            Type type = Type.GetType(typeName);
+            var type = Type.GetType(typeName);
 
             // If it worked, then we're done here
-            if (type != null)
-            {
-                return type;
-            }
+            if (type != null) return type;
 
             // Attempt to search for type on the loaded assemblies
             Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (Assembly assembly in currentAssemblies)
+            foreach (var assembly in currentAssemblies)
             {
                 type = assembly.GetType(typeName);
-                if (type != null)
-                {
-                    return type;
-                }
+                if (type != null) return type;
             }
 
             // If we still haven't found the proper type, we can enumerate all of the
@@ -71,10 +60,7 @@ namespace Meryel.UnityCodeAssist.Editor
                 {
                     // See if that assembly defines the named type
                     type = assembly.GetType(typeName);
-                    if (type != null)
-                    {
-                        return type;
-                    }
+                    if (type != null) return type;
                 }
             }
 
@@ -82,7 +68,8 @@ namespace Meryel.UnityCodeAssist.Editor
             return null;
         }
 
-        public static bool FindInstanceOfType(string typeName, string docPath, out GameObject? gameObjectInstanceOfType, out ScriptableObject? scriptableObjectInstanceOfType)
+        public static bool FindInstanceOfType(string typeName, string docPath, out GameObject? gameObjectInstanceOfType,
+            out ScriptableObject? scriptableObjectInstanceOfType)
         {
             gameObjectInstanceOfType = null;
             scriptableObjectInstanceOfType = null;
@@ -93,7 +80,7 @@ namespace Meryel.UnityCodeAssist.Editor
             {
                 // Possibly a class has been created in Visual Studio, and these changes are not reflected in Unity domain yet
                 // We can force Unity to recompile and get the type, but since there will be no instance of that type, it won't be of any use, will be just a performance burden
-                Serilog.Log.Debug("{Type} type couldn't be found", typeName);
+                Log.Debug("{Type} type couldn't be found", typeName);
                 return false;
             }
 
@@ -107,17 +94,18 @@ namespace Meryel.UnityCodeAssist.Editor
                 gameObjectInstanceOfType = go;
                 return true;
             }
-            else if (obj != null && obj is ScriptableObject so)
+
+            if (obj != null && obj is ScriptableObject so)
             {
                 scriptableObjectInstanceOfType = so;
                 return true;
             }
 
-            Serilog.Log.Debug("Instance of {Type} type couldn't be found", typeName);
+            Log.Debug("Instance of {Type} type couldn't be found", typeName);
             return false;
         }
 
-        static UnityEngine.Object? GetObjectOfType(Type type, out bool requestVerboseType)
+        private static Object? GetObjectOfType(Type type, out bool requestVerboseType)
         {
             requestVerboseType = false;
             var isMonoBehaviour = type.IsSubclassOf(typeof(MonoBehaviour));
@@ -127,12 +115,12 @@ namespace Meryel.UnityCodeAssist.Editor
             {
                 // Possibly a class's base class changed from none to MonoBehaviour in Visual Studio, and these changes are not reflected in Unity domain yet
                 // We can force Unity to recompile and get the type correctly, but since there will be no instance of that type, it won't be of any use, will be just a performance burden
-                Serilog.Log.Debug("{Type} is not a valid Unity object", type.ToString());
+                Log.Debug("{Type} is not a valid Unity object", type.ToString());
                 //requestVerboseType = true;
                 return null;
             }
 
-            UnityEngine.Object? obj;
+            Object? obj;
 
             obj = getObjectToSend(Selection.activeGameObject, type);
             if (obj != null)
@@ -147,12 +135,11 @@ namespace Meryel.UnityCodeAssist.Editor
             obj = getObjectToSend(Selection.activeObject, type);
             if (obj != null)
                 return obj;
-            
+
 
             //**--check source code of this, for sorting
             var filteredArray = Selection.GetFiltered(type, SelectionMode.Unfiltered);
             if (filteredArray != null)
-            {
                 //**--sort
                 foreach (var filtered in filteredArray)
                 {
@@ -160,8 +147,6 @@ namespace Meryel.UnityCodeAssist.Editor
                     if (obj != null)
                         return obj;
                 }
-            }
-
 
 
             //**--rest can be slow, try avoiding them, make own db etc
@@ -173,7 +158,7 @@ namespace Meryel.UnityCodeAssist.Editor
                 // UnityEngine.Object.FindObjectOfType is deprecated in new versions of Unity
 #if UNITY_2022_3 || UNITY_2023_1_OR_NEWER
                 // Object.FindAnyObjectOfType doesn't return Assets (for example meshes, textures, or prefabs), or inactive objects. It also doesn't return objects that have HideFlags.DontSave set.
-                obj = UnityEngine.Object.FindAnyObjectByType(type);
+                obj = Object.FindAnyObjectByType(type);
 #else
                 // Object.FindObjectOfType will not return Assets (meshes, textures, prefabs, ...) or inactive objects. It will not return an object that has HideFlags.DontSave set.
                 obj = UnityEngine.Object.FindObjectOfType(type);
@@ -181,14 +166,15 @@ namespace Meryel.UnityCodeAssist.Editor
             }
             catch (Exception ex)
             {
-                Serilog.Log.Warning(ex, "FindObjectOfType/FindAnyObjectByType failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(), isMonoBehaviour, isScriptableObject);
+                Log.Warning(ex, "FindObjectOfType/FindAnyObjectByType failed for {Type}, mb:{isMB}, so:{isSO}",
+                    type.ToString(), isMonoBehaviour, isScriptableObject);
             }
 
             obj = getObjectToSend(obj, type);
             if (obj != null)
                 return obj;
 
-            UnityEngine.Object[]? arr = null;
+            Object[]? arr = null;
             try
             {
                 // This function can return any type of Unity object that is loaded, including game objects, prefabs, materials, meshes, textures, etc.
@@ -199,11 +185,11 @@ namespace Meryel.UnityCodeAssist.Editor
             {
                 //var isMonoBehaviour = type.IsSubclassOf(typeof(MonoBehaviour));
                 //var isScriptableObject = type.IsSubclassOf(typeof(ScriptableObject));
-                Serilog.Log.Warning(ex, "FindObjectsOfTypeAll failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(), isMonoBehaviour, isScriptableObject);
+                Log.Warning(ex, "FindObjectsOfTypeAll failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(),
+                    isMonoBehaviour, isScriptableObject);
             }
 
             if (arr != null)
-            {
                 //**--sort
                 foreach (var item in arr)
                 {
@@ -211,13 +197,12 @@ namespace Meryel.UnityCodeAssist.Editor
                     if (obj != null)
                         return obj;
                 }
-            }
 
 
             return obj;
 
 
-            static UnityEngine.Object? getObjectToSend(UnityEngine.Object? obj, Type type)
+            static Object? getObjectToSend(Object? obj, Type type)
             {
                 if (obj == null || !obj)
                     return null;
@@ -242,15 +227,13 @@ namespace Meryel.UnityCodeAssist.Editor
                     go = comp.gameObject;
                     if (!go)
                         return null;
-                    else
-                        return go;
+                    return go;
                 }
                 else if (obj is ScriptableObject so)
                 {
                     if (!so)
                         return null;
-                    else
-                        return so;
+                    return so;
                 }
 
                 return null;
@@ -258,7 +241,7 @@ namespace Meryel.UnityCodeAssist.Editor
 
             static bool isTypeComponent(Type type)
             {
-                var componentType = typeof(Component);//**--cache these types
+                var componentType = typeof(Component); //**--cache these types
                 if (type == componentType || type.IsSubclassOf(componentType))
                     return true;
 
@@ -266,7 +249,7 @@ namespace Meryel.UnityCodeAssist.Editor
                 //var monoBehaviourType = typeof(MonoBehaviour);
                 //if (type == monoBehaviourType || type.IsSubclassOf(monoBehaviourType))
                 //    return true;
-                
+
                 //else if(type is interface)//**--
 
                 return false;
@@ -278,7 +261,7 @@ namespace Meryel.UnityCodeAssist.Editor
             //UnityEditor.SceneManagement.EditorSceneManager.all
             //AssetDatabase.get
 
-            foreach (var sceneGUID in AssetDatabase.FindAssets("t:Scene", new string[] { "Assets" }))
+            foreach (var sceneGUID in AssetDatabase.FindAssets("t:Scene", new[] { "Assets" }))
             {
                 var scenePath = AssetDatabase.GUIDToAssetPath(sceneGUID);
                 Debug.Log("scenePath: " + scenePath);
@@ -302,8 +285,5 @@ namespace Meryel.UnityCodeAssist.Editor
             activeGameObject = Selection.activeGameObject;
             return activeGameObject ? true : false;
         }
-
     }
-
-
 }

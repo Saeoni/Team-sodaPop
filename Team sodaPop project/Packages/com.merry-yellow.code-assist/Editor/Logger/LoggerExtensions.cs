@@ -1,15 +1,19 @@
 //using Meryel.UnityCodeAssist.Serilog;
 //using Meryel.UnityCodeAssist.Serilog.Core;
-using UnityEngine;
-using UnityEditor;
-using System.Linq;
 
+
+using System;
+using System.Runtime.InteropServices;
 using Meryel.Serilog;
 using Meryel.Serilog.Core;
-
-
+using Meryel.Serilog.Events;
+using Meryel.UnityCodeAssist.Logger;
+using Meryel.UnityCodeAssist.ProjectData;
+using Meryel.UnityCodeAssist.Synchronizer.Model;
+using UnityEditor;
+using UnityEngine;
 #pragma warning disable IDE0005
-using Serilog = Meryel.Serilog;
+
 #pragma warning restore IDE0005
 
 
@@ -18,43 +22,22 @@ using Serilog = Meryel.Serilog;
 
 namespace Meryel.UnityCodeAssist.Editor.Logger
 {
-
     //[InitializeOnLoad]
     public static class ELogger
     {
-        public static event System.Action? OnVsInternalLogChanged;
-
-
         // Change 'new LoggerConfiguration().MinimumLevel.Debug();' if you change these values
-        const Serilog.Events.LogEventLevel fileMinLevel = Serilog.Events.LogEventLevel.Debug;
-        const Serilog.Events.LogEventLevel outputWindowMinLevel = Serilog.Events.LogEventLevel.Information;
-        static LoggingLevelSwitch? fileLevelSwitch, outputWindowLevelSwitch;
+        private const LogEventLevel fileMinLevel = LogEventLevel.Debug;
+        private const LogEventLevel outputWindowMinLevel = LogEventLevel.Information;
+        private static readonly LoggingLevelSwitch? fileLevelSwitch;
+        private static readonly LoggingLevelSwitch? outputWindowLevelSwitch;
 
         //static bool IsInitialized { get; set; }
 
-        static ILogEventSink? _outputWindowSink;
-        static ILogEventSink? _memorySink;
-
-
-        public static string GetInternalLogContent() => _memorySink == null ? string.Empty : ((Meryel.UnityCodeAssist.Logger.MemorySink)_memorySink).Export();
-        public static int GetErrorCountInInternalLog() => _memorySink == null ? 0 : ((Meryel.UnityCodeAssist.Logger.MemorySink)_memorySink).ErrorCount;
-        public static int GetWarningCountInInternalLog() => _memorySink == null ? 0 : ((Meryel.UnityCodeAssist.Logger.MemorySink)_memorySink).WarningCount;
-
-        public static string? FilePath => Meryel.UnityCodeAssist.Logger.ELogger.UnityFilePath;
-        public static string? VSFilePath => Meryel.UnityCodeAssist.Logger.ELogger.VisualStudioFilePath;
+        private static ILogEventSink? _outputWindowSink;
+        private static readonly ILogEventSink? _memorySink;
 
         //**-- make it work with multiple clients
-        static string? _vsInternalLog;
-        public static string? VsInternalLog
-        {
-            get => _vsInternalLog;
-            set
-            {
-                _vsInternalLog = value;
-                OnVsInternalLogChanged?.Invoke();
-            }
-        }
-
+        private static string? _vsInternalLog;
 
 
         static ELogger()
@@ -72,7 +55,7 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
             }
 
             var projectPath = CommonTools.GetProjectPath();
-            var outputWindowSink = new System.Lazy<ILogEventSink>(() => new UnityOutputWindowSink(null));
+            var outputWindowSink = new Lazy<ILogEventSink>(() => new UnityOutputWindowSink(null));
 
             Init(isFirst, projectPath, outputWindowSink);
 
@@ -80,36 +63,74 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
                 LogHeader(Application.unityVersion, projectPath);
         }
 
-        /// <summary>
-        /// Empty method for invoking static class ctor
-        /// </summary>
-        public static void Bump() { }
+        public static string? FilePath => UnityCodeAssist.Logger.ELogger.UnityFilePath;
+        public static string? VSFilePath => UnityCodeAssist.Logger.ELogger.VisualStudioFilePath;
 
-
-        static void LogHeader(string unityVersion, string solutionDir)
+        public static string? VsInternalLog
         {
-            var os = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+            get => _vsInternalLog;
+            set
+            {
+                _vsInternalLog = value;
+                OnVsInternalLogChanged?.Invoke();
+            }
+        }
+
+        //**-- UI for these two
+        private static bool OptionsIsLoggingToFile => true;
+        private static bool OptionsIsLoggingToOutputWindow => true;
+        public static event Action? OnVsInternalLogChanged;
+
+
+        public static string GetInternalLogContent()
+        {
+            return _memorySink == null
+                ? string.Empty
+                : ((MemorySink)_memorySink).Export();
+        }
+
+        public static int GetErrorCountInInternalLog()
+        {
+            return _memorySink == null ? 0 : ((MemorySink)_memorySink).ErrorCount;
+        }
+
+        public static int GetWarningCountInInternalLog()
+        {
+            return _memorySink == null ? 0 : ((MemorySink)_memorySink).WarningCount;
+        }
+
+        /// <summary>
+        ///     Empty method for invoking static class ctor
+        /// </summary>
+        public static void Bump()
+        {
+        }
+
+
+        private static void LogHeader(string unityVersion, string solutionDir)
+        {
+            var os = RuntimeInformation.OSDescription;
             var assisterVersion = Assister.Version;
-            var syncModel = Synchronizer.Model.Utilities.Version;
+            var syncModel = Utilities.Version;
             var hash = CommonTools.GetHashForLogFile(solutionDir);
-            var port = Synchronizer.Model.Utilities.GetPortForMQTTnet(solutionDir);
-            Serilog.Log.Debug(
+            var port = Utilities.GetPortForMQTTnet(solutionDir);
+            Log.Debug(
                 "Beginning logging {OS}, Unity {U}, Unity Code Assist {A}, Communication Protocol {SM}, Project: '{Dir}', Project Hash: {Hash}, Port: {Port}",
                 os, unityVersion, assisterVersion, syncModel, solutionDir, hash, port);
         }
 
 
-        public static void Init(bool isFirst, string solutionDir, System.Lazy<ILogEventSink> outputWindowSink)
+        public static void Init(bool isFirst, string solutionDir, Lazy<ILogEventSink> outputWindowSink)
         {
             //var solutionHash = Common.CommonTools.GetHashOfPath(solutionDir);
             var solutionHash = CommonTools.GetHashForLogFile(solutionDir); // dir is osSafePath
             _outputWindowSink ??= outputWindowSink.Value;
-            var sinkWrapper = new System.Lazy<Meryel.Serilog.Core.ILogEventSink>(() => _outputWindowSink);
+            var sinkWrapper = new Lazy<ILogEventSink>(() => _outputWindowSink);
 
-            Meryel.UnityCodeAssist.Logger.ELogger.Init(
+            UnityCodeAssist.Logger.ELogger.Init(
                 UnityCodeAssist.Logger.ELogger.State.FullyInitialized,
                 UnityCodeAssist.Logger.ELogger.PackagePriority.High,
-                solutionDir, solutionHash, "UnityCodeAssist", ProjectData.Domain.Unity,
+                solutionDir, solutionHash, "UnityCodeAssist", Domain.Unity,
                 sinkWrapper, null, null, null, null);
         }
 
@@ -118,20 +139,14 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
             // Since we don't use LogEventLevel.Fatal, we can use it for disabling sinks
 
             var isLoggingToFile = OptionsIsLoggingToFile;
-            var targetFileLevel = isLoggingToFile ? fileMinLevel : Serilog.Events.LogEventLevel.Fatal;
+            var targetFileLevel = isLoggingToFile ? fileMinLevel : LogEventLevel.Fatal;
             if (fileLevelSwitch != null)
                 fileLevelSwitch.MinimumLevel = targetFileLevel;
 
             var isLoggingToOutputWindow = OptionsIsLoggingToOutputWindow;
-            var targetOutputWindowLevel = isLoggingToOutputWindow ? outputWindowMinLevel : Serilog.Events.LogEventLevel.Fatal;
+            var targetOutputWindowLevel = isLoggingToOutputWindow ? outputWindowMinLevel : LogEventLevel.Fatal;
             if (outputWindowLevelSwitch != null)
                 outputWindowLevelSwitch.MinimumLevel = targetOutputWindowLevel;
         }
-
-        //**-- UI for these two
-        static bool OptionsIsLoggingToFile => true;
-        static bool OptionsIsLoggingToOutputWindow => true;
     }
-
 }
-
