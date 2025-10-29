@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Enemy, Water, UI, Player, Gun
 - Active game object:
-  - Name: RightHandHitBox
+  - Name: Creep1
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Enemy
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

@@ -17,10 +17,10 @@ MonoBehaviour:
   FOV: 90
   lineOfSightMask:
     serializedVersion: 2
-    m_Bits: 1
-  faceTargetSpeed: 8
-  stoppingDist: 1
-  chaseSpeed: 3.5
+    m_Bits: 0
+  faceTargetSpeed: 10
+  stoppingDist: 0.5
+  chaseSpeed: 3
   keyPrefab: {fileID: 0}
   hearingRadius: 15
   aggressionNoiseThreshold: 0.5
@@ -32,15 +32,15 @@ MonoBehaviour:
   punchCooldown: 5
   chaseStyleParam: ChaseStyle
   animTransSpeed: 5
-  creepSpeed: 1.2
+  creepSpeed: 2
   movementMode: 2
   roamDist: 10
   roamSpeed: 2.2
   roamPauseTimer: 2
   patrolPoints: []
-  loopPatrol: 1
-  patrolSpeed: 1.8
-  patrolPauseTime: 2
+  loopPatrol: 0
+  patrolSpeed: 0
+  patrolPauseTime: 0
   leapOutTrigger: LeapOut
   leapInTrigger: LeapIn
   eatTrigger: Eat

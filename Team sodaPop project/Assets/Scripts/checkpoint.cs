@@ -14,19 +14,19 @@ public class checkpoint : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && Gamemanager.Instance.playerSpawnPos.transform.position != transform.position)
+        if (other.CompareTag("Player") && gamemanager.instance.playerSpawnPos.transform.position != transform.position)
         {
-            Gamemanager.Instance.playerSpawnPos.transform.position = transform.position;
+            gamemanager.instance.playerSpawnPos.transform.position = transform.position;
             StartCoroutine(checkpointFeedback());
         }
     }
 
     private IEnumerator checkpointFeedback()
     {
-        Gamemanager.Instance.checkpointPopup.SetActive(true);
+        gamemanager.instance.checkpointPopup.SetActive(true);
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.5f);
         model.material.color = colorOrig;
-        Gamemanager.Instance.checkpointPopup.SetActive(false);
+        gamemanager.instance.checkpointPopup.SetActive(false);
     }
 }

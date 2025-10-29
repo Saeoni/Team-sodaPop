@@ -19,13 +19,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   faceTargetSpeed: 8
-  stoppingDist: 0
-  chaseSpeed: 3
+  stoppingDist: 0.5
+  chaseSpeed: 2
   keyPrefab: {fileID: 0}
-  hearingRadius: 15
-  aggressionNoiseThreshold: 0.8
-  aggressionStalkTime: 6
-  aggressiveTrigger: Spasm
+  hearingRadius: 30
+  aggressionNoiseThreshold: 0.6
+  aggressionStalkTime: 20
+  aggressiveTrigger: Aggressive
   spasmTrigger: Spasm
   calmDownDelay: 5
   minSpeed: 2
@@ -34,29 +34,47 @@ MonoBehaviour:
   animTransSpeed: 5
   speedRampCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  idleChangeInterval: 5
-  idleWeights: {x: 0.6, y: 0.3, z: 0.1}
-  teleportVFX: {fileID: 8445770779711665913, guid: 3b6627180fc131942b31cbc14c0ba874, type: 3}
+  idleChangeInterval: 3
+  idleWeights: {x: 1, y: 1, z: 1}
+  teleportVFX: {fileID: 0}
   teleportTrigger: Teleport
   killDistance: 2
-  stalkTeleportOutVFX: {fileID: 1326163905947862670, guid: f81a23246a3500548a366208e6ea6a16, type: 3}
+  stalkTeleportOutVFX: {fileID: 0}
   stalkTeleportCooldown: 10
   stalkTeleportPreDelay: 1.5
   stalkTeleportDelay: 2
-  stalkTeleportChance: 0.502
-  randomTeleportChance: 0.056
-  randomTeleportInterval: 0.5
+  stalkTeleportChance: 0.1
+  randomTeleportChance: 0.1
+  randomTeleportInterval: 1
   spasmCooldown: 5
-  spasmDelay: 0.4
-  spasmIntensityRange: {x: 0, y: 2}
-  redSlashOfDeath: {fileID: 1276668362546852330, guid: 9f6daea548d08ba4f83426f22e1822c9, type: 3}
-  dualPunchHitFX: {fileID: 609657130995544821, guid: 528f5ff64c7e00943883b420dacd6e69, type: 3}
+  spasmDelay: 1
+  spasmIntensityRange: {x: 1, y: 3}
+  redSlashOfDeath: {fileID: 0}
+  dualPunchHitFX: {fileID: 0}
   damageTrigger: GetDamage
-  spawnVFX: {fileID: 6499773011378678529, guid: 21127ad63b548944685a7635f1068d4f, type: 3}
+  spawnVFX: {fileID: 0}
   spawnTrigger: SpawnTrigger
   spawnDelay: 2.5
   spawnVFXDuration: 3
